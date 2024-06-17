@@ -1,0 +1,69 @@
+@use "global" as *;
+
+.p-form__wrap {
+  display: flex;
+  align-items: center;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.p-form__wrap.p-form__wrap--textarea {
+  align-items: flex-start;
+  @include mq(md) {
+    align-items: normal;
+  }
+}
+
+.p-form__wrap + .p-form__wrap {
+  margin-top: myrem(30);
+}
+
+.p-form__label {
+  font-size: myrem(15);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  max-width: myrem(200);
+  width: 100%;
+  @include mq(md) {
+    max-width: initial;
+  }
+}
+
+.p-form__wrap.p-form__wrap--textarea .p-form__label {
+  margin-top: myrem(10);
+  @include mq(md) {
+    margin-top: 0;
+  }
+}
+
+.p-form__label span {
+  margin-left: myrem(10);
+  padding: myrem(5);
+  display: inline-block;
+  font-size: myrem(12);
+  color: #fff;
+  background-color: #d00000;
+}
+
+.p-form__input,
+.p-form__select,
+.p-form__radio,
+.p-form__checkbox,
+.p-form__textarea {
+  margin-top: 0;
+  @include mq(md) {
+    margin-top: myrem(10);
+  }
+}
+
+.p-form__input,
+.p-form__textarea {
+  flex-grow: 1;
+}
+
+.p-form__submit {
+  margin-top: myrem(60);
+  text-align: center;
+}

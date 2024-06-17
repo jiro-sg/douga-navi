@@ -1,0 +1,33 @@
+@use "global" as *;
+
+.p-thanks {
+}
+
+.p-thanks__title {
+  font-size: myrem(50);
+  text-align: center;
+  @include mq("md") {
+    font-size: myrem(26);
+  }
+}
+
+.p-thanks__title span {
+  display: inline-block;
+}
+
+.p-thanks__text,
+.p-thanks__text02 {
+  font-size: myrem(24);
+  line-height: 2;
+  @include mq("md") {
+    font-size: myrem(18);
+  }
+}
+
+.p-thanks__text {
+  margin-top: myrem(40);
+}
+
+.p-thanks__text02 {
+  // margin-top: myrem(40);
+}

@@ -1,0 +1,7 @@
+@use "global" as *;
+
+//背景を固定する
+.u-fixed {
+  height: 100vh;
+  overflow: hidden;
+}

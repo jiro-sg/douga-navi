@@ -1,0 +1,32 @@
+@use "global" as *;
+.p-form-submit input {
+  padding: myrem(25) myrem(125);
+  color: #fff;
+  display: inline-block;
+  font-size: myrem(16);
+  line-height: 1;
+  background-color: #c5ae66;
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.p-form-submit input:hover,
+.p-form-submit input:focus {
+  outline: none;
+}
+
+.p-form-submit input:hover {
+  opacity: 0.8;
+  @include mq(md) {
+    opacity: 1;
+  }
+}
+
+.p-form-submit input::-moz-foucus-inner {
+  padding: 0;
+  border: none;
+}

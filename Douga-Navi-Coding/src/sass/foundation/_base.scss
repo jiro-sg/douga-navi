@@ -14,12 +14,12 @@ html {
   }
 
   // 376px ~ 767px
-  @include mq(md) {
-    font-size: 100%;
-  }
+  // @include mq(md) {
+  //   font-size: 100%;
+  // }
 
   // ~ 375px
-  @media (max-width: 375px) {
+  @media (max-width: 767px) {
     font-size: vw(375, 16);
   }
 }

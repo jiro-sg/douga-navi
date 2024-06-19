@@ -1,0 +1,14 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-flow {
+	background-color: $white_fd;
+	// background-color: red;
+}
+
+.p-flow__pageTtl {
+	text-align: center;
+	padding: myrem(75) 0;
+	background-color: $white_fff;
+	border: 1px solid $gray_ddd;
+}

@@ -1,0 +1,10 @@
+@use 'sass:math';
+ @use 'global' as *;
+
+
+ .c-secTtl01{
+  font-size: myrem(20);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: $black_000;
+ }

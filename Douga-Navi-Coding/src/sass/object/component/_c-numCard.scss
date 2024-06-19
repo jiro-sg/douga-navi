@@ -1,0 +1,42 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-numCard {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+}
+
+.c-numCard__number {
+	font-family: $font-second;
+	font-size: myrem(75);
+	font-weight: 400;
+	letter-spacing: 0.05em;
+	color: $blue_00A;
+}
+
+.c-numCard__arrow {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+	width: 100%;
+	height: myrem(68);
+	font-size: myrem(15);
+	font-weight: 500;
+	text-align: center;
+	line-height: calc(math.div(25, 15));
+	color: $white_fff;
+	background-color: $blue_00A;
+	clip-path: polygon(calc(math.div(237, 252) * 100%) 0%, 100% 50%, calc(math.div(237, 252) * 100%) 100%, 0% 100%, 0 50%, 0% 0%);
+	// padding: myrem(11) 0;
+	margin-top: myrem(10);
+}
+
+.c-numCard__txt {
+	font-size: myrem(15);
+	font-weight: 400;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(27, 15));
+	margin-top: myrem(24);
+}

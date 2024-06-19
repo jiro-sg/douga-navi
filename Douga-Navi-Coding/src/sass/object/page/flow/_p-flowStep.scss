@@ -1,0 +1,21 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-flowStep {
+	padding: myrem(80) 0;
+	background-color: $paleBlue_eff;
+}
+
+.p-flowStep__ttl {
+	text-align: center;
+}
+
+.p-flowStep__cardWrppr {
+	width: 100%;
+	max-width: myrem(810);
+	margin: myrem(48) auto 0;
+}
+
+.p-flowStep__cardBox:not(:first-of-type) {
+	margin-top: myrem(79);
+}

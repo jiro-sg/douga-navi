@@ -1,0 +1,58 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-flowCTA {
+	padding: myrem(80) 0 myrem(120);
+}
+
+.p-flowCTA__banner {
+	width: calc(math.div(746, 930) * 100%);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.p-flowCTA__btn {
+	display: flex;
+	justify-content: center;
+	margin-top: myrem(30);
+}
+
+.p-flowCTA__btn a {
+	display: block;
+	font-size: myrem(15);
+	font-weight: 400;
+	color: $black_24;
+	border-radius: 50vw;
+	border: 1px solid $pink_e15;
+	padding: myrem(8) myrem(79);
+	position: relative;
+}
+
+.p-flowCTA__btn a::before {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: myrem(20);
+	right: auto;
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: myrem(11);
+	height: 1px;
+	background-color: $black_24;
+}
+
+.p-flowCTA__btn a::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: myrem(20);
+	right: auto;
+	transform: translate(0, -50%) rotate(45deg);
+	display: block;
+	content: "";
+	width: myrem(8);
+	height: myrem(8);
+	border-bottom: 1px solid $black_24;
+	border-left: 1px solid $black_24;
+}

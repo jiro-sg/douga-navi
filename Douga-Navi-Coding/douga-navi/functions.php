@@ -36,6 +36,7 @@ add_action('after_setup_theme', 'my_setup');
 function my_script_init() {
  //フォント
  wp_enqueue_style('font', '//fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap', array(), '1.0.1');
+ wp_enqueue_style('font2', '//fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap', array(), '1.0.1');
  // jQueryの読み込み
  wp_deregister_script('jquery');
  wp_enqueue_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js', "", "1.0.1");

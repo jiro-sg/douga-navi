@@ -32,12 +32,18 @@ $padding-sp: 20px;
 
 // フォント
 $font-main: "Noto Sans JP", sans-serif;
+$font-second: "Oswald", sans-serif;
 
 // 色指定
+$white_fff: #fff;
+$white_fd: #fff;
 $black_000: #000;
-$black_242: #242422;
+$black_24: #242422;
 $gray_777: #777;
-$white: #fff;
+$gray_ddd: #ddd;
+$blue_00A: #00a0e1;
+$paleBlue_eff: #eff3f6;
+$pink_e15: #e15689;
 
 // ブレイクポイント
 $breakpoints: (

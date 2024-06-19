@@ -1,0 +1,54 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-ctaBanner {
+	padding: myrem(40) 0;
+	background-color: $paleBlue_eff;
+	background-image: url(../images/cta_back01.png), url(../images/cta_back02.png);
+	background-size: myrem(144) myrem(120), myrem(144.3) myrem(103.5);
+	background-position: myrem(33) 100%, calc(100% - myrem(40)) 100%;
+	background-repeat: no-repeat, no-repeat;
+	border-radius: myrem(4);
+}
+
+.c-ctaBanner__txt {
+	font-size: myrem(18);
+	font-weight: 400;
+	text-align: center;
+}
+
+.c-ctaBanner__btn {
+	display: flex;
+	justify-content: center;
+	font-size: myrem(15);
+	font-weight: 400;
+	color: $white_fff;
+	margin-top: myrem(30);
+}
+
+.c-ctaBanner__btn a {
+	display: flex;
+	justify-content: center;
+	font-size: myrem(15);
+	font-weight: 400;
+	color: $white_fff;
+	background-color: $pink_e15;
+	border-radius: myrem(4);
+	padding: myrem(5) myrem(42);
+	position: relative;
+}
+
+.c-ctaBanner__btn a::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: myrem(15);
+	transform: translate(0, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(9);
+	height: myrem(9);
+	border-bottom: 1px solid $white_fff;
+	border-right: 1px solid $white_fff;
+}

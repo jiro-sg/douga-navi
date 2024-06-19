@@ -1,0 +1,48 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-card01 {
+	display: flex;
+	justify-content: space-between;
+	// column-gap: myrem(51);
+}
+
+.c-card01__sntnc {
+	width: calc(math.div(446, 810) * 100%);
+}
+
+.c-card01__num {
+	font-size: myrem(16);
+	font-weight: 700;
+	color: $blue_00A;
+}
+
+.c-card01__ttl {
+	font-size: myrem(18);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	color: $black_000;
+	margin-top: myrem(8);
+}
+
+.c-card01__txt {
+	font-size: myrem(15);
+	font-weight: 400;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(27, 15));
+	color: $black_000;
+	margin-top: myrem(16);
+}
+
+.c-card01__img {
+	display: block;
+	width: calc(math.div(313, 810) * 100%);
+	height: auto;
+}
+
+.c-card01__img img {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 313/177;
+}

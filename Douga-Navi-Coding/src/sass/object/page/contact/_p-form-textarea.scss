@@ -1,0 +1,21 @@
+@use "global" as *;
+.p-form-textarea {
+  width: 100%;
+}
+.p-form-textarea textarea {
+  font-size: myrem(15);
+  padding: myrem(8) myrem(15);
+  width: 100%;
+  height: myrem(202);
+  border-radius: 0;
+  border: 1px solid #707070;
+  appearance: none;
+  background-color: transparent;
+  background-image: none;
+}
+
+.p-form-textarea textarea:focus {
+  border: 1px solid #707070;
+  box-shadow: none;
+  outline: none;
+}

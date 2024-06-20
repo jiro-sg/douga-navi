@@ -1,0 +1,87 @@
+@use "global" as *;
+
+.p-form__inner {
+  max-width: myrem(487);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-form__wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @include mq(md) {
+    display: block;
+  }
+}
+
+.p-form__wrap.p-form__wrap--textarea {
+  align-items: flex-start;
+  @include mq(md) {
+    align-items: normal;
+  }
+}
+
+.p-form__wrap + .p-form__wrap {
+  margin-top: myrem(28);
+}
+
+.p-form__wrap.p-form__wrap--confirm {
+  margin-top: myrem(0);
+}
+
+.p-form__label {
+  font-size: myrem(15);
+  line-height: 1;
+  letter-spacing: 0.05em;
+  max-width: myrem(200);
+  width: 100%;
+  @include mq(md) {
+    max-width: initial;
+  }
+}
+
+.p-form__wrap.p-form__wrap--textarea .p-form__label {
+  @include mq(md) {
+    margin-top: 0;
+  }
+}
+
+.p-form__label span {
+  font-size: myrem(12);
+  display: inline-block;
+  color: #e15689;
+}
+
+.p-form__input,
+.p-form__select,
+.p-form__radio,
+.p-form__checkbox,
+.p-form__textarea {
+  margin-top: myrem(10);
+  @include mq(md) {
+    margin-top: myrem(10);
+  }
+}
+
+.p-form__input,
+.p-form__textarea {
+  flex-grow: 1;
+}
+
+.p-form__submit {
+  margin-top: myrem(32);
+  text-align: center;
+}
+
+.p-form__policy {
+  font-size: myrem(12);
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin-top: myrem(24);
+  text-decoration: underline;
+}
+
+.p-form__policy span {
+  color: #008aef;
+}

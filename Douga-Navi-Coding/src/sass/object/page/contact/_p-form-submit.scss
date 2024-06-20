@@ -1,0 +1,53 @@
+@use "global" as *;
+
+.p-form-submit {
+  position: relative;
+  max-width: myrem(295);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.p-form-submit::after {
+  content: "";
+  background: url(../images/contact/triangle.svg) no-repeat center / contain;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+  right: myrem(20);
+  width: myrem(9);
+  height: myrem(10);
+}
+
+.p-form-submit input {
+  font-size: myrem(16);
+  line-height: 1;
+  border-radius: myrem(100);
+  padding: myrem(12) myrem(25);
+  color: #fff;
+  width: 100%;
+  display: inline-block;
+  background-color: #e15689;
+  background-image: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.p-form-submit input:hover,
+.p-form-submit input:focus {
+  outline: none;
+}
+
+.p-form-submit input:hover {
+  opacity: 0.8;
+  @include mq(md) {
+    opacity: 1;
+  }
+}
+
+.p-form-submit input::-moz-foucus-inner {
+  padding: 0;
+  border: none;
+}

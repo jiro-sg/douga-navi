@@ -1,0 +1,26 @@
+@use "global" as *;
+
+.p-contact__form {
+  max-width: myrem(780);
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #dddddd;
+  border-radius: myrem(5);
+  padding-top: myrem(47);
+  padding-bottom: myrem(49);
+  margin-top: myrem(41);
+}
+
+.p-contact__title {
+  text-align: center;
+}
+
+.p-contact__explain {
+  font-size: myrem(15);
+  text-align: center;
+  margin-top: myrem(22);
+  letter-spacing: 0;
+}
+
+.p-contact__form {
+}

@@ -1,0 +1,313 @@
+@use "global" as *;
+.p-confirm__status-list {
+  margin: auto;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: myrem(500);
+  width: 100%;
+  counter-reset: number;
+}
+
+.p-confirm__status-list::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: -1;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1px;
+  background-color: #c7bdbd;
+}
+
+.p-confirm__status-item {
+  width: myrem(80);
+  height: myrem(80);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #f4e9e5;
+  @include mq(md) {
+    width: myrem(100);
+    height: myrem(100);
+  }
+}
+
+.p-confirm__status-item.p-confirm__status-item--current {
+  background-color: #b19c96;
+}
+
+.p-confirm__status-text {
+  font-size: myrem(18);
+  line-height: 1;
+  color: #c7bdbd;
+  @include mq(md) {
+    font-size: myrem(15);
+  }
+}
+
+.p-confirm__status-text::before {
+  counter-increment: number;
+  content: "0" counter(number);
+  margin-bottom: myrem(8);
+  display: block;
+  text-align: center;
+}
+
+.p-confirm__status-item.p-confirm__status-item--current .p-confirm__status-text {
+  color: #fff;
+}
+
+.p-confirm__text-wrap {
+  margin-top: myrem(60);
+  text-align: center;
+  @include mq(md) {
+    margin-top: myrem(40);
+  }
+}
+
+.p-confirm__text {
+  display: inline-block;
+  font-size: myrem(18);
+  line-height: 1.5;
+  text-align: left;
+  @include mq("md") {
+    font-size: myrem(16);
+  }
+}
+
+.p-confirm__form-confirm {
+  margin: myrem(80) auto 0;
+  max-width: myrem(800);
+  width: 100%;
+  word-break: break-all;
+  @include mq(md) {
+    margin: myrem(60) auto 0;
+  }
+}
+
+.p-confirm__form-confirm-wrap + .p-confirm__form-confirm-wrap {
+  margin-top: myrem(30);
+}
+
+.p-confirm__form-confirm-label {
+  font-size: myrem(18);
+  line-height: 1;
+  @include mq("md") {
+  }
+}
+
+.p-confirm__form-confirm-input {
+  margin-top: myrem(32);
+  padding: 0 myrem(10) myrem(8) myrem(10);
+  font-size: myrem(15);
+  line-height: 1;
+  border-bottom: myrem(2) solid #e0e0e0;
+}
+
+.p-confirm__form-confirm-checkbox {
+  margin-top: myrem(10);
+  padding-left: myrem(10);
+}
+
+.p-confirm__form-confirm-checkbox p {
+  font-size: myrem(15);
+  line-height: 1;
+}
+
+.p-confirm__form-confirm-checkbox p:not(:first-of-type) {
+  margin-top: myrem(15);
+}
+
+.p-confirm__form-confirm-textarea {
+  margin-top: myrem(18);
+  padding: 0 myrem(10) myrem(10) myrem(10);
+  font-size: myrem(15);
+  border-bottom: myrem(2) solid #e0e0e0;
+}
+
+.p-confirm__form-btn-wrap {
+  margin-top: myrem(80);
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  @include mq(md) {
+    margin-top: myrem(60);
+    flex-direction: column;
+  }
+}
+
+.p-confirm__form-submit {
+  margin: 0 0 0 myrem(25);
+  position: relative;
+  max-width: myrem(300);
+  width: 100%;
+  transition: 0.3s;
+  @include mq(md) {
+    margin: auto;
+  }
+}
+
+.p-confirm__form-submit:hover {
+  opacity: 0.8;
+  @include mq(md) {
+    opacity: 1;
+  }
+}
+
+.p-confirm__form-submit input {
+  padding: myrem(30) 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  font-size: myrem(20);
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: #fff;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  @include mq(md) {
+    padding: myrem(20) 0;
+  }
+}
+
+.p-confirm__form-submit input:hover,
+.p-confirm__form-submit input:focus {
+  outline: none;
+}
+
+.p-confirm__form-submit::-moz-foucus-inner {
+  padding: 0;
+  border: none;
+}
+
+.p-confirm__form-submit-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: myrem(40);
+}
+
+.p-confirm__form-submit-bg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: myrem(25);
+  transform: translateY(-50%);
+  width: myrem(20);
+  height: 1px;
+  background: #fff;
+}
+
+.p-confirm__form-submit-bg::after {
+  content: "";
+  position: absolute;
+  top: myrem(37);
+  right: myrem(25);
+  transform: rotate(35deg);
+  width: myrem(8);
+  height: 1px;
+  background: #fff;
+  @include mq(md) {
+    top: myrem(27);
+  }
+}
+
+.p-confirm__form-return {
+  margin: initial;
+  position: relative;
+  max-width: myrem(300);
+  width: 100%;
+  transition: 0.3s;
+  @include mq(md) {
+    margin: myrem(15) auto 0;
+  }
+}
+
+.p-confirm__form-return:hover {
+  opacity: 0.8;
+  @include mq(md) {
+    opacity: 1;
+  }
+}
+
+.p-confirm__form-return input {
+  padding: myrem(30) 0;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  font-size: myrem(20);
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: #333;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  @include mq(md) {
+    padding: myrem(20) 0;
+  }
+}
+
+.p-confirm__form-return input:hover,
+.p-confirm__form-return input:focus {
+  outline: none;
+}
+
+.p-confirm__form-return::-moz-foucus-inner {
+  padding: 0;
+  border: none;
+}
+
+.p-confirm__form-return-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: myrem(2) solid #333;
+  border-radius: myrem(40);
+  background-color: #fff;
+}
+
+.p-confirm__form-return-bg::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: myrem(25);
+  transform: translateY(-50%);
+  width: myrem(20);
+  height: 1px;
+  background: #333;
+}
+
+.p-confirm__form-return-bg::after {
+  content: "";
+  position: absolute;
+  top: myrem(35);
+  left: myrem(25);
+  transform: rotate(145deg);
+  width: myrem(8);
+  height: 1px;
+  background: #333;
+  @include mq(md) {
+    top: myrem(25);
+  }
+}
+
+.p-confirm .wpcf7-spinner {
+  display: none;
+}

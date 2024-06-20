@@ -1,0 +1,44 @@
+@use "global" as *;
+.p-policy {
+}
+
+.p-policy__wrap {
+}
+
+.p-policy__inner.l-inner {
+  max-width: myrem(895);
+}
+
+.p-policy__title {
+  text-align: center;
+}
+
+.p-policy__body {
+  margin-top: myrem(37);
+}
+
+.p-policy__texts {
+  margin-top: myrem(26);
+}
+
+.p-policy__text {
+  font-size: myrem(15);
+  line-height: calc(27 / 15);
+  letter-spacing: 0;
+}
+
+.p-policy__text.p-policy__text--money {
+  margin-left: myrem(30);
+}
+
+.p-policy__banner {
+  max-width: myrem(746);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: myrem(80);
+}
+
+.p-policy__return {
+  margin-top: myrem(37);
+}

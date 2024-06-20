@@ -1,23 +1,11 @@
-@use "sass:math";
 @use "global" as *;
 
-.p-flowCTA {
-  padding: myrem(80) 0 myrem(120);
-}
-
-.p-flowCTA__banner {
-  width: calc(math.div(746, 930) * 100%);
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.p-flowCTA__btn {
+.c-returnBtn {
   display: flex;
   justify-content: center;
-  margin-top: myrem(30);
 }
 
-.p-flowCTA__btn a {
+.c-returnBtn a {
   display: block;
   font-size: myrem(15);
   font-weight: 400;
@@ -28,7 +16,7 @@
   position: relative;
 }
 
-.p-flowCTA__btn a::before {
+.c-returnBtn a::before {
   position: absolute;
   top: 50%;
   bottom: auto;
@@ -42,7 +30,7 @@
   background-color: $black_24;
 }
 
-.p-flowCTA__btn a::after {
+.c-returnBtn a::after {
   position: absolute;
   top: 50%;
   bottom: auto;

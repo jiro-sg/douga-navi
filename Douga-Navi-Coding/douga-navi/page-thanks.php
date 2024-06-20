@@ -1,7 +1,7 @@
 <?php get_header(); ?>
-<section class="c-sub-fv p-thanks-fv">
+<!-- <section class="c-sub-fv p-thanks-fv">
  <h2 class="c-sub-fv__title p-news-fv__title" data-en="contact">お問い合わせ</h2>
-</section>
+</section> -->
 
 <div class="p-thanks l-thanks">
  <div class="l-inner">
@@ -15,7 +15,6 @@
    <p class="p-thanks__text02">
     3秒後にトップページに遷移します。
    </p>
-
   </div>
  </div>
 

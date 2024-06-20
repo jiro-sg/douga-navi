@@ -19,6 +19,19 @@
    </dl>
 
    <dl class="p-confirm__form-confirm-wrap">
+    <dt class="p-confirm__form-confirm-label">貴社名</dt>
+    <dd class="p-confirm__form-confirm-input">
+
+    </dd>
+   </dl>
+
+   <dl class="p-confirm__form-confirm-wrap">
+    <dt class="p-confirm__form-confirm-label">電話番号</dt>
+    <dd class="p-confirm__form-confirm-input">
+
+    </dd>
+   </dl>
+   <dl class="p-confirm__form-confirm-wrap">
     <dt class="p-confirm__form-confirm-label">メールアドレス</dt>
     <dd class="p-confirm__form-confirm-input">
 
@@ -26,7 +39,22 @@
    </dl>
 
    <dl class="p-confirm__form-confirm-wrap">
-    <dt class="p-confirm__form-confirm-label">お問い合わせ内容</dt>
+    <dt class="p-confirm__form-confirm-label">メールマガジン</dt>
+    <dd class="p-confirm__form-confirm-input">
+
+    </dd>
+   </dl>
+
+   <dl class="p-confirm__form-confirm-wrap">
+    <dt class="p-confirm__form-confirm-label">相談内容</dt>
+    <dd class="p-confirm__form-confirm-input">
+
+    </dd>
+   </dl>
+
+
+   <dl class="p-confirm__form-confirm-wrap">
+    <dt class="p-confirm__form-confirm-label">備考</dt>
     <dd class="p-confirm__form-confirm-textarea">
 
     </dd>

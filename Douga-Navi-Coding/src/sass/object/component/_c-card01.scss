@@ -8,7 +8,7 @@
 }
 
 .c-card01__sntnc {
-	width: calc(math.div(446, 810) * 100%);
+	width: calc(math.div(436, 810) * 100%);
 }
 
 .c-card01__num {
@@ -28,7 +28,7 @@
 .c-card01__txt {
 	font-size: myrem(15);
 	font-weight: 400;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.005em;
 	line-height: calc(math.div(27, 15));
 	color: $black_000;
 	margin-top: myrem(16);

@@ -1,0 +1,32 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-aboutNavi {
+	padding-top: myrem(65);
+	padding-bottom: myrem(45);
+}
+
+.p-aboutNavi__ttl {
+	font-size: myrem(20);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-align: center;
+}
+
+.p-aboutNavi__txtWrppr {
+	max-width: myrem(810);
+	width: 100%;
+	margin: myrem(36) auto 0;
+}
+
+.p-aboutNavi__txt {
+	font-size: myrem(15);
+	font-weight: 400;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(27, 15));
+	color: $black_000;
+}
+
+.p-aboutNavi__txt:not(:first-of-type) {
+	margin-top: myrem(16);
+}

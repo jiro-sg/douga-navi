@@ -1,0 +1,55 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-aboutExmpl {
+	padding-top: myrem(85);
+}
+
+.p-aboutExmpl__ttl {
+	font-size: myrem(20);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: $black_000;
+	text-align: center;
+}
+
+.p-aboutExmpl__cardWrppr {
+	width: 100%;
+	max-width: myrem(810);
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: myrem(19.5);
+	row-gap: myrem(24);
+	margin: myrem(50) auto 0;
+}
+
+.p-aboutExmpl__movieCard {
+	width: calc(math.div(1, 3) * 100% - myrem(13));
+	height: auto;
+}
+
+.p-aboutExmpl__movieCard figure {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.p-aboutExmpl__movieCard iframe {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.p-aboutExmpl__cardTxt {
+	font-size: myrem(15);
+	font-weight: 400;
+	letter-spacing: 0.005em;
+	line-height: calc(math.div(27, 15));
+	color: $black_000;
+	margin-top: myrem(13);
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+}

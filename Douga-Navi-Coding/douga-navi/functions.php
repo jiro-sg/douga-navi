@@ -10,7 +10,8 @@
  *
  * @codex https://wpdocs.osdn.jp/%E9%96%A2%E6%95%B0%E3%83%AA%E3%83%95%E3%82%A1%E3%83%AC%E3%83%B3%E3%82%B9/add_theme_support
  */
-function my_setup() {
+function my_setup()
+{
  add_theme_support('post-thumbnails'); /* アイキャッチ */
  add_theme_support('automatic-feed-links'); /* RSSフィード */
  add_theme_support('title-tag'); /* タイトルタグ自動生成 */
@@ -33,7 +34,8 @@ add_action('after_setup_theme', 'my_setup');
  *
  * @codex https://wpdocs.osdn.jp/%E3%83%8A%E3%83%93%E3%82%B2%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC
  */
-function my_script_init() {
+function my_script_init()
+{
  //フォント
  wp_enqueue_style('font', '//fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap', array(), '1.0.1');
  wp_enqueue_style('font2', '//fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap', array(), '1.0.1');
@@ -58,7 +60,8 @@ add_action('wp_enqueue_scripts', 'my_script_init');
  * @param string $title 書き換え前のタイトル.
  * @return string $title 書き換え後のタイトル.
  */
-function my_archive_title($title) {
+function my_archive_title($title)
+{
 
  if (is_home()) { /* ホームの場合 */
   $title = 'ブログ';
@@ -168,7 +171,8 @@ add_filter('get_the_archive_title', 'my_archive_title');
 //============================================================
 
 // URLスラッグの自動生成　投稿のタイトルをIDにする
-function custom_auto_post_slug_for_posts($slug, $post_ID, $post_status, $post_type) {
+function custom_auto_post_slug_for_posts($slug, $post_ID, $post_status, $post_type)
+{
  if ($post_type == 'post') {
   $slug = $post_ID;
  }
@@ -177,7 +181,8 @@ function custom_auto_post_slug_for_posts($slug, $post_ID, $post_status, $post_ty
 add_filter('wp_unique_post_slug', 'custom_auto_post_slug_for_posts', 10, 4);
 
 /* カスタム投稿タイプのスラッグを「{カスタム投稿タイプ}-ID」で採番 */
-function custom_auto_post_slug_for_recipe($slug, $post_ID, $post_status, $post_type) {
+function custom_auto_post_slug_for_recipe($slug, $post_ID, $post_status, $post_type)
+{
  if ($post_type == 'recipe') {
   $slug = utf8_uri_encode($post_type) . '-' . $post_ID;
  }
@@ -189,7 +194,8 @@ add_filter('wp_unique_post_slug', 'custom_auto_post_slug_for_recipe', 10, 4);
 //===================================
 // Contact Form 7の自動pタグ,brタグ無効
 add_filter('wpcf7_autop_or_not', 'wpcf7_autop_return_false');
-function wpcf7_autop_return_false() {
+function wpcf7_autop_return_false()
+{
  return false;
 }
 
@@ -219,7 +225,8 @@ function wpcf7_autop_return_false() {
 //
 //==========================================================
 //ログイン画面カスタマイズ
-function my_login_logo() {
+function my_login_logo()
+{
 ?>
  <style type="text/css">
   #login h1 a,
@@ -252,16 +259,17 @@ function my_login_logo() {
 }
 add_action('login_enqueue_scripts', 'my_login_logo');
 
-function my_login_stylesheet() {
+function my_login_stylesheet()
+{
  wp_enqueue_style('custom-login', get_stylesheet_directory_uri() . '/style-login.css');
 }
 add_action('login_enqueue_scripts', 'my_login_stylesheet');
 //==========================================================
 
 //if (current_user_can(!'administrator')) {
-	// 管理者以外の場合
+// 管理者以外の場合
 
-	// 管理画面からメインメニューを非表示にする
+// 管理画面からメインメニューを非表示にする
 //	function remove_menus()
 //	{
 //		remove_menu_page('index.php'); // ダッシュボード
@@ -303,3 +311,26 @@ add_action('login_enqueue_scripts', 'my_login_stylesheet');
 //	//複数ある場合は追記する
 //}
 //add_action('init', 'remove_wysiwyg');
+
+//==========================================================
+
+
+function my_custom_column($columns)
+{
+ $columns['faq_menu'] = 'カテゴリ';
+ return $columns;
+}
+add_filter('manage_faq_posts_columns', 'my_custom_column');
+
+function my_custom_column_id($column_name, $id)
+{
+ $terms = get_the_terms($id, $column_name);
+ if ($terms && !is_wp_error($terms)) {
+  $menu_terms = array();
+  foreach ($terms as $term) {
+   $menu_terms[] = $term->name;
+  }
+  echo join(", ", $menu_terms);
+ }
+}
+add_action('manage_faq_posts_custom_column', 'my_custom_column_id', 10, 2);

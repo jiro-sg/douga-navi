@@ -5,6 +5,10 @@
   flex-wrap: wrap;
   column-gap: myrem(16);
   row-gap: myrem(16);
+  @include mq("md") {
+    display: block;
+    gap: initial;
+  }
 }
 
 .p-form-checkbox label {
@@ -17,8 +21,7 @@
 .p-form-checkbox label:not(:first-of-type) {
   margin-top: 0;
   @include mq(md) {
-    margin-top: myrem(10);
-    margin-left: myrem(20);
+    margin-top: myrem(9);
   }
 }
 // }
@@ -41,6 +44,9 @@
   padding: 0 0 0 myrem(30);
   position: relative;
   cursor: pointer;
+  @include mq("md") {
+    line-height: calc(24 / 15);
+  }
 }
 
 .p-form-checkbox input + span::before {
@@ -54,6 +60,10 @@
   display: block;
   width: myrem(20);
   height: myrem(20);
+  @include mq("md") {
+    top: myrem(3);
+    transform: initial;
+  }
 }
 
 .p-form-checkbox input + span::after {

@@ -80,6 +80,9 @@
   text-align: center;
   margin-top: myrem(24);
   text-decoration: underline;
+  @include mq("md") {
+    text-align: left;
+  }
 }
 
 .p-form__policy span {

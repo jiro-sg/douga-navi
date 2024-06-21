@@ -11,11 +11,17 @@
 .p-faq__wrap {
   margin-top: myrem(32);
   counter-reset: num;
+  @include mq("md") {
+    margin-top: myrem(15);
+  }
 }
 
 .p-faq__item {
   padding: myrem(17) myrem(0) myrem(14) myrem(0);
   border-bottom: 1px solid #00a0e1;
+  @include mq("md") {
+    padding: myrem(17) myrem(0) myrem(14) myrem(0);
+  }
 }
 
 .p-faq__item:first-child {
@@ -24,23 +30,35 @@
 
 .p-faq__question {
   counter-increment: num;
+  @include mq("md") {
+    display: flex;
+  }
 }
 
 .p-faq__question,
 .p-faq__answer {
   font-size: myrem(15);
   line-height: calc(27 / 15);
+  @include mq("md") {
+    font-size: myrem(14);
+    line-height: calc(20 / 14);
+  }
 }
 
 .p-faq__question::before {
   content: "Q" counter(num) ".";
   margin-right: myrem(16);
+  font-family: $font-second;
 }
 
 .p-faq__answer {
   color: #777777;
   padding-left: myrem(40);
   margin-top: myrem(11);
+  @include mq("md") {
+    padding-left: myrem(30);
+    margin-top: myrem(8);
+  }
 }
 
 .p-faq__banner {

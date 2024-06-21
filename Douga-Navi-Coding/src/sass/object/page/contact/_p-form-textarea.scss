@@ -12,6 +12,9 @@
   appearance: none;
   background-color: transparent;
   background-image: none;
+  @include mq("md") {
+    height: myrem(105);
+  }
 }
 
 .p-form-textarea textarea:focus {

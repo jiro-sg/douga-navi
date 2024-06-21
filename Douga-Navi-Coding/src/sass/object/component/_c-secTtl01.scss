@@ -1,10 +1,12 @@
-@use 'sass:math';
- @use 'global' as *;
+@use "sass:math";
+@use "global" as *;
 
-
- .c-secTtl01{
+.c-secTtl01 {
   font-size: myrem(20);
   font-weight: 600;
   letter-spacing: 0.05em;
   color: $black_000;
- }
+  @include mq("md") {
+    font-size: myrem(16);
+  }
+}

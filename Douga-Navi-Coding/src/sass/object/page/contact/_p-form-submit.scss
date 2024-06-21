@@ -6,6 +6,9 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  @include mq("md") {
+    max-width: myrem(240);
+  }
 }
 
 .p-form-submit::after {
@@ -33,6 +36,9 @@
   text-decoration: none;
   cursor: pointer;
   transition: 0.3s;
+  @include mq("md") {
+    font-size: myrem(13);
+  }
 }
 
 .p-form-submit input:hover,

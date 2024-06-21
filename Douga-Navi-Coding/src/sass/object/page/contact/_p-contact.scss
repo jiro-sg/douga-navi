@@ -9,6 +9,14 @@
   padding-top: myrem(47);
   padding-bottom: myrem(49);
   margin-top: myrem(41);
+  @include mq("md") {
+    max-width: myrem(550);
+    padding-top: myrem(24);
+    padding-bottom: myrem(32);
+    padding-left: myrem(16);
+    padding-right: myrem(16);
+    margin-top: myrem(24);
+  }
 }
 
 .p-contact__title {
@@ -20,6 +28,9 @@
   text-align: center;
   margin-top: myrem(22);
   letter-spacing: 0;
+  @include mq("md") {
+    text-align: left;
+  }
 }
 
 .p-contact__form {

@@ -4,3 +4,16 @@
 .p-about {
 	padding-top: myrem(137);
 }
+
+.p-about__bgPaleBlue {
+	background-color: $paleBlue_eff;
+}
+
+.p-about__QA {
+	margin-top: myrem(80);
+}
+
+.p-about__ctaBanner {
+	width: myrem(746);
+	margin: myrem(80) auto myrem(120);
+}

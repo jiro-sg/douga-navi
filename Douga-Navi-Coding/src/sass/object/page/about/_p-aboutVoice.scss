@@ -1,0 +1,24 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-aboutVoice {
+	padding-top: myrem(80);
+}
+
+.p-aboutVoice__ttl {
+	text-align: center;
+}
+
+.p-aboutVoice__cardWrppr {
+	width: 100%;
+	max-width: myrem(810);
+	margin: myrem(48) auto 0;
+}
+
+.p-aboutVoice__cardBox {
+	display: flex;
+}
+
+.p-aboutVoice__cardBox:not(:first-of-type) {
+	margin-top: myrem(56);
+}

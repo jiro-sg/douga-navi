@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="p-about">
+<main class="p-about">
  <section class="p-about__fv p-aboutFv">
   <picture>
    <source srcset='<?php echo get_template_directory_uri() ?>/assets/images/aboutFV_pc.jpg' media='(min-width: 768px)'>
@@ -18,7 +18,7 @@
  </section>
  <section class="p-about__navi p-aboutNavi">
   <div class="l-inner">
-   <h2 class="p-aboutNavi__ttl">動画製作ナビとは？</h2>
+   <h2 class="p-aboutNavi__ttl c-secTtl01">動画製作ナビとは？</h2>
    <div class="p-aboutNavi__txtWrppr">
 
     <p class="p-aboutNavi__txt">動画制作ナビは現役クリエイティブエージェンシー所属の専任ディレクターが、お客様の課題解決に向けて最適なプランをご提案し、厳選されたプロのパートナーと連携して高品質な動画を制作いたします。</p>
@@ -31,7 +31,7 @@
  <section class="p-about__prblm p-aboutPrblm">
   <div class="l-inner">
 
-   <h2 class="p-aboutPrblm__ttl"><span>動画制作のこんなお悩み、ありませんか？</span></h2>
+   <h2 class="p-aboutPrblm__ttl c-secTtl01"><span>動画制作のこんなお悩み、ありませんか？</span></h2>
 
    <div class="p-aboutPrblm__cardWrppr">
 
@@ -66,7 +66,7 @@
   <div class="l-inner">
 
    <h2 class="p-aboutRslt__ttl"><span>そのお悩み、動画制作ナビで全て解決できます！</span></h2>
-   <p class="p-aboutRslt__lead">動画制作ナビが選ばれる理由</p>
+   <p class="p-aboutRslt__lead c-secTtl02">動画制作ナビが選ばれる理由</p>
 
 
    <div class="p-aboutRslt__cardWrppr">
@@ -118,7 +118,7 @@
  <section class="p-about__exmpl p-aboutExmpl">
   <div class="l-inner">
 
-   <h2 class="p-aboutExmpl__ttl">動画制作事例</h2>
+   <h2 class="p-aboutExmpl__ttl c-secTtl01">動画制作事例</h2>
 
    <div class="p-aboutExmpl__cardWrppr">
 
@@ -174,30 +174,134 @@
   <div class="l-inner">
 
 
-   <h2 class="p-aboutVoice__ttl">お客様の声</h2>
+   <h2 class="p-aboutVoice__ttl c-secTtl01">お客様の声</h2>
 
    <div class="p-aboutVoice__cardWrppr">
 
-    <div class="p-aboutVoice__cardBox">
-     <div class="p-aboutVoice__sntnc">
-      <h3 class="p-aboutVoice__cardTtl">株式会社〇〇様</h3>
-      <p class="p-aboutVoice__cardTxt">
-       お客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入ります
-      </p>
+
+    <div class="p-aboutVoice__cardBox c-card02">
+
+     <div class="c-card02__sntnc">
+      <h3 class="c-card02__ttl">株式会社〇〇様</h3>
+      <p class="c-card02__txt">お客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入ります</p>
      </div>
-     <figure class="p-aboutVoice__movie">
+
+     <figure class="c-card02__img">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
      </figure>
 
+    </div>
+
+
+    <div class="p-aboutVoice__cardBox c-card02">
+
+     <div class="c-card02__sntnc">
+      <h3 class="c-card02__ttl">株式会社〇〇様</h3>
+      <p class="c-card02__txt">お客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入ります</p>
+     </div>
+
+     <figure class="c-card02__img">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+     </figure>
+
+    </div>
+
+    <div class="p-about__ctaBanner c-ctaBanner">
+     <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。<br>専任スタッフがすぐにご連絡いたします。</p>
+     <div class="c-ctaBanner__btn">
+      <a href="#">まずは無料相談してみる</a>
+     </div>
     </div>
 
    </div>
   </div>
  </section>
 
+ <div class="p-about__bgPaleBlue">
 
+  <section class="p-about__flow p-aboutFlow">
+   <div class="l-inner">
+    <h2 class="p-aboutFlow__ttl">ご依頼の流れ</h2>
 
-</div>
+    <div class="p-aboutFlow__cardWrppr">
+
+     <div class="p-aboutFlow__card">
+      <h3 class="p-aboutFlow__cardTtl">01 | お問い合わせ</h3>
+
+      <div class="p-aboutFlow__cardImgBox">
+       <figure class="p-aboutFlow__cardImg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_about-flow01.png" alt="お問い合わせ" width="190" height="146">
+       </figure>
+      </div>
+      <p class="p-aboutFlow__cardTxt">まずはお気軽にお問い合わせください。専任オペレーターがご対応致します。</p>
+     </div>
+
+     <div class="p-aboutFlow__card">
+      <h3 class="p-aboutFlow__cardTtl">02 | ヒアリング</h3>
+
+      <div class="p-aboutFlow__cardImgBox">
+       <figure class="p-aboutFlow__cardImg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_about-flow02.png" alt="ヒアリング" width="190" height="146">
+       </figure>
+      </div>
+      <p class="p-aboutFlow__cardTxt">ご用件をお伺いいたします。ご依頼内容が固まっている場合はお伝えください。ご依頼内容が具体化していない場合は当社からご提案も可能です。</p>
+     </div>
+
+     <div class="p-aboutFlow__card">
+      <h3 class="p-aboutFlow__cardTtl">03 | 無料見積</h3>
+
+      <div class="p-aboutFlow__cardImgBox">
+       <figure class="p-aboutFlow__cardImg">
+        <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_about-flow03.png" alt="無料見積" width="190" height="146">
+       </figure>
+      </div>
+      <p class="p-aboutFlow__cardTxt">お話させていただいた内容をもとに無料でお見積りを提出させていただきます。</p>
+     </div>
+
+    </div>
+
+   </div>
+  </section>
+
+  <section class="p-about__QA p-aboutQA">
+   <div class="l-inner">
+    <h2 class="p-aboutQA__ttl c-secTtl01">よくある質問</h2>
+
+    <ol class="p-aboutQA__lists">
+
+     <li class="p-aboutQA__item">
+      <p class="p-aboutQA__question"><span class="p-aboutQA__number">Q1.</span>サイト上に作りたいイメージに合った動画事例の掲載が無いんですが依頼できますか？</p>
+      <p class="p-aboutQA__answer">可能です。サイトに掲載できる事例には限りがあります。お打ち合わせではお見せできる非公開事例等もございますのでお気軽にご相談ください。</p>
+     </li>
+
+     <li class="p-aboutQA__item">
+      <p class="p-aboutQA__question"><span class="p-aboutQA__number">Q2.</span>企画から相談できますか？</p>
+      <p class="p-aboutQA__answer">企画からもご対応いたします。作りたい映像のイメージが漠然としている状態でもお気軽にご相談ください。</p>
+     </li>
+
+     <li class="p-aboutQA__item">
+      <p class="p-aboutQA__question"><span class="p-aboutQA__number">Q3.</span>撮影のみや編集のみなど部分的な依頼はできますか？</p>
+      <p class="p-aboutQA__answer">映像制作過程における一領域のみも対応可能です。お気軽にご相談ください。</p>
+     </li>
+
+     <li class="p-aboutQA__item">
+      <p class="p-aboutQA__question"><span class="p-aboutQA__number">Q4.</span>撮影依頼できる地域に制限はありますか？</p>
+      <p class="p-aboutQA__answer">全国にプロの制作パートナーのネットワークを展開しておりますので、全国対応可能です。</p>
+     </li>
+    </ol>
+   </div>
+  </section>
+
+ </div>
+
+ <div class="p-about__ctaBanner c-ctaBanner">
+  <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。<br>専任スタッフがすぐにご連絡いたします。</p>
+  <div class="c-ctaBanner__btn">
+   <a href="#">まずは無料相談してみる</a>
+  </div>
+ </div>
+
+</main>
 
 
 <?php get_footer(); ?>

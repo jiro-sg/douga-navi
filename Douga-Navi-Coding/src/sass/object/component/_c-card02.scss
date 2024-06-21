@@ -1,32 +1,32 @@
 @use "sass:math";
 @use "global" as *;
 
-.c-card01 {
+.c-card02 {
 	display: flex;
 	justify-content: space-between;
 	// column-gap: myrem(51);
 }
 
-.c-card01__sntnc {
+.c-card02__sntnc {
 	width: calc(math.div(436, 810) * 100%);
 }
 
-.c-card01__num {
+.c-card02__num {
 	font-size: myrem(16);
 	font-weight: 700;
 	color: $blue_00A;
- margin-bottom: myrem(8);
+	margin-bottom: myrem(8);
 }
 
-.c-card01__ttl {
+.c-card02__ttl {
 	font-size: myrem(18);
 	font-weight: 500;
 	letter-spacing: 0.05em;
 	color: $black_000;
- margin-bottom: myrem(16);
+	margin-bottom: myrem(16);
 }
 
-.c-card01__txt {
+.c-card02__txt {
 	font-size: myrem(15);
 	font-weight: 400;
 	letter-spacing: 0.005em;
@@ -34,13 +34,14 @@
 	color: $black_000;
 }
 
-.c-card01__img {
+.c-card02__img {
 	display: block;
-	width: calc(math.div(313, 810) * 100%);
+	width: calc(math.div(326, 810) * 100%);
 	height: auto;
 }
 
-.c-card01__img img {
+.c-card02__img img,
+.c-card02__img iframe {
 	display: block;
 	width: 100%;
 	height: auto;

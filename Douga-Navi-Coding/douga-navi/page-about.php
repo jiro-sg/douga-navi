@@ -169,7 +169,31 @@
   </div>
  </section>
 
-section.p-about
+ <section class="p-about_voice p-aboutVoice">
+
+  <div class="l-inner">
+
+
+   <h2 class="p-aboutVoice__ttl">お客様の声</h2>
+
+   <div class="p-aboutVoice__cardWrppr">
+
+    <div class="p-aboutVoice__cardBox">
+     <div class="p-aboutVoice__sntnc">
+      <h3 class="p-aboutVoice__cardTtl">株式会社〇〇様</h3>
+      <p class="p-aboutVoice__cardTxt">
+       お客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入ります
+      </p>
+     </div>
+     <figure class="p-aboutVoice__movie">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+     </figure>
+
+    </div>
+
+   </div>
+  </div>
+ </section>
 
 
 

@@ -20,6 +20,9 @@
   right: myrem(20);
   width: myrem(9);
   height: myrem(10);
+  @include mq("md") {
+    right: myrem(13);
+  }
 }
 
 .p-form-submit input {
@@ -38,6 +41,7 @@
   transition: 0.3s;
   @include mq("md") {
     font-size: myrem(13);
+    padding: myrem(16) myrem(25);
   }
 }
 

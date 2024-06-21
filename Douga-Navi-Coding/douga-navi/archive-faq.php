@@ -13,7 +13,13 @@
   <div class="p-faq-category__wrap">
    <h2 class="p-faq-category__title c-secTtl02">カテゴリごとによくある<br class="u-mobile">ご質問を検索する</h2>
    <ul class="p-faq-category__items">
-    <li class="p-faq-category__item  p-faq-category__item--all is-selected">
+    <?php
+    $terms = get_terms('faq_menu');
+    foreach ($terms as $term) {
+     echo '<li><a href="' . get_term_link($term->slug, 'faq_menu') . '">' . $term->name . '</a></li>';
+    }
+    ?>
+    <!-- <li class="p-faq-category__item  p-faq-category__item--all is-selected">
      <a href="">全てのカテゴリ</a>
     </li>
     <li class="p-faq-category__item">
@@ -48,7 +54,7 @@
     </li>
     <li class="p-faq-category__item">
      <a href="">その他</a>
-    </li>
+    </li> -->
    </ul>
   </div>
  </div>
@@ -68,27 +74,43 @@
 
 
    <?php
-   // フィールドを取得
-   $fields = CFS()->get('faq_field');
-   // 各フィールドについて処理を行う
-   if ($fields) {
-    foreach ($fields as $field) :
+   $the_query = new WP_Query();
+   $param = array(
+    'posts_per_page' => '-1', //表示件数。-1なら全件表示
+    'post_type' => 'faq', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
+    'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
+    'order' => 'DESC'
+   );
+   $the_query->query($param);
+   if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
    ?>
 
-     <dl class="p-faq__item">
-      <dt class="p-faq__question">
-       <?php echo $field['question']; ?>
-      </dt>
-      <dd class="p-faq__answer">
-       <?php echo $field['answer']; ?>
-
-      </dd>
-     </dl>
-
-   <?php endforeach;
-   } ?>
 
 
+
+
+
+
+   <dl class="p-faq__item">
+    <dt class="p-faq__question">
+     <?php the_title(); ?>
+    </dt>
+    <dd class="p-faq__answer">
+     <?php if (CFS()->get('answer')) : ?>
+     <?php echo CFS()->get('answer'); ?>
+     <?php endif; ?>
+    </dd>
+    </dd>
+   </dl>
+
+
+
+
+   <?php
+    endwhile;
+   endif;
+   wp_reset_postdata()
+   ?>
 
 
 

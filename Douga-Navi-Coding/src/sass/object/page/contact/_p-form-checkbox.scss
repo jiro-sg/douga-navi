@@ -21,7 +21,7 @@
 .p-form-checkbox label:not(:first-of-type) {
   margin-top: 0;
   @include mq(md) {
-    margin-top: myrem(9);
+    margin-top: myrem(3);
   }
 }
 // }
@@ -80,6 +80,10 @@
   border-left: myrem(3) solid #000;
   transition: 0.3s;
   opacity: 0;
+  @include mq("md") {
+    top: myrem(10);
+    transform: rotate(-45deg);
+  }
 }
 
 .p-form-checkbox input:checked + span::after {

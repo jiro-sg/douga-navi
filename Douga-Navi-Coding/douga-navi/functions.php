@@ -228,33 +228,33 @@ function wpcf7_autop_return_false()
 function my_login_logo()
 {
 ?>
- <style type="text/css">
-  #login h1 a,
-  .login h1 a {
-   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
-   width: 193px;
-   background-size: cover;
-  }
+<style type="text/css">
+#login h1 a,
+.login h1 a {
+ background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
+ width: 193px;
+ background-size: cover;
+}
 
-  body.login {
-   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
-   background-size: cover;
-   width: 100%;
-   height: auto;
-   position: relative;
-  }
+body.login {
+ background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
+ background-size: cover;
+ width: 100%;
+ height: auto;
+ position: relative;
+}
 
-  body.login::before {
-   content: '';
-   width: 100%;
-   height: 100vh;
-   background-color: rgba(255, 255, 255, 0.7);
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: -1;
-  }
- </style>
+body.login::before {
+ content: '';
+ width: 100%;
+ height: 100vh;
+ background-color: rgba(255, 255, 255, 0.7);
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: -1;
+}
+</style>
 <?php
 }
 add_action('login_enqueue_scripts', 'my_login_logo');
@@ -304,13 +304,13 @@ add_action('login_enqueue_scripts', 'my_login_stylesheet');
 
 //==========================================================
 //エディタを非表示にする
-//function remove_wysiwyg()
-//{
-//	remove_post_type_support('slug', 'editor');
-//	remove_post_type_support('slug', 'editor');
-//	//複数ある場合は追記する
-//}
-//add_action('init', 'remove_wysiwyg');
+function remove_wysiwyg()
+{
+	remove_post_type_support('faq', 'editor');
+	remove_post_type_support('faq', 'editor');
+	//複数ある場合は追記する
+}
+add_action('init', 'remove_wysiwyg');
 
 //==========================================================
 

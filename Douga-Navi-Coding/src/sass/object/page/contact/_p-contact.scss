@@ -11,10 +11,7 @@
   margin-top: myrem(41);
   @include mq("md") {
     max-width: myrem(550);
-    padding-top: myrem(24);
-    padding-bottom: myrem(32);
-    padding-left: myrem(16);
-    padding-right: myrem(16);
+    padding: myrem(24) myrem(19) myrem(32);
     margin-top: myrem(24);
   }
 }

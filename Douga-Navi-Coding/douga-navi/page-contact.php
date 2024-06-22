@@ -4,9 +4,10 @@
   <h2 class="p-contact__title c-secTtl01">お問い合わせフォーム</h2>
   <p class="p-contact__explain">ご相談・お見積もりは無料です。 専門スタッフが丁寧にご用件をお伺いいたします。お気軽にご相談ください</p>
 
-  <form class="p-contact__form p-form" action="">
+  <div class="p-contact__form p-form">
+   <?php the_content(); ?>
 
-   <div class="p-form__inner">
+   <!-- <div class="p-form__inner">
     <dl class="p-form__wrap">
      <dt class="p-form__label">お名前<span>（必須）</span></dt>
      <dd class="p-form__input p-form-input">
@@ -59,11 +60,11 @@
     <div class="p-form__submit p-form-submit">
      <input type="submit" value="お問い合わせ内容を送信する">
     </div>
-   </div>
+   </div> -->
    <p class="p-form__policy">
-    <a href=""><span>個人情報保護方針</span>について同意したものとみなされます</a>
+    <a href="<?php echo esc_url(home_url('/policy/')); ?>"><span>個人情報保護方針</span>について同意したものとみなされます</a>
    </p>
-  </form>
+  </div>
 
 
  </div>

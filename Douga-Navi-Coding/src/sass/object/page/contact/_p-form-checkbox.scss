@@ -11,6 +11,22 @@
   }
 }
 
+.p-form-checkbox .wpcf7-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: myrem(16);
+  row-gap: myrem(16);
+  margin-left: initial;
+  @include mq("md") {
+    display: block;
+    gap: initial;
+  }
+}
+
+.p-form-checkbox .wpcf7-list-item {
+  margin-left: 0;
+}
+
 .p-form-checkbox label {
   display: inline-block;
   @include mq(md) {

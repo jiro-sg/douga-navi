@@ -78,3 +78,15 @@ fadeUp01.forEach((fade01) => {
   );
 });
 //================================================
+
+// 現在のページにクラス付与
+$(function () {
+  $(".p-faq-category__item a").each(function () {
+    var target = $(this).attr("href");
+    if (location.href.match(target)) {
+      $(this).parent().addClass("is-selected");
+    } else {
+      $(this).parent().removeClass("is-selected");
+    }
+  });
+});

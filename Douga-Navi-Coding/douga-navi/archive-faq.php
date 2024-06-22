@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Template Name: よくある質問
- *
- */
-?>
 <?php get_header(); ?>
 
 
@@ -13,48 +6,10 @@
   <div class="p-faq-category__wrap">
    <h2 class="p-faq-category__title c-secTtl02">カテゴリごとによくある<br class="u-mobile">ご質問を検索する</h2>
    <ul class="p-faq-category__items">
-    <?php
-    $terms = get_terms('faq_menu');
-    foreach ($terms as $term) {
-     echo '<li><a href="' . get_term_link($term->slug, 'faq_menu') . '">' . $term->name . '</a></li>';
-    }
-    ?>
-    <!-- <li class="p-faq-category__item  p-faq-category__item--all is-selected">
-     <a href="">全てのカテゴリ</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">動画制作・映像制作サービス</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">広告運用サービス</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">ライブ配信サービス</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">WEBサイト制作サービス</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">YouTubeコンサル・運用代行サービス</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">費用について</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">動画制作について</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">修正について</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">やりとりについて</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">納品について</a>
-    </li>
-    <li class="p-faq-category__item">
-     <a href="">その他</a>
-    </li> -->
+
+    <?php get_template_part('_inc/faq_category'); ?>
+
+
    </ul>
   </div>
  </div>
@@ -91,17 +46,17 @@
 
 
 
-   <dl class="p-faq__item">
-    <dt class="p-faq__question">
-     <?php the_title(); ?>
-    </dt>
-    <dd class="p-faq__answer">
-     <?php if (CFS()->get('answer')) : ?>
-     <?php echo CFS()->get('answer'); ?>
-     <?php endif; ?>
-    </dd>
-    </dd>
-   </dl>
+     <dl class="p-faq__item">
+      <dt class="p-faq__question">
+       <?php the_title(); ?>
+      </dt>
+      <dd class="p-faq__answer">
+       <?php if (CFS()->get('answer')) : ?>
+        <?php echo CFS()->get('answer'); ?>
+       <?php endif; ?>
+      </dd>
+      </dd>
+     </dl>
 
 
 

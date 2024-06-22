@@ -49,8 +49,6 @@
 }
 
 .p-faq-category__items li {
-  border: 1px solid #dddddd;
-  border-radius: myrem(5);
   text-align: center;
   @include mq("md") {
     text-align-last: left;
@@ -62,6 +60,8 @@
   padding: myrem(10) myrem(16);
   display: inline-block;
   width: 100%;
+  border: 1px solid #dddddd;
+  border-radius: myrem(5);
   @include mq("md") {
     font-size: myrem(14);
     line-height: calc(20 / 14);
@@ -84,7 +84,7 @@
   align-items: center;
 }
 
-.p-faq-category__item.is-selected {
+.p-faq-category__item.is-selected a {
   background-color: #00a0e1;
   border-color: #00a0e1;
   color: #fff;

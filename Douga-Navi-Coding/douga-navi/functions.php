@@ -198,63 +198,65 @@ function wpcf7_autop_return_false()
 {
  return false;
 }
+//===================================
 
 //// 管理画面メニューの並び替え
-//function my_custom_menu_order($menu_order)
-//{
-//	if (!$menu_order) return true;
-//	return array(
-//		'index.php', //ダッシュボード
-//		'separator1', //セパレータ１
-//		'edit.php', //投稿
-//		'edit.php?post_type=recipe', //カスタムポスト
-//		'upload.php', //メディア (一番下に移動しました)
-//		'separator2', //セパレータ２
-//		'edit.php?post_type=page', //固定ページ
-//		'edit-comments.php', //コメント
-//		'separator-last', //最後のセパレータ
-//		'themes.php', //外観
-//		'plugins.php', //プラグイン
-//		'users.php', //ユーザー
-//		'tools.php', //ツール
-//		'options-general.php', //設定
-//	);
-//}
-//add_filter('custom_menu_order', 'my_custom_menu_order');
-//add_filter('menu_order', 'my_custom_menu_order');
-//
+function my_custom_menu_order($menu_order)
+{
+ if (!$menu_order) return true;
+ return array(
+  'index.php', //ダッシュボード
+  'separator1', //セパレータ１
+  'edit.php', //投稿
+  'edit.php?post_type=search', //カスタムポスト
+  'edit.php?post_type=faq', //カスタムポスト
+  'upload.php', //メディア 
+  'separator2', //セパレータ２
+  'edit.php?post_type=page', //固定ページ
+  'edit-comments.php', //コメント
+  'separator-last', //最後のセパレータ
+  'themes.php', //外観
+  'plugins.php', //プラグイン
+  'users.php', //ユーザー
+  'tools.php', //ツール
+  'options-general.php', //設定
+ );
+}
+add_filter('custom_menu_order', 'my_custom_menu_order');
+add_filter('menu_order', 'my_custom_menu_order');
+
 //==========================================================
 //ログイン画面カスタマイズ
 function my_login_logo()
 {
 ?>
-<style type="text/css">
-#login h1 a,
-.login h1 a {
- background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
- width: 193px;
- background-size: cover;
-}
+ <style type="text/css">
+  #login h1 a,
+  .login h1 a {
+   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
+   width: 193px;
+   background-size: cover;
+  }
 
-body.login {
- background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
- background-size: cover;
- width: 100%;
- height: auto;
- position: relative;
-}
+  body.login {
+   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
+   background-size: cover;
+   width: 100%;
+   height: auto;
+   position: relative;
+  }
 
-body.login::before {
- content: '';
- width: 100%;
- height: 100vh;
- background-color: rgba(255, 255, 255, 0.7);
- position: absolute;
- top: 0;
- left: 0;
- z-index: -1;
-}
-</style>
+  body.login::before {
+   content: '';
+   width: 100%;
+   height: 100vh;
+   background-color: rgba(255, 255, 255, 0.7);
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: -1;
+  }
+ </style>
 <?php
 }
 add_action('login_enqueue_scripts', 'my_login_logo');
@@ -306,15 +308,15 @@ add_action('login_enqueue_scripts', 'my_login_stylesheet');
 //エディタを非表示にする
 function remove_wysiwyg()
 {
-	remove_post_type_support('faq', 'editor');
-	remove_post_type_support('faq', 'editor');
-	//複数ある場合は追記する
+ remove_post_type_support('faq', 'editor');
+ remove_post_type_support('faq', 'editor');
+ //複数ある場合は追記する
 }
 add_action('init', 'remove_wysiwyg');
 
 //==========================================================
 
-
+//管理画面にタクソノミー名を表示
 function my_custom_column($columns)
 {
  $columns['faq_menu'] = 'カテゴリ';
@@ -334,3 +336,10 @@ function my_custom_column_id($column_name, $id)
  }
 }
 add_action('manage_faq_posts_custom_column', 'my_custom_column_id', 10, 2);
+//==========================================================
+//デフォルトの投稿を非表示にする
+function remove_menus()
+{
+ remove_menu_page('edit.php');
+}
+add_action('admin_menu', 'remove_menus');

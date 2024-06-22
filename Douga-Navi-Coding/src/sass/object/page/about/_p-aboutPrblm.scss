@@ -2,18 +2,32 @@
 @use "global" as *;
 
 .p-aboutPrblm {
-	padding-top: myrem(45);
+	padding-top: myrem(90);
 	padding-bottom: myrem(110);
+	@include mq(md) {
+		padding-top: myrem(43);
+		padding-bottom: myrem(48);
+	}
 }
 
 .p-aboutPrblm__ttl {
+	font-size: myrem(20);
+	font-weight: 600;
+	letter-spacing: 0.005em;
+	color: $black_000;
 	text-align: center;
+	@include mq(md) {
+		font-size: myrem(14);
+		font-weight: 500;
+	}
 }
 
 .p-aboutPrblm__ttl span {
 	display: inline-block;
 	position: relative;
 	padding-bottom: myrem(8);
+	@include mq(md) {
+	}
 }
 
 .p-aboutPrblm__ttl span::after {
@@ -29,6 +43,8 @@
 	height: 2px;
 	background-color: $blue_00A;
 	border-radius: myrem(2);
+	@include mq(md) {
+	}
 }
 
 .p-aboutPrblm__cardWrppr {
@@ -37,6 +53,11 @@
 	width: 100%;
 	max-width: myrem(810);
 	margin: myrem(48) auto 0;
+	@include mq(md) {
+		flex-direction: column;
+		row-gap: myrem(24);
+		margin: myrem(24) auto 0;
+	}
 }
 
 .p-aboutPrblm__cardBox {
@@ -45,6 +66,9 @@
 	flex-direction: column;
 	row-gap: myrem(23);
 	width: calc(math.div(1, 3) * 100% - myrem(18));
+	@include mq(md) {
+		width: 100%;
+	}
 }
 
 .p-aboutPrblm__cardTtl {
@@ -54,18 +78,26 @@
 	line-height: calc(math.div(27, 18));
 	color: $black_000;
 	text-align: center;
+	@include mq(md) {
+		font-size: myrem(14);
+		line-height: calc(math.div(26, 14));
+	}
 }
 
 .p-aboutPrblm__cardImg {
 	display: block;
 	width: myrem(120);
 	height: auto;
+	@include mq(md) {
+	}
 }
 
 .p-aboutPrblm__cardImg img {
 	display: block;
 	width: 100%;
 	height: 100%;
+	@include mq(md) {
+	}
 }
 
 .p-aboutPrblm__cardTxt {
@@ -74,4 +106,8 @@
 	line-height: calc(math.div(27, 15));
 	letter-spacing: 0.005em;
 	color: $black_000;
+	@include mq(md) {
+		font-size: myrem(14);
+		line-height: calc(math.div(22, 14));
+	}
 }

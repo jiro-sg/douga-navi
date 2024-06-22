@@ -3,10 +3,15 @@
 
 .p-aboutFlow {
 	padding-top: myrem(80);
+	@include mq(md) {
+		padding-top: myrem(48);
+	}
 }
 
 .p-aboutFlow__ttl {
 	text-align: center;
+	@include mq(md) {
+	}
 }
 
 .p-aboutFlow__cardWrppr {
@@ -15,6 +20,11 @@
 	width: 100%;
 	max-width: myrem(810);
 	margin: myrem(34) auto 0;
+	@include mq(md) {
+		flex-direction: column;
+		row-gap: myrem(24);
+		margin-top: myrem(24);
+	}
 }
 
 .p-aboutFlow__card {
@@ -23,6 +33,10 @@
 	flex-direction: column;
 	row-gap: myrem(16);
 	width: calc(math.div(1, 3) * 100% - myrem(18));
+	@include mq(md) {
+		row-gap: 0;
+		width: 100%;
+	}
 }
 
 .p-aboutFlow__cardTtl {
@@ -36,6 +50,15 @@
 	padding: myrem(6.5) 0;
 	background-color: $blue_00A;
 	clip-path: polygon(calc(math.div(238, 252) * 100%) 0%, 100% 50%, calc(math.div(238, 252) * 100%) 100%, 0% 100%, 0 50%, 0% 0%);
+	@include mq(md) {
+		font-size: myrem(15);
+		clip-path: none;
+	}
+}
+
+.p-aboutFlow__cardTtl--num {
+	font-family: $font-second;
+	letter-spacing: 0;
 }
 
 .p-aboutFlow__cardImgBox {
@@ -46,6 +69,9 @@
 	background-color: $white_fff;
 	padding: myrem(32) 0;
 	border-radius: myrem(5);
+	@include mq(md) {
+		margin-top: myrem(16);
+	}
 }
 
 .p-aboutFlow__cardTxt {
@@ -54,4 +80,7 @@
 	letter-spacing: 0.005em;
 	line-height: calc(math.div(27, 15));
 	color: $black_000;
+	@include mq(md) {
+		margin-top: myrem(10);
+	}
 }

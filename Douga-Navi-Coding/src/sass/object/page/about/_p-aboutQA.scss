@@ -3,25 +3,56 @@
 
 .p-aboutQA {
 	padding-bottom: myrem(80);
+	@include mq(md) {
+		padding-bottom: myrem(32);
+	}
 }
 
 .p-aboutQA__ttl {
 	text-align: center;
+	@include mq(md) {
+	}
 }
 
 .p-aboutQA__lists {
 	width: 100%;
 	max-width: myrem(810);
 	margin: myrem(32) auto 0;
+	@include mq(md) {
+		margin: myrem(16) auto 0;
+	}
 }
 
 .p-aboutQA__item {
 	border-bottom: 1px solid $blue_00A;
 	padding: myrem(16) 0;
+	@include mq(md) {
+	}
 }
 
 .p-aboutQA__item:first-of-type {
 	border-top: 1px solid $blue_00A;
+	@include mq(md) {
+	}
+}
+
+.p-aboutQA__dfntin {
+	display: flex;
+	column-gap: myrem(10);
+	@include mq(md) {
+	}
+}
+
+.p-aboutQA__number {
+	font-family: $font-second;
+	font-size: myrem(18);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	line-height: calc(math.div(27, 18));
+	color: $black_24;
+	@include mq(md) {
+		font-size: myrem(15);
+	}
 }
 
 .p-aboutQA__question {
@@ -30,15 +61,10 @@
 	letter-spacing: 0.005em;
 	line-height: calc(math.div(27, 15));
 	color: $black_000;
-}
-
-.p-aboutQA__number {
-	font-size: myrem(18);
-	font-weight: 500;
-	letter-spacing: 0.05em;
-	line-height: calc(math.div(36, 18));
-	color: $black_24;
-	margin-right: myrem(10);
+	@include mq(md) {
+		font-size: myrem(14);
+		line-height: calc(math.div(20, 14));
+	}
 }
 
 .p-aboutQA__answer {
@@ -48,5 +74,9 @@
 	line-height: calc(math.div(27, 15));
 	color: $gray_777;
 	margin-top: myrem(16);
-	margin-left: myrem(42);
+	@include mq(md) {
+		font-size: myrem(14);
+		line-height: calc(math.div(20, 14));
+		margin-top: myrem(8);
+	}
 }

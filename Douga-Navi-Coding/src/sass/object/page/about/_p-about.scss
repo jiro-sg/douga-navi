@@ -3,17 +3,21 @@
 
 .p-about {
 	padding-top: myrem(137);
+	@include mq(md) {
+		padding-top: myrem(80);
+	}
 }
 
 .p-about__bgPaleBlue {
 	background-color: $paleBlue_eff;
+	@include mq(md) {
+	}
 }
 
 .p-about__QA {
 	margin-top: myrem(80);
+	@include mq(md) {
+		margin-top: myrem(40);
+	}
 }
 
-.p-about__ctaBanner {
-	width: myrem(746);
-	margin: myrem(80) auto myrem(120);
-}

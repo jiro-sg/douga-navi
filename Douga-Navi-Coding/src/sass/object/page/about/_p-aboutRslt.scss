@@ -5,19 +5,32 @@
 	background-color: $paleBlue_eff;
 	padding-top: myrem(80);
 	padding-bottom: myrem(80);
+	@include mq(md) {
+		padding-top: myrem(48);
+		padding-bottom: myrem(48);
+	}
 }
 
 .p-aboutRslt__ttl {
 	font-size: myrem(24);
 	font-weight: 700;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.005em;
 	text-align: center;
+	@include mq(md) {
+		font-size: myrem(16);
+		font-weight: 500;
+		line-height: calc(math.div(26, 16));
+	}
 }
 
 .p-aboutRslt__ttl span {
 	display: inline-block;
 	padding-bottom: myrem(16);
 	position: relative;
+	@include mq(md) {
+		width: 100%;
+		padding-bottom: myrem(8);
+	}
 }
 
 .p-aboutRslt__ttl span::after {
@@ -31,19 +44,35 @@
 	width: 100%;
 	height: 1px;
 	background-color: $gray_ddd;
+	@include mq(md) {
+	}
 }
 
 .p-aboutRslt__lead {
+	font-size: myrem(18);
+	font-weight: 500;
+	letter-spacing: 0.005em;
+	color: $black_000;
 	text-align: center;
 	margin-top: myrem(50);
+	@include mq(md) {
+		font-size: myrem(15);
+	}
 }
 
 .p-aboutRslt__cardWrppr {
 	width: 100%;
 	max-width: myrem(810);
 	margin: myrem(55) auto 0;
+	@include mq(md) {
+		width: calc(math.div(272, 280) * 100%);
+		margin: myrem(16) auto 0;
+	}
 }
 
 .p-aboutRslt__cardBox:not(:first-of-type) {
 	margin-top: myrem(60);
+	@include mq(md) {
+		margin-top: myrem(24);
+	}
 }

@@ -3,22 +3,42 @@
 
 .p-aboutVoice {
 	padding-top: myrem(80);
+	@include mq(md) {
+		padding-top: myrem(32);
+	}
 }
 
 .p-aboutVoice__ttl {
 	text-align: center;
+	@include mq(md) {
+	}
 }
 
 .p-aboutVoice__cardWrppr {
 	width: 100%;
 	max-width: myrem(810);
 	margin: myrem(48) auto 0;
-}
-
-.p-aboutVoice__cardBox {
-	display: flex;
+	@include mq(md) {
+		margin: myrem(24) auto 0;
+	}
 }
 
 .p-aboutVoice__cardBox:not(:first-of-type) {
 	margin-top: myrem(56);
+	@include mq(md) {
+		margin-top: myrem(32);
+	}
+}
+
+.p-aboutVoice__cta {
+	// width: calc(math.div(770,820) * 100% ) ;
+	width: calc(math.div(746, 930) * 100%);
+	padding-top: myrem(80);
+	padding-bottom: myrem(120);
+	margin: 0 auto;
+	@include mq(md) {
+		width: 100%;
+		padding-top: myrem(32);
+		padding-bottom: myrem(48);
+	}
 }

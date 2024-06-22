@@ -5,10 +5,17 @@
 	display: flex;
 	justify-content: space-between;
 	// column-gap: myrem(51);
+	@include mq(md) {
+		flex-direction: column;
+		row-gap: myrem(16);
+	}
 }
 
 .c-card02__sntnc {
 	width: calc(math.div(436, 810) * 100%);
+	@include mq(md) {
+		width: 100%;
+	}
 }
 
 .c-card02__num {
@@ -16,14 +23,20 @@
 	font-weight: 700;
 	color: $blue_00A;
 	margin-bottom: myrem(8);
+	@include mq(md) {
+	}
 }
 
 .c-card02__ttl {
 	font-size: myrem(18);
 	font-weight: 500;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.005em;
 	color: $black_000;
 	margin-bottom: myrem(16);
+	@include mq(md) {
+		font-size: myrem(15);
+		text-align: center;
+	}
 }
 
 .c-card02__txt {
@@ -32,12 +45,19 @@
 	letter-spacing: 0.005em;
 	line-height: calc(math.div(27, 15));
 	color: $black_000;
+	@include mq(md) {
+		font-size: myrem(14);
+		line-height: calc(math.div(22, 14));
+	}
 }
 
 .c-card02__img {
 	display: block;
 	width: calc(math.div(326, 810) * 100%);
 	height: auto;
+	@include mq(md) {
+		width: 100%;
+	}
 }
 
 .c-card02__img img,
@@ -46,4 +66,6 @@
 	width: 100%;
 	height: auto;
 	aspect-ratio: 313/177;
+	@include mq(md) {
+	}
 }

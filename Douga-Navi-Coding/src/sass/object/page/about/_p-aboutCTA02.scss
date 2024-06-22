@@ -1,0 +1,20 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-aboutCTA02 {
+	padding-top: myrem(80);
+	padding-bottom: myrem(120);
+	@include mq(md) {
+		padding-top: myrem(32);
+		padding-bottom: myrem(48);
+	}
+}
+
+.p-aboutCTA02__banner {
+	width: calc(math.div(746, 930) * 100%);
+	margin-left: auto;
+	margin-right: auto;
+	@include mq(md) {
+		width: 100%;
+	}
+}

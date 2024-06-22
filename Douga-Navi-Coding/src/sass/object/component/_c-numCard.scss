@@ -6,20 +6,25 @@
 	align-items: center;
 	justify-content: flex-start;
 	flex-direction: column;
+	@include mq(md) {
+	}
 }
 
 .c-numCard__number {
 	font-family: $font-second;
 	font-size: myrem(75);
 	font-weight: 400;
-	letter-spacing: 0.05em;
+	letter-spacing: 0.005em;
 	color: $blue_00A;
+	@include mq(md) {
+		line-height: 1.2;
+	}
 }
 
 .c-numCard__arrow {
- display: flex;
- align-items: center;
- justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 100%;
 	height: myrem(68);
 	font-size: myrem(15);
@@ -31,6 +36,13 @@
 	clip-path: polygon(calc(math.div(237, 252) * 100%) 0%, 100% 50%, calc(math.div(237, 252) * 100%) 100%, 0% 100%, 0 50%, 0% 0%);
 	// padding: myrem(11) 0;
 	margin-top: myrem(10);
+	@include mq(md) {
+		height: auto;
+		clip-path: none;
+		line-height: calc(math.div(22, 15));
+		border-radius: myrem(2);
+  padding: myrem(9) 0;
+	}
 }
 
 .c-numCard__txt {
@@ -39,4 +51,10 @@
 	letter-spacing: 0.05em;
 	line-height: calc(math.div(27, 15));
 	margin-top: myrem(24);
+	@include mq(md) {
+  font-size: myrem(14);
+  letter-spacing: 0;
+		line-height: calc(math.div(22, 14));
+		margin-top: myrem(10);
+	}
 }

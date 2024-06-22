@@ -9,12 +9,31 @@
 	background-position: myrem(33) 100%, calc(100% - myrem(40)) 100%;
 	background-repeat: no-repeat, no-repeat;
 	border-radius: myrem(4);
+	@include mq(md) {
+		background-image: url(../images/cta_back02.png);
+		background-size: myrem(77) myrem(55);
+		background-position:  calc(100% - myrem(16)) 45%  ;
+		background-repeat: no-repeat;
+		padding: myrem(24);
+	}
 }
 
 .c-ctaBanner__txt {
 	font-size: myrem(18);
 	font-weight: 400;
 	text-align: center;
+	@include mq(md) {
+		font-size: myrem(14);
+		font-weight: 500;
+		text-align: left;
+		line-height: calc(math.div(22, 14));
+	}
+}
+
+.c-ctaBanner__txt:not(:first-of-type) {
+	@include mq(md) {
+		margin-top: myrem(16);
+	}
 }
 
 .c-ctaBanner__btn {
@@ -24,6 +43,9 @@
 	font-weight: 400;
 	color: $white_fff;
 	margin-top: myrem(30);
+	@include mq(md) {
+		border-radius: myrem(4);
+	}
 }
 
 .c-ctaBanner__btn a {
@@ -36,6 +58,12 @@
 	border-radius: myrem(4);
 	padding: myrem(5) myrem(42);
 	position: relative;
+	@include mq(md) {
+		width: 100%;
+		font-size: myrem(14);
+		font-weight: 500;
+		padding: myrem(9.5) myrem(10);
+	}
 }
 
 .c-ctaBanner__btn a::after {
@@ -51,4 +79,6 @@
 	height: myrem(9);
 	border-bottom: 1px solid $white_fff;
 	border-right: 1px solid $white_fff;
+	@include mq(md) {
+	}
 }

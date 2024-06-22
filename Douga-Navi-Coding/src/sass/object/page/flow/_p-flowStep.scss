@@ -4,18 +4,28 @@
 .p-flowStep {
 	padding: myrem(80) 0;
 	background-color: $paleBlue_eff;
+	@include mq(md) {
+		padding: myrem(48) 0 myrem(33);
+	}
 }
 
 .p-flowStep__ttl {
 	text-align: center;
+	@include mq(md) {
+	}
 }
 
 .p-flowStep__cardWrppr {
 	width: 100%;
 	max-width: myrem(810);
 	margin: myrem(48) auto 0;
+	@include mq(md) {
+	}
 }
 
 .p-flowStep__cardBox:not(:first-of-type) {
 	margin-top: myrem(79);
+	@include mq(md) {
+		margin-top: myrem(24);
+	}
 }

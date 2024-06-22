@@ -49,7 +49,7 @@
  <section class="p-flow__step p-flowStep">
   <div class="l-inner">
 
-   <h2 class="p-flowStep__ttl">お問い合わせ～ご納品まで</h2>
+   <h2 class="p-flowStep__ttl c-secTtl02">お問い合わせ～ご納品まで</h2>
 
    <div class="p-flowStep__cardWrppr">
 
@@ -133,7 +133,9 @@
   <div class="l-inner">
 
    <div class="p-flowCTA__banner c-ctaBanner">
-    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。<br>専任スタッフがすぐにご連絡いたします。</p>
+    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+    </p>
+    <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
     <div class="c-ctaBanner__btn">
      <a href="#">まずは無料相談してみる</a>
     </div>

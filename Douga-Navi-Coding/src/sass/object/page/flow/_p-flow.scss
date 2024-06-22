@@ -4,6 +4,8 @@
 .p-flow {
 	background-color: $white_fd;
 	// background-color: red;
+	@include mq(md) {
+	}
 }
 
 .p-flow__pageTtl {
@@ -11,4 +13,7 @@
 	padding: myrem(75) 0;
 	background-color: $white_fff;
 	border: 1px solid $gray_ddd;
+	@include mq(md) {
+		padding: myrem(31) 0;
+	}
 }

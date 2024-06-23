@@ -97,20 +97,12 @@
     <a href="<?php echo esc_url(home_url('/policy/')); ?>">プライバシーポリシー</a>
    </div>
    <div class="p-footer__company">
-    <a href="">運営会社</a>
+    <a href="https://www.riseagency.co.jp/" target="_blank" rel="noopener noreferrer">運営会社</a>
    </div>
    <div class="p-footer__copy">
     <small>Copyright &copy; 2024 douganavi. All Rights Reserved.</small>
    </div>
   </div>
-
-
-
-
-
-
-
-
 </footer>
 <?php wp_footer(); ?>
 </body>

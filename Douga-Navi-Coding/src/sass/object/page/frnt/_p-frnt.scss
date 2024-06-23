@@ -1,0 +1,29 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-frnt{
+ padding-top: myrem(130);
+}
+
+.p-frnt__inner {
+	display: flex;
+	column-gap: calc(math.div(40, 1100) * 100%);
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	max-width: calc(1100px + $padding-pc * 2);
+	padding-right: myrem(strip-unit($padding-pc));
+	padding-left: myrem(strip-unit($padding-pc));
+	@include mq(md) {
+		padding-right: myrem(strip-unit($padding-sp));
+		padding-left: myrem(strip-unit($padding-sp));
+	}
+}
+
+.p-frnt__sidebar {
+	width: calc(math.div(220, 1100) * 100%);
+}
+
+.p-frnt__main {
+	width: calc(math.div(840, 1100) * 100%);
+}

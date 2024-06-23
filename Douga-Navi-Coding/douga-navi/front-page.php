@@ -1,9 +1,14 @@
 <?php get_header(); ?>
+<div class="p-frnt">
+ <div class="p-frnt__inner">
+  <aside class="p-frnt__sidebar
+   p-sidebar">
+   <?php get_sidebar(); ?>
+  </aside>
+  <main class="p-frnt__main">
 
-<div class="l-inner">
-  <div class="p-test">
-    フロントページです
-  </div>
+  </main>
+ </div>
 </div>
 
 <?php get_footer(); ?>

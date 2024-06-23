@@ -1,0 +1,6 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-sidebar__navi {
+	margin-top: myrem(35);
+}

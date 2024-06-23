@@ -1,0 +1,44 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-sideNavi__txnmy:not(:first-of-type) {
+	margin-top: myrem(16);
+}
+
+.p-sideNavi__ttl {
+	font-size: myrem(14);
+	font-weight: 400;
+ padding-left: myrem(8);
+}
+
+.p-sideNavi__lists {
+	margin-top: myrem(8);
+	font-size: myrem(14);
+	font-weight: 400;
+	color: $black_000;
+}
+
+.p-sideNavi__item > a {
+	display: block;
+	background-color: $yellow_f5c;
+	padding: myrem(6.5) myrem(24);
+	border: 1px solid $paleYellow_fcf;
+	// border: 1px solid red;
+}
+
+.p-sideNavi__item:first-of-type > a {
+	border-top-left-radius: myrem(4);
+	border-top-right-radius: myrem(4);
+}
+
+.p-sideNavi__item:last-of-type > a {
+	border-bottom-left-radius: myrem(4);
+	border-bottom-right-radius: myrem(4);
+}
+
+.p-sideNavi__childItem > a {
+	display: block;
+	background-color: $paleYellow_fae;
+	padding: myrem(6.5) myrem(6.5) myrem(6.5) myrem(24);
+	border: 1px solid $paleYellow_fcf;
+}

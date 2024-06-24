@@ -1,0 +1,39 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-frntSubLink {
+	display: flex;
+	justify-content: space-between;
+}
+
+.p-frntSubLink__navi,
+.p-frntSubLink__flow {
+	display: block;
+	width: calc(math.div(1, 2) * 100% - calc(math.div(10, 837) * 100%));
+	font-size: myrem(24);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-align: center;
+	border-radius: myrem(5);
+	border: 1px solid $gray_ddd;
+	padding: myrem(35.5) 0;
+	@media screen and (max-width: 1150px) {
+		font-size: calc(math.div(24, 1150) * 100vw);
+		border-radius: calc(math.div(5, 1150) * 100vw);
+		padding: calc(math.div(35.5, 1150) * 100vw) 0;
+	}
+}
+
+.p-frntSubLink__navi {
+	background-image: url(../images/ico_topSubLink01.png), url(../images/ico_topSubLink02.png);
+	background-repeat: no-repeat no-repeat;
+	background-size: calc(math.div(70, 410) * 100%) calc(math.div(70, 109) * 100%), calc(math.div(80, 410) * 100%) calc(math.div(85, 109) * 100%);
+	background-position: calc(math.div(10, 410) * 100%) calc(math.div(30, 109) * 100%), calc(100% - math.div(10, 410) * 100%) 100%;
+}
+
+.p-frntSubLink__flow {
+	background-image: url(../images/ico_topSubLink03.png), url(../images/ico_topSubLink04.png);
+	background-repeat: no-repeat no-repeat;
+	background-size: calc(math.div(70, 410) * 100%) calc(math.div(70, 109) * 100%), calc(math.div(80, 410) * 100%) calc(math.div(80, 109) * 100%);
+	background-position: calc(math.div(35, 410) * 100%) 100%, calc(100% - math.div(40, 410) * 100%) calc(math.div(45, 109) * 100%);
+}

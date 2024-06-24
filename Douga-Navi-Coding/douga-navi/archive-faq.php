@@ -1,5 +1,7 @@
 <?php get_header(); ?>
-
+<!-- パンくずリスト -->
+<?php get_template_part('_inc/breadcrumb'); ?>
+<!-- // -->
 
 <div class="p-faq-category l-faq-category">
  <div class="l-inner">
@@ -115,15 +117,30 @@
    </dl> -->
   </div>
  </div>
- <div class="p-faq__banner c-ctaBanner">
-  <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。<br>専任スタッフがすぐにご連絡いたします。
-  </p>
-  <div class="c-ctaBanner__btn">
-   <a href="#">まずは無料相談してみる</a>
+
+ <div class="p-flowCTA">
+
+  <div class="l-inner">
+
+   <div class="p-flowCTA__banner c-ctaBanner">
+    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+    </p>
+    <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
+    <div class="c-ctaBanner__btn">
+     <a href="#">まずは無料相談してみる</a>
+    </div>
+   </div>
+
+   <div class="p-flowCTA__btn">
+    <a href="#">ホームへ戻る</a>
+   </div>
+
   </div>
+
  </div>
- <div class="p-faq__return c-returnBtn">
-  <a href="#">ホームへ戻る</a>
+
+
+ </div>#">ホームへ戻る</a>
  </div>
 
 </section>

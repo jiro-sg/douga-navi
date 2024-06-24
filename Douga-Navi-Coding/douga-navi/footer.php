@@ -103,6 +103,7 @@
     <small>Copyright &copy; 2024 douganavi. All Rights Reserved.</small>
    </div>
   </div>
+ </div>
 </footer>
 <?php wp_footer(); ?>
 </body>

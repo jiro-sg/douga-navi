@@ -4,11 +4,36 @@
   // font-family: $font-sub;
 }
 
+.p-thanks__img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.p-thanks__img img {
+  width: 100%;
+  height: myrem(300);
+  object-fit: cover;
+  object-position: 50% 20%;
+  @include mq("md") {
+    height: myrem(200);
+  }
+}
+
+.p-thanks__wrap {
+  padding-top: myrem(80);
+  padding-bottom: myrem(80);
+  @include mq("md") {
+    padding-top: myrem(40);
+    padding-bottom: myrem(40);
+  }
+}
+
 .p-thanks__title {
   font-size: myrem(40);
   text-align: center;
   @include mq("md") {
-    font-size: myrem(24);
+    font-size: myrem(22);
   }
 }
 
@@ -23,6 +48,7 @@
   text-align: center;
   @include mq("md") {
     font-size: myrem(15);
+    text-align: left;
   }
 }
 

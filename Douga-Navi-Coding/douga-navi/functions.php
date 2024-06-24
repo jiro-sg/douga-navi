@@ -181,14 +181,14 @@ function custom_auto_post_slug_for_posts($slug, $post_ID, $post_status, $post_ty
 add_filter('wp_unique_post_slug', 'custom_auto_post_slug_for_posts', 10, 4);
 
 /* カスタム投稿タイプのスラッグを「{カスタム投稿タイプ}-ID」で採番 */
-function custom_auto_post_slug_for_recipe($slug, $post_ID, $post_status, $post_type)
-{
- if ($post_type == 'recipe') {
-  $slug = utf8_uri_encode($post_type) . '-' . $post_ID;
- }
- return $slug;
-}
-add_filter('wp_unique_post_slug', 'custom_auto_post_slug_for_recipe', 10, 4);
+//function custom_auto_post_slug_for_recipe($slug, $post_ID, $post_status, $post_type)
+//{
+// if ($post_type == 'recipe') {
+//  $slug = utf8_uri_encode($post_type) . '-' . $post_ID;
+// }
+// return $slug;
+//}
+//add_filter('wp_unique_post_slug', 'custom_auto_post_slug_for_recipe', 10, 4);
 
 
 //===================================
@@ -209,6 +209,7 @@ function my_custom_menu_order($menu_order)
   'separator1', //セパレータ１
   'edit.php', //投稿
   'edit.php?post_type=search', //カスタムポスト
+  'edit.php?post_type=test', //カスタムポスト
   'edit.php?post_type=faq', //カスタムポスト
   'upload.php', //メディア 
   'separator2', //セパレータ２
@@ -231,11 +232,17 @@ function my_login_logo()
 {
 ?>
  <style type="text/css">
+  #login h1 {
+   width: 100%;
+  }
+
   #login h1 a,
   .login h1 a {
    background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
-   width: 193px;
-   background-size: cover;
+   width: 250px;
+   background-size: contain;
+   background-position: center bottom;
+
   }
 
   body.login {

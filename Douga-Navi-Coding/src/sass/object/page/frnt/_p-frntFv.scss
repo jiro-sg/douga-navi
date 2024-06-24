@@ -6,6 +6,8 @@
 
 .p-frntFv__SwiperBox {
 	position: relative;
+	@include mq(md) {
+	}
 }
 
 .p-frntFv__swiperSlide {
@@ -13,6 +15,9 @@
 	height: auto;
 	aspect-ratio: 837 / 308;
 	border-radius: myrem(5);
+	@include mq(md) {
+		aspect-ratio: 320 / 361;
+	}
 }
 
 .p-frntFv__swiperSlide picture,
@@ -21,6 +26,8 @@
 	width: 100%;
 	height: 100%;
 	border-radius: myrem(5);
+	@include mq(md) {
+	}
 }
 
 .p-frntFv__swiperPgntin.swiper-pagination {
@@ -30,6 +37,8 @@
 	left: 0;
 	right: auto;
 	transform: translate(0, 100%);
+	@include mq(md) {
+	}
 }
 
 .p-frntFv__swiperPgntin.swiper-pagination-bullets .swiper-pagination-bullet {
@@ -38,9 +47,15 @@
 	background-color: $white_fff;
 	border: 2px solid $black_70;
 	margin: 0 myrem(8);
+	@include mq(md) {
+		width: myrem(10);
+		height: myrem(10);
+	}
 }
 
 .p-frntFv__swiperPgntin .swiper-pagination-bullet.swiper-pagination-bullet-active {
 	background-color: $black_03;
 	border: 1px solid $black_03;
+	@include mq(md) {
+	}
 }

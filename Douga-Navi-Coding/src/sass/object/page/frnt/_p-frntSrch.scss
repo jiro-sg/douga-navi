@@ -8,8 +8,13 @@
 	color: $blue_00A;
 	padding-bottom: myrem(8);
 	border-bottom: 1px solid $gray_ddd;
+	@include mq(md) {
+		font-size: myrem(18);
+	}
 }
 
 .p-frntSrch__txnmy {
 	margin-top: myrem(24);
+	@include mq(md) {
+	}
 }

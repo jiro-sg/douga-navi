@@ -3,4 +3,7 @@
 
 .p-sidebar__navi {
 	margin-top: myrem(35);
+	@include mq(md) {
+		display: none;
+	}
 }

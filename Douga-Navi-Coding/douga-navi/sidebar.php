@@ -4,7 +4,8 @@
    <p class="p-sideCupn__subCatch">初めての注文で使える！</p>
    <p class="p-sideCupn__catch">クーポン配布中</p>
   </div>
-  <p class="p-sideCupn__lead">今すぐクーポンを受け取る</p>
+  <p class="p-sideCupn__lead u-desktop">今すぐクーポンを受け取る</p>
+  <p class="p-sideCupn__lead u-mobile">今すぐお得なクーポンを受け取る！</p>
  </a>
 </div>
 

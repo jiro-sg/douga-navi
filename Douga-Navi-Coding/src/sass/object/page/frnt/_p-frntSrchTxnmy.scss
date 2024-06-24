@@ -6,6 +6,8 @@
 	font-weight: 600;
 	letter-spacing: 0.05em;
 	color: $blue_00A;
+	@include mq(md) {
+	}
 }
 
 .p-frntSrchTxnmy__lists {
@@ -14,6 +16,10 @@
 	column-gap: myrem(15);
 	row-gap: myrem(15);
 	margin-top: myrem(16);
+	@include mq(md) {
+		flex-direction: column;
+		row-gap: myrem(10);
+	}
 }
 
 .p-frntSrchTxnmy__item {
@@ -29,6 +35,10 @@
 	// @media screen and (max-width: 1150px) {
 	// 	width: calc(50% - myrem(7.5));
 	// }
+	@include mq(md) {
+		width: 100%;
+		column-gap: myrem(16);
+	}
 }
 
 .p-frntSrchTxnmy__term {
@@ -36,12 +46,16 @@
 	font-weight: 500;
 	letter-spacing: 0.005em;
 	flex: 1;
+	@include mq(md) {
+	}
 }
 
 .p-frntSrchTxnmy__img {
 	display: block;
 	width: myrem(72);
 	height: myrem(45);
+	@include mq(md) {
+	}
 }
 
 .p-frntSrchTxnmy__img img {
@@ -50,4 +64,6 @@
 	height: 100%;
 	object-fit: cover;
 	object-position: center;
+	@include mq(md) {
+	}
 }

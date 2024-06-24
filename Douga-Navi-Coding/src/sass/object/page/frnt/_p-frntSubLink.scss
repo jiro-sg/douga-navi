@@ -4,6 +4,10 @@
 .p-frntSubLink {
 	display: flex;
 	justify-content: space-between;
+	@include mq(md) {
+		flex-direction: column;
+		row-gap: myrem(16);
+	}
 }
 
 .p-frntSubLink__navi,
@@ -22,6 +26,12 @@
 		border-radius: calc(math.div(5, 1150) * 100vw);
 		padding: calc(math.div(35.5, 1150) * 100vw) 0;
 	}
+	@include mq(md) {
+		display: block;
+		width: 100%;
+		font-size: myrem(14);
+		padding: myrem(12.5) 0;
+	}
 }
 
 .p-frntSubLink__navi {
@@ -29,6 +39,10 @@
 	background-repeat: no-repeat no-repeat;
 	background-size: calc(math.div(70, 410) * 100%) calc(math.div(70, 109) * 100%), calc(math.div(80, 410) * 100%) calc(math.div(85, 109) * 100%);
 	background-position: calc(math.div(10, 410) * 100%) calc(math.div(30, 109) * 100%), calc(100% - math.div(10, 410) * 100%) 100%;
+	@include mq(md) {
+		background-size: calc(math.div(42.75, 272) * 100%) calc(math.div(42.75, 48) * 100%), calc(math.div(36, 272) * 100%) calc(math.div(38.45, 48) * 100%);
+		background-position: calc(math.div(10, 272) * 100%) calc(math.div(25, 48) * 100%), calc(100% - math.div(20, 272) * 100%) 100%;
+	}
 }
 
 .p-frntSubLink__flow {
@@ -36,4 +50,8 @@
 	background-repeat: no-repeat no-repeat;
 	background-size: calc(math.div(70, 410) * 100%) calc(math.div(70, 109) * 100%), calc(math.div(80, 410) * 100%) calc(math.div(80, 109) * 100%);
 	background-position: calc(math.div(35, 410) * 100%) 100%, calc(100% - math.div(40, 410) * 100%) calc(math.div(45, 109) * 100%);
+	@include mq(md) {
+		background-size: calc(math.div(39.7, 272) * 100%) calc(math.div(39.7, 48) * 100%), calc(math.div(49.68, 272) * 100%) calc(math.div(49.66, 48) * 100%);
+		background-position: calc(math.div(35, 272) * 100%) 100%, calc(100% - math.div(30, 272) * 100%) -320%;
+	}
 }

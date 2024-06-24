@@ -45,6 +45,7 @@
 	margin-top: myrem(30);
 	@include mq(md) {
 		border-radius: myrem(4);
+  margin-top: myrem(16);
 	}
 }
 

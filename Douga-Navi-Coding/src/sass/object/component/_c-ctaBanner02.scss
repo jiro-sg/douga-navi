@@ -17,7 +17,7 @@
 	@include mq(md) {
 		background-image: url(../images/cta_back02.png);
 		background-size: myrem(77) myrem(55);
-		background-position: calc(100% - myrem(16)) 45%;
+		background-position: calc(100% - myrem(16)) 50%;
 		background-repeat: no-repeat;
 		padding: myrem(24);
 	}
@@ -55,6 +55,7 @@
 	}
 	@include mq(md) {
 		border-radius: myrem(4);
+  margin-top: myrem(16);
 	}
 }
 

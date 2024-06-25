@@ -121,11 +121,38 @@ $(function () {
 	});
 
 	// 検索結果ページで親タームをクリックしたら子ターム全選択
-	$(".p-srchCnditin__prntsTermBox > label > input").on("change", function () {
-		if ($(".p-srchCnditin__prntsTermBox > label > input").prop("checked") == true) {
+	$(".p-srchCnditin__prntsTermBox > label > input[type='checkbox']").on("change", function () {
+		if ($(this).prop("checked") == true) {
 			$(this).parents(".p-srchCnditin__prntsTermBox").next().find("input[type='checkbox']").prop("checked", true);
-		} else {
 
+			let windowWidth = window.innerWidth;
+			if (windowWidth < 768) {
+				$(this).parents(".p-srchCnditin__prntsTermBox").next().slideDown();
+				$(this).parents(".p-srchCnditin__prntsTermBox").addClass("accdinOpen");
+			}
+		} else {
+			$(this).parents(".p-srchCnditin__prntsTermBox").next().find("input[type='checkbox']").prop("checked", false);
+		}
+	});
+
+	// 検索結果ページで子タームのチェック外れたら親タームのチェック外す
+	$(".p-srchCnditin__termItem > label > input[type='checkbox']").on("change", function () {
+		if ($(this).prop("checked") == false) {
+			$(this).parents(".p-srchCnditin__termBox").prev().find("input[type='checkbox']").prop("checked", false);
+		}
+	});
+
+	// ウィンドウ幅を変えた時の処理
+	$(window).on("resize", function () {
+		let windowWidth = window.innerWidth;
+		if (windowWidth < 768) {
+			$(".p-srchCnditin__termItem > label > input[type='checkbox']:checked").each(function () {
+				$(this).parents(".p-srchCnditin__termBox").slideDown();
+				$(this).parents(".p-srchCnditin__termBox").prev().addClass("accdinOpen");
+			});
+		} else {
+			$(".p-srchCnditin__termBox").slideDown();
+			$(".p-srchCnditin__prntsTermBox").removeClass("accdinOpen");
 		}
 	});
 });

@@ -122,6 +122,10 @@ $(function () {
 
 	// 検索結果ページで親タームをクリックしたら子ターム全選択
 	$(".p-srchCnditin__prntsTermBox > label > input").on("change", function () {
-if($("..p-srchCnditin__prntsTermBox > label > input").attr(''))
+		if ($(".p-srchCnditin__prntsTermBox > label > input").prop("checked") == true) {
+			$(this).parents(".p-srchCnditin__prntsTermBox").next().find("input[type='checkbox']").prop("checked", true);
+		} else {
+
+		}
 	});
 });

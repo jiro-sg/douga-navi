@@ -350,3 +350,14 @@ function remove_menus()
  remove_menu_page('edit.php');
 }
 add_action('admin_menu', 'remove_menus');
+
+
+//==========================================================
+//検索結果ページのURLに「/search/」を追加する
+function my_custom_search_url() {
+ if (is_search() && !empty($_GET['s'])) {
+  wp_safe_redirect(home_url('/search/?s=') . urlencode(get_query_var('s')));
+  exit();
+ }
+}
+add_action('template_redirect', 'my_custom_search_url');

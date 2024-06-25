@@ -1,5 +1,5 @@
-<?php get__header(); ?>
+<?php get_header(); ?>
 
 ああああ
 
-<?php get__footer(); ?>
+<?php get_footer(); ?>

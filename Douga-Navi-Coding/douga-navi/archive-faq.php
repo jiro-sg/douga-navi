@@ -4,43 +4,43 @@
 <!-- // -->
 
 <div class="p-faq-category l-faq-category">
- <div class="l-inner">
-  <div class="p-faq-category__wrap">
-   <h2 class="p-faq-category__title c-secTtl02">カテゴリごとによくある<br class="u-mobile">ご質問を検索する</h2>
-   <ul class="p-faq-category__items">
+  <div class="l-inner">
+    <div class="p-faq-category__wrap">
+      <h2 class="p-faq-category__title c-secTtl02">カテゴリごとによくある<br class="u-mobile">ご質問を検索する</h2>
+      <ul class="p-faq-category__items">
 
-    <?php get_template_part('_inc/faq_category'); ?>
+        <?php get_template_part('_inc/faq_category'); ?>
 
 
-   </ul>
+      </ul>
+    </div>
   </div>
- </div>
 
 </div>
 
 <section class="p-faq l-faq">
 
- <div class="p-faq__inner l-inner">
-  <h2 class="p-faq__title c-secTtl01">よくある質問</h2>
-  <div class="p-faq__wrap">
+  <div class="p-faq__inner l-inner">
+    <h2 class="p-faq__title c-secTtl01">よくある質問</h2>
+    <div class="p-faq__wrap">
 
-   <!-- <dl class="p-faq__item">
+      <!-- <dl class="p-faq__item">
     <dt class="p-faq__question">動画制作ナビは映像クリエイターマッチングサイトですか？</dt>
     <dd class="p-faq__answer">動画制作ナビはマッチングサイトではございません。動画制作ナビのスタッフがご納品まで対応いたします。</dd>
    </dl> -->
 
 
-   <?php
-   $the_query = new WP_Query();
-   $param = array(
-    'posts_per_page' => '-1', //表示件数。-1なら全件表示
-    'post_type' => 'faq', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
-    'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
-    'order' => 'DESC'
-   );
-   $the_query->query($param);
-   if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
-   ?>
+      <?php
+      $the_query = new WP_Query();
+      $param = array(
+        'posts_per_page' => '-1', //表示件数。-1なら全件表示
+        'post_type' => 'faq', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
+        'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
+        'order' => 'DESC'
+      );
+      $the_query->query($param);
+      if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
+      ?>
 
 
 
@@ -48,30 +48,36 @@
 
 
 
-     <dl class="p-faq__item">
-      <dt class="p-faq__question">
-       <?php the_title(); ?>
-      </dt>
-      <dd class="p-faq__answer">
-       <?php if (CFS()->get('answer')) : ?>
-        <?php echo CFS()->get('answer'); ?>
-       <?php endif; ?>
-      </dd>
-      </dd>
-     </dl>
+          <dl class="p-faq__item">
+            <dt class="p-faq__question">
+              <?php the_title(); ?>
+            </dt>
+            <dd class="p-faq__answer">
+              <!-- <//?php if (CFS()->get('answer')) : ?>
+     <//?php echo CFS()->get('answer'); ?>
+     <//?php endif; ?> -->
+              <?php $value = get_post_meta($post->ID, 'answer', true); ?>
+              <?php if (!empty($value)) : ?>
+                <?php the_field('answer'); ?>
+              <?php else : ?>
+
+              <?php endif; ?>
+            </dd>
+
+          </dl>
 
 
 
 
-   <?php
-    endwhile;
-   endif;
-   wp_reset_postdata()
-   ?>
+      <?php
+        endwhile;
+      endif;
+      wp_reset_postdata()
+      ?>
 
 
 
-   <!-- <dl class="p-faq__item">
+      <!-- <dl class="p-faq__item">
     <dt class="p-faq__question">クリエイターマッチングサイトやクラウドソーシングサービスとは何が違いますか？</dt>
     <dd class="p-faq__answer">動画制作ナビのディレクターは現役クリエイティブエージェンシーのメンバーです。単に映像を作るだけではなくお客様の課題解決の観点で、お問い合わせ内容に応じたご提案が可能です。ニーズに応じて最適なプロの映像制作パートナーと動画制作ナビのディレクターがご納品まで対応致しますので、コミュニケーション、費用、品質、スピードにも自信がございますのでお気軽にご相談ください。</dd>
    </dl>
@@ -115,33 +121,33 @@
     <dt class="p-faq__question">納品形式はどのようになりますか？</dt>
     <dd class="p-faq__answer">データでのご納品となります。その他の形態でのご納品ご希望の際はご相談ください。</dd>
    </dl> -->
-  </div>
- </div>
-
- <div class="p-flowCTA">
-
-  <div class="l-inner">
-
-   <div class="p-flowCTA__banner c-ctaBanner">
-    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
-    </p>
-    <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
-    <div class="c-ctaBanner__btn">
-     <a href="#">まずは無料相談してみる</a>
     </div>
-   </div>
+  </div>
 
-   <div class="p-flowCTA__btn">
-    <a href="#">ホームへ戻る</a>
-   </div>
+  <div class="p-flowCTA">
+
+    <div class="l-inner">
+
+      <div class="p-flowCTA__banner c-ctaBanner">
+        <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+        </p>
+        <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
+        <div class="c-ctaBanner__btn">
+          <a href="#">まずは無料相談してみる</a>
+        </div>
+      </div>
+
+      <div class="p-flowCTA__btn">
+        <a href="#">ホームへ戻る</a>
+      </div>
+
+    </div>
 
   </div>
 
- </div>
 
-
- </div>#">ホームへ戻る</a>
- </div>
+  </div>#">ホームへ戻る</a>
+  </div>
 
 </section>
 

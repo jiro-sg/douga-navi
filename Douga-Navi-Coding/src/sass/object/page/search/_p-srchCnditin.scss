@@ -1,0 +1,238 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-srchCnditin {
+	background-color: $white_fff;
+	border-radius: myrem(5);
+	border: 1px solid rgba($gray_ddd, 1);
+	padding: myrem(48);
+	@include mq(md) {
+		padding: myrem(32) myrem(16);
+	}
+}
+
+.p-srchCnditin__ttl {
+	font-size: myrem(18);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	text-align: center;
+	padding-bottom: myrem(16);
+	border-bottom: 1px solid $gray_ddd;
+	@include mq(md) {
+		font-size: myrem(16);
+		letter-spacing: 0.005em;
+	}
+}
+
+.p-srchCnditin__defLists {
+	display: flex;
+	align-items: flex-start;
+	column-gap: myrem(40);
+	margin-top: myrem(32);
+	@include mq(md) {
+		flex-direction: column;
+	}
+}
+
+.p-srchCnditin__defLists:first-of-type {
+	margin-top: myrem(32);
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__defDescr {
+	flex: 1;
+	@include mq(md) {
+		margin-top: myrem(8);
+	}
+}
+
+.p-srchCnditin__defTerm {
+	font-size: myrem(15);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	color: $white_fff;
+	text-align: center;
+	background-color: $blue_00A;
+	border-radius: myrem(5);
+	// padding: myrem(7.25) myrem(29);
+	padding: myrem(7.25) 0;
+	width: myrem(152);
+	@include mq(md) {
+		font-size: myrem(14);
+		width: auto;
+		height: auto;
+		padding: myrem(7.5) myrem(22);
+	}
+}
+
+.p-srchCnditin__prntsTermLists {
+	@include mq(md) {
+		margin-top: myrem(24);
+	}
+}
+
+.p-srchCnditin__prntsTermLists:not(:first-of-type) {
+	margin-top: myrem(24);
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__prntsTermItem > label {
+	display: inline-block;
+	margin-bottom: myrem(8);
+	@include mq(md) {
+		display: flex;
+		align-items: center;
+		column-gap: myrem(8);
+	}
+}
+
+.p-srchCnditin__prntsTermItem > label > input {
+	display: none;
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__prntsTermItem > label .p-srchCnditin__prntsTermName {
+	display: inline-block;
+	font-size: myrem(15);
+	font-weight: 500;
+	letter-spacing: 0.005em;
+	color: $blue_00A;
+	cursor: pointer;
+	@include mq(md) {
+		position: relative;
+	}
+}
+
+.p-srchCnditin__prntsTermItem > label > input[type="checkbox"]:checked + .p-srchCnditin__prntsTermName {
+	color: $pink_e15;
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__accdionBtn {
+	@include mq(md) {
+		display: block;
+		width: myrem(17);
+		height: myrem(17);
+		border-radius: 50%;
+		border: 1px solid $black_24;
+		position: relative;
+	}
+}
+
+.p-srchCnditin__accdionBtn::before {
+	@include mq(md) {
+		position: absolute;
+		top: 50%;
+		bottom: auto;
+		left: 50%;
+		right: auto;
+		transform: translate(-50%, -50%);
+		display: block;
+		content: "";
+		width: myrem(7);
+		height: 1px;
+		background-color: $black_24;
+	}
+}
+
+.p-srchCnditin__accdionBtn::after {
+	@include mq(md) {
+		position: absolute;
+		top: 50%;
+		bottom: auto;
+		left: 50%;
+		right: auto;
+		transform: translate(-50%, -50%);
+		display: block;
+		content: "";
+		width: 1px;
+		height: myrem(7);
+		background-color: $black_24;
+		transition: transform 0.3s ease-out;
+	}
+}
+
+.p-srchCnditin__prntsTermLists.accdinOpen .p-srchCnditin__accdionBtn::after {
+	@include mq(md) {
+		transform: translate(-50%, -50%) rotate(90deg);
+	}
+}
+
+.p-srchCnditin__termLists {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: myrem(12);
+	row-gap: myrem(12);
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__termItem > label > input {
+	display: none;
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__termItem > label span {
+	display: block;
+	font-size: myrem(15);
+	font-weight: 400;
+	letter-spacing: 0.005em;
+	border-radius: myrem(5);
+	border: 1px solid $gray_ddd;
+	padding: myrem(6.25) myrem(16.5);
+	cursor: pointer;
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__termItem > label > input[type="checkbox"]:checked + span {
+	color: $pink_e15;
+	border: 1px solid $pink_e15;
+	// color:$white_fff;
+	// background-color: $pink_e15;
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__btnWrppr {
+	display: flex;
+	justify-content: center;
+	column-gap: myrem(24);
+	margin-top: myrem(65);
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__cancellBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: myrem(15);
+	width: myrem(259);
+	border-radius: 50vw;
+	border: 1px solid $pink_e15;
+	padding: myrem(8) 0;
+	cursor: pointer;
+	@include mq(md) {
+	}
+}
+
+.p-srchCnditin__submitBtns {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: myrem(15);
+	width: myrem(259);
+	border-radius: 50vw;
+	color: $white_fff;
+	background-color: $pink_e15;
+	padding: myrem(8) 0;
+	cursor: pointer;
+	@include mq(md) {
+	}
+}

@@ -208,8 +208,7 @@ function my_custom_menu_order($menu_order)
   'index.php', //ダッシュボード
   'separator1', //セパレータ１
   'edit.php', //投稿
-  'edit.php?post_type=search', //カスタムポスト
-  'edit.php?post_type=test', //カスタムポスト
+  'edit.php?post_type=works_case', //カスタムポスト
   'edit.php?post_type=faq', //カスタムポスト
   'upload.php', //メディア 
   'separator2', //セパレータ２
@@ -231,39 +230,39 @@ add_filter('menu_order', 'my_custom_menu_order');
 function my_login_logo()
 {
 ?>
- <style type="text/css">
-  #login h1 {
-   width: 100%;
-  }
+<style type="text/css">
+#login h1 {
+ width: 100%;
+}
 
-  #login h1 a,
-  .login h1 a {
-   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
-   width: 250px;
-   background-size: contain;
-   background-position: center bottom;
+#login h1 a,
+.login h1 a {
+ background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
+ width: 250px;
+ background-size: contain;
+ background-position: center bottom;
 
-  }
+}
 
-  body.login {
-   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
-   background-size: cover;
-   width: 100%;
-   height: auto;
-   position: relative;
-  }
+body.login {
+ background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
+ background-size: cover;
+ width: 100%;
+ height: auto;
+ position: relative;
+}
 
-  body.login::before {
-   content: '';
-   width: 100%;
-   height: 100vh;
-   background-color: rgba(255, 255, 255, 0.7);
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: -1;
-  }
- </style>
+body.login::before {
+ content: '';
+ width: 100%;
+ height: 100vh;
+ background-color: rgba(255, 255, 255, 0.7);
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: -1;
+}
+</style>
 <?php
 }
 add_action('login_enqueue_scripts', 'my_login_logo');

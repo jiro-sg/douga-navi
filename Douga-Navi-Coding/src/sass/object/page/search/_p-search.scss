@@ -6,6 +6,7 @@
 	padding-bottom: myrem(120);
 	background-color: $gray_fd;
 	@include mq(md) {
+		padding-bottom: myrem(48);
 	}
 }
 
@@ -52,12 +53,14 @@
 .p-search__result {
 	margin-top: myrem(80);
 	@include mq(md) {
+		margin-top: myrem(24);
 	}
 }
 
 .p-search__cta {
 	margin-top: myrem(40);
 	@include mq(md) {
+		margin-top: myrem(32);
 	}
 }
 
@@ -66,6 +69,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	@include mq(md) {
+  width: 100%;
 	}
 }
 

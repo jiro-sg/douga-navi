@@ -1,4 +1,4 @@
-window.addEventListener("load", function () {
+$(function () {
 	// ページトップボタン
 	var topBtn = $(".js-pagetop");
 	topBtn.hide();
@@ -81,15 +81,14 @@ window.addEventListener("load", function () {
 	//================================================
 
 	// 現在のページにクラス付与
-	$(function () {
-		$(".p-faq-category__item a").each(function () {
-			var target = $(this).attr("href");
-			if (location.href.match(target)) {
-				$(this).parent().addClass("is-selected");
-			} else {
-				$(this).parent().removeClass("is-selected");
-			}
-		});
+
+	$(".p-faq-category__item a").each(function () {
+		var target = $(this).attr("href");
+		if (location.href.match(target)) {
+			$(this).parent().addClass("is-selected");
+		} else {
+			$(this).parent().removeClass("is-selected");
+		}
 	});
 
 	// トップページFVスライド
@@ -107,5 +106,22 @@ window.addEventListener("load", function () {
 			el: ".swiper-pagination",
 			type: "bullets",
 		},
+	});
+
+	// スマホ時の検索結果ページの絞り込み条件アコーディオン
+
+	$(".js-srchAccrdin").on("click", function () {
+		if ($(this).parents(".p-srchCnditin__prntsTermBox").hasClass("accdinOpen")) {
+			$(this).parents(".p-srchCnditin__prntsTermBox").next().slideUp();
+			$(this).parents(".p-srchCnditin__prntsTermBox").removeClass("accdinOpen");
+		} else {
+			$(this).parents(".p-srchCnditin__prntsTermBox").next().slideDown();
+			$(this).parents(".p-srchCnditin__prntsTermBox").addClass("accdinOpen");
+		}
+	});
+
+	// 検索結果ページで親タームをクリックしたら子ターム全選択
+	$(".p-srchCnditin__prntsTermBox > label > input").on("change", function () {
+if($("..p-srchCnditin__prntsTermBox > label > input").attr(''))
 	});
 });

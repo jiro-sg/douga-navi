@@ -43,6 +43,8 @@
 .p-srchCnditin__defDescr {
 	flex: 1;
 	@include mq(md) {
+		width: 100%;
+		flex: 0 1 auto;
 		margin-top: myrem(8);
 	}
 }
@@ -75,50 +77,51 @@
 .p-srchCnditin__prntsTermLists:not(:first-of-type) {
 	margin-top: myrem(24);
 	@include mq(md) {
+		margin-top: myrem(16);
 	}
 }
 
-.p-srchCnditin__prntsTermItem > label {
-	display: inline-block;
+.p-srchCnditin__prntsTermBox {
+	display: flex;
+	align-items: center;
+	column-gap: myrem(8);
 	margin-bottom: myrem(8);
-	@include mq(md) {
-		display: flex;
-		align-items: center;
-		column-gap: myrem(8);
-	}
 }
 
-.p-srchCnditin__prntsTermItem > label > input {
+.p-srchCnditin__prntsTermBox > label {
+	display: block;
+}
+
+.p-srchCnditin__prntsTermBox > label > input {
 	display: none;
 	@include mq(md) {
 	}
 }
 
-.p-srchCnditin__prntsTermItem > label .p-srchCnditin__prntsTermName {
-	display: inline-block;
+.p-srchCnditin__prntsTermBox > label .p-srchCnditin__prntsTermName {
+	display: block;
 	font-size: myrem(15);
 	font-weight: 500;
 	letter-spacing: 0.005em;
 	color: $blue_00A;
 	cursor: pointer;
-	@include mq(md) {
-		position: relative;
-	}
 }
 
-.p-srchCnditin__prntsTermItem > label > input[type="checkbox"]:checked + .p-srchCnditin__prntsTermName {
+.p-srchCnditin__prntsTermBox > label > input[type="checkbox"]:checked + .p-srchCnditin__prntsTermName {
 	color: $pink_e15;
 	@include mq(md) {
 	}
 }
 
 .p-srchCnditin__accdionBtn {
+	display: none;
 	@include mq(md) {
 		display: block;
 		width: myrem(17);
 		height: myrem(17);
 		border-radius: 50%;
 		border: 1px solid $black_24;
+		cursor: pointer;
 		position: relative;
 	}
 }
@@ -156,9 +159,15 @@
 	}
 }
 
-.p-srchCnditin__prntsTermLists.accdinOpen .p-srchCnditin__accdionBtn::after {
+.p-srchCnditin__prntsTermBox.accdinOpen .p-srchCnditin__accdionBtn::after {
 	@include mq(md) {
 		transform: translate(-50%, -50%) rotate(90deg);
+	}
+}
+
+.p-srchCnditin__prntsTermLists .p-srchCnditin__termBox {
+	@include mq(md) {
+		display: none;
 	}
 }
 
@@ -187,6 +196,8 @@
 	padding: myrem(6.25) myrem(16.5);
 	cursor: pointer;
 	@include mq(md) {
+		font-size: myrem(14);
+		padding: myrem(6.5) myrem(15.5);
 	}
 }
 
@@ -205,6 +216,9 @@
 	column-gap: myrem(24);
 	margin-top: myrem(65);
 	@include mq(md) {
+		flex-direction: column-reverse;
+		margin-top: myrem(24);
+		row-gap: myrem(24);
 	}
 }
 
@@ -219,6 +233,8 @@
 	padding: myrem(8) 0;
 	cursor: pointer;
 	@include mq(md) {
+		width: 100%;
+		padding: myrem(13) 0;
 	}
 }
 
@@ -234,5 +250,7 @@
 	padding: myrem(8) 0;
 	cursor: pointer;
 	@include mq(md) {
+		width: 100%;
+		padding: myrem(13) 0;
 	}
 }

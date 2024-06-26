@@ -4,20 +4,20 @@
 <head>
  <!-- Google Tag Manager -->
  <script>
-  (function(w, d, s, l, i) {
-   w[l] = w[l] || [];
-   w[l].push({
-    'gtm.start': new Date().getTime(),
-    event: 'gtm.js'
-   });
-   var f = d.getElementsByTagName(s)[0],
-    j = d.createElement(s),
-    dl = l != 'dataLayer' ? '&l=' + l : '';
-   j.async = true;
-   j.src =
-    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-   f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', 'GTM-WPLFTNCL');
+ (function(w, d, s, l, i) {
+  w[l] = w[l] || [];
+  w[l].push({
+   'gtm.start': new Date().getTime(),
+   event: 'gtm.js'
+  });
+  var f = d.getElementsByTagName(s)[0],
+   j = d.createElement(s),
+   dl = l != 'dataLayer' ? '&l=' + l : '';
+  j.async = true;
+  j.src =
+   'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+  f.parentNode.insertBefore(j, f);
+ })(window, document, 'script', 'dataLayer', 'GTM-WPLFTNCL');
  </script>
  <!-- End Google Tag Manager -->
  <meta charset="<?php bloginfo('charset'); ?>">
@@ -51,7 +51,7 @@
     <div class="p-header__aboveRight">
      <div class="p-header__drawerBtn js-drawerOpen">
       <figure>
-       <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_search.png" alt="" width="17" header="20">
+       <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_search.png" alt="検索欄" width="17" header="20">
       </figure>
      </div>
      <div class="p-header__cntctInfo">
@@ -134,47 +134,47 @@
          if ($hierarchyCheck > 0) :
         ?>
 
-          <ul class="p-header__prntsTermLists">
-           <?php foreach ($termListsA as $termItemA) :
+        <ul class="p-header__prntsTermLists">
+         <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
             // var_dump($termItemA);
            ?>
-            <li class="p-header__prntsTermItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
+         <li class="p-header__prntsTermItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
 
-             <ul class="p-header__termLists">
-              <?php
+          <ul class="p-header__termLists">
+           <?php
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
               ?>
-               <li class="p-header__termItem">
-                <a href="#"><?php echo $termItemC->name; ?></a>
-               </li>
-              <?php endforeach; ?>
-              <!-- <li class="p-header__termItem">
+           <li class="p-header__termItem">
+            <a href="#"><?php echo $termItemC->name; ?></a>
+           </li>
+           <?php endforeach; ?>
+           <!-- <li class="p-header__termItem">
                <a href="#">YouTubeShort広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">TikTok広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">Instagramリール広告</a>
               </li> -->
-             </ul>
-            </li>
-           <?php endforeach; ?>
-
           </ul>
-         <?php else : ?>
-          <ul class="p-header__termLists">
-           <?php
+         </li>
+         <?php endforeach; ?>
+
+        </ul>
+        <?php else : ?>
+        <ul class="p-header__termLists">
+         <?php
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) : ?>
-            <li class="p-header__termItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
-            </li>
-           <?php endforeach; ?>
-          </ul>
+         <li class="p-header__termItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
+         </li>
+         <?php endforeach; ?>
+        </ul>
         <?php
          endif;
         endif;
@@ -205,57 +205,57 @@
          if ($hierarchyCheck > 0) :
         ?>
 
-          <ul class="p-header__prntsTermLists">
-           <?php foreach ($termListsA as $termItemA) :
+        <ul class="p-header__prntsTermLists">
+         <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
             // var_dump($termItemA);
            ?>
-            <li class="p-header__prntsTermItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
+         <li class="p-header__prntsTermItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
 
-             <ul class="p-header__termLists">
-              <?php
+          <ul class="p-header__termLists">
+           <?php
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
               ?>
-               <li class="p-header__termItem">
-                <a href="#"><?php echo $termItemC->name; ?></a>
-               </li>
-              <?php endforeach; ?>
-              <!-- <li class="p-header__termItem">
+           <li class="p-header__termItem">
+            <a href="#"><?php echo $termItemC->name; ?></a>
+           </li>
+           <?php endforeach; ?>
+           <!-- <li class="p-header__termItem">
                <a href="#">YouTubeShort広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">TikTok広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">Instagramリール広告</a>
               </li> -->
-             </ul>
-            </li>
-           <?php endforeach; ?>
-
           </ul>
-         <?php else : ?>
-          <ul class="p-header__termLists">
-           <?php
+         </li>
+         <?php endforeach; ?>
+
+        </ul>
+        <?php else : ?>
+        <ul class="p-header__termLists">
+         <?php
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) : ?>
-            <li class="p-header__termItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
-            </li>
-           <?php endforeach; ?>
+         <li class="p-header__termItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
+         </li>
+         <?php endforeach; ?>
 
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">アニメーション</a>
            </li> -->
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">CG</a>
            </li> -->
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">ドローン撮影</a>
            </li> -->
-          </ul>
+        </ul>
         <?php
          endif;
         endif;
@@ -286,57 +286,57 @@
          if ($hierarchyCheck > 0) :
         ?>
 
-          <ul class="p-header__prntsTermLists">
-           <?php foreach ($termListsA as $termItemA) :
+        <ul class="p-header__prntsTermLists">
+         <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
             // var_dump($termItemA);
            ?>
-            <li class="p-header__prntsTermItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
+         <li class="p-header__prntsTermItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
 
-             <ul class="p-header__termLists">
-              <?php
+          <ul class="p-header__termLists">
+           <?php
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
               ?>
-               <li class="p-header__termItem">
-                <a href="#"><?php echo $termItemC->name; ?></a>
-               </li>
-              <?php endforeach; ?>
-              <!-- <li class="p-header__termItem">
+           <li class="p-header__termItem">
+            <a href="#"><?php echo $termItemC->name; ?></a>
+           </li>
+           <?php endforeach; ?>
+           <!-- <li class="p-header__termItem">
                <a href="#">YouTubeShort広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">TikTok広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">Instagramリール広告</a>
               </li> -->
-             </ul>
-            </li>
-           <?php endforeach; ?>
-
           </ul>
-         <?php else : ?>
-          <ul class="p-header__termLists">
-           <?php
+         </li>
+         <?php endforeach; ?>
+
+        </ul>
+        <?php else : ?>
+        <ul class="p-header__termLists">
+         <?php
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) : ?>
-            <li class="p-header__termItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
-            </li>
-           <?php endforeach; ?>
+         <li class="p-header__termItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
+         </li>
+         <?php endforeach; ?>
 
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">アニメーション</a>
            </li> -->
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">CG</a>
            </li> -->
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">ドローン撮影</a>
            </li> -->
-          </ul>
+        </ul>
         <?php
          endif;
         endif;
@@ -367,57 +367,57 @@
          if ($hierarchyCheck > 0) :
         ?>
 
-          <ul class="p-header__prntsTermLists">
-           <?php foreach ($termListsA as $termItemA) :
+        <ul class="p-header__prntsTermLists">
+         <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
             // var_dump($termItemA);
            ?>
-            <li class="p-header__prntsTermItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
+         <li class="p-header__prntsTermItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
 
-             <ul class="p-header__termLists">
-              <?php
+          <ul class="p-header__termLists">
+           <?php
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
               ?>
-               <li class="p-header__termItem">
-                <a href="#"><?php echo $termItemC->name; ?></a>
-               </li>
-              <?php endforeach; ?>
-              <!-- <li class="p-header__termItem">
+           <li class="p-header__termItem">
+            <a href="#"><?php echo $termItemC->name; ?></a>
+           </li>
+           <?php endforeach; ?>
+           <!-- <li class="p-header__termItem">
                <a href="#">YouTubeShort広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">TikTok広告</a>
               </li> -->
-              <!-- <li class="p-header__termItem">
+           <!-- <li class="p-header__termItem">
                <a href="#">Instagramリール広告</a>
               </li> -->
-             </ul>
-            </li>
-           <?php endforeach; ?>
-
           </ul>
-         <?php else : ?>
-          <ul class="p-header__termLists">
-           <?php
+         </li>
+         <?php endforeach; ?>
+
+        </ul>
+        <?php else : ?>
+        <ul class="p-header__termLists">
+         <?php
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) : ?>
-            <li class="p-header__termItem">
-             <a href="#"><?php echo $termItemA->name; ?></a>
-            </li>
-           <?php endforeach; ?>
+         <li class="p-header__termItem">
+          <a href="#"><?php echo $termItemA->name; ?></a>
+         </li>
+         <?php endforeach; ?>
 
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">アニメーション</a>
            </li> -->
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">CG</a>
            </li> -->
-           <!-- <li class="p-header__termItem">
+         <!-- <li class="p-header__termItem">
             <a href="#">ドローン撮影</a>
            </li> -->
-          </ul>
+        </ul>
         <?php
          endif;
         endif;

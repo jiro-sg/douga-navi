@@ -28,43 +28,43 @@
 
 
     <?php
-        $the_query = new WP_Query();
-        $param = array(
-          'posts_per_page' => '-1', //表示件数。-1なら全件表示
-          'post_type' => 'faq', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
-          'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
-          'order' => 'DESC'
-        );
-        $the_query->query($param);
-        if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
-        ?>
+    $the_query = new WP_Query();
+    $param = array(
+     'posts_per_page' => '-1', //表示件数。-1なら全件表示
+     'post_type' => 'faq', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
+     'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
+     'order' => 'DESC'
+    );
+    $the_query->query($param);
+    if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
+    ?>
 
 
 
 
-    <dl class="p-faq__item">
-     <dt class="p-faq__question">
-      <?php the_title(); ?>
-     </dt>
-     <dd class="p-faq__answer">
+      <dl class="p-faq__item">
+       <dt class="p-faq__question">
+        <?php the_title(); ?>
+       </dt>
+       <dd class="p-faq__answer">
 
-      <?php $value = get_post_meta($post->ID, 'answer', true); ?>
-      <?php if (!empty($value)) : ?>
-      <?php the_field('answer'); ?>
-      <?php else : ?>
+        <?php $value = get_post_meta($post->ID, 'answer', true); ?>
+        <?php if (!empty($value)) : ?>
+         <?php the_field('answer'); ?>
+        <?php else : ?>
 
-      <?php endif; ?>
-     </dd>
-    </dl>
+        <?php endif; ?>
+       </dd>
+      </dl>
 
 
 
 
     <?php
-          endwhile;
-        endif;
-        wp_reset_postdata()
-        ?>
+     endwhile;
+    endif;
+    wp_reset_postdata()
+    ?>
 
 
 

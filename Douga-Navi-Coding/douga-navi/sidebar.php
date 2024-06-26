@@ -10,210 +10,486 @@
 </div>
 
 <nav class="p-sidebar__navi p-sideNavi">
-
  <article class="p-sideNavi__txnmy">
   <h2 class="p-sideNavi__ttl">用途から探す</h2>
-  <ul class="p-sideNavi__lists">
+  <?php
+  $hierarchyArray = array();
+  $termListsA = get_terms('purpose', array('hide_empty' => false, 'parent' => 0));
+  foreach ($termListsA as $termItemA) {
+   $termItemA_id = $termItemA->term_id;
+   $termListsB = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+   array_push($hierarchyArray, count($termListsB));
+  }
+  $hierarchyCheck = array_sum($hierarchyArray);
+  // var_dump($hierarchyCheck);
 
-   <li class="p-sideNavi__item">
-    <a href="#">動画広告</a>
-    <ul class="p-sideNavi__childLists">
+  // タームが１つでも存在する場合
+  if (!empty($termListsA)) :
+   // タームが親子関係の２階層ある場合
+   if ($hierarchyCheck > 0) :
+  ?>
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">Youtube広告</a>
-     </li>
+    <ul class="p-sideNavi__lists">
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">YouTube Short広告</a>
-     </li>
+     <?php foreach ($termListsA as $termItemA) :
+      $termItemA_id = $termItemA->term_id;
+      // var_dump($termItemA);
+     ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+       <ul class="p-sideNavi__childLists">
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">TikTok広告</a>
-     </li>
+        <?php
+        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        foreach ($termListsC as $termItemC) :
+        ?>
+         <li class="p-sideNavi__childItem">
+          <a href="#"><?php echo $termItemC->name; ?></a>
+         </li>
+        <?php endforeach; ?>
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">Instagram リール広告</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">YouTube Short広告</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">Facebook広告</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">TikTok広告</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">X広告</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">Instagram リール広告</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">CM</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">Facebook広告</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">タクシー広告動画</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">X広告</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">Google広告（ディスプレイ・P-MAX）</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">CM</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">Yahoo!広告</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">タクシー広告動画</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">LINE広告</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">Google広告（ディスプレイ・P-MAX）</a>
+        </li> -->
 
-     <li class="p-sideNavi__childItem">
-      <a href="#">VOD動画広告</a>
-     </li>
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">Yahoo!広告</a>
+        </li> -->
+
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">LINE広告</a>
+        </li> -->
+
+        <!-- <li class="p-sideNavi__childItem">
+         <a href="#">VOD動画広告</a>
+        </li> -->
+
+       </ul>
+      </li>
+     <?php endforeach; ?>
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">採用動画</a>
+     <ul class="p-sideNavi__childLists">
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">事業紹介動画（求職者向け）</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">オフィス紹介</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">企業説明会用動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">コンセプトムービー</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">社員インタビュー</a>
+      </li>
+     </ul>
+    </li> -->
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">SNS動画</a>
+     <ul class="p-sideNavi__childLists">
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">YouTube</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">YouTube Short</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">TikTok</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">Instagram リール</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">Facebook</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">X</a>
+      </li>
+     </ul>
+    </li> -->
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">研修用動画</a>
+     <ul class="p-sideNavi__childLists">
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">マニュアル動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">インナーブランディング動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">社員総会</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">従業員インタビュー動画</a>
+      </li>
+     </ul>
+    </li> -->
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">プロモーション動画</a>
+     <ul class="p-sideNavi__childLists">
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">商品・サービスPR</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">企業PR</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">店舗・施設紹介動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">ブランディング動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">プロモーションビデオ（PV）</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">事例紹介・ユーザーの声動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">セミナー動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">ウェビナー動画</a>
+      </li>
+
+     </ul>
+    </li> -->
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">結婚式</a>
+    </li> -->
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">ライフイベント動画</a>
+     <ul class="p-sideNavi__childLists">
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">お祝い・記念日動画</a>
+      </li>
+
+      <li class="p-sideNavi__childItem">
+       <a href="#">ペット動画</a>
+      </li>
+
+     </ul>
+    </li> -->
+
+     <!-- <li class="p-sideNavi__item">
+     <a href="#">その他</a>
+    </li> -->
 
     </ul>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">採用動画</a>
-    <ul class="p-sideNavi__childLists">
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">事業紹介動画（求職者向け）</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">オフィス紹介</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">企業説明会用動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">コンセプトムービー</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">社員インタビュー</a>
-     </li>
+   <?php else : ?>
+    <ul class="p-sideNavi__lists">
+     <?php
+     // タームが１階層しかない場合
+     foreach ($termListsA as $termItemA) :; ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+      </li>
+     <?php endforeach; ?>
     </ul>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">SNS動画</a>
-    <ul class="p-sideNavi__childLists">
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">YouTube</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">YouTube Short</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">TikTok</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">Instagram リール</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">Facebook</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">X</a>
-     </li>
-    </ul>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">研修用動画</a>
-    <ul class="p-sideNavi__childLists">
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">マニュアル動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">インナーブランディング動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">社員総会</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">従業員インタビュー動画</a>
-     </li>
-    </ul>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">プロモーション動画</a>
-    <ul class="p-sideNavi__childLists">
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">商品・サービスPR</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">企業PR</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">店舗・施設紹介動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">ブランディング動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">プロモーションビデオ（PV）</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">事例紹介・ユーザーの声動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">セミナー動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">ウェビナー動画</a>
-     </li>
-
-    </ul>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">結婚式</a>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">ライフイベント動画</a>
-    <ul class="p-sideNavi__childLists">
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">お祝い・記念日動画</a>
-     </li>
-
-     <li class="p-sideNavi__childItem">
-      <a href="#">ペット動画</a>
-     </li>
-
-    </ul>
-   </li>
-
-   <li class="p-sideNavi__item">
-    <a href="#">その他</a>
-   </li>
-
-  </ul>
+  <?php
+   endif;
+  endif;
+  ?>
  </article>
 
  <article class="p-sideNavi__txnmy">
+  <h2 class="p-sideNavi__ttl">表現方法から探す</h2>
+  <?php
+  $hierarchyArray = array();
+  $termListsA = get_terms('expression_method', array('hide_empty' => false, 'parent' => 0));
+  foreach ($termListsA as $termItemA) {
+   $termItemA_id = $termItemA->term_id;
+   $termListsB = get_terms('expression_method', array('hide_empty' => false, 'parent' => $termItemA_id));
+   array_push($hierarchyArray, count($termListsB));
+  }
+  $hierarchyCheck = array_sum($hierarchyArray);
+  // var_dump($hierarchyCheck);
+
+  // タームが１つでも存在する場合
+  if (!empty($termListsA)) :
+   // タームが親子関係の２階層ある場合
+   if ($hierarchyCheck > 0) :
+  ?>
+    <ul class="p-sideNavi__lists">
+
+     <?php foreach ($termListsA as $termItemA) :
+      $termItemA_id = $termItemA->term_id;
+      // var_dump($termItemA);
+     ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+       <ul class="p-sideNavi__childLists">
+
+        <?php
+        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        foreach ($termListsC as $termItemC) :
+        ?>
+         <li class="p-sideNavi__childItem">
+          <a href="#"><?php echo $termItemC->name; ?></a>
+         </li>
+        <?php endforeach; ?>
+
+       </ul>
+      </li>
+     <?php endforeach; ?>
+
+
+    </ul>
+   <?php else : ?>
+    <ul class="p-sideNavi__lists">
+     <?php
+     // タームが１階層しかない場合
+     foreach ($termListsA as $termItemA) :; ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+      </li>
+     <?php endforeach; ?>
+    </ul>
+  <?php
+   endif;
+  endif;
+  ?>
+ </article>
+
+ <article class="p-sideNavi__txnmy">
+  <h2 class="p-sideNavi__ttl">価格帯から探す</h2>
+  <?php
+  $hierarchyArray = array();
+  $termListsA = get_terms('price_range', array('hide_empty' => false, 'parent' => 0));
+  foreach ($termListsA as $termItemA) {
+   $termItemA_id = $termItemA->term_id;
+   $termListsB = get_terms('price_range', array('hide_empty' => false, 'parent' => $termItemA_id));
+   array_push($hierarchyArray, count($termListsB));
+  }
+  $hierarchyCheck = array_sum($hierarchyArray);
+  // var_dump($hierarchyCheck);
+
+  // タームが１つでも存在する場合
+  if (!empty($termListsA)) :
+   // タームが親子関係の２階層ある場合
+   if ($hierarchyCheck > 0) :
+  ?>
+    <ul class="p-sideNavi__lists">
+
+     <?php foreach ($termListsA as $termItemA) :
+      $termItemA_id = $termItemA->term_id;
+      // var_dump($termItemA);
+     ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+       <ul class="p-sideNavi__childLists">
+
+        <?php
+        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        foreach ($termListsC as $termItemC) :
+        ?>
+         <li class="p-sideNavi__childItem">
+          <a href="#"><?php echo $termItemC->name; ?></a>
+         </li>
+        <?php endforeach; ?>
+
+       </ul>
+      </li>
+     <?php endforeach; ?>
+
+
+    </ul>
+   <?php else : ?>
+    <ul class="p-sideNavi__lists">
+     <?php
+     // タームが１階層しかない場合
+     foreach ($termListsA as $termItemA) :; ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+      </li>
+     <?php endforeach; ?>
+    </ul>
+  <?php
+   endif;
+  endif;
+  ?>
+ </article>
+
+ <article class="p-sideNavi__txnmy">
+  <h2 class="p-sideNavi__ttl">動画尺から探す</h2>
+  <?php
+  $hierarchyArray = array();
+  $termListsA = get_terms('video_length', array('hide_empty' => false, 'parent' => 0));
+  foreach ($termListsA as $termItemA) {
+   $termItemA_id = $termItemA->term_id;
+   $termListsB = get_terms('video_length', array('hide_empty' => false, 'parent' => $termItemA_id));
+   array_push($hierarchyArray, count($termListsB));
+  }
+  $hierarchyCheck = array_sum($hierarchyArray);
+  // var_dump($hierarchyCheck);
+
+  // タームが１つでも存在する場合
+  if (!empty($termListsA)) :
+   // タームが親子関係の２階層ある場合
+   if ($hierarchyCheck > 0) :
+  ?>
+    <ul class="p-sideNavi__lists">
+
+     <?php foreach ($termListsA as $termItemA) :
+      $termItemA_id = $termItemA->term_id;
+      // var_dump($termItemA);
+     ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+       <ul class="p-sideNavi__childLists">
+
+        <?php
+        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        foreach ($termListsC as $termItemC) :
+        ?>
+         <li class="p-sideNavi__childItem">
+          <a href="#"><?php echo $termItemC->name; ?></a>
+         </li>
+        <?php endforeach; ?>
+
+       </ul>
+      </li>
+     <?php endforeach; ?>
+
+
+    </ul>
+   <?php else : ?>
+    <ul class="p-sideNavi__lists">
+     <?php
+     // タームが１階層しかない場合
+     foreach ($termListsA as $termItemA) :; ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+      </li>
+     <?php endforeach; ?>
+    </ul>
+  <?php
+   endif;
+  endif;
+  ?>
+ </article>
+
+ <article class="p-sideNavi__txnmy">
+  <h2 class="p-sideNavi__ttl">業種から探す</h2>
+  <?php
+  $hierarchyArray = array();
+  $termListsA = get_terms('industry', array('hide_empty' => false, 'parent' => 0));
+  foreach ($termListsA as $termItemA) {
+   $termItemA_id = $termItemA->term_id;
+   $termListsB = get_terms('industry', array('hide_empty' => false, 'parent' => $termItemA_id));
+   array_push($hierarchyArray, count($termListsB));
+  }
+  $hierarchyCheck = array_sum($hierarchyArray);
+  // var_dump($hierarchyCheck);
+
+  // タームが１つでも存在する場合
+  if (!empty($termListsA)) :
+   // タームが親子関係の２階層ある場合
+   if ($hierarchyCheck > 0) :
+  ?>
+    <ul class="p-sideNavi__lists">
+
+     <?php foreach ($termListsA as $termItemA) :
+      $termItemA_id = $termItemA->term_id;
+      // var_dump($termItemA);
+     ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+       <ul class="p-sideNavi__childLists">
+
+        <?php
+        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        foreach ($termListsC as $termItemC) :
+        ?>
+         <li class="p-sideNavi__childItem">
+          <a href="#"><?php echo $termItemC->name; ?></a>
+         </li>
+        <?php endforeach; ?>
+
+       </ul>
+      </li>
+     <?php endforeach; ?>
+
+
+    </ul>
+   <?php else : ?>
+    <ul class="p-sideNavi__lists">
+     <?php
+     // タームが１階層しかない場合
+     foreach ($termListsA as $termItemA) :; ?>
+      <li class="p-sideNavi__item">
+       <a href="#"><?php echo $termItemA->name; ?></a>
+      </li>
+     <?php endforeach; ?>
+    </ul>
+  <?php
+   endif;
+  endif;
+  ?>
+ </article>
+
+ <!-- <article class="p-sideNavi__txnmy">
   <h2 class="p-sideNavi__ttl">表現方法から探す</h2>
   <ul class="p-sideNavi__lists">
 
@@ -233,9 +509,9 @@
     <a href="#">ドローン撮影</a>
    </li>
   </ul>
- </article>
+ </article> -->
 
- <article class="p-sideNavi__txnmy">
+ <!-- <article class="p-sideNavi__txnmy">
   <h2 class="p-sideNavi__ttl">価格帯から探す</h2>
   <ul class="p-sideNavi__lists">
 
@@ -255,9 +531,9 @@
     <a href="#">100万円以上</a>
    </li>
   </ul>
- </article>
+ </article> -->
 
- <article class="p-sideNavi__txnmy">
+ <!-- <article class="p-sideNavi__txnmy">
   <h2 class="p-sideNavi__ttl">動画尺から探す</h2>
   <ul class="p-sideNavi__lists">
 
@@ -277,9 +553,9 @@
     <a href="#">長尺動画（10分以上）</a>
    </li>
   </ul>
- </article>
+ </article> -->
 
- <article class="p-sideNavi__txnmy">
+ <!-- <article class="p-sideNavi__txnmy">
   <h2 class="p-sideNavi__ttl">業種から探す</h2>
   <ul class="p-sideNavi__lists">
 
@@ -303,13 +579,6 @@
     <a href="#">その他</a>
    </li>
   </ul>
- </article>
-
-
-
-
-
-
-
+ </article> -->
 
 </nav>

@@ -1,0 +1,8 @@
+@use "global" as *;
+
+.l-pagenavi {
+  margin-top: myrem(32);
+  @include mq("md") {
+    margin-top: myrem(24);
+  }
+}

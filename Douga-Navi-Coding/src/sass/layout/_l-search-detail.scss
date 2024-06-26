@@ -1,0 +1,8 @@
+@use "global" as *;
+
+.l-search-detail {
+  // margin-top: myrem(37);
+  @include mq("md") {
+    // margin-top: myrem(32);
+  }
+}

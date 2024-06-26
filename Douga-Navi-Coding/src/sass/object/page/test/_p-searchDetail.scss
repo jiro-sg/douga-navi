@@ -28,6 +28,7 @@
 
 .p-searchDetail__items {
   display: flex;
+  flex-wrap: wrap;
   gap: myrem(15);
   margin-top: myrem(15);
   @include mq("md") {
@@ -138,4 +139,7 @@
 
 .p-searchDetail__cta.p-flowCTA {
   padding-top: myrem(40);
+  @include mq("md") {
+    padding-bottom: 0;
+  }
 }

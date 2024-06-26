@@ -12,10 +12,10 @@
     <h2 class="p-searchDetail__title"><?php the_title(); ?></h2>
     <div class="p-searchDetail__movie">
      <?php //youtube動画をWordPressのカスタムフィールドで挿入したい
-$hoge = get_field('info_movie');
-if($hoge):
-   echo $embed_code = wp_oembed_get( $hoge );
-endif; ?>
+     $hoge = get_field('info_movie');
+     if ($hoge) :
+      echo $embed_code = wp_oembed_get($hoge);
+     endif; ?>
     </div>
 
     <!-- <//?php
@@ -105,7 +105,7 @@ endif; ?>
       </div>
      </div>
      <div class="p-flowCTA__btn">
-      <a href="#">ホームへ戻る</a>
+      <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
      </div>
     </div>
 

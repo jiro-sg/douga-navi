@@ -142,7 +142,7 @@
    </div>
 
    <div class="p-flowCTA__btn">
-    <a href="#">ホームへ戻る</a>
+    <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
    </div>
 
   </div>

@@ -4,20 +4,20 @@
 <head>
  <!-- Google Tag Manager -->
  <script>
- (function(w, d, s, l, i) {
-  w[l] = w[l] || [];
-  w[l].push({
-   'gtm.start': new Date().getTime(),
-   event: 'gtm.js'
-  });
-  var f = d.getElementsByTagName(s)[0],
-   j = d.createElement(s),
-   dl = l != 'dataLayer' ? '&l=' + l : '';
-  j.async = true;
-  j.src =
-   'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-  f.parentNode.insertBefore(j, f);
- })(window, document, 'script', 'dataLayer', 'GTM-WPLFTNCL');
+  (function(w, d, s, l, i) {
+   w[l] = w[l] || [];
+   w[l].push({
+    'gtm.start': new Date().getTime(),
+    event: 'gtm.js'
+   });
+   var f = d.getElementsByTagName(s)[0],
+    j = d.createElement(s),
+    dl = l != 'dataLayer' ? '&l=' + l : '';
+   j.async = true;
+   j.src =
+    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+   f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-WPLFTNCL');
  </script>
  <!-- End Google Tag Manager -->
  <meta charset="<?php bloginfo('charset'); ?>">
@@ -116,25 +116,68 @@
         <div class="p-header__txnmyBox js-drawerAccdin">
          <p class="p-header__txnmyName">用途から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
-        <ul class="p-header__prntsTermLists">
-         <li class="p-header__prntsTermItem">
-          <a href="#">動画広告</a>
-          <ul class="p-header__termLists">
-           <li class="p-header__termItem">
-            <a href="#">YouTube広告</a>
-           </li>
-           <li class="p-header__termItem">
-            <a href="#">YouTubeShort広告</a>
-           </li>
-           <li class="p-header__termItem">
-            <a href="#">TikTok広告</a>
-           </li>
-           <li class="p-header__termItem">
-            <a href="#">Instagramリール広告</a>
-           </li>
+        <?php
+        $hierarchyArray = array();
+        $termListsA = get_terms('purpose', array('hide_empty' => false, 'parent' => 0));
+        foreach ($termListsA as $termItemA) {
+         $termItemA_id = $termItemA->term_id;
+         $termListsB = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+         array_push($hierarchyArray, count($termListsB));
+        }
+        $hierarchyCheck = array_sum($hierarchyArray);
+        // var_dump($hierarchyCheck);
+
+        // タームが１つでも存在する場合
+        if (!empty($termListsA)) :
+         // タームが親子関係の２階層ある場合
+         if ($hierarchyCheck > 0) :
+        ?>
+
+          <ul class="p-header__prntsTermLists">
+           <?php foreach ($termListsA as $termItemA) :
+            $termItemA_id = $termItemA->term_id;
+            // var_dump($termItemA);
+           ?>
+            <li class="p-header__prntsTermItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+
+             <ul class="p-header__termLists">
+              <?php
+              $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+              foreach ($termListsC as $termItemC) :
+              ?>
+               <li class="p-header__termItem">
+                <a href="#"><?php echo $termItemC->name; ?></a>
+               </li>
+              <?php endforeach; ?>
+              <!-- <li class="p-header__termItem">
+               <a href="#">YouTubeShort広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">TikTok広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">Instagramリール広告</a>
+              </li> -->
+             </ul>
+            </li>
+           <?php endforeach; ?>
+
           </ul>
-         </li>
-        </ul>
+         <?php else : ?>
+          <ul class="p-header__termLists">
+           <?php
+           // タームが１階層しかない場合
+           foreach ($termListsA as $termItemA) : ?>
+            <li class="p-header__termItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+            </li>
+           <?php endforeach; ?>
+          </ul>
+        <?php
+         endif;
+        endif;
+        ?>
        </li>
       </ul>
 
@@ -143,8 +186,246 @@
         <div class="p-header__txnmyBox js-drawerAccdin">
          <p class="p-header__txnmyName">表現方法から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
+        <?php
+        $hierarchyArray = array();
+        $termListsA = get_terms('expression_method', array('hide_empty' => false, 'parent' => 0));
+        foreach ($termListsA as $termItemA) {
+         $termItemA_id = $termItemA->term_id;
+         $termListsB = get_terms('expression_method', array('hide_empty' => false, 'parent' => $termItemA_id));
+         array_push($hierarchyArray, count($termListsB));
+        }
+        $hierarchyCheck = array_sum($hierarchyArray);
+        // var_dump($hierarchyCheck);
 
+        // タームが１つでも存在する場合
+        if (!empty($termListsA)) :
+         // タームが親子関係の２階層ある場合
+         if ($hierarchyCheck > 0) :
+        ?>
 
+          <ul class="p-header__prntsTermLists">
+           <?php foreach ($termListsA as $termItemA) :
+            $termItemA_id = $termItemA->term_id;
+            // var_dump($termItemA);
+           ?>
+            <li class="p-header__prntsTermItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+
+             <ul class="p-header__termLists">
+              <?php
+              $termListsC = get_terms('expression_method', array('hide_empty' => false, 'parent' => $termItemA_id));
+              foreach ($termListsC as $termItemC) :
+              ?>
+               <li class="p-header__termItem">
+                <a href="#"><?php echo $termItemC->name; ?></a>
+               </li>
+              <?php endforeach; ?>
+              <!-- <li class="p-header__termItem">
+               <a href="#">YouTubeShort広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">TikTok広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">Instagramリール広告</a>
+              </li> -->
+             </ul>
+            </li>
+           <?php endforeach; ?>
+
+          </ul>
+         <?php else : ?>
+          <ul class="p-header__termLists">
+           <?php
+           // タームが１階層しかない場合
+           foreach ($termListsA as $termItemA) : ?>
+            <li class="p-header__termItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+            </li>
+           <?php endforeach; ?>
+
+           <!-- <li class="p-header__termItem">
+            <a href="#">アニメーション</a>
+           </li> -->
+           <!-- <li class="p-header__termItem">
+            <a href="#">CG</a>
+           </li> -->
+           <!-- <li class="p-header__termItem">
+            <a href="#">ドローン撮影</a>
+           </li> -->
+          </ul>
+        <?php
+         endif;
+        endif;
+        ?>
+       </li>
+      </ul>
+
+      <ul class="p-header__txnmyLists">
+       <li class="p-header__txnmyItem">
+        <div class="p-header__txnmyBox js-drawerAccdin">
+         <p class="p-header__txnmyName">価格帯から探す</p><span class="p-header__txnmyAccdinBtn"></span>
+        </div>
+        <?php
+        $hierarchyArray = array();
+        $termListsA = get_terms('price_range', array('hide_empty' => false, 'parent' => 0));
+        foreach ($termListsA as $termItemA) {
+         $termItemA_id = $termItemA->term_id;
+         $termListsB = get_terms('price_range', array('hide_empty' => false, 'parent' => $termItemA_id));
+         array_push($hierarchyArray, count($termListsB));
+        }
+        $hierarchyCheck = array_sum($hierarchyArray);
+        // var_dump($hierarchyCheck);
+
+        // タームが１つでも存在する場合
+        if (!empty($termListsA)) :
+         // タームが親子関係の２階層ある場合
+         if ($hierarchyCheck > 0) :
+        ?>
+
+          <ul class="p-header__prntsTermLists">
+           <?php foreach ($termListsA as $termItemA) :
+            $termItemA_id = $termItemA->term_id;
+            // var_dump($termItemA);
+           ?>
+            <li class="p-header__prntsTermItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+
+             <ul class="p-header__termLists">
+              <?php
+              $termListsC = get_terms('price_range', array('hide_empty' => false, 'parent' => $termItemA_id));
+              foreach ($termListsC as $termItemC) :
+              ?>
+               <li class="p-header__termItem">
+                <a href="#"><?php echo $termItemC->name; ?></a>
+               </li>
+              <?php endforeach; ?>
+              <!-- <li class="p-header__termItem">
+               <a href="#">YouTubeShort広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">TikTok広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">Instagramリール広告</a>
+              </li> -->
+             </ul>
+            </li>
+           <?php endforeach; ?>
+
+          </ul>
+         <?php else : ?>
+          <ul class="p-header__termLists">
+           <?php
+           // タームが１階層しかない場合
+           foreach ($termListsA as $termItemA) : ?>
+            <li class="p-header__termItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+            </li>
+           <?php endforeach; ?>
+
+           <!-- <li class="p-header__termItem">
+            <a href="#">アニメーション</a>
+           </li> -->
+           <!-- <li class="p-header__termItem">
+            <a href="#">CG</a>
+           </li> -->
+           <!-- <li class="p-header__termItem">
+            <a href="#">ドローン撮影</a>
+           </li> -->
+          </ul>
+        <?php
+         endif;
+        endif;
+        ?>
+       </li>
+      </ul>
+
+      <ul class="p-header__txnmyLists">
+       <li class="p-header__txnmyItem">
+        <div class="p-header__txnmyBox js-drawerAccdin">
+         <p class="p-header__txnmyName">業種から探す</p><span class="p-header__txnmyAccdinBtn"></span>
+        </div>
+        <?php
+        $hierarchyArray = array();
+        $termListsA = get_terms('industry', array('hide_empty' => false, 'parent' => 0));
+        foreach ($termListsA as $termItemA) {
+         $termItemA_id = $termItemA->term_id;
+         $termListsB = get_terms('video_length', array('industry' => false, 'parent' => $termItemA_id));
+         array_push($hierarchyArray, count($termListsB));
+        }
+        $hierarchyCheck = array_sum($hierarchyArray);
+        // var_dump($hierarchyCheck);
+
+        // タームが１つでも存在する場合
+        if (!empty($termListsA)) :
+         // タームが親子関係の２階層ある場合
+         if ($hierarchyCheck > 0) :
+        ?>
+
+          <ul class="p-header__prntsTermLists">
+           <?php foreach ($termListsA as $termItemA) :
+            $termItemA_id = $termItemA->term_id;
+            // var_dump($termItemA);
+           ?>
+            <li class="p-header__prntsTermItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+
+             <ul class="p-header__termLists">
+              <?php
+              $termListsC = get_terms('industry', array('hide_empty' => false, 'parent' => $termItemA_id));
+              foreach ($termListsC as $termItemC) :
+              ?>
+               <li class="p-header__termItem">
+                <a href="#"><?php echo $termItemC->name; ?></a>
+               </li>
+              <?php endforeach; ?>
+              <!-- <li class="p-header__termItem">
+               <a href="#">YouTubeShort広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">TikTok広告</a>
+              </li> -->
+              <!-- <li class="p-header__termItem">
+               <a href="#">Instagramリール広告</a>
+              </li> -->
+             </ul>
+            </li>
+           <?php endforeach; ?>
+
+          </ul>
+         <?php else : ?>
+          <ul class="p-header__termLists">
+           <?php
+           // タームが１階層しかない場合
+           foreach ($termListsA as $termItemA) : ?>
+            <li class="p-header__termItem">
+             <a href="#"><?php echo $termItemA->name; ?></a>
+            </li>
+           <?php endforeach; ?>
+
+           <!-- <li class="p-header__termItem">
+            <a href="#">アニメーション</a>
+           </li> -->
+           <!-- <li class="p-header__termItem">
+            <a href="#">CG</a>
+           </li> -->
+           <!-- <li class="p-header__termItem">
+            <a href="#">ドローン撮影</a>
+           </li> -->
+          </ul>
+        <?php
+         endif;
+        endif;
+        ?>
+       </li>
+      </ul>
+
+      <!-- <ul class="p-header__txnmyLists">
+       <li class="p-header__txnmyItem">
+        <div class="p-header__txnmyBox js-drawerAccdin">
+         <p class="p-header__txnmyName">表現方法から探す</p><span class="p-header__txnmyAccdinBtn"></span>
+        </div>
         <ul class="p-header__termLists">
          <li class="p-header__termItem">
           <a href="#">実写</a>
@@ -159,10 +440,8 @@
           <a href="#">ドローン撮影</a>
          </li>
         </ul>
-
-
        </li>
-      </ul>
+      </ul> -->
 
 
 

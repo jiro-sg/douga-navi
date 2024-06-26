@@ -170,6 +170,7 @@
 		overflow: scroll;
 		background-color: $white_fff;
 		padding-top: myrem(50);
+		padding-bottom: myrem(80);
 		z-index: 21;
 		display: none;
 	}
@@ -330,6 +331,7 @@
 	justify-content: space-between;
 	padding: myrem(16) 0 myrem(8);
 	border-bottom: 1px solid $gray_ddd;
+	cursor: pointer;
 }
 
 .p-header__txnmyName {

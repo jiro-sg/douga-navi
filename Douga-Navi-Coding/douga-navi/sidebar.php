@@ -241,7 +241,7 @@
     <ul class="p-sideNavi__lists">
      <?php
      // タームが１階層しかない場合
-     foreach ($termListsA as $termItemA) :; ?>
+     foreach ($termListsA as $termItemA) : ?>
       <li class="p-sideNavi__item">
        <a href="#"><?php echo $termItemA->name; ?></a>
       </li>
@@ -282,7 +282,7 @@
        <ul class="p-sideNavi__childLists">
 
         <?php
-        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        $termListsC = get_terms('expression_method', array('hide_empty' => false, 'parent' => $termItemA_id));
         foreach ($termListsC as $termItemC) :
         ?>
          <li class="p-sideNavi__childItem">
@@ -300,7 +300,7 @@
     <ul class="p-sideNavi__lists">
      <?php
      // タームが１階層しかない場合
-     foreach ($termListsA as $termItemA) :; ?>
+     foreach ($termListsA as $termItemA) : ?>
       <li class="p-sideNavi__item">
        <a href="#"><?php echo $termItemA->name; ?></a>
       </li>
@@ -341,7 +341,7 @@
        <ul class="p-sideNavi__childLists">
 
         <?php
-        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        $termListsC = get_terms('price_range', array('hide_empty' => false, 'parent' => $termItemA_id));
         foreach ($termListsC as $termItemC) :
         ?>
          <li class="p-sideNavi__childItem">
@@ -359,7 +359,7 @@
     <ul class="p-sideNavi__lists">
      <?php
      // タームが１階層しかない場合
-     foreach ($termListsA as $termItemA) :; ?>
+     foreach ($termListsA as $termItemA) : ?>
       <li class="p-sideNavi__item">
        <a href="#"><?php echo $termItemA->name; ?></a>
       </li>
@@ -400,7 +400,7 @@
        <ul class="p-sideNavi__childLists">
 
         <?php
-        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        $termListsC = get_terms('video_length', array('hide_empty' => false, 'parent' => $termItemA_id));
         foreach ($termListsC as $termItemC) :
         ?>
          <li class="p-sideNavi__childItem">
@@ -418,7 +418,7 @@
     <ul class="p-sideNavi__lists">
      <?php
      // タームが１階層しかない場合
-     foreach ($termListsA as $termItemA) :; ?>
+     foreach ($termListsA as $termItemA) : ?>
       <li class="p-sideNavi__item">
        <a href="#"><?php echo $termItemA->name; ?></a>
       </li>
@@ -459,7 +459,7 @@
        <ul class="p-sideNavi__childLists">
 
         <?php
-        $termListsC = get_terms('purpose', array('hide_empty' => false, 'parent' => $termItemA_id));
+        $termListsC = get_terms('industry', array('hide_empty' => false, 'parent' => $termItemA_id));
         foreach ($termListsC as $termItemC) :
         ?>
          <li class="p-sideNavi__childItem">
@@ -477,7 +477,7 @@
     <ul class="p-sideNavi__lists">
      <?php
      // タームが１階層しかない場合
-     foreach ($termListsA as $termItemA) :; ?>
+     foreach ($termListsA as $termItemA) : ?>
       <li class="p-sideNavi__item">
        <a href="#"><?php echo $termItemA->name; ?></a>
       </li>

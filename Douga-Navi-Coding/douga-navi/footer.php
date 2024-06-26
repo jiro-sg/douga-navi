@@ -87,7 +87,7 @@
      ご相談ください（無料）
     </div>
     <a class="p-footer__tel" href="tel:0120-571-500">0120-571-500</a>
-    <a class="p-footer__link" href="">まずは無料相談してみる</a>
+    <a class="p-footer__link" href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
     <div class="p-footer__time">平日10:00-18:30</div>
    </div>
   </div>

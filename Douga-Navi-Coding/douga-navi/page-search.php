@@ -557,7 +557,7 @@
    </div>
 
    <div class="p-search__ctaBtn">
-    <a href="#">ホームへ戻る</a>
+    <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
    </div>
 
   </div>

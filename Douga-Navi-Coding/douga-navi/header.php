@@ -23,11 +23,15 @@
        <img src="<?php echo get_template_directory_uri() ?>/assets/images/logo01.svg" alt="動画制作ナビ" width="156" height="28">
       </figure>
      </a>
-     <?php get_search_form(); ?>
+     <div class="p-header__searchBox">
+      <?php get_search_form(); ?>
+     </div>
     </div>
     <div class="p-header__aboveRight">
      <div class="p-header__drawerBtn js-headerDrawer">
-      <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_search.png" alt="" width="17" header="20">
+      <figure>
+       <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_search.png" alt="" width="17" header="20">
+      </figure>
      </div>
      <div class="p-header__cntctInfo">
       <a href="tel:0354436700" class="p-header__tel">03-5443-6700</a>
@@ -41,46 +45,50 @@
    </div>
    <div class="p-header__belowRow">
 
-    <div class="p-header__drawerHeader">
-     <?php get_search_form(); ?>
-     <div class="p-header__closeBtn">
+    <div class="p-header__drawerAbove">
+     <div class="p-header__drawerSearchForm">
+      <?php get_search_form(); ?>
+     </div>
+     <div class="p-header__closeBtn js-drawerClose">
       <span></span>
       <span></span>
      </div>
     </div>
 
-    <div class="p-header__drawerCntctBtn">
-     <a href="#">まずは無料相談してみる</a>
+    <div class="p-header__drawerBelow">
+     <div class="p-header__drawerCntctBtn">
+      <a href="#">まずは無料相談してみる</a>
+     </div>
+
+     <nav class="p-header__nav">
+      <ul class="p-header__navLists">
+
+       <li class="p-header__navItem">
+        <a href="#">ホーム</a>
+       </li>
+
+       <li class="p-header__navItem">
+        <a href="#">制作実績から探す</a>
+       </li>
+
+       <li class="p-header__navItem">
+        <a href="#">価格</a>
+       </li>
+
+       <li class="p-header__navItem">
+        <a href="#">動画制作ナビとは</a>
+       </li>
+
+       <li class="p-header__navItem">
+        <a href="#">ご利用の流れ</a>
+       </li>
+
+       <li class="p-header__navItem">
+        <a href="#">よくあるご質問</a>
+       </li>
+      </ul>
+     </nav>
     </div>
-
-    <nav class="p-header__nav">
-     <ul class="p-header__navLists">
-
-      <li class="p-header__navItem">
-       <a href="#">ホーム</a>
-      </li>
-
-      <li class="p-header__navItem">
-       <a href="#">制作実績から探す</a>
-      </li>
-
-      <li class="p-header__navItem">
-       <a href="#">価格</a>
-      </li>
-
-      <li class="p-header__navItem">
-       <a href="#">動画制作ナビとは</a>
-      </li>
-
-      <li class="p-header__navItem">
-       <a href="#">ご利用の流れ</a>
-      </li>
-
-      <li class="p-header__navItem">
-       <a href="#">よくあるご質問</a>
-      </li>
-     </ul>
-    </nav>
 
    </div>
 

@@ -4,10 +4,12 @@
 .searchform__box {
 	display: flex;
 	align-items: stretch;
-	width: myrem(313);
+	width: 100%;
 	height: auto;
 	border-radius: myrem(4);
 	border: 1px solid $paleBlue_eff;
+	@include mq(md) {
+	}
 }
 
 .searchform__box input {
@@ -20,15 +22,22 @@
 	letter-spacing: 0.005em;
 	border: none;
 	outline: none;
+	@include mq(md) {
+		font-size: myrem(14);
+	}
 }
 
 .searchform__box input:focus-visible {
 	border: none;
+	@include mq(md) {
+	}
 }
 
 .searchform__box input::placeholder {
 	font-size: myrem(15);
 	color: $paleBlue_eff;
+	@include mq(md) {
+	}
 }
 
 .searchform__box button {
@@ -40,6 +49,8 @@
 	// background-color: pink;
 	padding-block: 0;
 	padding-inline: 0;
+	@include mq(md) {
+	}
 }
 
 .searchform__box button img {
@@ -48,4 +59,6 @@
 	height: myrem(18);
 	object-fit: contain;
 	object-position: center;
+	@include mq(md) {
+	}
 }

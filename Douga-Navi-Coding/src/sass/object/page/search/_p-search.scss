@@ -2,10 +2,11 @@
 @use "global" as *;
 
 .p-search {
-	padding-top: myrem(180);
+	padding-top: myrem(200);
 	padding-bottom: myrem(120);
 	background-color: $gray_fd;
 	@include mq(md) {
+		padding-top: myrem(115);
 		padding-bottom: myrem(48);
 	}
 }
@@ -69,7 +70,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	@include mq(md) {
-  width: 100%;
+		width: 100%;
 	}
 }
 

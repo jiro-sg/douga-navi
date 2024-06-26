@@ -2,9 +2,11 @@
 @use "global" as *;
 
 .p-flow {
+	padding-top: myrem(140);
 	background-color: $gray_fd;
 	// background-color: red;
 	@include mq(md) {
+		padding-top: myrem(80);
 	}
 }
 

@@ -2,7 +2,7 @@
 @use "global" as *;
 
 .p-about {
-	padding-top: myrem(137);
+	padding-top: myrem(140);
 	@include mq(md) {
 		padding-top: myrem(80);
 	}

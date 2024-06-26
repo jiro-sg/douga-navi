@@ -142,15 +142,48 @@ $(function () {
 		}
 	});
 
+	// SP時ドロワーを開く挙動
+	$(".js-drawerOpen").on("click", function () {
+		$(".p-header__drawerBelow").css({ display: "block" });
+		$(".p-header__belowRow").fadeIn();
+		$(".p-header").addClass("headerDrawerOpen");
+		$("body").css({ overflow: "hidden", height: "100.01vh" });
+	});
+
+	// SP時ドロワーを閉じる挙動
+	$(".js-drawerClose").on("click", function () {
+		$(".p-header__belowRow").fadeOut();
+		$(".p-header").removeClass("headerDrawerOpen");
+		$("body").css({ overflow: "visible", height: "auto" });
+	});
+
+	// SP時ドロワー内のアコーディオン
+	$(".js-drawerAccdin").on("click", function () {
+		if ($(this).hasClass("drawerAccdinOpen")) {
+			$(this).next().slideUp();
+			$(this).removeClass("drawerAccdinOpen");
+		} else {
+			$(this).next().slideDown();
+			$(this).addClass("drawerAccdinOpen");
+		}
+	});
+
 	// ウィンドウ幅を変えた時の処理
 	$(window).on("resize", function () {
 		let windowWidth = window.innerWidth;
+		console.log(windowWidth);
 		if (windowWidth < 768) {
+			$("body").css({ overflow: "visible", height: "auto" });
+			$(".p-header__drawerBelow").css({ display: "none" });
+			$(".p-header__belowRow").css({ display: "none" });
 			$(".p-srchCnditin__termItem > label > input[type='checkbox']:checked").each(function () {
 				$(this).parents(".p-srchCnditin__termBox").slideDown();
 				$(this).parents(".p-srchCnditin__termBox").prev().addClass("accdinOpen");
 			});
 		} else {
+			$("body").css({ overflow: "visible", height: "auto" });
+			$(".p-header__drawerBelow").css({ display: "block" });
+			$(".p-header__belowRow").css({ display: "block" });
 			$(".p-srchCnditin__termBox").slideDown();
 			$(".p-srchCnditin__prntsTermBox").removeClass("accdinOpen");
 		}

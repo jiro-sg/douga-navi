@@ -60,7 +60,9 @@
 	position: relative;
 	@include mq(md) {
 		font-size: myrem(14);
-  padding: myrem(9.5) 0;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		padding: myrem(9.5) 0;
 	}
 }
 

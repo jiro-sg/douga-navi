@@ -17,6 +17,7 @@
 	border-radius: myrem(5);
 	@include mq(md) {
 		aspect-ratio: 320 / 361;
+		border-radius: 0;
 	}
 }
 
@@ -27,7 +28,8 @@
 	height: 100%;
 	border-radius: myrem(5);
 	@include mq(md) {
-	}
+  border-radius: 0;
+ }
 }
 
 .p-frntFv__swiperPgntin.swiper-pagination {

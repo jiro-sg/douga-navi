@@ -5,6 +5,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	// bottom: myrem(50);
 	width: 100%;
 	height: myrem(100);
 	background-color: $white_fff;
@@ -170,6 +171,7 @@
 		background-color: $white_fff;
 		padding-top: myrem(50);
 		z-index: 21;
+		display: none;
 	}
 }
 
@@ -311,4 +313,136 @@
 		border-bottom: 1px solid $black_24;
 		border-right: 1px solid $black_24;
 	}
+}
+
+.p-header__txnmyLists {
+	display: none;
+	@include mq(md) {
+		display: block;
+		width: 100%;
+		padding: 0 myrem(24);
+	}
+}
+
+.p-header__txnmyBox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: myrem(16) 0 myrem(8);
+	border-bottom: 1px solid $gray_ddd;
+}
+
+.p-header__txnmyName {
+	font-size: myrem(15);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: $blue_00A;
+}
+
+.p-header__txnmyAccdinBtn {
+	display: block;
+	width: myrem(17);
+	height: myrem(17);
+	border-radius: 50%;
+	border: 1px solid $black_24;
+	position: relative;
+}
+
+.p-header__txnmyAccdinBtn::before {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%);
+	display: block;
+	content: "";
+	width: myrem(10);
+	height: 1px;
+	background-color: $black_24;
+}
+
+.p-header__txnmyAccdinBtn::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%);
+	display: block;
+	content: "";
+	height: myrem(10);
+	width: 1px;
+	background-color: $black_24;
+	transition: transform 0.3s ease-out;
+}
+
+.p-header__txnmyBox.drawerAccdinOpen .p-header__txnmyAccdinBtn::after {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.p-header__txnmyItem > .p-header__prntsTermLists {
+	padding-left: myrem(20);
+	display: none;
+}
+
+.p-header__prntsTermItem > a {
+	display: block;
+	font-size: myrem(14);
+	font-weight: 500;
+	letter-spacing: 0.005em;
+	color: $blue_00A;
+	padding: myrem(12) 0 myrem(12);
+	border-bottom: 1px solid $gray_ddd;
+	position: relative;
+}
+
+.p-header__prntsTermItem > a::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(10);
+	height: myrem(10);
+	border-bottom: 1px solid $black_24;
+	border-right: 1px solid $black_24;
+}
+
+.p-header__prntsTermItem > .p-header__termLists {
+	padding-left: myrem(20);
+}
+
+.p-header__txnmyItem > .p-header__termLists {
+	padding-left: myrem(40);
+	display: none;
+}
+
+.p-header__termItem > a {
+	display: block;
+	font-size: myrem(14);
+	font-weight: 500;
+	letter-spacing: 0.005em;
+	color: $black_24;
+	padding: myrem(12) 0 myrem(12);
+	border-bottom: 1px solid $gray_ddd;
+	position: relative;
+}
+
+.p-header__termItem > a::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(10);
+	height: myrem(10);
+	border-bottom: 1px solid $black_24;
+	border-right: 1px solid $black_24;
 }

@@ -5,6 +5,7 @@
 	padding-top: myrem(166);
 	padding-bottom: myrem(120);
 	@include mq(md) {
+  padding-top: myrem(48);
 	}
 }
 

@@ -1,17 +1,36 @@
 @use "global" as *;
 @use "sass:math";
 
+.p-search-detail .l-breadcrumb {
+  padding-left: myrem(0);
+  @include mq("md") {
+  }
+}
+
 .p-search-detail__inner {
-  display: flex;
-  column-gap: calc(math.div(40, 1056) * 100%);
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding-bottom: myrem(120);
   max-width: calc(1006px + $padding-pc * 2);
   padding-right: myrem(strip-unit($padding-pc));
   padding-left: myrem(strip-unit($padding-pc));
   @include mq(md) {
     padding-right: myrem(strip-unit($padding-sp));
     padding-left: myrem(strip-unit($padding-sp));
+    padding-bottom: myrem(48);
   }
+}
+
+.p-search-detail__wrap {
+  display: flex;
+  column-gap: calc(math.div(40, 1056) * 100%);
+  margin-top: myrem(37);
+  @include mq("md") {
+    margin-top: myrem(32);
+  }
+}
+
+.p-search-detail__main {
+  flex: 1;
 }

@@ -230,39 +230,39 @@ add_filter('menu_order', 'my_custom_menu_order');
 function my_login_logo()
 {
 ?>
-<style type="text/css">
-#login h1 {
- width: 100%;
-}
+ <style type="text/css">
+  #login h1 {
+   width: 100%;
+  }
 
-#login h1 a,
-.login h1 a {
- background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
- width: 250px;
- background-size: contain;
- background-position: center bottom;
+  #login h1 a,
+  .login h1 a {
+   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/common/logo.svg');
+   width: 250px;
+   background-size: contain;
+   background-position: center bottom;
 
-}
+  }
 
-body.login {
- background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
- background-size: cover;
- width: 100%;
- height: auto;
- position: relative;
-}
+  body.login {
+   background-image: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/top/top_fv1.jpg');
+   background-size: cover;
+   width: 100%;
+   height: auto;
+   position: relative;
+  }
 
-body.login::before {
- content: '';
- width: 100%;
- height: 100vh;
- background-color: rgba(255, 255, 255, 0.7);
- position: absolute;
- top: 0;
- left: 0;
- z-index: -1;
-}
-</style>
+  body.login::before {
+   content: '';
+   width: 100%;
+   height: 100vh;
+   background-color: rgba(255, 255, 255, 0.7);
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: -1;
+  }
+ </style>
 <?php
 }
 add_action('login_enqueue_scripts', 'my_login_logo');
@@ -349,14 +349,3 @@ function remove_menus()
  remove_menu_page('edit.php');
 }
 add_action('admin_menu', 'remove_menus');
-
-
-//==========================================================
-//検索結果ページのURLに「/search/」を追加する
-function my_custom_search_url() {
- if (is_search() && !empty($_GET['s'])) {
-  wp_safe_redirect(home_url('/search/?s=') . urlencode(get_query_var('s')));
-  exit();
- }
-}
-add_action('template_redirect', 'my_custom_search_url');

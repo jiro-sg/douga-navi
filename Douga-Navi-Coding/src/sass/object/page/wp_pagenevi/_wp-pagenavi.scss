@@ -1,0 +1,60 @@
+@use "global" as *;
+// ページナビ
+.wp-pagenavi .pages {
+  display: none;
+}
+
+.wp-pagenavi .last,
+.wp-pagenavi .first {
+  display: none;
+}
+
+.wp-pagenavi {
+  clear: both;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: $font-second;
+}
+.wp-pagenavi a,
+.wp-pagenavi span {
+  width: myrem(48);
+  height: myrem(48);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-color: transparent;
+  border-radius: 50%;
+  padding: 8px 11px;
+  margin: 0 5px;
+  white-space: nowrap;
+  transition: 0.2s ease-in-out;
+  text-align: center;
+  text-decoration: none;
+}
+.wp-pagenavi a:hover {
+  // color: #fff;
+  border-color: transparent;
+}
+.wp-pagenavi span.current {
+  color: #fff;
+  background-color: #00a0e1;
+  border-color: transparent;
+  font-weight: bold;
+}
+
+.wp-pagenavi .previouspostslink {
+  background: url(../images/common/page_arrow.svg) no-repeat center / contain;
+  width: myrem(16);
+  height: myrem(11);
+  transform: rotate(180deg);
+  font-size: 0;
+}
+.wp-pagenavi .nextpostslink {
+  background: url(../images/common/page_arrow.svg) no-repeat center / contain;
+  width: myrem(16);
+  height: myrem(11);
+  font-size: 0;
+}

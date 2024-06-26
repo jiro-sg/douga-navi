@@ -2,7 +2,7 @@
 @use "global" as *;
 
 .p-flow {
-	background-color: $white_fd;
+	background-color: $gray_fd;
 	// background-color: red;
 	@include mq(md) {
 	}

@@ -1,0 +1,51 @@
+@use "sass:math";
+@use "global" as *;
+
+.searchform__box {
+	display: flex;
+	align-items: stretch;
+	width: myrem(313);
+	height: auto;
+	border-radius: myrem(4);
+	border: 1px solid $paleBlue_eff;
+}
+
+.searchform__box input {
+	display: block;
+	width: calc(math.div(275, 313) * 100%);
+	height: auto;
+	// background-color: green;
+	padding: myrem(2) myrem(10);
+	font-size: myrem(13);
+	letter-spacing: 0.005em;
+	border: none;
+	outline: none;
+}
+
+.searchform__box input:focus-visible {
+	border: none;
+}
+
+.searchform__box input::placeholder {
+	font-size: myrem(15);
+	color: $paleBlue_eff;
+}
+
+.searchform__box button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: calc(math.div(38, 313) * 100%);
+	height: auto;
+	// background-color: pink;
+	padding-block: 0;
+	padding-inline: 0;
+}
+
+.searchform__box button img {
+	display: block;
+	width: myrem(15);
+	height: myrem(18);
+	object-fit: contain;
+	object-position: center;
+}

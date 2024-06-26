@@ -137,7 +137,7 @@
     </p>
     <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
     <div class="c-ctaBanner__btn">
-     <a href="#">まずは無料相談してみる</a>
+     <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
     </div>
    </div>
 

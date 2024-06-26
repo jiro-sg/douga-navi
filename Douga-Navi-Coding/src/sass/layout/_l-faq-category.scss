@@ -1,4 +1,7 @@
 @use "global" as *;
 .l-faq-category {
   margin-top: myrem(51);
+  @include mq("md") {
+    margin-top: myrem(16);
+  }
 }

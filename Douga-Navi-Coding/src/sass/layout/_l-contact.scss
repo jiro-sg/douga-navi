@@ -3,4 +3,8 @@
 .l-contact {
   margin-top: myrem(67);
   padding-bottom: myrem(119);
+  @include mq("md") {
+    margin-top: myrem(40);
+    padding-bottom: myrem(48);
+  }
 }

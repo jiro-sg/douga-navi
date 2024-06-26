@@ -86,7 +86,7 @@
      まずはお気軽に<br>
      ご相談ください（無料）
     </div>
-    <a class="p-footer__tel" href="tel:03-5443-6700">03-5443-6700</a>
+    <a class="p-footer__tel" href="tel:0120-571-500">0120-571-500</a>
     <a class="p-footer__link" href="">まずは無料相談してみる</a>
     <div class="p-footer__time">平日10:00-18:30</div>
    </div>

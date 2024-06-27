@@ -2,75 +2,76 @@
 @use "global" as *;
 
 .p-frnt {
-	padding-top: myrem(166);
-	padding-bottom: myrem(120);
-	@include mq(md) {
-  padding-top: myrem(48);
-	}
+  padding-top: myrem(166);
+  padding-bottom: myrem(120);
+  @include mq(md) {
+    padding-top: myrem(48);
+  }
 }
 
 .p-frnt__inner {
-	display: flex;
-	column-gap: calc(math.div(40, 1100) * 100%);
-	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-	max-width: calc(1100px + $padding-pc * 2);
-	padding-right: myrem(strip-unit($padding-pc));
-	padding-left: myrem(strip-unit($padding-pc));
-	@include mq(md) {
-		flex-direction: column;
-		padding-left: 0;
-		padding-right: 0;
-	}
+  display: flex;
+  align-items: flex-start;
+  column-gap: calc(math.div(40, 1100) * 100%);
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: calc(1100px + $padding-pc * 2);
+  padding-right: myrem(strip-unit($padding-pc));
+  padding-left: myrem(strip-unit($padding-pc));
+  @include mq(md) {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .p-frnt__sidebar {
-	width: calc(math.div(220, 1100) * 100%);
-	@include mq(md) {
-		width: 100%;
-	}
+  width: calc(math.div(220, 1100) * 100%);
+  @include mq(md) {
+    width: 100%;
+  }
 }
 
 .p-frnt__main {
-	width: calc(math.div(840, 1100) * 100%);
-	@include mq(md) {
-		width: 100%;
-	}
+  width: calc(math.div(840, 1100) * 100%);
+  @include mq(md) {
+    width: 100%;
+  }
 }
 .p-frnt__mainInner {
-	@include mq(md) {
-		padding-right: myrem(strip-unit($padding-sp));
-		padding-left: myrem(strip-unit($padding-sp));
-	}
+  @include mq(md) {
+    padding-right: myrem(strip-unit($padding-sp));
+    padding-left: myrem(strip-unit($padding-sp));
+  }
 }
 
 .p-frnt__subLink {
-	margin-top: myrem(135);
-	@media screen and (max-width: 1150px) {
-		margin-top: calc(math.div(135, 1150) * 100vw);
-	}
-	@include mq(md) {
-		width: calc(math.div(272, 280) * 100%);
-		margin: myrem(74) auto 0;
-	}
+  margin-top: myrem(135);
+  @media screen and (max-width: 1150px) {
+    margin-top: calc(math.div(135, 1150) * 100vw);
+  }
+  @include mq(md) {
+    width: calc(math.div(272, 280) * 100%);
+    margin: myrem(74) auto 0;
+  }
 }
 
 .p-frnt__search {
-	margin-top: myrem(30);
-	@include mq(md) {
-	}
+  margin-top: myrem(30);
+  @include mq(md) {
+  }
 }
 
 .p-frnt__search:first-of-type {
-	margin-top: myrem(80);
-	@media screen and (max-width: 1150px) {
-		margin-top: calc(math.div(80, 1150) * 100vw);
-	}
+  margin-top: myrem(80);
+  @media screen and (max-width: 1150px) {
+    margin-top: calc(math.div(80, 1150) * 100vw);
+  }
 }
 
 .p-frnt__cta {
-	margin-top: myrem(65);
-	@include mq(md) {
-	}
+  margin-top: myrem(65);
+  @include mq(md) {
+  }
 }

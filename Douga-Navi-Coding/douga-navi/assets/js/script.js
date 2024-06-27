@@ -143,16 +143,23 @@ $(function () {
 	});
 
 	//タームボタンをクリックして検索ページに飛んできた時の絞り込み条件自動選択
-	let urlAll = new URL(window.location.href);
-	let urlParams = urlAll.searchParams;
+	let urlNatural = new URL(window.location.href);
+	// let urlDecode = decodeURI(urlNatural);
+	let urlParams = urlNatural.searchParams;
 	let termSlug = urlParams.get("termSlug");
-	let targetInput = $("input[type='checkbox'][value = '" + termSlug + "']");
-	targetInput.prop("checked", true);
-	if (!$(targetInput.parents(".p-srchCnditin__prntsTermBox")).length == 0) {
-		$(targetInput.parents(".p-srchCnditin__prntsTermBox")).next().find('input[type="checkbox"]').prop("checked", true);
+	let termSlugInput = $("input[type='checkbox'][value = '" + termSlug + "']");
+	termSlugInput.prop("checked", true);
+	if (!$(termSlugInput.parents(".p-srchCnditin__prntsTermBox")).length == 0) {
+		$(termSlugInput.parents(".p-srchCnditin__prntsTermBox")).next().find('input[type="checkbox"]').prop("checked", true);
 	}
-
-	console.log(termSlug);
+	let termLists = urlParams.getAll("termLists[]");
+	// let targetInput = $("input[type='checkbox'][value = '" + termSlug + "']");
+	// console.log(urlDecode);
+	console.log(termLists);
+	for (iii = 0; iii < termLists.length; iii++) {
+		let termListsInput = $("input[type='checkbox'][value = '" + termLists[iii] + "']");
+		termListsInput.prop("checked", true);
+	}
 
 	// SP時ドロワーを開く挙動
 	$(".js-drawerOpen").on("click", function () {

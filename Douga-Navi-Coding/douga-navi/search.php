@@ -537,8 +537,8 @@
       'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
       'field' => 'slug',
       'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-      'operator' => 'IN',
-      'include_children' => true,
+      'operator' => 'AND',
+      'include_children' => false,
      );
     }
     $args02 = array(

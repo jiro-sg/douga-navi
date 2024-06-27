@@ -79,7 +79,7 @@
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
         $termItemA_slug = $termItemA->slug;
-        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -94,7 +94,7 @@
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
            $termItemC_slug = $termItemC->slug;
-           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
@@ -129,7 +129,7 @@
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
           $termItemA_slug = $termItemA->slug;
-          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
@@ -182,7 +182,7 @@
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
         $termItemA_slug = $termItemA->slug;
-        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -197,7 +197,7 @@
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
            $termItemC_slug = $termItemC->slug;
-           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
@@ -232,7 +232,7 @@
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
           $termItemA_slug = $termItemA->slug;
-          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
@@ -286,7 +286,7 @@
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
         $termItemA_slug = $termItemA->slug;
-        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -301,7 +301,7 @@
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
            $termItemC_slug = $termItemC->slug;
-           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
@@ -336,7 +336,7 @@
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
           $termItemA_slug = $termItemA->slug;
-          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
@@ -390,7 +390,7 @@
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
         $termItemA_slug = $termItemA->slug;
-        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -405,7 +405,7 @@
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
            $termItemC_slug = $termItemC->slug;
-           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
@@ -440,7 +440,7 @@
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
           $termItemA_slug = $termItemA->slug;
-          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
@@ -494,7 +494,7 @@
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
         $termItemA_slug = $termItemA->slug;
-        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -509,7 +509,7 @@
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
            $termItemC_slug = $termItemC->slug;
-           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
@@ -543,7 +543,7 @@
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
           $termItemA_slug = $termItemA->slug;
-          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">

@@ -16,7 +16,7 @@
        <a href="<?php echo esc_url(home_url('/')); ?>">ホーム</a>
       </li>
       <li class="p-footer__item">
-       <a href="<?php echo esc_url(home_url('/search/')); ?>">制作実績から探す</a>
+       <a href="<?php echo esc_url(home_url('/find/')); ?>">制作実績から探す</a>
       </li>
       <li class="p-footer__item">
        <a href="<?php echo esc_url(home_url('/about/')); ?>">動画制作ナビとは</a>

@@ -1,5 +1,5 @@
 <div class="p-sidebar__coupon p-sideCupn">
- <a href="#">
+ <a href="<?php echo esc_url(home_url('/')); ?>">
   <div class="p-sideCupn__main">
    <p class="p-sideCupn__subCatch">初めての注文で使える！</p>
    <p class="p-sideCupn__catch">クーポン配布中</p>

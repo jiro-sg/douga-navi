@@ -146,7 +146,12 @@ $(function () {
 	let urlAll = new URL(window.location.href);
 	let urlParams = urlAll.searchParams;
 	let termSlug = urlParams.get("termSlug");
-	$("input[type='checkbox'][value = '" + termSlug + "']").prop("checked", true);
+	let targetInput = $("input[type='checkbox'][value = '" + termSlug + "']");
+	targetInput.prop("checked", true);
+	if (!$(targetInput.parents(".p-srchCnditin__prntsTermBox")).length == 0) {
+		$(targetInput.parents(".p-srchCnditin__prntsTermBox")).next().find('input[type="checkbox"]').prop("checked", true);
+	}
+
 	console.log(termSlug);
 
 	// SP時ドロワーを開く挙動

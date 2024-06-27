@@ -71,4 +71,8 @@
 
 .p-faq__return {
   margin-top: myrem(37);
+  padding-bottom: myrem(120);
+  @include mq("md") {
+    padding-bottom: myrem(48);
+  }
 }

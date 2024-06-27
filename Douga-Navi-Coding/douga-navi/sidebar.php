@@ -342,7 +342,7 @@
      foreach ($termListsA as $termItemA) :
       $termItemA_id = $termItemA->term_id;
       $termItemA_slug = $termItemA->slug;
-      $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/works_case/'));
+      $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), get_post_type_archive_link('works_case'));
      ?>
       <li class="p-sideNavi__item">
        <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>

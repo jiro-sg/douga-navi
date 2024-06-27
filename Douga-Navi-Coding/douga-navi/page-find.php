@@ -517,7 +517,7 @@
 
     $the_query = new WP_Query(array(
      'post_type' => 'works_case',
-     // 'post_status' => 'publish',
+     'post_status' => 'publish',
      'paged' => $paged,
      'posts_per_page' => 9, // 表示件数
      'orderby'     => 'date',
@@ -525,9 +525,10 @@
      'tax_query' => array(
       array(
        'taxonomy' => 'purpose', //タクソノミーを指定
-       // 'field' => $termId,
-       // 'terms' => array($termSlug), //ターム名をスラッグで指定する
-       // 'operator' => 'IN'
+       'field' => 'id',
+       'terms' => array($termId), //ターム名をスラッグで指定する
+       'operator' => 'IN',
+       'include_children' => true,
       )
      )
     ));

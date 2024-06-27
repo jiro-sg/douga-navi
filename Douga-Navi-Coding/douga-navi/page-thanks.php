@@ -16,7 +16,9 @@
     返信が必要な場合は後ほど担当者よりご連絡いたします。
    </p>
    <p class="p-thanks__text02">
-    <!-- 3秒後にトップページに遷移します。 -->
+   <div class="c-returnBtn">
+    <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
+   </div>
    </p>
   </div>
  </div>

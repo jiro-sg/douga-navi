@@ -142,6 +142,13 @@ $(function () {
 		}
 	});
 
+	//タームボタンをクリックして検索ページに飛んできた時の絞り込み条件自動選択
+	let urlAll = new URL(window.location.href);
+	let urlParams = urlAll.searchParams;
+	let txnmySlag = urlParams.get("txnmySlag");
+	let termId = urlParams.get("termId");
+	console.log(termId);
+
 	// SP時ドロワーを開く挙動
 	$(".js-drawerOpen").on("click", function () {
 		$(".p-header__drawerBelow").css({ display: "block" });
@@ -171,7 +178,7 @@ $(function () {
 	// ウィンドウ幅を変えた時の処理
 	$(window).on("resize", function () {
 		let windowWidth = window.innerWidth;
-		console.log(windowWidth);
+		// console.log(windowWidth);
 		if (windowWidth < 768) {
 			$("body").css({ overflow: "visible", height: "auto" });
 			$(".p-header__drawerBelow").css({ display: "none" });

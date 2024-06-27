@@ -16,7 +16,7 @@
   </div>
 
   <div class="p-aboutFv__btn">
-   <a href="#">まずは無料相談してみる</a>
+   <a href="<?php echo esc_url(home_url('/contact')); ?>">まずは無料相談してみる</a>
   </div>
  </section>
 
@@ -127,7 +127,7 @@
    <div class="p-aboutExmpl__cardWrppr">
     <?php while (have_posts()) : the_post(); // メインループ開始 
     ?>
-     <?php
+    <?php
      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
      $the_query = new WP_Query();
      $param = array(
@@ -141,23 +141,23 @@
      if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
      ?>
 
-       <div class="p-aboutExmpl__movieCard">
+    <div class="p-aboutExmpl__movieCard">
 
-        <a href="<?php the_permalink(); ?>">
-         <figure>
-          <?php
+     <a href="<?php the_permalink(); ?>">
+      <figure>
+       <?php
           $hoge = get_field('info_movie');
           if ($hoge) :
            echo $embed_code = wp_oembed_get($hoge);
           endif; ?>
-         </figure>
-         <p class="p-aboutExmpl__cardTxt">
-          <?php the_title(); ?>
-         </p>
-        </a>
-       </div>
+      </figure>
+      <p class="p-aboutExmpl__cardTxt">
+       <?php the_title(); ?>
+      </p>
+     </a>
+    </div>
 
-     <?php
+    <?php
       endwhile;
      endif; ?>
     <?php endwhile; // メインループ終了 
@@ -216,7 +216,7 @@
      </p>
      <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
      <div class="c-ctaBanner__btn">
-      <a href="#">まずは無料相談してみる</a>
+      <a href="<?php echo esc_url(home_url('/contact')); ?>">まずは無料相談してみる</a>
      </div>
     </div>
 
@@ -342,7 +342,7 @@
     </p>
     <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
     <div class="c-ctaBanner__btn">
-     <a href="#">まずは無料相談してみる</a>
+     <a href="<?php echo esc_url(home_url('/contact')); ?>">まずは無料相談してみる</a>
     </div>
    </div>
 

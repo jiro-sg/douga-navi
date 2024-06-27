@@ -59,12 +59,12 @@
 
 
      <?php
-     $txnmySlag = "purpose";
+     $txnmySlug = "purpose";
      $hierarchyArray = array();
-     $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+     $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
      foreach ($termListsA as $termItemA) {
       $termItemA_id = $termItemA->term_id;
-      $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+      $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
       array_push($hierarchyArray, count($termListsB));
      }
      $hierarchyCheck = array_sum($hierarchyArray);
@@ -78,7 +78,8 @@
 
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
-        $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+        $termItemA_slug = $termItemA->slug;
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -89,16 +90,17 @@
          </h3>
          <ul class="p-frntSrchTxnmy__lists">
           <?php
-          $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+          $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
-           $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+           $termItemC_slug = $termItemC->slug;
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
              <?php
-             if (get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id)) :
-              echo get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id);
+             if (get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id)) :
+              echo get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id);
              ?>
              <?php else : ?>
 
@@ -106,9 +108,9 @@
 
              <?php endif; ?>
 
-             <?php if (get_field('category_image', $txnmySlag . '_' . $termItemC->term_id)) : ?>
+             <?php if (get_field('category_image', $txnmySlug . '_' . $termItemC->term_id)) : ?>
               <figure class="p-frntSrchTxnmy__img">
-               <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
+               <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
               </figure>
              <?php endif; ?>
             </a>
@@ -126,21 +128,22 @@
          // タームが１階層しかない場合
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
-          $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+          $termItemA_slug = $termItemA->slug;
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
             <?php
-            if (get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id)) :
-             echo get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id);
+            if (get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id)) :
+             echo get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id);
             ?>
             <?php else : ?>
              <p><?php echo $termItemA->name; ?></p>
             <?php endif; ?>
 
-            <?php if (get_field('category_image', $txnmySlag . '_' . $termItemA->term_id)) : ?>
+            <?php if (get_field('category_image', $txnmySlug . '_' . $termItemA->term_id)) : ?>
              <figure class="p-frntSrchTxnmy__img">
-              <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
+              <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
              </figure>
             <?php endif; ?>
            </a>
@@ -159,12 +162,12 @@
      <h2 class="p-frntSrch__ttl">表現方法から探す</h2>
 
      <?php
-     $txnmySlag = "expression_method";
+     $txnmySlug = "expression_method";
      $hierarchyArray = array();
-     $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+     $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
      foreach ($termListsA as $termItemA) {
       $termItemA_id = $termItemA->term_id;
-      $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+      $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
       array_push($hierarchyArray, count($termListsB));
      }
      $hierarchyCheck = array_sum($hierarchyArray);
@@ -178,7 +181,8 @@
 
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
-        $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+        $termItemA_slug = $termItemA->slug;
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -189,24 +193,25 @@
          </h3>
          <ul class="p-frntSrchTxnmy__lists">
           <?php
-          $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+          $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
-           $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+           $termItemC_slug = $termItemC->slug;
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
              <?php
-             if (get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id)) :
-              echo get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id);
+             if (get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id)) :
+              echo get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id);
              ?>
              <?php else : ?>
               <p><?php echo $termItemC->name; ?></p>
              <?php endif; ?>
 
-             <?php if (get_field('category_image', $txnmySlag . '_' . $termItemC->term_id)) : ?>
+             <?php if (get_field('category_image', $txnmySlug . '_' . $termItemC->term_id)) : ?>
               <figure class="p-frntSrchTxnmy__img">
-               <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
+               <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
               </figure>
              <?php endif; ?>
             </a>
@@ -226,21 +231,22 @@
          // タームが１階層しかない場合
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
-          $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+          $termItemA_slug = $termItemA->slug;
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
             <?php
-            if (get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id)) :
-             echo get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id);
+            if (get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id)) :
+             echo get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id);
             ?>
             <?php else : ?>
              <p><?php echo $termItemA->name; ?></p>
             <?php endif; ?>
 
-            <?php if (get_field('category_image', $txnmySlag . '_' . $termItemA->term_id)) : ?>
+            <?php if (get_field('category_image', $txnmySlug . '_' . $termItemA->term_id)) : ?>
              <figure class="p-frntSrchTxnmy__img">
-              <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
+              <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
              </figure>
             <?php endif; ?>
            </a>
@@ -260,12 +266,12 @@
      <h2 class="p-frntSrch__ttl">価格帯から探す</h2>
 
      <?php
-     $txnmySlag = "price_range";
+     $txnmySlug = "price_range";
      $hierarchyArray = array();
-     $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+     $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
      foreach ($termListsA as $termItemA) {
       $termItemA_id = $termItemA->term_id;
-      $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+      $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
       array_push($hierarchyArray, count($termListsB));
      }
      $hierarchyCheck = array_sum($hierarchyArray);
@@ -279,7 +285,8 @@
 
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
-        $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+        $termItemA_slug = $termItemA->slug;
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -290,24 +297,25 @@
          </h3>
          <ul class="p-frntSrchTxnmy__lists">
           <?php
-          $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+          $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
-           $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+           $termItemC_slug = $termItemC->slug;
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
              <?php
-             if (get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id)) :
-              echo get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id);
+             if (get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id)) :
+              echo get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id);
              ?>
              <?php else : ?>
               <p><?php echo $termItemC->name; ?></p>
              <?php endif; ?>
 
-             <?php if (get_field('category_image', $txnmySlag . '_' . $termItemC->term_id)) : ?>
+             <?php if (get_field('category_image', $txnmySlug . '_' . $termItemC->term_id)) : ?>
               <figure class="p-frntSrchTxnmy__img">
-               <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
+               <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
               </figure>
              <?php endif; ?>
             </a>
@@ -327,21 +335,22 @@
          // タームが１階層しかない場合
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
-          $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+          $termItemA_slug = $termItemA->slug;
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
             <?php
-            if (get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id)) :
-             echo get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id);
+            if (get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id)) :
+             echo get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id);
             ?>
             <?php else : ?>
              <p><?php echo $termItemA->name; ?></p>
             <?php endif; ?>
 
-            <?php if (get_field('category_image', $txnmySlag . '_' . $termItemA->term_id)) : ?>
+            <?php if (get_field('category_image', $txnmySlug . '_' . $termItemA->term_id)) : ?>
              <figure class="p-frntSrchTxnmy__img">
-              <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
+              <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
              </figure>
             <?php endif; ?>
            </a>
@@ -361,12 +370,12 @@
      <h2 class="p-frntSrch__ttl">動画尺から探す</h2>
 
      <?php
-     $txnmySlag = "video_length";
+     $txnmySlug = "video_length";
      $hierarchyArray = array();
-     $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+     $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
      foreach ($termListsA as $termItemA) {
       $termItemA_id = $termItemA->term_id;
-      $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+      $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
       array_push($hierarchyArray, count($termListsB));
      }
      $hierarchyCheck = array_sum($hierarchyArray);
@@ -380,7 +389,8 @@
 
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
-        $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+        $termItemA_slug = $termItemA->slug;
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -391,24 +401,25 @@
          </h3>
          <ul class="p-frntSrchTxnmy__lists">
           <?php
-          $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+          $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
-           $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+           $termItemC_slug = $termItemC->slug;
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
              <?php
-             if (get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id)) :
-              echo get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id);
+             if (get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id)) :
+              echo get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id);
              ?>
              <?php else : ?>
               <p><?php echo $termItemC->name; ?></p>
              <?php endif; ?>
 
-             <?php if (get_field('category_image', $txnmySlag . '_' . $termItemC->term_id)) : ?>
+             <?php if (get_field('category_image', $txnmySlug . '_' . $termItemC->term_id)) : ?>
               <figure class="p-frntSrchTxnmy__img">
-               <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
+               <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
               </figure>
              <?php endif; ?>
             </a>
@@ -428,21 +439,22 @@
          // タームが１階層しかない場合
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
-          $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+          $termItemA_slug = $termItemA->slug;
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
             <?php
-            if (get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id)) :
-             echo get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id);
+            if (get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id)) :
+             echo get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id);
             ?>
             <?php else : ?>
              <p><?php echo $termItemA->name; ?></p>
             <?php endif; ?>
 
-            <?php if (get_field('category_image', $txnmySlag . '_' . $termItemA->term_id)) : ?>
+            <?php if (get_field('category_image', $txnmySlug . '_' . $termItemA->term_id)) : ?>
              <figure class="p-frntSrchTxnmy__img">
-              <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
+              <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
              </figure>
             <?php endif; ?>
            </a>
@@ -462,12 +474,12 @@
      <h2 class="p-frntSrch__ttl">業種から探す</h2>
 
      <?php
-     $txnmySlag = "industry";
+     $txnmySlug = "industry";
      $hierarchyArray = array();
-     $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+     $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
      foreach ($termListsA as $termItemA) {
       $termItemA_id = $termItemA->term_id;
-      $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+      $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
       array_push($hierarchyArray, count($termListsB));
      }
      $hierarchyCheck = array_sum($hierarchyArray);
@@ -481,7 +493,8 @@
 
        <?php foreach ($termListsA as $termItemA) :
         $termItemA_id = $termItemA->term_id;
-        $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+        $termItemA_slug = $termItemA->slug;
+        $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
         // var_dump($termItemA);
        ?>
         <article class="p-frntSrch__txnmy p-frntSrchTxnmy">
@@ -492,23 +505,24 @@
          </h3>
          <ul class="p-frntSrchTxnmy__lists">
           <?php
-          $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+          $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
           foreach ($termListsC as $termItemC) :
            $termItemC_id = $termItemC->term_id;
-           $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+           $termItemC_slug = $termItemC->slug;
+           $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
           ?>
            <li class="p-frntSrchTxnmy__item">
             <a href="<?php echo esc_url($termItemC_link); ?>">
              <?php
-             if (get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id)) :
-              echo get_field('category_name', $txnmySlag . '_' .  $termItemC->term_id);
+             if (get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id)) :
+              echo get_field('category_name', $txnmySlug . '_' .  $termItemC->term_id);
              ?>
              <?php else : ?>
               <p><?php echo $termItemC->name; ?></p>
              <?php endif; ?>
-             <?php if (get_field('category_image', $txnmySlag . '_' . $termItemC->term_id)) : ?>
+             <?php if (get_field('category_image', $txnmySlug . '_' . $termItemC->term_id)) : ?>
               <figure class="p-frntSrchTxnmy__img">
-               <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
+               <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemC->term_id); ?>' alt='テスト' width='72' height='45'>
               </figure>
              <?php endif; ?>
             </a>
@@ -528,20 +542,21 @@
          // タームが１階層しかない場合
          foreach ($termListsA as $termItemA) :
           $termItemA_id = $termItemA->term_id;
-          $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+          $termItemA_slug = $termItemA->slug;
+          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
          ?>
           <li class="p-frntSrchTxnmy__item">
            <a href="<?php echo esc_url($termItemA_link); ?>">
             <?php
-            if (get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id)) :
-             echo get_field('category_name', $txnmySlag . '_' .  $termItemA->term_id);
+            if (get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id)) :
+             echo get_field('category_name', $txnmySlug . '_' .  $termItemA->term_id);
             ?>
             <?php else : ?>
              <p><?php echo $termItemA->name; ?></p>
             <?php endif; ?>
-            <?php if (get_field('category_image', $txnmySlag . '_' . $termItemA->term_id)) : ?>
+            <?php if (get_field('category_image', $txnmySlug . '_' . $termItemA->term_id)) : ?>
              <figure class="p-frntSrchTxnmy__img">
-              <img src='<?php echo get_field('category_image', $txnmySlag . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
+              <img src='<?php echo get_field('category_image', $txnmySlug . '_' . $termItemA->term_id); ?>' alt='テスト' width='72' height='45'>
              </figure>
             <?php endif; ?>
            </a>

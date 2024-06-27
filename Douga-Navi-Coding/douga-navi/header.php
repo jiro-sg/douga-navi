@@ -117,12 +117,12 @@
          <p class="p-header__txnmyName">用途から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
         <?php
-        $txnmySlag = "purpose";
+        $txnmySlug = "purpose";
         $hierarchyArray = array();
-        $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
         foreach ($termListsA as $termItemA) {
          $termItemA_id = $termItemA->term_id;
-         $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
          array_push($hierarchyArray, count($termListsB));
         }
         $hierarchyCheck = array_sum($hierarchyArray);
@@ -145,7 +145,7 @@
 
              <ul class="p-header__termLists">
               <?php
-              $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+              $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
                $termItemC_slug = $termItemC->slug;
@@ -187,12 +187,12 @@
          <p class="p-header__txnmyName">表現方法から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
         <?php
-        $txnmySlag = "expression_method";
+        $txnmySlug = "expression_method";
         $hierarchyArray = array();
-        $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
         foreach ($termListsA as $termItemA) {
          $termItemA_id = $termItemA->term_id;
-         $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
          array_push($hierarchyArray, count($termListsB));
         }
         $hierarchyCheck = array_sum($hierarchyArray);
@@ -216,7 +216,7 @@
 
              <ul class="p-header__termLists">
               <?php
-              $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+              $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
                $termItemC_slug = $termItemC->slug;
@@ -259,12 +259,12 @@
          <p class="p-header__txnmyName">価格帯から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
         <?php
-        $txnmySlag = "price_range";
+        $txnmySlug = "price_range";
         $hierarchyArray = array();
-        $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
         foreach ($termListsA as $termItemA) {
          $termItemA_id = $termItemA->term_id;
-         $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
          array_push($hierarchyArray, count($termListsB));
         }
         $hierarchyCheck = array_sum($hierarchyArray);
@@ -288,7 +288,7 @@
 
              <ul class="p-header__termLists">
               <?php
-              $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+              $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
                $termItemC_slug = $termItemC->slug;
@@ -330,12 +330,12 @@
          <p class="p-header__txnmyName">動画尺から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
         <?php
-        $txnmySlag = "video_length";
+        $txnmySlug = "video_length";
         $hierarchyArray = array();
-        $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
         foreach ($termListsA as $termItemA) {
          $termItemA_id = $termItemA->term_id;
-         $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
          array_push($hierarchyArray, count($termListsB));
         }
         $hierarchyCheck = array_sum($hierarchyArray);
@@ -359,7 +359,7 @@
 
              <ul class="p-header__termLists">
               <?php
-              $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+              $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
                $termItemC_slug = $termItemC->slug;
@@ -401,12 +401,12 @@
          <p class="p-header__txnmyName">業種から探す</p><span class="p-header__txnmyAccdinBtn"></span>
         </div>
         <?php
-        $txnmySlag = "industry";
+        $txnmySlug = "industry";
         $hierarchyArray = array();
-        $termListsA = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => 0));
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
         foreach ($termListsA as $termItemA) {
          $termItemA_id = $termItemA->term_id;
-         $termListsB = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
          array_push($hierarchyArray, count($termListsB));
         }
         $hierarchyCheck = array_sum($hierarchyArray);
@@ -430,7 +430,7 @@
 
              <ul class="p-header__termLists">
               <?php
-              $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
+              $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
                $termItemC_slug = $termItemC->slug;

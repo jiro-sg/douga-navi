@@ -145,7 +145,7 @@ $(function () {
 	//タームボタンをクリックして検索ページに飛んできた時の絞り込み条件自動選択
 	let urlAll = new URL(window.location.href);
 	let urlParams = urlAll.searchParams;
-	let txnmySlag = urlParams.get("txnmySlag");
+	let txnmySlug = urlParams.get("txnmySlug");
 	let termId = urlParams.get("termId");
 	console.log(termId);
 

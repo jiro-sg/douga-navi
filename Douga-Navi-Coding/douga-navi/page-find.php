@@ -513,8 +513,7 @@
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     // var_dump($paged);
 
-    // if (isset($_GET['txnmySlug']) && )
-
+    if (isset($_GET['txnmySlug']) && isset($_GET['termId'])){
     $the_query = new WP_Query(array(
      'post_type' => 'works_case',
      'post_status' => 'publish',
@@ -532,6 +531,16 @@
       )
      )
     ));
+   }else{
+     $the_query = new WP_Query(array(
+      'post_type' => 'works_case',
+      'post_status' => 'publish',
+      'paged' => $paged,
+      'posts_per_page' => 9, // 表示件数
+      'orderby'     => 'date',
+      'order' => 'DESC',
+     ));
+   }
     // var_dump($the_query);
     if ($the_query->have_posts()) :
      while ($the_query->have_posts()) : $the_query->the_post();

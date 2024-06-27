@@ -603,12 +603,42 @@
       <p class="p-srchRslt__cardTxt">
        <?php
        $termsInfomation = get_the_terms($the_query->ID, 'purpose');
-       foreach ($termsInfomation as $termsInfo) {
-        echo $termsInfo->name;
-        echo '<br>';
+       if ($termsInfomation) {
+        foreach ($termsInfomation as $termsInfo) {
+         echo $termsInfo->name;
+         echo '<br>';
+        }
+       }
+       $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
+       if ($termsInfomation) {
+        foreach ($termsInfomation as $termsInfo) {
+         echo $termsInfo->name;
+         echo '<br>';
+        }
+       }
+       $termsInfomation = get_the_terms($the_query->ID, 'price_range');
+       if ($termsInfomation) {
+        foreach ($termsInfomation as $termsInfo) {
+         echo $termsInfo->name;
+         echo '<br>';
+        }
+       }
+       $termsInfomation = get_the_terms($the_query->ID, 'video_length');
+       if ($termsInfomation) {
+        foreach ($termsInfomation as $termsInfo) {
+         echo $termsInfo->name;
+         echo '<br>';
+        }
+       }
+       $termsInfomation = get_the_terms($the_query->ID, 'industry');
+       if ($termsInfomation) {
+        foreach ($termsInfomation as $termsInfo) {
+         echo $termsInfo->name;
+         echo '<br>';
+        }
        }
        ?>
-       <//?php the_title(); ?>
+       </ /?php the_title(); ?>
       </p>
      </div>
 

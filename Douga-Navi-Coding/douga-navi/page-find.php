@@ -495,7 +495,7 @@
 
 
   <div class="p-search__result p-srchRslt">
-   <?php while (have_posts()) : the_post(); // メインループ開始 
+   <?php while (have_posts()) : the_post(); // メインループ開始    
    ?>
     <?php
     if (isset($_GET['s'])) {
@@ -507,6 +507,7 @@
 
     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     // var_dump($paged);
+    $noPost = false;
     if (isset($_GET['termLists'])) {
      $sTermLists = $_GET['termLists'];
      // var_dump(count($sTermLists));
@@ -521,60 +522,77 @@
        $termLists[$taxnmyName][] = $sTermItem;
       }
      }
-     $txnmyUniqueLists = array_unique($txnmyLists);
-     // var_dump($txnmyUniqueLists);
-     // var_dump(count($txnmyLists));
-     $taxArgs = array(
-      'relation' => 'AND',
-     );
-     foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
-      $txnmyChildTerm = array();
-      foreach ($termLists[$txnmyUniqueItem] as $termItem) {
-       // var_dump($termItem);
-       $txnmyChildTerm[] = $termItem;
-      }
-      // var_dump($txnmyChildTerm);
-      $taxArgs[] = array(
-       'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
-       'field' => 'slug',
-       'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-       'operator' => 'IN',
-       'include_children' => true,
+     // 選択したタームの投稿があれば以下の処理をする
+     if (count($sTermLists) == count($txnmyLists)) {
+      // var_dump($txnmyLists);
+      $txnmyUniqueLists = array_unique($txnmyLists);
+      $taxArgs = array(
+       'relation' => 'AND',
       );
+      foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
+       $txnmyChildTerm = array();
+       foreach ($termLists[$txnmyUniqueItem] as $termItem) {
+        // var_dump($termItem);
+        $txnmyChildTerm[] = $termItem;
+       }
+       // var_dump($txnmyChildTerm);
+       $taxArgs[] = array(
+        'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
+        'field' => 'slug',
+        'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
+        'operator' => 'AND',
+        'include_children' => false,
+       );
+      }
+      $args02 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+       'tax_query' => $taxArgs,
+      );
+      // var_dump($args02);
+      $the_query = new WP_Query($args02);
+      // var_dump($taxArgs);
+     } else {
+      $noPost = true;
      }
-     $args02 = array(
-      'post_type' => 'works_case',
-      'post_status' => 'publish',
-      'paged' => $paged,
-      'posts_per_page' => 9, // 表示件数
-      'orderby'     => 'date',
-      'order' => 'DESC',
-      'tax_query' => $taxArgs,
-     );
-     var_dump($args02);
-     $the_query = new WP_Query($args02);
-     // var_dump($taxArgs);
     } elseif (isset($_GET['txnmySlug']) && isset($_GET['termSlug'])) {
      $txnmySlug = $_GET['txnmySlug'];
      $termSlug = $_GET['termSlug'];
-     $args03 = array(
-      'post_type' => 'works_case',
-      'post_status' => 'publish',
-      'paged' => $paged,
-      'posts_per_page' => 9, // 表示件数
-      'orderby'     => 'date',
-      'order' => 'DESC',
-      'tax_query' => array(
-       array(
-        'taxonomy' => $txnmySlug, //タクソノミーを指定
-        'field' => 'slug',
-        'terms' => array($termSlug), //ターム名をスラッグで指定する
-        'operator' => 'IN',
-        'include_children' => true,
+     $txnmyLists = array();
+     $termObjects = get_terms(array(
+      'slug' => $termSlug,
+     ));
+     foreach ($termObjects as $termObject) {
+      $txnmyLists[] = $termObject->taxonomy;
+     }
+     // var_dump($txnmyLists);
+     // 選択したタームの投稿があれば以下の処理をする
+     if (count($txnmyLists) != 0) {
+      $args03 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+       'tax_query' => array(
+        array(
+         'taxonomy' => $txnmySlug, //タクソノミーを指定
+         'field' => 'slug',
+         'terms' => array($termSlug), //ターム名をスラッグで指定する
+         'operator' => 'AND',
+         'include_children' => true,
+        )
        )
-      )
-     );
-     $the_query = new WP_Query($args03);
+      );
+      $the_query = new WP_Query($args03);
+     } else {
+      $noPost = true;
+     }
     } else {
      $args04 = array(
       'post_type' => 'works_case',
@@ -586,40 +604,89 @@
      );
      $the_query = new WP_Query($args04);
     }
-    // var_dump($the_query);
-    if ($the_query->have_posts()) :
-     while ($the_query->have_posts()) : $the_query->the_post();
+    // var_dump($noPost);
     ?>
 
+    <?php if ($noPost == false) : ?>
 
-      <div class="p-srchRslt__card">
-       <figure class="p-srchRslt__cardMovie">
-        <?php
-        $hoge = get_field('info_movie');
-        if ($hoge) :
-         echo $embed_code = wp_oembed_get($hoge);
-        endif;
-        ?>
-       </figure>
-       <p class="p-srchRslt__cardTxt">
-        <?php the_title(); ?>
-       </p>
-      </div>
 
-    <?php
-     endwhile;
-    endif;
-    wp_reset_postdata();
-    ?>
+     <?php
+     // var_dump($the_query);
+     if ($the_query->have_posts()) :
+      while ($the_query->have_posts()) : $the_query->the_post();
+     ?>
 
-    <?php
-    wp_pagenavi(['query' => $the_query]);
-    // wp_pagenavi();
-    ?>
+
+       <div class="p-srchRslt__card">
+        <figure class="p-srchRslt__cardMovie">
+         <?php
+         $hoge = get_field('info_movie');
+         if ($hoge) :
+          echo $embed_code = wp_oembed_get($hoge);
+         endif;
+         ?>
+        </figure>
+        <p class="p-srchRslt__cardTxt">
+         <?php
+         $termsInfomation = get_the_terms($the_query->ID, 'purpose');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
+         }
+         $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
+         }
+         $termsInfomation = get_the_terms($the_query->ID, 'price_range');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
+         }
+         $termsInfomation = get_the_terms($the_query->ID, 'video_length');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
+         }
+         $termsInfomation = get_the_terms($the_query->ID, 'industry');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
+         }
+         ?>
+         </ /?php the_title(); ?>
+        </p>
+       </div>
+
+     <?php
+      endwhile;
+     endif;
+     wp_reset_postdata();
+     ?>
+
+     <?php
+     wp_pagenavi(['query' => $the_query]);
+     // wp_pagenavi();
+     ?>
+
+    <?php else : ?>
+
+     <p>申し訳ありませんがお探しの制作実績は見つかりませんでした。</p>
+
+    <?php endif; ?>
 
    <?php endwhile; // メインループ終了 
    ?>
-
 
   </div>
 

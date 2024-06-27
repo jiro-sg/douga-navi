@@ -145,9 +145,9 @@ $(function () {
 	//タームボタンをクリックして検索ページに飛んできた時の絞り込み条件自動選択
 	let urlAll = new URL(window.location.href);
 	let urlParams = urlAll.searchParams;
-	let txnmySlug = urlParams.get("txnmySlug");
-	let termId = urlParams.get("termId");
-	console.log(termId);
+	let termSlug = urlParams.get("termSlug");
+	$("input[type='checkbox'][value = '" + termSlug + "']").prop("checked", true);
+	console.log(termSlug);
 
 	// SP時ドロワーを開く挙動
 	$(".js-drawerOpen").on("click", function () {

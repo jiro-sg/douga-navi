@@ -24,71 +24,71 @@
        <li class="p-srchCnditin__prntsTermItem">
 
         <div class="p-srchCnditin__prntsTermBox">
-         <label for="videoAds">
-          <input type="checkbox" id="videoAds" name="termParents[]" value="videoAds"><span class="p-srchCnditin__prntsTermName">動画広告</span>
+         <label for="videoads">
+          <input type="checkbox" id="videoads" name="termParents[]" value="videoads"><span class="p-srchCnditin__prntsTermName">動画広告</span>
          </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
         </div>
 
         <div class="p-srchCnditin__termBox">
          <ul class="p-srchCnditin__termLists">
           <li class="p-srchCnditin__termItem">
-           <label for="youtubeAds">
-            <input type="checkbox" name="term[]" id="youtubeAds" value="youtubeAds"><span>youtube広告</span>
+           <label for="youtubeads">
+            <input type="checkbox" name="term[]" id="youtubeads" value="youtubeads"><span>youtube広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="youtubeShortAds">
-            <input type="checkbox" name="term[]" id="youtubeShortAds" value="youtubeShortAds"><span>youtube Short広告</span>
+           <label for="youtubeshortads">
+            <input type="checkbox" name="term[]" id="youtubeshortads" value="youtubeshortads"><span>youtube Short広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="tiktokAds">
-            <input type="checkbox" name="term[]" id="tiktokAds" value="tiktokAds"><span>TikTok広告</span>
+           <label for="tiktokads">
+            <input type="checkbox" name="term[]" id="tiktokads" value="tiktokads"><span>TikTok広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="instagramReelAds">
-            <input type="checkbox" name="term[]" id="instagramReelAds" value="instagramReelAds"><span>Instagram リール広告</span>
+           <label for="instagramreelads">
+            <input type="checkbox" name="term[]" id="instagramreelads" value="instagramreelads"><span>Instagram リール広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="facebookAds">
-            <input type="checkbox" name="term[]" id="facebookAds" value="facebookAds"><span>Facebook広告</span>
+           <label for="facebookads">
+            <input type="checkbox" name="term[]" id="facebookads" value="facebookads"><span>Facebook広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="XAds">
-            <input type="checkbox" name="term[]" id="XAds" value="XAds"><span>X広告</span>
+           <label for="xads">
+            <input type="checkbox" name="term[]" id="xads" value="xads"><span>X広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="CM">
-            <input type="checkbox" name="term[]" id="CM" value="CM"><span>CM</span>
+           <label for="cm">
+            <input type="checkbox" name="term[]" id="cm" value="cm"><span>CM</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="taxiAds">
-            <input type="checkbox" name="term[]" id="taxiAds" value="taxiAds"><span>タクシー広告動画</span>
+           <label for="taxiads">
+            <input type="checkbox" name="term[]" id="taxiads" value="taxiads"><span>タクシー広告動画</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="googleAds">
-            <input type="checkbox" name="term[]" id="googleAds" value="googleAds"><span>Google広告（ディスプレイ・P-MAX）</span>
+           <label for="googleads">
+            <input type="checkbox" name="term[]" id="googleads" value="googleads"><span>Google広告（ディスプレイ・P-MAX）</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="yahooAds">
-            <input type="checkbox" name="term[]" id="yahooAds" value="yahooAds"><span>Yahoo!広告</span>
+           <label for="yahooads">
+            <input type="checkbox" name="term[]" id="yahooads" value="yahooads"><span>Yahoo!広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="lineAds">
-            <input type="checkbox" name="term[]" id="lineAds" value="lineAds"><span>LINE広告</span>
+           <label for="lineads">
+            <input type="checkbox" name="term[]" id="lineads" value="lineads"><span>LINE広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="vodAds">
-            <input type="checkbox" name="term[]" id="vodAds" value="vodAds"><span>VOD動画広告</span>
+           <label for="vodads">
+            <input type="checkbox" name="term[]" id="vodads" value="vodads"><span>VOD動画広告</span>
            </label>
           </li>
          </ul>
@@ -108,18 +108,18 @@
         <div class="p-srchCnditin__termBox">
          <ul class="p-srchCnditin__termLists">
           <li class="p-srchCnditin__termItem">
-           <label for="businessIntro">
-            <input type="checkbox" name="term[]" id="businessIntro" value="businessIntro"><span>事業紹介動画（求職者向け）</span>
+           <label for="businessintro">
+            <input type="checkbox" name="term[]" id="businessintro" value="businessintro"><span>事業紹介動画（求職者向け）</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="officeItro">
-            <input type="checkbox" name="term[]" id="officeItro" value="officeItro"><span>youtube Short広告</span>
+           <label for="officeitro">
+            <input type="checkbox" name="term[]" id="officeitro" value="officeitro"><span>youtube Short広告</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="companyInfo">
-            <input type="checkbox" name="term[]" id="companyInfo" value="companyInfo"><span>企業説明会用動画</span>
+           <label for="companyinfo">
+            <input type="checkbox" name="term[]" id="companyinfo" value="companyinfo"><span>企業説明会用動画</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
@@ -128,8 +128,8 @@
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="recruitInterview">
-            <input type="checkbox" name="term[]" id="recruitInterview" value="recruitInterview"><span>社員インタビュー</span>
+           <label for="recruitinterview">
+            <input type="checkbox" name="term[]" id="recruitinterview" value="recruitinterview"><span>社員インタビュー</span>
            </label>
           </li>
          </ul>
@@ -154,8 +154,8 @@
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="youtubeShort">
-            <input type="checkbox" name="term[]" id="youtubeShort" value="youtubeShort"><span>youtube Short</span>
+           <label for="youtubeshort">
+            <input type="checkbox" name="term[]" id="youtubeshort" value="youtubeshort"><span>youtube Short</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
@@ -164,8 +164,8 @@
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="instagramReel">
-            <input type="checkbox" name="term[]" id="instagramReel" value="instagramReel"><span>Instagram リール</span>
+           <label for="instagramreel">
+            <input type="checkbox" name="term[]" id="instagramreel" value="instagramreel"><span>Instagram リール</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
@@ -174,8 +174,8 @@
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="X">
-            <input type="checkbox" name="term[]" id="X" value="X"><span>X</span>
+           <label for="x">
+            <input type="checkbox" name="term[]" id="x" value="x"><span>X</span>
            </label>
           </li>
          </ul>
@@ -200,18 +200,18 @@
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="innerBranding">
-            <input type="checkbox" name="term[]" id="innerBranding" value="innerBranding"><span>インナーブランディング動画</span>
+           <label for="innerbranding">
+            <input type="checkbox" name="term[]" id="innerbranding" value="innerbranding"><span>インナーブランディング動画</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="generalMeeting">
-            <input type="checkbox" name="term[]" id="generalMeeting" value="generalMeeting"><span>社員総会</span>
+           <label for="generalmeeting">
+            <input type="checkbox" name="term[]" id="generalmeeting" value="generalmeeting"><span>社員総会</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="trainingInterview">
-            <input type="checkbox" name="term[]" id="trainingInterview" value="trainingInterview"><span>従業員インタビュー動画</span>
+           <label for="traininginterview">
+            <input type="checkbox" name="term[]" id="traininginterview" value="traininginterview"><span>従業員インタビュー動画</span>
            </label>
           </li>
          </ul>
@@ -231,18 +231,18 @@
         <div class="p-srchCnditin__termBox">
          <ul class="p-srchCnditin__termLists">
           <li class="p-srchCnditin__termItem">
-           <label for="productionServicePR">
-            <input type="checkbox" name="term[]" id="productionServicePR" value="productionServicePR"><span>商品・サービスPR</span>
+           <label for="productionservicepr">
+            <input type="checkbox" name="term[]" id="productionservicepr" value="productionservicepr"><span>商品・サービスPR</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="companyPR">
-            <input type="checkbox" name="term[]" id="companyPR" value="companyPR"><span>企業PR</span>
+           <label for="companypr">
+            <input type="checkbox" name="term[]" id="companypr" value="companypr"><span>企業PR</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="storeFacilityPR">
-            <input type="checkbox" name="term[]" id="storeFacilityPR" value="storeFacilityPR"><span>店舗・施設紹介動画</span>
+           <label for="storefacilitypr">
+            <input type="checkbox" name="term[]" id="storefacilitypr" value="storefacilitypr"><span>店舗・施設紹介動画</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
@@ -251,13 +251,13 @@
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="PV">
-            <input type="checkbox" name="term[]" id="PV" value="PV"><span>プロモーションビデオ（PV）</span>
+           <label for="pv">
+            <input type="checkbox" name="term[]" id="pv" value="pv"><span>プロモーションビデオ（PV）</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
-           <label for="userVoice">
-            <input type="checkbox" name="term[]" id="userVoice" value="userVoice"><span>事例紹介・ユーザーの声動画</span>
+           <label for="uservoice">
+            <input type="checkbox" name="term[]" id="uservoice" value="uservoice"><span>事例紹介・ユーザーの声動画</span>
            </label>
           </li>
           <li class="p-srchCnditin__termItem">
@@ -292,8 +292,8 @@
        <li class="p-srchCnditin__prntsTermItem">
 
         <div class="p-srchCnditin__prntsTermBox">
-         <label for="lifeEvent">
-          <input type="checkbox" id="lifeEvent" name="termParents[]" value="lifeEvent"><span class="p-srchCnditin__prntsTermName">ライフイベント動画</span>
+         <label for="lifeevent">
+          <input type="checkbox" id="lifeevent" name="termParents[]" value="lifeevent"><span class="p-srchCnditin__prntsTermName">ライフイベント動画</span>
          </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
         </div>
 
@@ -338,8 +338,8 @@
       <div class="p-srchCnditin__termBox">
        <ul class="p-srchCnditin__termLists">
         <li class="p-srchCnditin__termItem">
-         <label for="liveAction">
-          <input type="checkbox" name="term[]" id="liveAction" value="liveAction"><span>実写</span>
+         <label for="liveaction">
+          <input type="checkbox" name="term[]" id="liveaction" value="liveaction"><span>実写</span>
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
@@ -348,8 +348,8 @@
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
-         <label for="CG">
-          <input type="checkbox" name="term[]" id="CG" value="CG"><span>CG</span>
+         <label for="cg">
+          <input type="checkbox" name="term[]" id="cg" value="cg"><span>CG</span>
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
@@ -377,13 +377,13 @@
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
-         <label for="over10manAndUnder30man">
-          <input type="checkbox" name="term[]" id="over10manAndUnder30man" value="over10manAndUnder30man"><span>10万円以上30万円未満</span>
+         <label for="over10manandunder30man">
+          <input type="checkbox" name="term[]" id="over10manandunder30man" value="over10manandunder30man"><span>10万円以上30万円未満</span>
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
-         <label for="over30manAndUnder100man">
-          <input type="checkbox" name="term[]" id="over30manAndUnder100man" value="over30manAndUnder100man"><span>30万円以上100万円未満</span>
+         <label for="over30manandunder100man">
+          <input type="checkbox" name="term[]" id="over30manandunder100man" value="over30manandunder100man"><span>30万円以上100万円未満</span>
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
@@ -406,8 +406,8 @@
       <div class="p-srchCnditin__termBox">
        <ul class="p-srchCnditin__termLists">
         <li class="p-srchCnditin__termItem">
-         <label for="shortMovie">
-          <input type="checkbox" name="term[]" id="shortMovie" value="shortMovie"><span>ショート動画</span>
+         <label for="shortmovie">
+          <input type="checkbox" name="term[]" id="shortmovie" value="shortmovie"><span>ショート動画</span>
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
@@ -445,8 +445,8 @@
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
-         <label for="realEstate">
-          <input type="checkbox" name="term[]" id="realEstate" value="realEstate"><span>不動産</span>
+         <label for="realestate">
+          <input type="checkbox" name="term[]" id="realestate" value="realestate"><span>不動産</span>
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
@@ -460,8 +460,8 @@
          </label>
         </li>
         <li class="p-srchCnditin__termItem">
-         <label for="otherIndustory">
-          <input type="checkbox" name="term[]" id="otherIndustory" value="otherIndustory"><span>その他</span>
+         <label for="otherindustory">
+          <input type="checkbox" name="term[]" id="otherindustory" value="otherindustory"><span>その他</span>
          </label>
         </li>
        </ul>

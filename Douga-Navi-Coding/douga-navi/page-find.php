@@ -495,127 +495,130 @@
 
 
   <div class="p-search__result p-srchRslt">
-   <?php while (have_posts()) : the_post(); // メインループ開始 ?>
-   <?php
-   if (isset($_GET['s'])) {
-    $sParams = $_GET['s'];
-    // var_dump(count($sTermLists));
-    // var_dump($sParams);
-   };
+   <?php while (have_posts()) : the_post(); // メインループ開始 
+   ?>
+    <?php
+    if (isset($_GET['s'])) {
+     $sParams = $_GET['s'];
+     // var_dump(count($sTermLists));
+     // var_dump($sParams);
+    };
 
 
-   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-   // var_dump($paged);
-   if (isset($_GET['termLists'])) {
-    $sTermLists = $_GET['termLists'];
-    // var_dump(count($sTermLists));
-    $txnmyLists = array();
-    foreach ($sTermLists as $sTermItem) {
-     $termObjects = get_terms(array(
-      'slug' => $sTermItem,
-     ));
-     foreach ($termObjects as $termObject) {
-      $txnmyLists[] = $termObject->taxonomy;
-      $taxnmyName = $termObject->taxonomy;
-      $termLists[$taxnmyName][] = $sTermItem;
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    // var_dump($paged);
+    if (isset($_GET['termLists'])) {
+     $sTermLists = $_GET['termLists'];
+     // var_dump(count($sTermLists));
+     $txnmyLists = array();
+     foreach ($sTermLists as $sTermItem) {
+      $termObjects = get_terms(array(
+       'slug' => $sTermItem,
+      ));
+      foreach ($termObjects as $termObject) {
+       $txnmyLists[] = $termObject->taxonomy;
+       $taxnmyName = $termObject->taxonomy;
+       $termLists[$taxnmyName][] = $sTermItem;
+      }
      }
-    }
-    $txnmyUniqueLists = array_unique($txnmyLists);
-    // var_dump($txnmyUniqueLists);
-    // var_dump(count($txnmyLists));
-    $taxArgs = array(
-     'relation' => 'AND',
-    );
-    foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
-     $txnmyChildTerm = array();
-     foreach ($termLists[$txnmyUniqueItem] as $termItem) {
-      // var_dump($termItem);
-      $txnmyChildTerm[] = $termItem;
-     }
-     // var_dump($txnmyChildTerm);
-     $taxArgs[] = array(
-      'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
-      'field' => 'slug',
-      'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-      'operator' => 'IN',
-      'include_children' => true,
+     $txnmyUniqueLists = array_unique($txnmyLists);
+     // var_dump($txnmyUniqueLists);
+     // var_dump(count($txnmyLists));
+     $taxArgs = array(
+      'relation' => 'AND',
      );
-    }
-    $args02 = array(
-     'post_type' => 'works_case',
-     'post_status' => 'publish',
-     'paged' => $paged,
-     'posts_per_page' => 9, // 表示件数
-     'orderby'     => 'date',
-     'order' => 'DESC',
-     'tax_query' => $taxArgs,
-    );
-    $the_query = new WP_Query($args02);
-    // var_dump($taxArgs);
-   } elseif (isset($_GET['txnmySlug']) && isset($_GET['termSlug'])) {
-    $txnmySlug = $_GET['txnmySlug'];
-    $termSlug = $_GET['termSlug'];
-    $args03 = array(
-     'post_type' => 'works_case',
-     'post_status' => 'publish',
-     'paged' => $paged,
-     'posts_per_page' => 9, // 表示件数
-     'orderby'     => 'date',
-     'order' => 'DESC',
-     'tax_query' => array(
-      array(
-       'taxonomy' => $txnmySlug, //タクソノミーを指定
+     foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
+      $txnmyChildTerm = array();
+      foreach ($termLists[$txnmyUniqueItem] as $termItem) {
+       // var_dump($termItem);
+       $txnmyChildTerm[] = $termItem;
+      }
+      // var_dump($txnmyChildTerm);
+      $taxArgs[] = array(
+       'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
        'field' => 'slug',
-       'terms' => array($termSlug), //ターム名をスラッグで指定する
+       'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
        'operator' => 'IN',
        'include_children' => true,
+      );
+     }
+     $args02 = array(
+      'post_type' => 'works_case',
+      'post_status' => 'publish',
+      'paged' => $paged,
+      'posts_per_page' => 9, // 表示件数
+      'orderby'     => 'date',
+      'order' => 'DESC',
+      'tax_query' => $taxArgs,
+     );
+     var_dump($args02);
+     $the_query = new WP_Query($args02);
+     // var_dump($taxArgs);
+    } elseif (isset($_GET['txnmySlug']) && isset($_GET['termSlug'])) {
+     $txnmySlug = $_GET['txnmySlug'];
+     $termSlug = $_GET['termSlug'];
+     $args03 = array(
+      'post_type' => 'works_case',
+      'post_status' => 'publish',
+      'paged' => $paged,
+      'posts_per_page' => 9, // 表示件数
+      'orderby'     => 'date',
+      'order' => 'DESC',
+      'tax_query' => array(
+       array(
+        'taxonomy' => $txnmySlug, //タクソノミーを指定
+        'field' => 'slug',
+        'terms' => array($termSlug), //ターム名をスラッグで指定する
+        'operator' => 'IN',
+        'include_children' => true,
+       )
       )
-     )
-    );
-    $the_query = new WP_Query($args03);
-   } else {
-    $args04 = array(
-     'post_type' => 'works_case',
-     'post_status' => 'publish',
-     'paged' => $paged,
-     'posts_per_page' => 9, // 表示件数
-     'orderby'     => 'date',
-     'order' => 'DESC',
-    );
-    $the_query = new WP_Query($args04);
-   }
-   // var_dump($the_query);
-   if ($the_query->have_posts()) :
-    while ($the_query->have_posts()) : $the_query->the_post();
+     );
+     $the_query = new WP_Query($args03);
+    } else {
+     $args04 = array(
+      'post_type' => 'works_case',
+      'post_status' => 'publish',
+      'paged' => $paged,
+      'posts_per_page' => 9, // 表示件数
+      'orderby'     => 'date',
+      'order' => 'DESC',
+     );
+     $the_query = new WP_Query($args04);
+    }
+    // var_dump($the_query);
+    if ($the_query->have_posts()) :
+     while ($the_query->have_posts()) : $the_query->the_post();
+    ?>
+
+
+      <div class="p-srchRslt__card">
+       <figure class="p-srchRslt__cardMovie">
+        <?php
+        $hoge = get_field('info_movie');
+        if ($hoge) :
+         echo $embed_code = wp_oembed_get($hoge);
+        endif;
+        ?>
+       </figure>
+       <p class="p-srchRslt__cardTxt">
+        <?php the_title(); ?>
+       </p>
+      </div>
+
+    <?php
+     endwhile;
+    endif;
+    wp_reset_postdata();
+    ?>
+
+    <?php
+    wp_pagenavi(['query' => $the_query]);
+    // wp_pagenavi();
+    ?>
+
+   <?php endwhile; // メインループ終了 
    ?>
-
-
-     <div class="p-srchRslt__card">
-      <figure class="p-srchRslt__cardMovie">
-       <?php
-       $hoge = get_field('info_movie');
-       if ($hoge) :
-        echo $embed_code = wp_oembed_get($hoge);
-       endif;
-       ?>
-      </figure>
-      <p class="p-srchRslt__cardTxt">
-       <?php the_title(); ?>
-      </p>
-     </div>
-
-   <?php
-    endwhile;
-   endif;
-   wp_reset_postdata();
-   ?>
-
-   <?php
-   wp_pagenavi(['query' => $the_query]);
-   // wp_pagenavi();
-   ?>
-
-   <?php endwhile; // メインループ終了 ?>
 
 
   </div>

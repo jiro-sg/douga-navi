@@ -550,6 +550,7 @@
      'order' => 'DESC',
      'tax_query' => $taxArgs,
     );
+    var_dump($args02);
     $the_query = new WP_Query($args02);
     // var_dump($taxArgs);
    } elseif (isset($_GET['txnmySlug']) && isset($_GET['termSlug'])) {
@@ -600,7 +601,14 @@
        ?>
       </figure>
       <p class="p-srchRslt__cardTxt">
-       <?php the_title(); ?>
+       <?php
+       $termsInfomation = get_the_terms($the_query->ID, 'purpose');
+       foreach ($termsInfomation as $termsInfo) {
+        echo $termsInfo->name;
+        echo '<br>';
+       }
+       ?>
+       <//?php the_title(); ?>
       </p>
      </div>
 

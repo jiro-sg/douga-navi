@@ -10,7 +10,8 @@
 
    <h2 class="p-srchCnditin__ttl">カテゴリーから<br class="u-mobile">動画制作実績を探す</h2>
 
-   <form action="#">
+   <form method="get" id="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+    <input type="hidden" class="field" name="s">
 
 
     <dl class="p-srchCnditin__defLists">
@@ -49,7 +50,7 @@
 
            <div class="p-srchCnditin__prntsTermBox">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termParents[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
             </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
            </div>
 
@@ -65,7 +66,7 @@
 
               <li class="p-srchCnditin__termItem">
                <label for="<?php echo esc_html($termItemC_slug); ?>">
-                <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
                </label>
               </li>
              <?php endforeach; ?>
@@ -90,7 +91,7 @@
 
            <li class="p-srchCnditin__termItem">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
             </label>
            </li>
           <?php endforeach; ?>
@@ -143,7 +144,7 @@
 
            <div class="p-srchCnditin__prntsTermBox">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termParents[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
             </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
            </div>
 
@@ -159,7 +160,7 @@
 
               <li class="p-srchCnditin__termItem">
                <label for="<?php echo esc_html($termItemC_slug); ?>">
-                <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
                </label>
               </li>
              <?php endforeach; ?>
@@ -184,7 +185,7 @@
 
            <li class="p-srchCnditin__termItem">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
             </label>
            </li>
           <?php endforeach; ?>
@@ -237,7 +238,7 @@
 
            <div class="p-srchCnditin__prntsTermBox">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termParents[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
             </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
            </div>
 
@@ -253,7 +254,7 @@
 
               <li class="p-srchCnditin__termItem">
                <label for="<?php echo esc_html($termItemC_slug); ?>">
-                <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
                </label>
               </li>
              <?php endforeach; ?>
@@ -278,7 +279,7 @@
 
            <li class="p-srchCnditin__termItem">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
             </label>
            </li>
           <?php endforeach; ?>
@@ -331,7 +332,7 @@
 
            <div class="p-srchCnditin__prntsTermBox">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termParents[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
             </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
            </div>
 
@@ -347,7 +348,7 @@
 
               <li class="p-srchCnditin__termItem">
                <label for="<?php echo esc_html($termItemC_slug); ?>">
-                <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
                </label>
               </li>
              <?php endforeach; ?>
@@ -372,7 +373,7 @@
 
            <li class="p-srchCnditin__termItem">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
             </label>
            </li>
           <?php endforeach; ?>
@@ -424,7 +425,7 @@
 
            <div class="p-srchCnditin__prntsTermBox">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termParents[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
             </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
            </div>
 
@@ -440,7 +441,7 @@
 
               <li class="p-srchCnditin__termItem">
                <label for="<?php echo esc_html($termItemC_slug); ?>">
-                <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
                </label>
               </li>
              <?php endforeach; ?>
@@ -465,7 +466,7 @@
 
            <li class="p-srchCnditin__termItem">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" name="term[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
             </label>
            </li>
           <?php endforeach; ?>
@@ -494,125 +495,128 @@
 
 
   <div class="p-search__result p-srchRslt">
-   <?php while (have_posts()) : the_post(); // メインループ開始 
-   ?>
-    <?php
-    if (isset($_GET['txnmySlug'])) {
-     $txnmySlug = $_GET['txnmySlug'];
-     // var_dump('タクソノミースラッグ/' . $txnmySlug);
-    };
-    if (isset($_GET['termId'])) {
-     $termId = $_GET['termId'];
-     // var_dump('タームID/' . $termId);
-    };
-    if (isset($_GET['termSlug'])) {
-     $termSlug = $_GET['termSlug'];
-     // var_dump('タームスラッグ名/' . $termSlug);
-    };
+   </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
+   <?php
+   if (isset($_GET['s'])) {
+    $sParams = $_GET['s'];
+    // var_dump(count($sTermLists));
+    // var_dump($sParams);
+   };
 
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    var_dump($paged);
-    $the_query = new WP_Query(array(
+
+   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+   // var_dump($paged);
+   if (isset($_GET['termLists'])) {
+    $sTermLists = $_GET['termLists'];
+    // var_dump(count($sTermLists));
+    $txnmyLists = array();
+    foreach ($sTermLists as $sTermItem) {
+     $termObjects = get_terms(array(
+      'slug' => $sTermItem,
+     ));
+     foreach ($termObjects as $termObject) {
+      $txnmyLists[] = $termObject->taxonomy;
+      $taxnmyName = $termObject->taxonomy;
+      $termLists[$taxnmyName][] = $sTermItem;
+     }
+    }
+    $txnmyUniqueLists = array_unique($txnmyLists);
+    // var_dump($txnmyUniqueLists);
+    // var_dump(count($txnmyLists));
+    $taxArgs = array(
+     'relation' => 'AND',
+    );
+    foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
+     $txnmyChildTerm = array();
+     foreach ($termLists[$txnmyUniqueItem] as $termItem) {
+      // var_dump($termItem);
+      $txnmyChildTerm[] = $termItem;
+     }
+     // var_dump($txnmyChildTerm);
+     $taxArgs[] = array(
+      'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
+      'field' => 'slug',
+      'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
+      'operator' => 'IN',
+      'include_children' => true,
+     );
+    }
+    $args02 = array(
      'post_type' => 'works_case',
-     // 'post_status' => 'publish',
+     'post_status' => 'publish',
+     'paged' => $paged,
+     'posts_per_page' => 9, // 表示件数
+     'orderby'     => 'date',
+     'order' => 'DESC',
+     'tax_query' => $taxArgs,
+    );
+    $the_query = new WP_Query($args02);
+    // var_dump($taxArgs);
+   } elseif (isset($_GET['txnmySlug']) && isset($_GET['termSlug'])) {
+    $txnmySlug = $_GET['txnmySlug'];
+    $termSlug = $_GET['termSlug'];
+    $args03 = array(
+     'post_type' => 'works_case',
+     'post_status' => 'publish',
      'paged' => $paged,
      'posts_per_page' => 9, // 表示件数
      'orderby'     => 'date',
      'order' => 'DESC',
      'tax_query' => array(
-      'taxonomy' => $txnmySlug, //タクソノミーを指定
-      'field' => $termId,
-      // 'terms' => array($termSlug), //ターム名をスラッグで指定する
-      'operator' => 'IN'
+      array(
+       'taxonomy' => $txnmySlug, //タクソノミーを指定
+       'field' => 'slug',
+       'terms' => array($termSlug), //ターム名をスラッグで指定する
+       'operator' => 'IN',
+       'include_children' => true,
+      )
      )
-    ));
-    // var_dump($the_query);
-    if ($the_query->have_posts()) :
-     while ($the_query->have_posts()) : $the_query->the_post();
-    ?>
-
-
-      <div class="p-srchRslt__card">
-       <figure class="p-srchRslt__cardMovie">
-        <?php
-        $hoge = get_field('info_movie');
-        if ($hoge) :
-         echo $embed_code = wp_oembed_get($hoge);
-        endif;
-        ?>
-       </figure>
-       <p class="p-srchRslt__cardTxt">
-        <?php the_title(); ?>
-       </p>
-      </div>
-
-    <?php
-     endwhile;
-    endif;
-    wp_reset_postdata();
-    ?>
-
-    <?php
-    wp_pagenavi(['query' => $the_query]);
-    // wp_pagenavi();
-    ?>
-
-   <?php endwhile; // メインループ終了 
+    );
+    $the_query = new WP_Query($args03);
+   } else {
+    $args04 = array(
+     'post_type' => 'works_case',
+     'post_status' => 'publish',
+     'paged' => $paged,
+     'posts_per_page' => 9, // 表示件数
+     'orderby'     => 'date',
+     'order' => 'DESC',
+    );
+    $the_query = new WP_Query($args04);
+   }
+   // var_dump($the_query);
+   if ($the_query->have_posts()) :
+    while ($the_query->have_posts()) : $the_query->the_post();
    ?>
 
-   <!-- <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <iframe loading="lazy" width="296" height="174" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </figure>
-    <p class="p-srchRslt__cardTxt">
-     動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動…
-    </p>
-   </div>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <iframe loading="lazy" width="296" height="174" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </figure>
-    <p class="p-srchRslt__cardTxt">
-     動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動…
-    </p>
-   </div>
+     <div class="p-srchRslt__card">
+      <figure class="p-srchRslt__cardMovie">
+       <?php
+       $hoge = get_field('info_movie');
+       if ($hoge) :
+        echo $embed_code = wp_oembed_get($hoge);
+       endif;
+       ?>
+      </figure>
+      <p class="p-srchRslt__cardTxt">
+       <?php the_title(); ?>
+      </p>
+     </div>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <iframe loading="lazy" width="296" height="174" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </figure>
-    <p class="p-srchRslt__cardTxt">
-     動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動…
-    </p>
-   </div>
+   <?php
+    endwhile;
+   endif;
+   wp_reset_postdata();
+   ?>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <iframe loading="lazy" width="296" height="174" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </figure>
-    <p class="p-srchRslt__cardTxt">
-     動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動…
-    </p>
-   </div>
+   <?php
+   wp_pagenavi(['query' => $the_query]);
+   // wp_pagenavi();
+   ?>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <iframe loading="lazy" width="296" height="174" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </figure>
-    <p class="p-srchRslt__cardTxt">
-     動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動…
-    </p>
-   </div>
+   </ /?php endwhile; // メインループ終了 ?>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <iframe loading="lazy" width="296" height="174" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </figure>
-    <p class="p-srchRslt__cardTxt">
-     動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動画の説明文が入ります動…
-    </p>
-   </div> -->
 
   </div>
 

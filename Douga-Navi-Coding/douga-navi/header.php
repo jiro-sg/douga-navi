@@ -137,8 +137,8 @@
           <ul class="p-header__prntsTermLists">
            <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
            ?>
             <li class="p-header__prntsTermItem">
              <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>
@@ -148,7 +148,8 @@
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
-               $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+               $termItemC_slug = $termItemC->slug;
+               $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
               ?>
                <li class="p-header__termItem">
                 <a href="<?php echo esc_url($termItemC_link); ?>"><?php echo $termItemC->name; ?></a>
@@ -165,7 +166,8 @@
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
            ?>
             <li class="p-header__termItem">
              <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>
@@ -205,8 +207,8 @@
           <ul class="p-header__prntsTermLists">
            <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
             // var_dump($termItemA);
            ?>
             <li class="p-header__prntsTermItem">
@@ -217,7 +219,8 @@
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
-               $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+               $termItemC_slug = $termItemC->slug;
+               $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
               ?>
                <li class="p-header__termItem">
                 <a href="<?php echo esc_url($termItemC_link); ?>"><?php echo $termItemC->name; ?></a>
@@ -235,7 +238,8 @@
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
            ?>
             <li class="p-header__termItem">
              <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>
@@ -275,8 +279,8 @@
           <ul class="p-header__prntsTermLists">
            <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
             // var_dump($termItemA);
            ?>
             <li class="p-header__prntsTermItem">
@@ -287,7 +291,8 @@
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
-               $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+               $termItemC_slug = $termItemC->slug;
+               $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
               ?>
                <li class="p-header__termItem">
                 <a href="<?php echo esc_url($termItemC_link); ?>"><?php echo $termItemC->name; ?></a>
@@ -304,7 +309,8 @@
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
            ?>
             <li class="p-header__termItem">
              <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>
@@ -344,8 +350,8 @@
           <ul class="p-header__prntsTermLists">
            <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
             // var_dump($termItemA);
            ?>
             <li class="p-header__prntsTermItem">
@@ -356,7 +362,8 @@
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
-               $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+               $termItemC_slug = $termItemC->slug;
+               $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
               ?>
                <li class="p-header__termItem">
                 <a href="<?php echo esc_url($termItemC_link); ?>"><?php echo $termItemC->name; ?></a>
@@ -373,7 +380,8 @@
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
            ?>
             <li class="p-header__termItem">
              <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>
@@ -413,8 +421,8 @@
           <ul class="p-header__prntsTermLists">
            <?php foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
             // var_dump($termItemA);
            ?>
             <li class="p-header__prntsTermItem">
@@ -425,7 +433,8 @@
               $termListsC = get_terms($txnmySlag, array('hide_empty' => false, 'parent' => $termItemA_id));
               foreach ($termListsC as $termItemC) :
                $termItemC_id = $termItemC->term_id;
-               $termItemC_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemC_id), home_url('/search/'));
+               $termItemC_slug = $termItemC->slug;
+               $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/search/'));
               ?>
                <li class="p-header__termItem">
                 <a href="<?php echo esc_url($termItemC_link); ?>"><?php echo $termItemC->name; ?></a>
@@ -442,7 +451,8 @@
            // タームが１階層しかない場合
            foreach ($termListsA as $termItemA) :
             $termItemA_id = $termItemA->term_id;
-            $termItemA_link = add_query_arg(array('txnmySlag' => $txnmySlag, 'termId' => $termItemA_id), home_url('/search/'));
+            $termItemA_slug = $termItemA->slug;
+            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/search/'));
            ?>
             <li class="p-header__termItem">
              <a href="<?php echo esc_url($termItemA_link); ?>"><?php echo $termItemA->name; ?></a>

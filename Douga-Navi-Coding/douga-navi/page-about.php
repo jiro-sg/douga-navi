@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
 <main class="p-about">
+ <!-- パンくずリスト -->
+ <?php get_template_part('_inc/breadcrumb'); ?>
+ <!-- // -->
  <section class="p-about__fv p-aboutFv">
   <picture>
    <source srcset='<?php echo get_template_directory_uri() ?>/assets/images/aboutFV_pc.jpg' media='(min-width: 768px)'>
@@ -124,7 +127,7 @@
    <div class="p-aboutExmpl__cardWrppr">
     <?php while (have_posts()) : the_post(); // メインループ開始 
     ?>
-    <?php
+     <?php
      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
      $the_query = new WP_Query();
      $param = array(
@@ -138,28 +141,23 @@
      if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
      ?>
 
-    <div class="p-aboutExmpl__movieCard">
+       <div class="p-aboutExmpl__movieCard">
 
-     <figure>
-      <?php
-         $hoge = get_field('info_movie');
-         if ($hoge) :
-          echo $embed_code = wp_oembed_get($hoge);
-         endif; ?>
+        <a href="<?php the_permalink(); ?>">
+         <figure>
+          <?php
+          $hoge = get_field('info_movie');
+          if ($hoge) :
+           echo $embed_code = wp_oembed_get($hoge);
+          endif; ?>
+         </figure>
+         <p class="p-aboutExmpl__cardTxt">
+          <?php the_title(); ?>
+         </p>
+        </a>
+       </div>
 
-     </figure>
-     <p class="p-aboutExmpl__cardTxt">
-      <?php
-         $content = get_the_content();
-         $content = strip_shortcodes($content);
-         $content = wp_strip_all_tags($content);
-
-         echo esc_html(wp_trim_words($content, 80, '...'));
-         ?>
-     </p>
-    </div>
-
-    <?php
+     <?php
       endwhile;
      endif; ?>
     <?php endwhile; // メインループ終了 

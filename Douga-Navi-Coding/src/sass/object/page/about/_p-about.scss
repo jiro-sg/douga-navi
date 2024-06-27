@@ -2,22 +2,28 @@
 @use "global" as *;
 
 .p-about {
-	padding-top: myrem(140);
-	@include mq(md) {
-		padding-top: myrem(80);
-	}
+  padding-top: myrem(100);
+  @include mq(md) {
+    padding-top: myrem(48);
+  }
+}
+
+.p-about__fv {
+  margin-top: myrem(9);
+  @include mq("md") {
+    margin-top: 0;
+  }
 }
 
 .p-about__bgPaleBlue {
-	background-color: $paleBlue_eff;
-	@include mq(md) {
-	}
+  background-color: $paleBlue_eff;
+  @include mq(md) {
+  }
 }
 
 .p-about__QA {
-	margin-top: myrem(80);
-	@include mq(md) {
-		margin-top: myrem(40);
-	}
+  margin-top: myrem(80);
+  @include mq(md) {
+    margin-top: myrem(40);
+  }
 }
-

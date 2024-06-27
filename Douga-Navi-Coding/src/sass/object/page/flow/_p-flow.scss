@@ -2,20 +2,23 @@
 @use "global" as *;
 
 .p-flow {
-	padding-top: myrem(140);
-	background-color: $gray_fd;
-	// background-color: red;
-	@include mq(md) {
-		padding-top: myrem(80);
-	}
+  padding-top: myrem(100);
+  background-color: $gray_fd;
+  // background-color: red;
+  @include mq(md) {
+    // padding-top: myrem(80);
+    padding-top: myrem(40);
+  }
 }
 
 .p-flow__pageTtl {
-	text-align: center;
-	padding: myrem(75) 0;
-	background-color: $white_fff;
-	border: 1px solid $gray_ddd;
-	@include mq(md) {
-		padding: myrem(31) 0;
-	}
+  text-align: center;
+  padding: myrem(75) 0;
+  background-color: $white_fff;
+  border: 1px solid $gray_ddd;
+  margin-top: myrem(9);
+  @include mq(md) {
+    padding: myrem(31) 0;
+    margin-top: myrem(0);
+  }
 }

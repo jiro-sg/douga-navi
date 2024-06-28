@@ -755,7 +755,7 @@
      <?php else : ?>
 
       <p class="p-search__noResult">
-       申し訳ありませんが、お探しの制作実績は見つかりませんでした。
+       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
        条件を変えてお試しください。
       </p>
 
@@ -767,13 +767,15 @@
    </div>
 
    <?php
-
    wp_reset_postdata();
-   if ($subLoopPosts == true) {
-    wp_pagenavi(['query' => $the_query]);
-   }
-   // wp_pagenavi();
+   if ($subLoopPosts == true) :
    ?>
+    <div class="l-search__pageNavi">
+     <?php wp_pagenavi(['query' => $the_query]); ?>
+    </div>
+   <?php endif; ?>
+
+
   <?php endwhile; // メインループ終了 
   ?>
 

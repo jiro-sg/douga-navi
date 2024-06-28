@@ -44,13 +44,15 @@
          $termItemA_slug = $termItemA->slug;
          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          // var_dump($termItemA);
-        ?>
+         ?>
+     
          <ul class="p-srchCnditin__prntsTermLists">
           <li class="p-srchCnditin__prntsTermItem">
 
            <div class="p-srchCnditin__prntsTermBox">
             <label for="<?php echo esc_html($termItemA_slug); ?>">
-             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>"><span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+             <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
+             <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
             </label><span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
            </div>
 
@@ -746,11 +748,6 @@
      endif;
      ?>
 
-     <div class="l-aaa">
-
-
-     </div>
-
     <?php else : ?>
 
      <p class="p-search__noResult">
@@ -784,7 +781,7 @@
     </p>
     <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
     <div class="c-ctaBanner__btn">
-     <a href="#">まずは無料相談してみる</a>
+     <a href="<?php echo esc_url(get_homeurl('/contact/')); ?>">まずは無料相談してみる</a>
     </div>
    </div>
 

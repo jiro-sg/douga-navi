@@ -44,6 +44,7 @@
          $termItemA_slug = $termItemA->slug;
          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          // var_dump($termItemA);
+         // var_dump(get_term_children($termItemA_id, $txnmySlug));
          ?>
      
          <ul class="p-srchCnditin__prntsTermLists">
@@ -523,7 +524,7 @@
        </figure>
        <a href="<?php the_permalink(); ?>">
         <p class="p-srchRslt__cardTxt">
-         <?php
+         <!-- <//?php
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -559,7 +560,7 @@
            echo '<br>';
           }
          }
-         ?>
+         ?> -->
          <?php the_title(); ?>
         </p>
        </a>
@@ -701,7 +702,7 @@
         </figure>
         <a href="<?php the_permalink(); ?>">
          <p class="p-srchRslt__cardTxt">
-          <?php
+          <!-- <//?php
           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
           if ($termsInfomation) {
            foreach ($termsInfomation as $termsInfo) {
@@ -737,7 +738,7 @@
             echo '<br>';
            }
           }
-          ?>
+          ?> -->
           <?php the_title(); ?>
          </p>
         </a>
@@ -781,7 +782,7 @@
     </p>
     <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
     <div class="c-ctaBanner__btn">
-     <a href="<?php echo esc_url(get_homeurl('/contact/')); ?>">まずは無料相談してみる</a>
+     <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
     </div>
    </div>
 

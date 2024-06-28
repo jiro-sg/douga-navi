@@ -22,7 +22,7 @@
 
  <section class="p-about__navi p-aboutNavi">
   <div class="l-inner">
-   <h2 class="p-aboutNavi__ttl">動画製作ナビとは？</h2>
+   <h2 class="p-aboutNavi__ttl">動画制作ナビとは？</h2>
    <div class="p-aboutNavi__txtWrppr">
 
     <p class="p-aboutNavi__txt">動画制作ナビは現役クリエイティブエージェンシー所属の専任ディレクターが、お客様の課題解決に向けて最適なプランをご提案し、厳選されたプロのパートナーと連携して高品質な動画を制作いたします。</p>
@@ -127,7 +127,7 @@
    <div class="p-aboutExmpl__cardWrppr">
     <?php while (have_posts()) : the_post(); // メインループ開始 
     ?>
-    <?php
+     <?php
      $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
      $the_query = new WP_Query();
      $param = array(
@@ -141,23 +141,23 @@
      if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
      ?>
 
-    <div class="p-aboutExmpl__movieCard">
+       <div class="p-aboutExmpl__movieCard">
 
-     <a href="<?php the_permalink(); ?>">
-      <figure>
-       <?php
+        <a href="<?php the_permalink(); ?>">
+         <figure>
+          <?php
           $hoge = get_field('info_movie');
           if ($hoge) :
            echo $embed_code = wp_oembed_get($hoge);
           endif; ?>
-      </figure>
-      <p class="p-aboutExmpl__cardTxt">
-       <?php the_title(); ?>
-      </p>
-     </a>
-    </div>
+         </figure>
+         <p class="p-aboutExmpl__cardTxt">
+          <?php the_title(); ?>
+         </p>
+        </a>
+       </div>
 
-    <?php
+     <?php
       endwhile;
      endif; ?>
     <?php endwhile; // メインループ終了 

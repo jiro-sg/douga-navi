@@ -20,6 +20,9 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  @include mq("md") {
+    width: calc(100% - myrem(40));
+  }
 }
 
 .p-aboutExmpl__ttl {

@@ -32,6 +32,9 @@
     <div class="p-footer__menu">
      <p class="p-footer__menuTitle">サービス</p>
      <ul class="p-footer__lists">
+
+
+
       <li class="p-footer__list">
        <a href="">SNS</a>
       </li>
@@ -39,7 +42,7 @@
        <a href="">採用動画</a>
       </li>
       <li class="p-footer__list">
-       <a href="">アニメーション</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=67&termSlug=animation')); ?>">アニメーション</a>
       </li>
       <li class="p-footer__list">
        <a href="">不動産</a>

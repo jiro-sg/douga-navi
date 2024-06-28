@@ -680,7 +680,12 @@
      wp_reset_postdata();
      ?>
 
-
+   <div class="l-pagenavi">
+    <?php
+   wp_pagenavi(['query' => $the_query]);
+   // wp_pagenavi();
+   ?>
+   </div>
 
    <?php else : ?>
 
@@ -695,12 +700,7 @@
    ?>
 
   </div>
-  <div class="l-pagenavi">
-   <?php
-   wp_pagenavi(['query' => $the_query]);
-   // wp_pagenavi();
-   ?>
-  </div>
+
   <div class="p-search__cta">
 
    <div class="p-search__ctaBanner c-ctaBanner">

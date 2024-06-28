@@ -32,53 +32,50 @@
     <div class="p-footer__menu">
      <p class="p-footer__menuTitle">サービス</p>
      <ul class="p-footer__lists">
-
-
-
       <li class="p-footer__list">
-       <a href="">SNS</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=40&termSlug=sns')); ?>">SNS</a>
       </li>
       <li class="p-footer__list">
-       <a href="">採用動画</a>
+       <a href="<?php echo esc_url(home_url('/')); ?>">採用動画</a>
       </li>
       <li class="p-footer__list">
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=67&termSlug=animation')); ?>">アニメーション</a>
       </li>
       <li class="p-footer__list">
-       <a href="">不動産</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=industry&termId=79&termSlug=realestate')); ?>">不動産</a>
       </li>
       <li class="p-footer__list">
-       <a href="">動画広告</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=33&termSlug=videoads')); ?>">動画広告</a>
       </li>
       <li class="p-footer__list">
-       <a href="">イベント・結婚式用動画</a>
+       <a href="<?php echo esc_url(home_url('/')); ?>">イベント・結婚式用動画</a>
       </li>
       <li class="p-footer__list">
-       <a href="">CG</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=68&termSlug=cg')); ?>">CG</a>
       </li>
       <li class="p-footer__list">
-       <a href="">フィットネス</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=industry&termId=80&termSlug=fitness')); ?>">フィットネス</a>
       </li>
       <li class="p-footer__list">
-       <a href="">PR動画</a>
+       <a href="<?php echo esc_url(home_url('/')); ?>">PR動画</a>
       </li>
       <li class="p-footer__list">
-       <a href="">ドローン撮影</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=69&termSlug=drone')); ?>">ドローン撮影</a>
       </li>
       <li class="p-footer__list">
-       <a href="">塾・教育</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=industry&termId=81&termSlug=education')); ?>">塾・教育</a>
       </li>
       <li class="p-footer__list">
-       <a href="">研修用動画</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=47&termSlug=training')); ?>">研修用動画</a>
       </li>
       <li class="p-footer__list">
-       <a href="">実写</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=66&termSlug=liveaction')); ?>">実写</a>
       </li>
       <li class="p-footer__list">
-       <a href="">買取</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=industry&termId=78&termSlug=purchase')); ?>">買取</a>
       </li>
       <li class="p-footer__list">
-       <a href="">その他</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=industry&termId=82&termSlug=otherindustory')); ?>">その他</a>
       </li>
      </ul>
     </div>

@@ -45,8 +45,8 @@
          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          // var_dump($termItemA);
          // var_dump(get_term_children($termItemA_id, $txnmySlug));
-         ?>
-     
+        ?>
+
          <ul class="p-srchCnditin__prntsTermLists">
           <li class="p-srchCnditin__prntsTermItem">
 
@@ -141,6 +141,7 @@
          $termItemA_slug = $termItemA->slug;
          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
          // var_dump($termItemA);
+         // var_dump(get_term_children($termItemA_id, $txnmySlug));
         ?>
          <ul class="p-srchCnditin__prntsTermLists">
           <li class="p-srchCnditin__prntsTermItem">
@@ -566,11 +567,14 @@
        </a>
       </div>
 
-    <?php
-     endwhile;
-    endif;
-    ?>
+     <?php endwhile; ?>
+    <?php else : ?>
+     <p class="p-search__noResult">
+      申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+      条件を変えてお試しください。
+     </p>
 
+    <?php endif; ?>
    <?php else :
     // search.phpのメインループ機能を使わずサブループで投稿を絞り込み検索する場合
     $subLoopPosts = true;
@@ -765,11 +769,13 @@
 
   <?php
   wp_reset_postdata();
-  if ($subLoopPosts == true) :
+  if (isset($_GET['termLists']) || isset($_GET['termSlug'])) :
+   if ($subLoopPosts == true) :
   ?>
-   <div class="l-search__pageNavi">
-    <?php wp_pagenavi(['query' => $the_query]); ?>
-   </div>
+    <div class="l-search__pageNavi">
+     <?php wp_pagenavi(['query' => $the_query]); ?>
+    </div>
+   <?php endif; ?>
   <?php endif; ?>
 
 

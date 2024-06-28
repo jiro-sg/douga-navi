@@ -494,11 +494,9 @@
 
 
 
+  </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
   <div class="p-search__result p-srchRslt">
-   </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
    <?php
-
-
    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
    // var_dump($paged);
 
@@ -746,14 +744,12 @@
      <?php
       endwhile;
      endif;
-     wp_reset_postdata();
      ?>
 
-     <?php
-     wp_pagenavi(['query' => $the_query]);
-     // wp_pagenavi();
-     ?>
+     <div class="l-aaa">
 
+
+     </div>
 
     <?php else : ?>
 
@@ -767,9 +763,17 @@
    <?php endif;
    // search.phpのメインループを使うかサブループで絞り込むのかの判定
    ?>
-   </ /?php endwhile; // メインループ終了 ?>
-
   </div>
+
+  <?php
+
+  wp_reset_postdata();
+  if ($subLoopPosts == true) {
+   wp_pagenavi(['query' => $the_query]);
+  }
+  // wp_pagenavi();
+  ?>
+  </ /?php endwhile; // メインループ終了 ?>
 
   <div class="p-search__cta">
 

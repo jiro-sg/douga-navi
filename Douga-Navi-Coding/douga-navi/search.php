@@ -521,46 +521,48 @@
         endif;
         ?>
        </figure>
-       <p class="p-srchRslt__cardTxt">
-        <?php
-        $termsInfomation = get_the_terms($the_query->ID, 'purpose');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
+       <a href="<?php the_permalink(); ?>">
+        <p class="p-srchRslt__cardTxt">
+         <?php
+         $termsInfomation = get_the_terms($the_query->ID, 'purpose');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
          }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
+         $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
          }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'price_range');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
+         $termsInfomation = get_the_terms($the_query->ID, 'price_range');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
          }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'video_length');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
+         $termsInfomation = get_the_terms($the_query->ID, 'video_length');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
          }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'industry');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
+         $termsInfomation = get_the_terms($the_query->ID, 'industry');
+         if ($termsInfomation) {
+          foreach ($termsInfomation as $termsInfo) {
+           echo $termsInfo->name;
+           echo '<br>';
+          }
          }
-        }
-        ?>
-        <//?php the_title(); ?>
-       </p>
+         ?>
+         <?php the_title(); ?>
+        </p>
+       </a>
       </div>
 
     <?php
@@ -674,10 +676,10 @@
      $the_query = new WP_Query($args04);
     }
     // var_dump($subLoopPosts);
-    ?>
+   ?>
 
     <?php if ($subLoopPosts == true) :
-  
+
     ?>
 
 
@@ -697,46 +699,48 @@
          endif;
          ?>
         </figure>
-        <p class="p-srchRslt__cardTxt">
-         <?php
-        $termsInfomation = get_the_terms($the_query->ID, 'purpose');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
-         }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
-         }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'price_range');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
-         }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'video_length');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
-         }
-        }
-        $termsInfomation = get_the_terms($the_query->ID, 'industry');
-        if ($termsInfomation) {
-         foreach ($termsInfomation as $termsInfo) {
-          echo $termsInfo->name;
-          echo '<br>';
-         }
-        }
-        ?>
-         <//?php the_title(); ?>
-        </p>
+        <a href="<?php the_permalink(); ?>">
+         <p class="p-srchRslt__cardTxt">
+          <?php
+          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'price_range');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'video_length');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'industry');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          ?>
+          <?php the_title(); ?>
+         </p>
+        </a>
        </div>
 
      <?php

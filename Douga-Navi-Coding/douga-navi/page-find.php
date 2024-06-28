@@ -699,7 +699,7 @@
           ?>
          </figure>
          <p class="p-srchRslt__cardTxt">
-          <!-- <//?php
+          <?php
         $termsInfomation = get_the_terms($the_query->ID, 'purpose');
         if ($termsInfomation) {
          foreach ($termsInfomation as $termsInfo) {
@@ -735,8 +735,8 @@
           echo '<br>';
          }
         }
-        ?> -->
-          <?php the_title(); ?>
+        ?>
+          <//?php the_title(); ?>
          </p>
         </div>
 

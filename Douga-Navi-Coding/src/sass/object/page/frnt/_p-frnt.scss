@@ -48,9 +48,9 @@
 }
 
 .p-frnt__subLink {
-  margin-top: myrem(135);
+  margin-top: myrem(100);
   @media screen and (max-width: 1150px) {
-    margin-top: calc(math.div(135, 1150) * 100vw);
+    margin-top: calc(math.div(100, 1150) * 100vw);
   }
   @include mq(md) {
     width: calc(math.div(272, 280) * 100%);
@@ -65,9 +65,9 @@
 }
 
 .p-frnt__search:first-of-type {
-  margin-top: myrem(80);
+  margin-top: myrem(60);
   @media screen and (max-width: 1150px) {
-    margin-top: calc(math.div(80, 1150) * 100vw);
+    margin-top: calc(math.div(60, 1150) * 100vw);
   }
 }
 

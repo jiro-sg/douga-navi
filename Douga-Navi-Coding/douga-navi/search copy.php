@@ -8,42 +8,19 @@
    <h1 class="p-search__ttl">動画実績を探す</h1>
 
   <?php
-  elseif (isset($_GET['termSlug']) && !isset($_GET['s'])) :
-   $termSlug = $_GET['termSlug'];
+  elseif (isset($_GET['termSlug']) && isset($_GET['txnmySlug']) && !isset($_GET['s'])) :
+   $termSlugLists = $_GET['termSlug'];
    $txnmySlug = $_GET['txnmySlug'];
-   // var_dump($termSlug);
-   $termObjectLIsts = get_terms(array(
-    'slug' => $termSlug,
-    'hide_empty' => false,
-   ));
-   // var_dump($termObjectLIsts);
-   $termIDLists = array();
-   $termNameLists = array();
-   foreach ($termObjectLIsts as $termObjectItem) {
-    $termIDLists[] = $termObjectItem->term_id;
-    $termNameLists[] = $termObjectItem->name;
-   }
+   $termObject = get_term_by('slug', $termSlug, $txnmySlug);
+   $termID = $termObject->term_id;
+   $termName = $termObject->name;
   ?>
 
-   <h1 class="p-search__ttl">
-    <?php
-    foreach ($termNameLists as $termNameItem) {
-     echo $termNameItem;
-    }
-    ?>一覧</h1>
+   <h1 class="p-search__ttl"><?php echo $termName; ?>の検索結果一覧</h1>
 
-   <?php
-   $termdescriptionLists = array();
-   foreach ($termIDLists as $termItem) {
-    $termdescriptionLists[] = term_description($termItem, $txnmySlug);
-   }
-   foreach ($termdescriptionLists as $termdescriptionItem) :
-    if (!empty($termdescriptionItem)) :
-   ?>
-     <p class="p-search__explain"><?php echo $termdescriptionItem; ?></p>
-   <?php endif;
-   endforeach;
-   ?>
+   <?php if (term_description($termID, $txnmySlug)) : ?>
+    <p class="p-search__explain"><?php echo term_description($termID, $txnmySlug); ?></p>
+   <?php endif; ?>
 
   <?php
   elseif (isset($_GET['s']) ||  isset($_GET['termLists'])) :
@@ -56,8 +33,6 @@
    <h1 class="p-search__ttl">動画実績を探す</h1>
 
   <?php endif; ?>
-
-
 
   <article class="p-search__cnditins p-srchCnditin">
    <div class="p-srchCnditin__ttlBox js-searchBtnAccdin">
@@ -199,8 +174,7 @@
 
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
-   if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-    echo '010101010101';
+   if (isset($_GET['s']) && !isset($_GET['termLists']) && !isset($_GET['termSlug'])) :
     if (have_posts()) :
      while (have_posts()) : the_post();
    ?>
@@ -266,99 +240,20 @@
      </p>
 
     <?php endif; ?>
+   <?php else :
+    // search.phpのメインループ機能を使わずサブループで投稿を絞り込み検索する場合
+    $subLoopPosts = true;
+    // サブループで回す投稿があるかないかの判定キーとして$subLoopPostsを設定
 
-
-
-
-   <?php
-   // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
-   elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-    echo '0202020202';
-    //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
-    // 代わりに検索ヒットしない旨のメッセージを表示する
-    $noNeedLoop = false;
-   ?>
-
-    <?php
-    // フリーワード検索もターム絞り込みもない場合
-    // ↓
-    //動画実績を絞り込みせず全部表示する
-    if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
-
-     echo '0303030303';
-
-     $args02 = array(
-      'post_type' => 'works_case',
-      'post_status' => 'publish',
-      'paged' => $paged,
-      'posts_per_page' => 9, // 表示件数
-      'orderby'     => 'date',
-      'order' => 'DESC',
-     );
-     $the_query = new WP_Query($args02);
-    ?>
-
-
-    <?php
-    // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
-    elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-
-     echo '040404040404';
-
-     $txnmySlug = $_GET['txnmySlug'];
-     $termSlug = $_GET['termSlug'];
-     // var_dump($txnmySlug);
-     // var_dump($termSlug);
-     $termObjects = get_terms(array(
-      'slug' => $termSlug,
-     ));
-     // 選択したタームの投稿があれば以下の処理をする
-     if (count($termObjects) > 0) {
-      // var_dump($termObjects);
-      $txnmyLists = array();
-      foreach ($termObjects as $termObject) {
-       $txnmyLists[] = $termObject->taxonomy;
-       // var_dump($termObject->taxonomy);
-      }
-      // var_dump($txnmyLists);
-      $args03 = array(
-       'post_type' => 'works_case',
-       'post_status' => 'publish',
-       'paged' => $paged,
-       'posts_per_page' => 9, // 表示件数
-       'orderby'     => 'date',
-       'order' => 'DESC',
-       'tax_query' => array(
-        array(
-         'taxonomy' => $txnmySlug, //タクソノミーを指定
-         'field' => 'slug',
-         'terms' => array($termSlug), //ターム名をスラッグで指定する
-         'operator' => 'AND',
-         'include_children' => true,
-        )
-       )
-      );
-      $the_query = new WP_Query($args03);
-      // var_dump($the_query);
-     } else {
-      $noNeedLoop = true;
-     }
-
-    ?>
-
-    <?php
-    // フリーワード検索に値がなくて複数ターム絞り込みした場合
-    elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
-
-     echo '0505050505';
-
+    if (isset($_GET['termLists'])) {
      $sTermLists = $_GET['termLists'];
-     // var_dump($sTermLists);
+     // var_dump(count($sTermLists));
      $txnmyLists = array();
      foreach ($sTermLists as $sTermItem) {
       $termObjects = get_terms(array(
        'slug' => $sTermItem,
       ));
+      var_dump($termObjects);
       foreach ($termObjects as $termObject) {
        $txnmyLists[] = $termObject->taxonomy;
        $taxnmyName = $termObject->taxonomy;
@@ -387,7 +282,7 @@
         'include_children' => false,
        );
       }
-      $args04 = array(
+      $args02 = array(
        'post_type' => 'works_case',
        'post_status' => 'publish',
        'paged' => $paged,
@@ -396,20 +291,76 @@
        'order' => 'DESC',
        'tax_query' => $taxArgs,
       );
-      // var_dump($args04);
-      $the_query = new WP_Query($args04);
+      // var_dump($args02);
+      $the_query = new WP_Query($args02);
+      // var_dump($taxArgs);
+      if (!$the_query->have_posts()) {
+       $subLoopPosts = false;
+      }
       // var_dump($the_query);
      } else {
-      $noNeedLoop = true;
+      $subLoopPosts = false;
      }
+    } elseif (isset($_GET['txnmySlug']) && isset($_GET['termSlug'])) {
+     $txnmySlug = $_GET['txnmySlug'];
+     $termSlug = $_GET['termSlug'];
+     $txnmyLists = array();
+     $termObjects = get_terms(array(
+      'slug' => $termSlug,
+     ));
+     foreach ($termObjects as $termObject) {
+      $txnmyLists[] = $termObject->taxonomy;
+     }
+     // var_dump($txnmyLists);
+     // 選択したタームの投稿があれば以下の処理をする
+     if (count($txnmyLists) != 0) {
+      $args03 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+       'tax_query' => array(
+        array(
+         'taxonomy' => $txnmySlug, //タクソノミーを指定
+         'field' => 'slug',
+         'terms' => array($termSlug), //ターム名をスラッグで指定する
+         'operator' => 'AND',
+         'include_children' => true,
+        )
+       )
+      );
+      $the_query = new WP_Query($args03);
+     } else {
+      $subLoopPosts = false;
+     }
+    } else {
+     $args04 = array(
+      'post_type' => 'works_case',
+      'post_status' => 'publish',
+      'paged' => $paged,
+      'posts_per_page' => 9, // 表示件数
+      'orderby'     => 'date',
+      'order' => 'DESC',
+     );
+     $the_query = new WP_Query($args04);
+    }
+    // var_dump($subLoopPosts);
+   ?>
+
+    <?php if ($subLoopPosts == true) :
+
     ?>
 
-    <?php endif; ?>
+
+     <?php
+     // var_dump($the_query);
+     if ($the_query->have_posts()) :
+      while ($the_query->have_posts()) : $the_query->the_post();
+     ?>
 
 
-    <?php if ($noNeedLoop == false) : ?>
-     <?php if ($the_query->have_posts()) : ?>
-      <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
        <div class="p-srchRslt__card">
         <figure class="p-srchRslt__cardMovie">
          <?php
@@ -421,7 +372,7 @@
         </figure>
         <a href="<?php the_permalink(); ?>">
          <p class="p-srchRslt__cardTxt">
-          <?php
+          <!-- <//?php
           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
           if ($termsInfomation) {
            foreach ($termsInfomation as $termsInfo) {
@@ -457,24 +408,19 @@
             echo '<br>';
            }
           }
-          ?>
+          ?> -->
           <?php the_title(); ?>
          </p>
         </a>
        </div>
 
-      <?php endwhile; ?>
-
-     <?php else : ?>
-
-      <p class="p-search__noResult">
-       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-       条件を変えてお試しください。
-      </p>
-
-     <?php endif; ?>
+     <?php
+      endwhile;
+     endif;
+     ?>
 
     <?php else : ?>
+
      <p class="p-search__noResult">
       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
       条件を変えてお試しください。
@@ -482,21 +428,21 @@
 
     <?php endif; ?>
 
-   <?php endif; ?>
-
-
-
-
+   <?php endif;
+   // search.phpのメインループを使うかサブループで絞り込むのかの判定
+   ?>
   </div>
 
-  <?php wp_reset_postdata(); ?>
-
-  <?php if ($noNeedLoop == false) : ?>
-   <div class="l-search__pageNavi">
-    <?php wp_pagenavi(['query' => $the_query]); ?>
-   </div>
+  <?php
+  wp_reset_postdata();
+  if (isset($_GET['termLists']) || isset($_GET['termSlug'])) :
+   if ($subLoopPosts == true) :
+  ?>
+    <div class="l-search__pageNavi">
+     <?php wp_pagenavi(['query' => $the_query]); ?>
+    </div>
+   <?php endif; ?>
   <?php endif; ?>
-
 
 
   </ /?php endwhile; // メインループ終了 ?>

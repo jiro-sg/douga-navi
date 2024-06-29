@@ -6,10 +6,6 @@
   max-width: myrem(1146);
   padding-top: myrem(40);
   @include mq("md") {
-    padding-top: myrem(48);
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
   }
 }
 
@@ -20,6 +16,9 @@
   @include mq("md") {
     flex-direction: column;
     justify-content: initial;
+    max-width: myrem(400);
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -56,8 +55,9 @@
   display: flex;
   gap: myrem(30);
   @include mq("md") {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(2, auto);
     gap: myrem(24);
   }
 }
@@ -99,9 +99,12 @@
   max-width: myrem(556);
   margin-top: myrem(20);
   @include mq("md") {
-    grid-template-columns: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
     column-gap: myrem(20);
     row-gap: myrem(16);
+  }
+  @include mq("sm") {
+    grid-template-columns: repeat(2, auto);
   }
 }
 
@@ -128,7 +131,7 @@
   max-width: myrem(285);
   width: 100%;
   @include mq("md") {
-    margin-left: inherit;
+    margin-left: initial;
     margin-top: myrem(23);
     order: 2;
     padding: myrem(24) myrem(16) myrem(16);
@@ -221,6 +224,11 @@
   @include mq("md") {
     display: block;
     margin-top: myrem(30);
+    max-width: myrem(400);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

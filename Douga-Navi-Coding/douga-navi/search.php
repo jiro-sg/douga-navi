@@ -365,10 +365,11 @@
        $termLists[$taxnmyName][] = $sTermItem;
       }
      }
+     // var_dump(count($termLists) > 0);
+     // var_dump($txnmyLists);
      // 選択したタームの投稿があれば以下の処理をする
-     if (count($sTermLists) == count($txnmyLists)) {
-      // var_dump($txnmyLists);
-      $txnmyUniqueLists = array_unique($txnmyLists);
+     if (count($termLists) > 0) {
+     $txnmyUniqueLists = array_unique($txnmyLists);
       $taxArgs = array(
        'relation' => 'AND',
       );
@@ -383,7 +384,7 @@
         'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
         'field' => 'slug',
         'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-        'operator' => 'AND',
+        'operator' => 'IN',
         'include_children' => false,
        );
       }

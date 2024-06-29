@@ -41,7 +41,7 @@
 
 .p-srchCnditin__formBox {
 	padding: 0 myrem(48) myrem(48);
-	// display: none;
+	display: none;
 	@include mq(md) {
 		padding: 0 myrem(16) myrem(32);
 	}

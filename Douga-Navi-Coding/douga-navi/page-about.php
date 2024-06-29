@@ -182,30 +182,39 @@
    <div class="p-aboutVoice__cardWrppr">
 
     <div class="p-aboutVoice__cardBox c-card02">
-
      <div class="c-card02__sntnc">
-      <h3 class="c-card02__ttl">株式会社〇〇様</h3>
-      <p class="c-card02__txt">お客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入ります</p>
+      <?php $value = get_post_meta($post->ID, 'customer_name', true); ?>
+      <?php if (!empty($value)) : ?>
+       <h3 class="c-card02__ttl"><?php the_field('customer_name'); ?></h3>
+       <p class="c-card02__txt"><?php the_field('customer_voice'); ?></p>
      </div>
 
      <figure class="c-card02__img">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <?php
+       $hoge = get_field('customer_movie');
+       if ($hoge) :
+        echo $embed_code = wp_oembed_get($hoge);
+       endif; ?>
      </figure>
-
+    <?php endif; ?>
     </div>
 
-
     <div class="p-aboutVoice__cardBox c-card02">
-
      <div class="c-card02__sntnc">
-      <h3 class="c-card02__ttl">株式会社〇〇様</h3>
-      <p class="c-card02__txt">お客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入りますお客様の声が入ります</p>
+      <?php $value = get_post_meta($post->ID, 'customer_name2', true); ?>
+      <?php if (!empty($value)) : ?>
+       <h3 class="c-card02__ttl"><?php the_field('customer_name2'); ?></h3>
+       <p class="c-card02__txt"><?php the_field('customer_voice2'); ?></p>
      </div>
 
      <figure class="c-card02__img">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/bjmBJ1Fl0cs?si=H-2LtWB8we2sSyTU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <?php
+       $hoge = get_field('customer_movie2');
+       if ($hoge) :
+        echo $embed_code = wp_oembed_get($hoge);
+       endif; ?>
      </figure>
-
+    <?php endif; ?>
     </div>
    </div>
 

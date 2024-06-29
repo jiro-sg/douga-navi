@@ -12,10 +12,10 @@
 }
 
 .p-srchCnditin__ttlBox {
-	padding: myrem(48) myrem(48) 0;
+	padding: 0 myrem(48);
 	cursor: pointer;
 	@include mq(md) {
-		padding: myrem(32) myrem(16) 0;
+		padding: 0 myrem(16);
 	}
 }
 
@@ -26,10 +26,12 @@
 	text-align: center;
 	padding-bottom: myrem(16);
 	transition: border-bottom 0.3s ease-out;
+	padding: myrem(24) 0;
 	border-bottom: none;
 	@include mq(md) {
 		font-size: myrem(16);
 		letter-spacing: 0.005em;
+		padding: myrem(16) 0;
 	}
 }
 
@@ -39,7 +41,7 @@
 
 .p-srchCnditin__formBox {
 	padding: 0 myrem(48) myrem(48);
-	display: none;
+	// display: none;
 	@include mq(md) {
 		padding: 0 myrem(16) myrem(32);
 	}

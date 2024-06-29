@@ -2,64 +2,68 @@
 @use "global" as *;
 
 .searchform__box {
-	display: flex;
-	align-items: stretch;
-	width: 100%;
-	height: auto;
-	border-radius: myrem(4);
-	border: 1px solid $paleBlue_eff;
-	@include mq(md) {
-	}
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: auto;
+  border-radius: myrem(4);
+  // border: 1px solid $paleBlue_eff;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  @include mq(md) {
+  }
 }
 
 .searchform__box input {
-	display: block;
-	width: calc(math.div(275, 313) * 100%);
-	height: auto;
-	// background-color: green;
-	padding: myrem(2) myrem(10);
-	font-size: myrem(13);
-	letter-spacing: 0.005em;
-	border: none;
-	outline: none;
-	@include mq(md) {
-		font-size: myrem(14);
-	}
+  display: block;
+  width: calc(math.div(275, 313) * 100%);
+  height: auto;
+  // background-color: green;
+  padding: myrem(2) myrem(10);
+  font-size: myrem(13);
+  letter-spacing: 0.005em;
+  border: none;
+  outline: none;
+  @include mq(md) {
+    font-size: myrem(14);
+  }
 }
 
 .searchform__box input:focus-visible {
-	border: none;
-	@include mq(md) {
-	}
+  border: none;
+  @include mq(md) {
+  }
 }
 
 .searchform__box input::placeholder {
-	font-size: myrem(15);
-	color: $paleBlue_eff;
-	@include mq(md) {
-	}
+  font-size: myrem(15);
+  // color: $paleBlue_eff;
+  color: #ccc;
+  font-size: myrem(12);
+  @include mq(md) {
+  }
 }
 
 .searchform__box button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: calc(math.div(38, 313) * 100%);
-	height: auto;
-	// background-color: pink;
-	padding-block: 0;
-	padding-inline: 0;
-	cursor: pointer;
-	@include mq(md) {
-	}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(math.div(38, 313) * 100%);
+  height: auto;
+  // background-color: pink;
+  padding-block: 0;
+  padding-inline: 0;
+  cursor: pointer;
+  @include mq(md) {
+  }
 }
 
 .searchform__box button img {
-	display: block;
-	width: myrem(15);
-	height: myrem(18);
-	object-fit: contain;
-	object-position: center;
-	@include mq(md) {
-	}
+  display: block;
+  width: myrem(15);
+  height: myrem(18);
+  object-fit: contain;
+  object-position: center;
+  @include mq(md) {
+  }
 }

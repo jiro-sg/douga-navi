@@ -73,7 +73,6 @@
 
 .p-header__searchBox {
   width: myrem(313);
-  border: 1px solid $gray_ddd;
   @include mq(md) {
     display: none;
   }
@@ -197,7 +196,7 @@
 }
 
 .p-header__drawerSearchForm {
-  border: 1px solid $gray_ddd;
+  // border: 1px solid $gray_ddd;
 
   @include mq(md) {
     width: myrem(264);

@@ -188,36 +188,35 @@
 
 
 
-  <?php while (have_posts()) : the_post(); // メインループ開始 
-  ?>
-   <div class="p-search__result p-srchRslt">
-    <?php
-    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-    // var_dump($paged);
+  </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
+  <div class="p-search__result p-srchRslt">
+   <?php
+   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+   // var_dump($paged);
 
-    ?>
+   ?>
 
 
-    <?php
-    // search.phpのメインループ機能でフリーワード検索する場合
-    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-     // echo '010101010101';
-     if (have_posts()) :
-      while (have_posts()) : the_post();
-    ?>
+   <?php
+   // search.phpのメインループ機能でフリーワード検索する場合
+   if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+    // echo '010101010101';
+    if (have_posts()) :
+     while (have_posts()) : the_post();
+   ?>
 
-       <div class="p-srchRslt__card">
-        <figure class="p-srchRslt__cardMovie">
-         <?php
-         $hoge = get_field('info_movie');
-         if ($hoge) :
-          echo $embed_code = wp_oembed_get($hoge);
-         endif;
-         ?>
-        </figure>
-        <a href="<?php the_permalink(); ?>">
-         <p class="p-srchRslt__cardTxt">
-          <!-- <//?php
+      <div class="p-srchRslt__card">
+       <figure class="p-srchRslt__cardMovie">
+        <?php
+        $hoge = get_field('info_movie');
+        if ($hoge) :
+         echo $embed_code = wp_oembed_get($hoge);
+        endif;
+        ?>
+       </figure>
+       <a href="<?php the_permalink(); ?>">
+        <p class="p-srchRslt__cardTxt">
+         <!-- <//?php
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -254,254 +253,253 @@
           }
          }
          ?> -->
-          <?php the_title(); ?>
-         </p>
-        </a>
-       </div>
+         <?php the_title(); ?>
+        </p>
+       </a>
+      </div>
 
-      <?php endwhile; ?>
-     <?php else : ?>
-      <p class="p-search__noResult">
-       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-       条件を変えてお試しください。
-      </p>
-
-     <?php endif; ?>
-
-
-
-
-    <?php
-    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
-    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-     // echo '0202020202';
-     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
-     // 代わりに検索ヒットしない旨のメッセージを表示する
-     $noNeedLoop = false;
-    ?>
-
-     <?php
-     // フリーワード検索もターム絞り込みもない場合
-     // ↓
-     //動画実績を絞り込みせず全部表示する
-     if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
-
-      // echo '0303030303';
-
-      $args03 = array(
-       'post_type' => 'works_case',
-       'post_status' => 'publish',
-       'paged' => $paged,
-       'posts_per_page' => 9, // 表示件数
-       'orderby'     => 'date',
-       'order' => 'DESC',
-      );
-      $the_query = new WP_Query($args03);
-     ?>
-
-
-     <?php
-     // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
-     elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-
-      // echo '040404040404';
-
-      $txnmySlug = $_GET['txnmySlug'];
-      $termSlug = $_GET['termSlug'];
-      // var_dump($txnmySlug);
-      // var_dump($termSlug);
-      $termObjects = get_terms(array(
-       'slug' => $termSlug,
-      ));
-      // 選択したタームの投稿があれば以下の処理をする
-      if (count($termObjects) > 0) {
-       // var_dump($termObjects);
-       $txnmyLists = array();
-       foreach ($termObjects as $termObject) {
-        $txnmyLists[] = $termObject->taxonomy;
-        // var_dump($termObject->taxonomy);
-       }
-       // var_dump($txnmyLists);
-       $args04 = array(
-        'post_type' => 'works_case',
-        'post_status' => 'publish',
-        'paged' => $paged,
-        'posts_per_page' => 9, // 表示件数
-        'orderby'     => 'date',
-        'order' => 'DESC',
-        'tax_query' => array(
-         array(
-          'taxonomy' => $txnmySlug, //タクソノミーを指定
-          'field' => 'slug',
-          'terms' => array($termSlug), //ターム名をスラッグで指定する
-          'operator' => 'AND',
-          'include_children' => true,
-         )
-        )
-       );
-       $the_query = new WP_Query($args04);
-       // var_dump($the_query);
-      } else {
-       $noNeedLoop = true;
-      }
-
-     ?>
-
-     <?php
-     // フリーワード検索に値がなくて複数ターム絞り込みした場合
-     elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
-
-      // echo '0505050505';
-
-      $sTermLists = $_GET['termLists'];
-      // var_dump($sTermLists);
-      $txnmyLists = array();
-      foreach ($sTermLists as $sTermItem) {
-       $termObjects = get_terms(array(
-        'slug' => $sTermItem,
-       ));
-       foreach ($termObjects as $termObject) {
-        $txnmyLists[] = $termObject->taxonomy;
-        $taxnmyName = $termObject->taxonomy;
-        $termLists[$taxnmyName][] = $sTermItem;
-       }
-      }
-      // 選択したタームの投稿があれば以下の処理をする
-      if (count($sTermLists) == count($txnmyLists)) {
-       // var_dump($txnmyLists);
-       $txnmyUniqueLists = array_unique($txnmyLists);
-       $taxArgs = array(
-        'relation' => 'AND',
-       );
-       foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
-        $txnmyChildTerm = array();
-        foreach ($termLists[$txnmyUniqueItem] as $termItem) {
-         // var_dump($termItem);
-         $txnmyChildTerm[] = $termItem;
-        }
-        // var_dump($txnmyChildTerm);
-        $taxArgs[] = array(
-         'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
-         'field' => 'slug',
-         'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-         'operator' => 'IN',
-         'include_children' => false,
-        );
-       }
-       $args05 = array(
-        'post_type' => 'works_case',
-        'post_status' => 'publish',
-        'paged' => $paged,
-        'posts_per_page' => 9, // 表示件数
-        'orderby'     => 'date',
-        'order' => 'DESC',
-        'tax_query' => $taxArgs,
-       );
-       // var_dump($args04);
-       $the_query = new WP_Query($args05);
-       // var_dump($the_query);
-      } else {
-       $noNeedLoop = true;
-      }
-     ?>
-
-     <?php endif; ?>
-
-
-     <?php if ($noNeedLoop == false) : ?>
-      <?php if ($the_query->have_posts()) : ?>
-       <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
-        <div class="p-srchRslt__card">
-         <figure class="p-srchRslt__cardMovie">
-          <?php
-          $hoge = get_field('info_movie');
-          if ($hoge) :
-           echo $embed_code = wp_oembed_get($hoge);
-          endif;
-          ?>
-         </figure>
-         <a href="<?php the_permalink(); ?>">
-          <p class="p-srchRslt__cardTxt">
-           <?php
-           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
-           if ($termsInfomation) {
-            foreach ($termsInfomation as $termsInfo) {
-             echo $termsInfo->name;
-             echo '<br>';
-            }
-           }
-           $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
-           if ($termsInfomation) {
-            foreach ($termsInfomation as $termsInfo) {
-             echo $termsInfo->name;
-             echo '<br>';
-            }
-           }
-           $termsInfomation = get_the_terms($the_query->ID, 'price_range');
-           if ($termsInfomation) {
-            foreach ($termsInfomation as $termsInfo) {
-             echo $termsInfo->name;
-             echo '<br>';
-            }
-           }
-           $termsInfomation = get_the_terms($the_query->ID, 'video_length');
-           if ($termsInfomation) {
-            foreach ($termsInfomation as $termsInfo) {
-             echo $termsInfo->name;
-             echo '<br>';
-            }
-           }
-           $termsInfomation = get_the_terms($the_query->ID, 'industry');
-           if ($termsInfomation) {
-            foreach ($termsInfomation as $termsInfo) {
-             echo $termsInfo->name;
-             echo '<br>';
-            }
-           }
-           ?>
-           <?php the_title(); ?>
-          </p>
-         </a>
-        </div>
-
-       <?php endwhile; ?>
-
-      <?php else : ?>
-
-       <p class="p-search__noResult">
-        申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-        条件を変えてお試しください。
-       </p>
-
-      <?php endif; ?>
-
-     <?php else : ?>
-      <p class="p-search__noResult">
-       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-       条件を変えてお試しください。
-      </p>
-
-     <?php endif; ?>
+     <?php endwhile; ?>
+    <?php else : ?>
+     <p class="p-search__noResult">
+      申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+      条件を変えてお試しください。
+     </p>
 
     <?php endif; ?>
 
 
 
 
-   </div>
+   <?php
+   // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
+   elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
+    // echo '0202020202';
+    //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
+    // 代わりに検索ヒットしない旨のメッセージを表示する
+    $noNeedLoop = false;
+   ?>
 
-   <?php wp_reset_postdata(); ?>
+    <?php
+    // フリーワード検索もターム絞り込みもない場合
+    // ↓
+    //動画実績を絞り込みせず全部表示する
+    if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
 
-   <?php if ($noNeedLoop == false) : ?>
-    <div class="l-search__pageNavi">
-     <?php wp_pagenavi(['query' => $the_query]); ?>
-    </div>
+     // echo '0303030303';
+
+     $args03 = array(
+      'post_type' => 'works_case',
+      'post_status' => 'publish',
+      'paged' => $paged,
+      'posts_per_page' => 9, // 表示件数
+      'orderby'     => 'date',
+      'order' => 'DESC',
+     );
+     $the_query = new WP_Query($args03);
+    ?>
+
+
+    <?php
+    // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
+    elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+
+     // echo '040404040404';
+
+     $txnmySlug = $_GET['txnmySlug'];
+     $termSlug = $_GET['termSlug'];
+     // var_dump($txnmySlug);
+     // var_dump($termSlug);
+     $termObjects = get_terms(array(
+      'slug' => $termSlug,
+     ));
+     // 選択したタームの投稿があれば以下の処理をする
+     if (count($termObjects) > 0) {
+      // var_dump($termObjects);
+      $txnmyLists = array();
+      foreach ($termObjects as $termObject) {
+       $txnmyLists[] = $termObject->taxonomy;
+       // var_dump($termObject->taxonomy);
+      }
+      // var_dump($txnmyLists);
+      $args04 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+       'tax_query' => array(
+        array(
+         'taxonomy' => $txnmySlug, //タクソノミーを指定
+         'field' => 'slug',
+         'terms' => array($termSlug), //ターム名をスラッグで指定する
+         'operator' => 'AND',
+         'include_children' => true,
+        )
+       )
+      );
+      $the_query = new WP_Query($args04);
+      // var_dump($the_query);
+     } else {
+      $noNeedLoop = true;
+     }
+
+    ?>
+
+    <?php
+    // フリーワード検索に値がなくて複数ターム絞り込みした場合
+    elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
+
+     // echo '0505050505';
+
+     $sTermLists = $_GET['termLists'];
+     // var_dump($sTermLists);
+     $txnmyLists = array();
+     foreach ($sTermLists as $sTermItem) {
+      $termObjects = get_terms(array(
+       'slug' => $sTermItem,
+      ));
+      foreach ($termObjects as $termObject) {
+       $txnmyLists[] = $termObject->taxonomy;
+       $taxnmyName = $termObject->taxonomy;
+       $termLists[$taxnmyName][] = $sTermItem;
+      }
+     }
+     // 選択したタームの投稿があれば以下の処理をする
+     if (count($sTermLists) == count($txnmyLists)) {
+      // var_dump($txnmyLists);
+      $txnmyUniqueLists = array_unique($txnmyLists);
+      $taxArgs = array(
+       'relation' => 'AND',
+      );
+      foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
+       $txnmyChildTerm = array();
+       foreach ($termLists[$txnmyUniqueItem] as $termItem) {
+        // var_dump($termItem);
+        $txnmyChildTerm[] = $termItem;
+       }
+       // var_dump($txnmyChildTerm);
+       $taxArgs[] = array(
+        'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
+        'field' => 'slug',
+        'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
+        'operator' => 'AND',
+        'include_children' => false,
+       );
+      }
+      $args05 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+       'tax_query' => $taxArgs,
+      );
+      // var_dump($args04);
+      $the_query = new WP_Query($args05);
+      // var_dump($the_query);
+     } else {
+      $noNeedLoop = true;
+     }
+    ?>
+
+    <?php endif; ?>
+
+
+    <?php if ($noNeedLoop == false) : ?>
+     <?php if ($the_query->have_posts()) : ?>
+      <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
+       <div class="p-srchRslt__card">
+        <figure class="p-srchRslt__cardMovie">
+         <?php
+         $hoge = get_field('info_movie');
+         if ($hoge) :
+          echo $embed_code = wp_oembed_get($hoge);
+         endif;
+         ?>
+        </figure>
+        <a href="<?php the_permalink(); ?>">
+         <p class="p-srchRslt__cardTxt">
+          <!-- <//?php
+          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'price_range');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'video_length');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          $termsInfomation = get_the_terms($the_query->ID, 'industry');
+          if ($termsInfomation) {
+           foreach ($termsInfomation as $termsInfo) {
+            echo $termsInfo->name;
+            echo '<br>';
+           }
+          }
+          ?> -->
+          <?php the_title(); ?>
+         </p>
+        </a>
+       </div>
+
+      <?php endwhile; ?>
+
+     <?php else : ?>
+
+      <p class="p-search__noResult">
+       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+       条件を変えてお試しください。
+      </p>
+
+     <?php endif; ?>
+
+    <?php else : ?>
+     <p class="p-search__noResult">
+      申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+      条件を変えてお試しください。
+     </p>
+
+    <?php endif; ?>
+
    <?php endif; ?>
 
 
 
-  <?php endwhile; // メインループ終了 
-  ?>
+
+  </div>
+
+  <?php wp_reset_postdata(); ?>
+
+  <?php if ($noNeedLoop == false) : ?>
+   <div class="l-search__pageNavi">
+    <?php wp_pagenavi(['query' => $the_query]); ?>
+   </div>
+  <?php endif; ?>
+
+
+
+  </ /?php endwhile; // メインループ終了 ?>
 
   <div class="p-search__cta">
 

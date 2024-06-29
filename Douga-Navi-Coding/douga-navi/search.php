@@ -383,7 +383,7 @@
         'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
         'field' => 'slug',
         'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-        'operator' => 'IN',
+        'operator' => 'AND',
         'include_children' => false,
        );
       }
@@ -421,7 +421,7 @@
         </figure>
         <a href="<?php the_permalink(); ?>">
          <p class="p-srchRslt__cardTxt">
-          <?php
+          <!-- <//?php
           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
           if ($termsInfomation) {
            foreach ($termsInfomation as $termsInfo) {
@@ -457,7 +457,7 @@
             echo '<br>';
            }
           }
-          ?>
+          ?> -->
           <?php the_title(); ?>
          </p>
         </a>

@@ -333,7 +333,7 @@
          'taxonomy' => $txnmySlug, //タクソノミーを指定
          'field' => 'slug',
          'terms' => array($termSlug), //ターム名をスラッグで指定する
-         'operator' => 'AND',
+         'operator' => 'IN',
          'include_children' => true,
         )
        )

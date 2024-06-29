@@ -200,7 +200,7 @@
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-    echo '010101010101';
+    // echo '010101010101';
     if (have_posts()) :
      while (have_posts()) : the_post();
    ?>
@@ -273,7 +273,7 @@
    <?php
    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-    echo '0202020202';
+    // echo '0202020202';
     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
     // 代わりに検索ヒットしない旨のメッセージを表示する
     $noNeedLoop = false;
@@ -285,9 +285,9 @@
     //動画実績を絞り込みせず全部表示する
     if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
 
-     echo '0303030303';
+     // echo '0303030303';
 
-     $args02 = array(
+     $args03 = array(
       'post_type' => 'works_case',
       'post_status' => 'publish',
       'paged' => $paged,
@@ -295,7 +295,7 @@
       'orderby'     => 'date',
       'order' => 'DESC',
      );
-     $the_query = new WP_Query($args02);
+     $the_query = new WP_Query($args03);
     ?>
 
 
@@ -303,7 +303,7 @@
     // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
     elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
 
-     echo '040404040404';
+     // echo '040404040404';
 
      $txnmySlug = $_GET['txnmySlug'];
      $termSlug = $_GET['termSlug'];
@@ -321,7 +321,7 @@
        // var_dump($termObject->taxonomy);
       }
       // var_dump($txnmyLists);
-      $args03 = array(
+      $args04 = array(
        'post_type' => 'works_case',
        'post_status' => 'publish',
        'paged' => $paged,
@@ -338,7 +338,7 @@
         )
        )
       );
-      $the_query = new WP_Query($args03);
+      $the_query = new WP_Query($args04);
       // var_dump($the_query);
      } else {
       $noNeedLoop = true;
@@ -350,7 +350,7 @@
     // フリーワード検索に値がなくて複数ターム絞り込みした場合
     elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
 
-     echo '0505050505';
+     // echo '0505050505';
 
      $sTermLists = $_GET['termLists'];
      // var_dump($sTermLists);
@@ -383,11 +383,11 @@
         'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
         'field' => 'slug',
         'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-        'operator' => 'AND',
+        'operator' => 'IN',
         'include_children' => false,
        );
       }
-      $args04 = array(
+      $args05 = array(
        'post_type' => 'works_case',
        'post_status' => 'publish',
        'paged' => $paged,
@@ -397,7 +397,7 @@
        'tax_query' => $taxArgs,
       );
       // var_dump($args04);
-      $the_query = new WP_Query($args04);
+      $the_query = new WP_Query($args05);
       // var_dump($the_query);
      } else {
       $noNeedLoop = true;

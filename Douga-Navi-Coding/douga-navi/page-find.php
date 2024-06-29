@@ -3,8 +3,19 @@
 <main class="p-search">
  <div class="p-search__inner">
 
- 
-  <h1 class="p-search__ttl">検索結果一覧</h1>
+  <?php if (!isset($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) : ?>
+
+   <h1 class="p-search__ttl">動画実績を探す</h1>
+
+  <?php 
+  elseif (isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+  
+  ?>
+
+   <h1 class="p-search__ttl">動画実績を探す</h1>
+
+  <?php endif; ?>
+
   <!-- <p class="p-search__explain">コンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの</p> -->
 
   <article class="p-search__cnditins p-srchCnditin">

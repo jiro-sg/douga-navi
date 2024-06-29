@@ -5,9 +5,17 @@
 	background-color: $white_fff;
 	border-radius: myrem(5);
 	border: 1px solid rgba($gray_ddd, 1);
-	padding: myrem(48);
+	padding: 0;
 	@include mq(md) {
-		padding: myrem(32) myrem(16);
+		padding: 0;
+	}
+}
+
+.p-srchCnditin__ttlBox {
+	padding: myrem(48) myrem(48) 0;
+	cursor: pointer;
+	@include mq(md) {
+		padding: myrem(32) myrem(16) 0;
 	}
 }
 
@@ -17,10 +25,23 @@
 	letter-spacing: 0.05em;
 	text-align: center;
 	padding-bottom: myrem(16);
-	border-bottom: 1px solid $gray_ddd;
+	transition: border-bottom 0.3s ease-out;
+	border-bottom: none;
 	@include mq(md) {
 		font-size: myrem(16);
 		letter-spacing: 0.005em;
+	}
+}
+
+.p-srchCnditin.srchAccdionOpen .p-srchCnditin__ttl {
+	border-bottom: 1px solid $gray_ddd;
+}
+
+.p-srchCnditin__formBox {
+	padding: 0 myrem(48) myrem(48);
+	display: none;
+	@include mq(md) {
+		padding: 0 myrem(16) myrem(32);
 	}
 }
 

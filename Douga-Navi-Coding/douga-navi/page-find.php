@@ -3,142 +3,162 @@
 <main class="p-search">
  <div class="p-search__inner">
 
-  <?php if (!isset($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) : ?>
+  <?php if (!isset($_GET['s']) && !isset($_GET['txnmySlug']) && !isset($_GET['termId']) && !isset($_GET['termLists'])) : ?>
 
    <h1 class="p-search__ttl">動画実績を探す</h1>
 
-  <?php 
-  elseif (isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-  
+  <?php
+  elseif (isset($_GET['termSlug']) && isset($_GET['txnmySlug']) && !isset($_GET['s'])) :
+   $termSlug = $_GET['termSlug'];
+   $txnmySlug = $_GET['txnmySlug'];
+   $termObject = get_term_by('slug', $termSlug, $txnmySlug);
+   $termID = $termObject->term_id;
+   $termName = $termObject->name;
   ?>
+
+   <h1 class="p-search__ttl"><?php echo $termName; ?>の検索結果一覧</h1>
+
+   <?php if (term_description($termID, $txnmySlug)) : ?>
+    <p class="p-search__explain"><?php echo term_description($termID, $txnmySlug); ?></p>
+   <?php endif; ?>
+
+  <?php
+  elseif (isset($_GET['s']) ||  isset($_GET['termLists'])) :
+  ?>
+
+   <h1 class="p-search__ttl">動画実績を探す</h1>
+
+  <?php else : ?>
 
    <h1 class="p-search__ttl">動画実績を探す</h1>
 
   <?php endif; ?>
 
-  <!-- <p class="p-search__explain">コンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの説明文が入りますコンテンツタイトルの</p> -->
-
   <article class="p-search__cnditins p-srchCnditin">
+   <div class="p-srchCnditin__ttlBox js-searchBtnAccdin">
+    <h2 class="p-srchCnditin__ttl">カテゴリーから<br class="u-mobile">動画制作実績を探す</h2>
+   </div>
 
-   <h2 class="p-srchCnditin__ttl">カテゴリーから<br class="u-mobile">動画制作実績を探す</h2>
+   <div class="p-srchCnditin__formBox">
+    <form method="get" id="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+     <input type="hidden" class="field" name="s">
 
-   <form method="get" id="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-    <input type="hidden" class="field" name="s">
+     <?php
+     $txnmySlugLists = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
+     foreach ($txnmySlugLists as $txnmySlugItem) :
+      $taxObject = get_taxonomy($txnmySlugItem);
+     ?>
+      <dl class="p-srchCnditin__defLists">
 
-    <?php
-    $txnmySlugLists = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
-    foreach ($txnmySlugLists as $txnmySlugItem) :
-     $taxObject = get_taxonomy($txnmySlugItem);
-    ?>
-     <dl class="p-srchCnditin__defLists">
+       <dt class="p-srchCnditin__defTerm">
+        <span><?php echo $taxObject->label; ?></span>
+       </dt>
+       <dd class="p-srchCnditin__defDescr">
+        <?php
+        $txnmySlug = $txnmySlugItem;
+        $hierarchyArray = array();
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
+        foreach ($termListsA as $termItemA) {
+         $termItemA_id = $termItemA->term_id;
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
+         array_push($hierarchyArray, count($termListsB));
+        }
+        $hierarchyCheck = array_sum($hierarchyArray);
+        // var_dump($hierarchyCheck);
 
-      <dt class="p-srchCnditin__defTerm">
-       <span><?php echo $taxObject->label; ?></span>
-      </dt>
-      <dd class="p-srchCnditin__defDescr">
-       <?php
-       $txnmySlug = $txnmySlugItem;
-       $hierarchyArray = array();
-       $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
-       foreach ($termListsA as $termItemA) {
-        $termItemA_id = $termItemA->term_id;
-        $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
-        array_push($hierarchyArray, count($termListsB));
-       }
-       $hierarchyCheck = array_sum($hierarchyArray);
-       // var_dump($hierarchyCheck);
-
-       // タームが１つでも存在する場合
-       if (!empty($termListsA)) :
-        // タームが親子関係の２階層ある場合
-        if ($hierarchyCheck > 0) :
-       ?>
+        // タームが１つでも存在する場合
+        if (!empty($termListsA)) :
+         // タームが親子関係の２階層ある場合
+         if ($hierarchyCheck > 0) :
+        ?>
 
 
-         <?php foreach ($termListsA as $termItemA) :
-          $termItemA_id = $termItemA->term_id;
-          $termItemA_slug = $termItemA->slug;
-          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
-          // var_dump($termItemA);
-          // var_dump(count(get_term_children($termItemA_id, $txnmySlug)));
-         ?>
+          <?php foreach ($termListsA as $termItemA) :
+           $termItemA_id = $termItemA->term_id;
+           $termItemA_slug = $termItemA->slug;
+           $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
+           // var_dump($termItemA);
+           // var_dump(count(get_term_children($termItemA_id, $txnmySlug)));
+          ?>
 
-          <ul class="p-srchCnditin__prntsTermLists">
-           <li class="p-srchCnditin__prntsTermItem">
+           <ul class="p-srchCnditin__prntsTermLists">
+            <li class="p-srchCnditin__prntsTermItem">
 
-            <div class="p-srchCnditin__prntsTermBox">
-             <label for="<?php echo esc_html($termItemA_slug); ?>">
-              <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
-              <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
-             </label>
-             <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
-              <span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
-             <?php endif; ?>
-            </div>
-
-            <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
-             <div class="p-srchCnditin__termBox">
-              <ul class="p-srchCnditin__termLists">
-               <?php
-               $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
-               foreach ($termListsC as $termItemC) :
-                $termItemC_id = $termItemC->term_id;
-                $termItemC_slug = $termItemC->slug;
-                $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
-               ?>
-
-                <li class="p-srchCnditin__termItem">
-                 <label for="<?php echo esc_html($termItemC_slug); ?>">
-                  <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
-                 </label>
-                </li>
-               <?php endforeach; ?>
-              </ul>
+             <div class="p-srchCnditin__prntsTermBox">
+              <label for="<?php echo esc_html($termItemA_slug); ?>">
+               <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
+               <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+              </label>
+              <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
+               <span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
+              <?php endif; ?>
              </div>
-            <?php endif; ?>
 
-           </li>
-          </ul>
-         <?php endforeach; ?>
+             <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
+              <div class="p-srchCnditin__termBox">
+               <ul class="p-srchCnditin__termLists">
+                <?php
+                $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
+                foreach ($termListsC as $termItemC) :
+                 $termItemC_id = $termItemC->term_id;
+                 $termItemC_slug = $termItemC->slug;
+                 $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
+                ?>
 
-        <?php else : ?>
+                 <li class="p-srchCnditin__termItem">
+                  <label for="<?php echo esc_html($termItemC_slug); ?>">
+                   <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                  </label>
+                 </li>
+                <?php endforeach; ?>
+               </ul>
+              </div>
+             <?php endif; ?>
 
-         <div class="p-srchCnditin__termBox">
-          <ul class="p-srchCnditin__termLists">
-
-           <?php
-           // タームが１階層しかない場合
-           foreach ($termListsA as $termItemA) :
-            $termItemA_id = $termItemA->term_id;
-            $termItemA_slug = $termItemA->slug;
-            $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
-           ?>
-
-            <li class="p-srchCnditin__termItem">
-             <label for="<?php echo esc_html($termItemA_slug); ?>">
-              <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
-             </label>
             </li>
-           <?php endforeach; ?>
+           </ul>
+          <?php endforeach; ?>
 
-          </ul>
-         </div>
+         <?php else : ?>
+
+          <div class="p-srchCnditin__termBox">
+           <ul class="p-srchCnditin__termLists">
+
+            <?php
+            // タームが１階層しかない場合
+            foreach ($termListsA as $termItemA) :
+             $termItemA_id = $termItemA->term_id;
+             $termItemA_slug = $termItemA->slug;
+             $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
+            ?>
+
+             <li class="p-srchCnditin__termItem">
+              <label for="<?php echo esc_html($termItemA_slug); ?>">
+               <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+              </label>
+             </li>
+            <?php endforeach; ?>
+
+           </ul>
+          </div>
 
 
-       <?php
+        <?php
+         endif;
         endif;
-       endif;
-       ?>
-      </dd>
-     </dl>
-    <?php endforeach; ?>
+        ?>
+       </dd>
+      </dl>
+     <?php endforeach; ?>
 
-    <div class="p-srchCnditin__btnWrppr">
+     <div class="p-srchCnditin__btnWrppr">
 
-     <button type="reset" class="p-srchCnditin__cancellBtn">カテゴリーの選択を解除する</button>
-     <button type="submit" class="p-srchCnditin__submitBtns">カテゴリーごとに検索する</button>
-    </div>
-   </form>
+      <button type="reset" class="p-srchCnditin__cancellBtn">カテゴリーの選択を解除する</button>
+      <button type="submit" class="p-srchCnditin__submitBtns">カテゴリーごとに検索する</button>
+     </div>
+    </form>
+   </div>
+
   </article>
 
 

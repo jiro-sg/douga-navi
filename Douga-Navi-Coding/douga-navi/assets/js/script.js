@@ -108,6 +108,17 @@ $(function () {
 		},
 	});
 
+	// 検索結果ページの絞り込みボタンのアコーディオン
+	$(".js-searchBtnAccdin").on("click", function () {
+		if ($(".p-srchCnditin").hasClass("srchAccdionOpen")) {
+			$(this).next().slideUp("300");
+			$(".p-srchCnditin").removeClass("srchAccdionOpen");
+		} else {
+			$(this).next().slideDown("300");
+			$(".p-srchCnditin").addClass("srchAccdionOpen");
+		}
+	});
+
 	// スマホ時の検索結果ページの絞り込み条件アコーディオン
 
 	$(".js-srchAccrdin").on("click", function () {

@@ -16,10 +16,14 @@
   padding-right: myrem(strip-unit($padding-pc));
   padding-left: myrem(strip-unit($padding-pc));
   @include mq(md) {
+    max-width: myrem(600);
     padding-right: myrem(strip-unit($padding-sp));
     padding-left: myrem(strip-unit($padding-sp));
     padding-bottom: myrem(48);
   }
+  // @media screen and (max-width: 480px) {
+  //   // max-width: calc(400px + $padding-sp * 2);
+  // }
 }
 
 .p-search-detail__wrap {

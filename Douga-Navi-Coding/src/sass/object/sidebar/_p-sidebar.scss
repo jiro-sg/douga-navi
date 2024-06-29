@@ -2,8 +2,9 @@
 @use "global" as *;
 
 .p-sidebar__navi {
-	margin-top: myrem(35);
-	@include mq(md) {
-		display: none;
-	}
+  // margin-top: myrem(35);
+  margin-bottom: 0;
+  @include mq(md) {
+    display: none;
+  }
 }

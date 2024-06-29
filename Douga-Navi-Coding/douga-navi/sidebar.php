@@ -1,4 +1,5 @@
 <div class="p-sidebar__coupon p-sideCupn">
+ <?php $value = get_post_meta($post->ID, 'top_banner', true); ?>
  <a href="<?php the_field('top_banner_link'); ?>">
   <!-- <div class="p-sideCupn__main">
       <p class="p-sideCupn__subCatch">初めての注文で使える！</p>
@@ -6,7 +7,6 @@
     </div>
     <p class="p-sideCupn__lead u-desktop">今すぐクーポンを受け取る</p>
     <p class="p-sideCupn__lead u-mobile">今すぐお得なクーポンを受け取る！</p> -->
-  <?php $value = get_post_meta($post->ID, 'top_banner', true); ?>
   <?php if (!empty($value)) : ?>
   <div class="p-sideCupn__img">
    <img src="<?php the_field('top_banner'); ?>">

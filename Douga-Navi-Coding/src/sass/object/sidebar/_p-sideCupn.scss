@@ -19,6 +19,12 @@
 
 .p-sideCupn__img {
   width: 100%;
+  border-radius: myrem(4);
+  overflow: hidden;
+  margin-bottom: myrem(35);
+  @include mq("md") {
+    margin-bottom: 0;
+  }
 }
 
 .p-sideCupn__img img {

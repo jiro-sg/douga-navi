@@ -100,11 +100,11 @@
          <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
         </div>
        </div>
-       <div class="p-searchDetail__previousBtn">
-        <a href="javascript:history.back()">絞り込みページに戻る</a>
-       </div>
+       <!-- <div class="p-searchDetail__previousBtn">
+        </div> -->
        <div class="p-flowCTA__btn">
-        <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
+        <a href="javascript:history.back()">前のページに戻る</a>
+        <!-- <a href="<//?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a> -->
        </div>
       </div>
      </section>

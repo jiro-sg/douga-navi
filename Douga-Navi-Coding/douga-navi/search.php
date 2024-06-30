@@ -200,72 +200,14 @@
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+    $noNeedLoop = true;
     // echo '010101010101';
-    if (have_posts()) :
-     while (have_posts()) : the_post();
+    $serchword = get_search_query();
+    global $wpdb;
+
    ?>
 
-      <div class="p-srchRslt__card">
-       <figure class="p-srchRslt__cardMovie">
-        <?php
-        $hoge = get_field('info_movie');
-        if ($hoge) :
-         echo $embed_code = wp_oembed_get($hoge);
-        endif;
-        ?>
-       </figure>
-       <a href="<?php the_permalink(); ?>">
-        <p class="p-srchRslt__cardTxt">
-         <!-- <//?php
-         $termsInfomation = get_the_terms($the_query->ID, 'purpose');
-         if ($termsInfomation) {
-          foreach ($termsInfomation as $termsInfo) {
-           echo $termsInfo->name;
-           echo '<br>';
-          }
-         }
-         $termsInfomation = get_the_terms($the_query->ID, 'expression_method');
-         if ($termsInfomation) {
-          foreach ($termsInfomation as $termsInfo) {
-           echo $termsInfo->name;
-           echo '<br>';
-          }
-         }
-         $termsInfomation = get_the_terms($the_query->ID, 'price_range');
-         if ($termsInfomation) {
-          foreach ($termsInfomation as $termsInfo) {
-           echo $termsInfo->name;
-           echo '<br>';
-          }
-         }
-         $termsInfomation = get_the_terms($the_query->ID, 'video_length');
-         if ($termsInfomation) {
-          foreach ($termsInfomation as $termsInfo) {
-           echo $termsInfo->name;
-           echo '<br>';
-          }
-         }
-         $termsInfomation = get_the_terms($the_query->ID, 'industry');
-         if ($termsInfomation) {
-          foreach ($termsInfomation as $termsInfo) {
-           echo $termsInfo->name;
-           echo '<br>';
-          }
-         }
-         ?> -->
-         <?php the_title(); ?>
-        </p>
-       </a>
-      </div>
 
-     <?php endwhile; ?>
-    <?php else : ?>
-     <p class="p-search__noResult">
-      申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-      条件を変えてお試しください。
-     </p>
-
-    <?php endif; ?>
 
 
 

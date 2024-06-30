@@ -200,14 +200,10 @@
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-    $mainLoop = true;
     $noNeedLoop = true;
-    // echo '010101010101';
-    // $serchword = get_search_query();
-    // global $wpdb;
+
 
    ?>
-
 
     <?php
     if (have_posts()) :
@@ -282,7 +278,6 @@
    <?php
    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-    $mainLoop = false;
     // echo '0202020202';
     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
     // 代わりに検索ヒットしない旨のメッセージを表示する
@@ -497,22 +492,17 @@
 
 
 
+
   </div>
 
-
   <?php wp_reset_postdata(); ?>
-  <?php if ($mainLoop == true) : ?>
-   <div class="l-search__pageNavi">
-    <?php wp_pagenavi(); ?>
-   </div>
-  <?php else : ?>
 
-   <?php if ($noNeedLoop == false) : ?>
-    <div class="l-search__pageNavi">
-     <?php wp_pagenavi(['query' => $the_query]); ?>
-    </div>
-   <?php endif; ?>
+  <?php if ($noNeedLoop == false) : ?>
+   <div class="l-search__pageNavi">
+    <?php wp_pagenavi(['query' => $the_query]); ?>
+   </div>
   <?php endif; ?>
+
 
 
   </ /?php endwhile; // メインループ終了 ?>

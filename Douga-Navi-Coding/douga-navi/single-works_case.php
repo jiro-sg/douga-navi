@@ -16,51 +16,51 @@
       <h2 class="p-searchDetail__title"><?php the_title(); ?></h2>
       <div class="p-searchDetail__movie">
        <?php //youtube動画をWordPressのカスタムフィールドで挿入したい
-                     $hoge = get_field('info_movie');
-                     if ($hoge) :
-                        echo $embed_code = wp_oembed_get($hoge);
-                     endif; ?>
+       $hoge = get_field('info_movie');
+       if ($hoge) :
+        echo $embed_code = wp_oembed_get($hoge);
+       endif; ?>
       </div>
       <ul class="p-searchDetail__items">
        <?php
-                     // 投稿の ID を取得
-                     $post_id = get_the_ID();
-                     // 取得するタクソノミーのリスト
-                     $taxonomies = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
-                     foreach ($taxonomies as $taxonomy) {
-                        // タクソノミーに紐づくタームの一覧を取得
-                        $terms = get_the_terms($post_id, $taxonomy);
-                        if (!empty($terms) && !is_wp_error($terms)) {
-                           // 親タームの一覧を取得
-                           $parent_terms = array();
-                           // 子タームの一覧を取得
-                           $child_terms = array();
-                           // タームを親タームと子タームに分ける
-                           foreach ($terms as $term) {
-                              if ($term->parent == 0) {
-                                 $parent_terms[] = $term;
-                              } else {
-                                 $child_terms[] = $term;
-                              }
-                           }
-                           // 親タームと子タームのどちらかが存在する場合のみ表示
-                           if (!empty($parent_terms) || !empty($child_terms)) {
-                              // 親タームを表示
-                              if (!empty($parent_terms)) {
-                                 foreach ($parent_terms as $term) {
-                                    echo '<li>' . $term->name . '</li>';
-                                 }
-                              }
-                              // 子タームを表示
-                              if (!empty($child_terms)) {
-                                 foreach ($child_terms as $term) {
-                                    echo '<li>' . $term->name . '</li>';
-                                 }
-                              }
-                           }
-                        }
-                     }
-                     ?>
+       // 投稿の ID を取得
+       $post_id = get_the_ID();
+       // 取得するタクソノミーのリスト
+       $taxonomies = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
+       foreach ($taxonomies as $taxonomy) {
+        // タクソノミーに紐づくタームの一覧を取得
+        $terms = get_the_terms($post_id, $taxonomy);
+        if (!empty($terms) && !is_wp_error($terms)) {
+         // 親タームの一覧を取得
+         $parent_terms = array();
+         // 子タームの一覧を取得
+         $child_terms = array();
+         // タームを親タームと子タームに分ける
+         foreach ($terms as $term) {
+          if ($term->parent == 0) {
+           $parent_terms[] = $term;
+          } else {
+           $child_terms[] = $term;
+          }
+         }
+         // 親タームと子タームのどちらかが存在する場合のみ表示
+         if (!empty($parent_terms) || !empty($child_terms)) {
+          // 親タームを表示
+          if (!empty($parent_terms)) {
+           foreach ($parent_terms as $term) {
+            echo '<li>' . $term->name . '</li>';
+           }
+          }
+          // 子タームを表示
+          if (!empty($child_terms)) {
+           foreach ($child_terms as $term) {
+            echo '<li>' . $term->name . '</li>';
+           }
+          }
+         }
+        }
+       }
+       ?>
       </ul>
       <dl class="p-searchDetail__lists">
        <div class="p-searchDetail__list">
@@ -99,6 +99,9 @@
         <div class="c-ctaBanner__btn">
          <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
         </div>
+       </div>
+       <div class="p-searchDetail__previousBtn">
+        <a href="javascript:history.back()">絞り込みページに戻る</a>
        </div>
        <div class="p-flowCTA__btn">
         <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>

@@ -200,7 +200,7 @@
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-    $noNeedLoop = true;
+    $noNeedLoop = false;
     // echo '010101010101';
     $serchword = get_search_query();
     global $wpdb;

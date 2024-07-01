@@ -85,7 +85,7 @@
        </div>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">備考</dt>
-        <dd class="p-searchDetail__desc"><?php the_field('info_others'); ?></dd>
+        <dd class="p-searchDetail__desc p-searchDetail__desc--explain"><?php the_field('info_others'); ?></dd>
        </div>
       </dl>
       <div class="p-searchDetail__btnWrap">

@@ -90,6 +90,12 @@
   }
 }
 
+.p-searchDetail__desc.p-searchDetail__desc--explain {
+  @include mq("md") {
+    font-size: myrem(13);
+  }
+}
+
 .p-searchDetail__list:last-child .p-searchDetail__term,
 .p-searchDetail__list:last-child .p-searchDetail__desc {
   padding-bottom: myrem(32);
@@ -117,6 +123,7 @@
     line-height: calc(25 / 15);
     text-align: center;
     border-radius: myrem(100);
+    justify-content: center;
   }
 }
 
@@ -127,6 +134,10 @@
   height: myrem(8);
   display: block;
   margin-left: auto;
+  @include mq("md") {
+    margin-left: initial;
+    margin-left: myrem(20);
+  }
 }
 
 .p-searchDetail__ctaBanner.p-flowCTA__banner {

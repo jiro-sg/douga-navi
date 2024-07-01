@@ -120,7 +120,6 @@ $(function () {
 	});
 
 	// スマホ時の検索結果ページの絞り込み条件アコーディオン
-
 	$(".js-srchAccrdin").on("click", function () {
 		if ($(this).parents(".p-srchCnditin__prntsTermBox").hasClass("accdinOpen")) {
 			$(this).parents(".p-srchCnditin__prntsTermBox").next().slideUp();

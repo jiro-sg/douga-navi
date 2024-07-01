@@ -28,11 +28,45 @@
 	transition: border-bottom 0.3s ease-out;
 	padding: myrem(24) 0;
 	border-bottom: none;
+	position: relative;
 	@include mq(md) {
 		font-size: myrem(16);
 		letter-spacing: 0.005em;
 		padding: myrem(16) 0;
 	}
+}
+
+.p-srchCnditin__ttl::before {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: myrem(20);
+	height: 1px;
+	background-color: $black_24;
+}
+
+.p-srchCnditin__ttl::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: myrem(9.5);
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: 1px;
+	height: myrem(20);
+	background-color: $black_24;
+	transition: transform 0.3s ease-out;
+}
+
+.p-srchCnditin.srchAccdionOpen .p-srchCnditin__ttl::after {
+	transform: translate(0, -50%) rotate(90deg);
 }
 
 .p-srchCnditin.srchAccdionOpen .p-srchCnditin__ttl {

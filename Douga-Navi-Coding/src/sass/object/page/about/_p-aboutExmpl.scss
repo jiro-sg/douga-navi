@@ -65,9 +65,10 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 258/145;
+  aspect-ratio: 258/185;
+  min-height: 182px;
   @include mq(md) {
-    aspect-ratio: 272/153;
+    aspect-ratio: 272/176;
   }
 }
 

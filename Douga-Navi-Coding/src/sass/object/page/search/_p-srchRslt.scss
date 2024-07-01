@@ -24,7 +24,7 @@
   height: auto;
   // aspect-ratio: 296 / 167;
   aspect-ratio: 296 / 185;
-  min-height: myrem(185);
+  min-height: 185px;
   @include mq(md) {
   }
 }

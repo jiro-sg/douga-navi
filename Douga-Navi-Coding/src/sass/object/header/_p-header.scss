@@ -12,7 +12,7 @@
 	z-index: 20;
 	border-bottom: 1px solid $paleBlue_eff;
 	box-shadow: 0 myrem(3) myrem(11) rgba($black_000, 0.13);
-	display: none;
+	// display: none;
 	@include mq(md) {
 		height: myrem(48);
 	}

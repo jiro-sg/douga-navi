@@ -136,13 +136,15 @@
           // 親タームを表示
           if (!empty($parent_terms)) {
            foreach ($parent_terms as $term) {
-            echo '<li>' . $term->name . '</li>';
+            $searchURL = add_query_arg(array('txnmySlug' => $taxonomy, 'termId' => $term->term_id, 'termSlug' => $term->slug), home_url('/find/'));
+            echo '<li><a href="' . $searchURL . '">' . $term->name . '</a></li>';
            }
           }
           // 子タームを表示
           if (!empty($child_terms)) {
            foreach ($child_terms as $term) {
-            echo '<li>' . $term->name . '</li>';
+            $searchURL = add_query_arg(array('txnmySlug' => $taxonomy, 'termId' => $term->term_id, 'termSlug' => $term->slug), home_url('/find/'));
+            echo '<li><a href="' . $searchURL . '">' . $term->name . '<a></li>';
            }
           }
          }

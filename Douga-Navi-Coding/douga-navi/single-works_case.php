@@ -3,7 +3,79 @@
  <div class="p-search-detail l-search-detail">
   <div class="p-search-detail__inner">
    <!-- パンくずリスト -->
-   <?php get_template_part('_inc/breadcrumb'); ?>
+   <?php
+   // var_dump(get_the_terms($post->ID, 'purpose'));
+   $termObject = get_the_terms($post->ID, 'purpose');
+   $parentTermIdLists = array();
+   foreach ($termObject as $termItem) {
+    if ($termItem->parent == 0) {
+     $parentTermIdLists[] = $termItem->term_id;
+    }
+   }
+   if (count($parentTermIdLists) > 1) {
+    $parentTermIdShuffledIndex = shuffle($parentTermIdLists);
+    $parentTermId = $parentTermIdLists[$parentTermIdShuffledIndex];
+   } else {
+    $parentTermId = $parentTermIdLists[0];
+   }
+   $parentTermName = get_term($parentTermId, 'purpose')->name;
+   $parentTermSlug = get_term($parentTermId, 'purpose')->slug;
+   // var_dump($parentTermSlug);
+   $parentChildIdLists = array();
+   if ($termItem->parent == $parentTermId) {
+    foreach ($termObject as $termItem) {
+     if ($termItem->parent == $parentTermId) {
+      $childTermIdLists[] = $termItem->term_id;
+     }
+    }
+    if (count($childTermIdLists) > 1) {
+     $childTermIdShuffledIndex = shuffle($childTermIdLists);
+     $childTermId = $childTermIdLists[$childTermIdShuffledIndex];
+    } else {
+     $childTermId = $childTermIdLists[0];
+    }
+    $childTermName = get_term($childTermId, 'purpose')->name;
+    $childTermSlug = get_term($childTermId, 'purpose')->slug;
+   } else {
+    $noChildTerm = true;
+   }
+   ?>
+   <div class="c-breadcrumb l-breadcrumb">
+    <span property="itemListElement" typeof="ListItem">
+     <a property="item" typeof="WebPage" title="動画制作ナビへ移動する" href="<?php echo esc_url(home_url()); ?>" class="home">
+      <span property="name">ホーム</span>
+     </a>
+     <meta property="position" content="1">
+    </span>
+    <span property="itemListElement" typeof="ListItem">
+     <a property="item" typeof="WebPage" title="制作事例から探す" href="<?php echo esc_url(home_url('/find/')); ?>" class="archive post-works_case-archive">
+      <span property="name">制作事例から探す</span>
+     </a>
+     <meta property="position" content="2">
+    </span>
+
+    <span property="itemListElement" typeof="ListItem">
+     <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+      <span property="name"><?php echo esc_html($parentTermName); ?></span>
+     </a>
+     <meta property="position" content="3">
+    </span>
+    <?php if($noChildTerm == false): ?>
+    <span property="itemListElement" typeof="ListItem">
+     <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+      <span property="name"><?php echo esc_html($childTermName); ?></span>
+     </a>
+     <meta property="position" content="4">
+    </span>
+    <?php endif; ?>
+    <span property="itemListElement" typeof="ListItem">
+     <span property="name" class="post post-works_case current-item"><?php the_title(); ?></span>
+     <meta property="url" content="http://douga-navi.local/works_case/%e6%a0%aa%e5%bc%8f%e4%bc%9a%e7%a4%berise-agency%e3%80%80%e4%bc%9a%e7%a4%be%e7%b4%b9%e4%bb%8b%e3%83%a0%e3%83%bc%e3%83%93%e3%83%bc/">
+     <meta property="position" content="5">
+    </span>
+   </div> <!-- // -->
+
+   <!-- <//?php get_template_part('_inc/breadcrumb'); ?> -->
    <!-- // -->
    <div class="p-search-detail__wrap">
     <div class="u-desktop">

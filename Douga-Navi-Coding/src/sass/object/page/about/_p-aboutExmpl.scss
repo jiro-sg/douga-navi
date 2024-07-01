@@ -53,6 +53,11 @@
   }
 }
 
+.p-aboutExmpl__movieCard a {
+  display: flex;
+  flex-direction: column;
+}
+
 .p-aboutExmpl__movieCard figure {
   display: block;
   width: 100%;
@@ -89,4 +94,26 @@
     margin-top: myrem(10);
     -webkit-line-clamp: 3;
   }
+}
+
+.p-aboutExmpl__toDetail {
+  margin-top: myrem(16);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: myrem(10);
+  @include mq("md") {
+    font-size: myrem(14);
+  }
+}
+
+.p-aboutExmpl__toDetail::after {
+  content: "";
+  width: myrem(10);
+  height: myrem(10);
+  border-top: 1px solid $black_000;
+  border-right: 1px solid $black_000;
+  transform: rotate(45deg);
+  display: inline-flex;
+  margin-left: myrem(16);
 }

@@ -2,73 +2,84 @@
 @use "global" as *;
 
 .p-srchRslt {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: myrem(22.5);
-  row-gap: myrem(32);
-  @include mq(md) {
-    flex-direction: column;
-    row-gap: myrem(24);
-  }
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: myrem(22.5);
+	row-gap: myrem(32);
+	@include mq(md) {
+		flex-direction: column;
+		row-gap: myrem(24);
+	}
 }
 
 .p-srchRslt__card {
-  width: calc(math.div(1, 3) * 100% - math.div(15, 930) * 100%);
-  @include mq(md) {
-    width: 100%;
-  }
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+
+	width: calc(math.div(1, 3) * 100% - math.div(15, 930) * 100%);
+	@include mq(md) {
+		width: 100%;
+	}
 }
 
 .p-srchRslt__cardMovie {
-  width: 100%;
-  height: auto;
-  // aspect-ratio: 296 / 167;
-  aspect-ratio: 296 / 185;
-  min-height: 185px;
-  @include mq(md) {
-  }
+	width: 100%;
+	height: auto;
+	// aspect-ratio: 296 / 167;
+	aspect-ratio: 296 / 185;
+	min-height: 185px;
+	@include mq(md) {
+	}
 }
 
 .p-srchRslt__cardMovie iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  @include mq(md) {
-  }
+	display: block;
+	width: 100%;
+	height: 100%;
+	@include mq(md) {
+	}
+}
+
+.p-srchRslt__card a {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 .p-srchRslt__cardTxt {
-  font-size: myrem(15);
-  font-weight: 400;
-  letter-spacing: 0.005em;
-  line-height: calc(math.div(27, 15));
-  color: $black_000;
-  margin-top: myrem(15);
-  @include mq(md) {
-    font-size: myrem(14);
-    line-height: calc(math.div(22, 14));
-    margin-top: myrem(10);
-  }
+	font-size: myrem(15);
+	font-weight: 400;
+	letter-spacing: 0.005em;
+	line-height: calc(math.div(27, 15));
+	color: $black_000;
+	margin-top: myrem(15);
+	flex: 1;
+	@include mq(md) {
+		font-size: myrem(14);
+		line-height: calc(math.div(22, 14));
+		margin-top: myrem(10);
+	}
 }
 
 .p-srchRslt__toDetail {
-  margin-top: myrem(16);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: myrem(10);
-  @include mq("md") {
-    font-size: myrem(14);
-  }
+	margin-top: myrem(16);
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: myrem(10);
+	@include mq("md") {
+		font-size: myrem(14);
+	}
 }
 
 .p-srchRslt__toDetail::after {
-  content: "";
-  width: myrem(10);
-  height: myrem(10);
-  border-top: 1px solid $black_000;
-  border-right: 1px solid $black_000;
-  transform: rotate(45deg);
-  display: inline-flex;
-  margin-left: myrem(16);
+	content: "";
+	width: myrem(10);
+	height: myrem(10);
+	border-top: 1px solid $black_000;
+	border-right: 1px solid $black_000;
+	transform: rotate(45deg);
+	display: inline-flex;
+	margin-left: myrem(16);
 }

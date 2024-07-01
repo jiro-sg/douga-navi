@@ -126,52 +126,53 @@
 
    <div class="p-aboutExmpl__cardWrppr">
     <?php while (have_posts()) : the_post(); // メインループ開始 
-        ?>
-    <?php
-          $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-          $the_query = new WP_Query();
-          $param = array(
-            'posts_per_page' => '6', //表示件数。-1なら全件表示
-            'post_type' => 'works_case', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
-            'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
-            'order' => 'DESC',
-            'orderby' => 'date',
-            'paged' => $paged
-          );
-          $the_query->query($param);
-          if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
-          ?>
+    ?>
+     <?php
+     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+     $the_query = new WP_Query();
+     $param = array(
+      'posts_per_page' => '6', //表示件数。-1なら全件表示
+      'post_type' => 'works_case', //カスタム投稿タイプの名称を入れる←ここ変える(投稿だったらpost.カスタム投稿ならslug名)
+      'post_status' => 'publish', //取得するステータス。publishなら一般公開のもののみ
+      'order' => 'DESC',
+      'orderby' => 'date',
+      'paged' => $paged
+     );
+     $the_query->query($param);
+     if ($the_query->have_posts()) : while ($the_query->have_posts()) : $the_query->the_post();
+     ?>
 
-    <div class="p-aboutExmpl__movieCard">
+       <div class="p-aboutExmpl__movieCard">
 
-     <a href="<?php the_permalink(); ?>">
-      <figure>
-       <?php
-                    $hoge = get_field('info_movie');
-                    if ($hoge) :
-                      echo $embed_code = wp_oembed_get($hoge);
-                    endif; ?>
-      </figure>
-      <p class="p-aboutExmpl__cardTxt">
-       <?php the_title(); ?>
-      </p>
-      <p class="p-aboutExmpl__toDetail">
-       詳細を見る
-      </p>
-     </a>
-    </div>
+        <figure>
+         <?php
+         $hoge = get_field('info_movie');
+         if ($hoge) :
+          echo $embed_code = wp_oembed_get($hoge);
+         endif; ?>
+        </figure>
+        
+        <a href="<?php the_permalink(); ?>">
+         <p class="p-aboutExmpl__cardTxt">
+          <?php the_title(); ?>
+         </p>
+         <p class="p-aboutExmpl__toDetail">
+          詳細を見る
+         </p>
+        </a>
+       </div>
 
-    <?php
-            endwhile;
-          endif; ?>
+     <?php
+      endwhile;
+     endif; ?>
     <?php endwhile; // メインループ終了 
-        ?>
+    ?>
    </div>
 
    <div class="l-pagenavi">
     <?php wp_pagenavi(['query' => $the_query]); ?>
     <?php wp_reset_postdata()
-        ?>
+    ?>
    </div>
 
   </div>
@@ -189,36 +190,36 @@
      <div class="c-card02__sntnc">
       <?php $value = get_post_meta($post->ID, 'customer_name', true); ?>
       <?php if (!empty($value)) : ?>
-      <h3 class="c-card02__ttl"><?php the_field('customer_name'); ?></h3>
-      <p class="c-card02__txt"><?php the_field('customer_voice'); ?></p>
+       <h3 class="c-card02__ttl"><?php the_field('customer_name'); ?></h3>
+       <p class="c-card02__txt"><?php the_field('customer_voice'); ?></p>
      </div>
 
      <figure class="c-card02__img">
       <?php
-              $hoge = get_field('customer_movie');
-              if ($hoge) :
-                echo $embed_code = wp_oembed_get($hoge);
-              endif; ?>
+       $hoge = get_field('customer_movie');
+       if ($hoge) :
+        echo $embed_code = wp_oembed_get($hoge);
+       endif; ?>
      </figure>
-     <?php endif; ?>
+    <?php endif; ?>
     </div>
 
     <div class="p-aboutVoice__cardBox c-card02">
      <div class="c-card02__sntnc">
       <?php $value = get_post_meta($post->ID, 'customer_name2', true); ?>
       <?php if (!empty($value)) : ?>
-      <h3 class="c-card02__ttl"><?php the_field('customer_name2'); ?></h3>
-      <p class="c-card02__txt"><?php the_field('customer_voice2'); ?></p>
+       <h3 class="c-card02__ttl"><?php the_field('customer_name2'); ?></h3>
+       <p class="c-card02__txt"><?php the_field('customer_voice2'); ?></p>
      </div>
 
      <figure class="c-card02__img">
       <?php
-              $hoge = get_field('customer_movie2');
-              if ($hoge) :
-                echo $embed_code = wp_oembed_get($hoge);
-              endif; ?>
+       $hoge = get_field('customer_movie2');
+       if ($hoge) :
+        echo $embed_code = wp_oembed_get($hoge);
+       endif; ?>
      </figure>
-     <?php endif; ?>
+    <?php endif; ?>
     </div>
    </div>
 

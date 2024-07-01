@@ -264,6 +264,9 @@
          ?> -->
          <?php the_title(); ?>
         </p>
+        <p class="p-srchRslt__toDetail">
+         詳細を見る
+        </p>
        </a>
       </div>
 
@@ -470,6 +473,9 @@
           }
           ?> -->
           <?php the_title(); ?>
+         </p>
+         <p class="p-srchRslt__toDetail">
+          詳細を見る
          </p>
         </a>
        </div>

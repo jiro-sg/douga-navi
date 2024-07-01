@@ -54,17 +54,22 @@
      </div>
     </div>
     <div class="p-header__aboveRight">
-     <div class="p-header__drawerBtn js-drawerOpen">
-      <figure>
-       <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_search.png" alt="検索欄" width="17" height="20">
-      </figure>
-     </div>
      <div class="p-header__cntctInfo">
       <a href="tel:0120571500" class="p-header__tel">0120-571-500</a>
       <p class="p-header__bsnssHours"> （受付時間：平日10:00～18:30）</p>
      </div>
      <div class="p-header__cntctBtnBox">
       <a href="<?php echo esc_url(home_url('/contact/')); ?>">無料相談</a>
+     </div>
+     <div class="p-header__drawerBtn js-drawerOpen">
+      <figure>
+       <img src="<?php echo get_template_directory_uri() ?>/assets/images/ico_search.png" alt="検索欄" width="17" height="20">
+      </figure>
+     </div>
+     <div class="p-header__burgerBtn js-drawerOpen">
+      <span></span>
+      <span></span>
+      <span></span>
      </div>
     </div>
 

@@ -5,39 +5,53 @@
    <!-- パンくずリスト -->
    <?php
    // var_dump(get_the_terms($post->ID, 'purpose'));
-   $termObject = get_the_terms($post->ID, 'purpose');
-   $parentTermIdLists = array();
-   foreach ($termObject as $termItem) {
-    if ($termItem->parent == 0) {
-     $parentTermIdLists[] = $termItem->term_id;
+   $taxonomies = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
+   $hasTax = false;
+   foreach ($taxonomies as $taxonomy) {
+    $termObject = get_the_terms($post->ID, $taxonomy);
+    if ($termObject == true) {
+     $txnmy = $taxonomy;
+     $hasTax = true;
+     break;
     }
    }
-   if (count($parentTermIdLists) > 1) {
-    $parentTermIdShuffledIndex = shuffle($parentTermIdLists);
-    $parentTermId = $parentTermIdLists[$parentTermIdShuffledIndex];
-   } else {
-    $parentTermId = $parentTermIdLists[0];
-   }
-   $parentTermName = get_term($parentTermId, 'purpose')->name;
-   $parentTermSlug = get_term($parentTermId, 'purpose')->slug;
-   // var_dump($parentTermSlug);
-   $parentChildIdLists = array();
-   if ($termItem->parent == $parentTermId) {
+   if ($hasTax == true) {
+    $parentTermIdLists = array();
+    $childTermIdLists = array();
     foreach ($termObject as $termItem) {
-     if ($termItem->parent == $parentTermId) {
-      $childTermIdLists[] = $termItem->term_id;
+     if ($termItem->parent == 0) {
+      $parentTermIdLists[] = $termItem->term_id;
+     } else {
+      $parentTermIdLists[] = $termItem->term_id;
      }
     }
-    if (count($childTermIdLists) > 1) {
-     $childTermIdShuffledIndex = shuffle($childTermIdLists);
-     $childTermId = $childTermIdLists[$childTermIdShuffledIndex];
+    if (count($parentTermIdLists) > 1) {
+     $parentTermIdShuffledIndex = shuffle($parentTermIdLists);
+     $parentTermId = $parentTermIdLists[$parentTermIdShuffledIndex];
     } else {
-     $childTermId = $childTermIdLists[0];
+     $parentTermId = $parentTermIdLists[0];
     }
-    $childTermName = get_term($childTermId, 'purpose')->name;
-    $childTermSlug = get_term($childTermId, 'purpose')->slug;
-   } else {
-    $noChildTerm = true;
+    $parentTermName = get_term($parentTermId, $txnmy)->name;
+    $parentTermSlug = get_term($parentTermId, $txnmy)->slug;
+    // var_dump($parentTermSlug);
+    $parentChildIdLists = array();
+    if ($termItem->parent == $parentTermId) {
+     foreach ($termObject as $termItem) {
+      if ($termItem->parent == $parentTermId) {
+       $childTermIdLists[] = $termItem->term_id;
+      }
+     }
+     if (count($childTermIdLists) > 1) {
+      $childTermIdShuffledIndex = shuffle($childTermIdLists);
+      $childTermId = $childTermIdLists[$childTermIdShuffledIndex];
+     } else {
+      $childTermId = $childTermIdLists[0];
+     }
+     $childTermName = get_term($childTermId, $txnmy)->name;
+     $childTermSlug = get_term($childTermId, $txnmy)->slug;
+    } else {
+     $noChildTerm = true;
+    }
    }
    ?>
    <div class="c-breadcrumb l-breadcrumb">
@@ -53,21 +67,23 @@
      </a>
      <meta property="position" content="2">
     </span>
-
-    <span property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
-      <span property="name"><?php echo esc_html($parentTermName); ?></span>
-     </a>
-     <meta property="position" content="3">
-    </span>
-    <?php if($noChildTerm == false): ?>
-    <span property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
-      <span property="name"><?php echo esc_html($childTermName); ?></span>
-     </a>
-     <meta property="position" content="4">
-    </span>
+    <?php if ($hasTax == true) : ?>
+     <span property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+       <span property="name"><?php echo esc_html($parentTermName); ?></span>
+      </a>
+      <meta property="position" content="3">
+     </span>
+     <?php if ($noChildTerm == false) : ?>
+      <span property="itemListElement" typeof="ListItem">
+       <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+        <span property="name"><?php echo esc_html($childTermName); ?></span>
+       </a>
+       <meta property="position" content="4">
+      </span>
+     <?php endif; ?>
     <?php endif; ?>
+
     <span property="itemListElement" typeof="ListItem">
      <span property="name" class="post post-works_case current-item"><?php the_title(); ?></span>
      <meta property="url" content="http://douga-navi.local/works_case/%e6%a0%aa%e5%bc%8f%e4%bc%9a%e7%a4%berise-agency%e3%80%80%e4%bc%9a%e7%a4%be%e7%b4%b9%e4%bb%8b%e3%83%a0%e3%83%bc%e3%83%93%e3%83%bc/">

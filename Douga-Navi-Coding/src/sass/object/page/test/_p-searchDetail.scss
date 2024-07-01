@@ -13,14 +13,15 @@
 .p-searchDetail__movie {
   max-width: 100%;
   margin-top: myrem(21);
-  border-radius: myrem(5);
-  overflow: hidden;
 }
 .p-searchDetail__movie iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 746/421;
+  border-radius: myrem(5);
+  overflow: hidden;
+  display: inline-block;
   @include mq("md") {
     aspect-ratio: 272/153;
   }

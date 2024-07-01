@@ -14,6 +14,8 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  row-gap: myrem(16);
   align-items: center;
   font-family: $font-second;
 }
@@ -33,6 +35,7 @@
   transition: 0.2s ease-in-out;
   text-align: center;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .wp-pagenavi a:hover {
   // color: #fff;

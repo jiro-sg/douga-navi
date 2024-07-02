@@ -68,20 +68,20 @@
      <meta property="position" content="2">
     </span>
     <?php if ($hasTax == true) : ?>
-     <span property="itemListElement" typeof="ListItem">
-      <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
-       <span property="name"><?php echo esc_html($parentTermName); ?></span>
-      </a>
-      <meta property="position" content="3">
-     </span>
-     <?php if ($noChildTerm == false) : ?>
-      <span property="itemListElement" typeof="ListItem">
-       <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
-        <span property="name"><?php echo esc_html($childTermName); ?></span>
-       </a>
-       <meta property="position" content="4">
-      </span>
-     <?php endif; ?>
+    <span property="itemListElement" typeof="ListItem">
+     <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+      <span property="name"><?php echo esc_html($parentTermName); ?></span>
+     </a>
+     <meta property="position" content="3">
+    </span>
+    <?php if ($noChildTerm == false) : ?>
+    <span property="itemListElement" typeof="ListItem">
+     <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+      <span property="name"><?php echo esc_html($childTermName); ?></span>
+     </a>
+     <meta property="position" content="4">
+    </span>
+    <?php endif; ?>
     <?php endif; ?>
 
     <span property="itemListElement" typeof="ListItem">
@@ -102,13 +102,19 @@
     <div class="p-search-detail__main">
      <section class="p-searchDetail l-searchDetail">
       <h2 class="p-searchDetail__title"><?php the_title(); ?></h2>
+
+
+
       <div class="p-searchDetail__movie">
-       <?php //youtube動画をWordPressのカスタムフィールドで挿入したい
-       $hoge = get_field('info_movie');
-       if ($hoge) :
-        echo $embed_code = wp_oembed_get($hoge);
-       endif; ?>
+
+       <?php get_template_part('_inc/youtube'); ?>
+
       </div>
+
+
+
+
+
       <ul class="p-searchDetail__items">
        <?php
        // 投稿の ID を取得
@@ -153,30 +159,54 @@
        ?>
       </ul>
       <dl class="p-searchDetail__lists">
+       <?php $value = get_post_meta($post->ID, 'info_business', true); ?>
+       <?php if (!empty($value)) : ?>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">業種</dt>
         <dd class="p-searchDetail__desc"><?php the_field('info_business'); ?></dd>
        </div>
+       <?php endif; ?>
+
+       <?php $value = get_post_meta($post->ID, 'info_scene', true); ?>
+       <?php if (!empty($value)) : ?>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">利用シーン</dt>
         <dd class="p-searchDetail__desc"><?php the_field('info_scene'); ?></dd>
        </div>
+       <?php endif; ?>
+
+       <?php $value = get_post_meta($post->ID, 'info_expression', true); ?>
+       <?php if (!empty($value)) : ?>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">映像表現</dt>
         <dd class="p-searchDetail__desc"><?php the_field('info_expression'); ?></dd>
        </div>
+       <?php endif; ?>
+
+       <?php $value = get_post_meta($post->ID, 'info_length', true); ?>
+       <?php if (!empty($value)) : ?>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">動画尺</dt>
         <dd class="p-searchDetail__desc"><?php the_field('info_length'); ?></dd>
        </div>
+       <?php endif; ?>
+
+       <?php $value = get_post_meta($post->ID, 'info_price', true); ?>
+       <?php if (!empty($value)) : ?>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">制作費用</dt>
         <dd class="p-searchDetail__desc"><?php the_field('info_price'); ?></dd>
        </div>
+       <?php endif; ?>
+
+       <?php $value = get_post_meta($post->ID, 'info_others', true); ?>
+       <?php if (!empty($value)) : ?>
        <div class="p-searchDetail__list">
         <dt class="p-searchDetail__term">備考</dt>
         <dd class="p-searchDetail__desc p-searchDetail__desc--explain"><?php the_field('info_others'); ?></dd>
        </div>
+       <?php endif; ?>
+
       </dl>
       <div class="p-searchDetail__btnWrap">
        <a class="p-searchDetail__btn" href="<?php echo esc_url(home_url('/contact/')); ?>">この事例と同様の動画制作を<br class="u-mobile">見積り（無料）</a>

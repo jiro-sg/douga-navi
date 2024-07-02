@@ -99,6 +99,10 @@
     font-size: myrem(13);
   }
 }
+.p-searchDetail__desc.p-searchDetail__desc--explain a {
+  color: #00a0e1;
+  text-decoration: underline;
+}
 
 .p-searchDetail__list:last-child .p-searchDetail__term,
 .p-searchDetail__list:last-child .p-searchDetail__desc {

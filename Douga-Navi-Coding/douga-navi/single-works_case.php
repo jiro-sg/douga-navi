@@ -7,6 +7,7 @@
    // var_dump(get_the_terms($post->ID, 'purpose'));
    $taxonomies = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
    $hasTax = false;
+   $noChildTerm = false;
    foreach ($taxonomies as $taxonomy) {
     $termObject = get_the_terms($post->ID, $taxonomy);
     if ($termObject == true) {
@@ -143,14 +144,14 @@
           if (!empty($parent_terms)) {
            foreach ($parent_terms as $term) {
             $searchURL = add_query_arg(array('txnmySlug' => $taxonomy, 'termId' => $term->term_id, 'termSlug' => $term->slug), home_url('/find/'));
-            echo '<li><a href="' . $searchURL . '">' . $term->name . '</a></li>';
+            echo '<li><a href="' . esc_url($searchURL) . '">' . $term->name . '</a></li>';
            }
           }
           // 子タームを表示
           if (!empty($child_terms)) {
            foreach ($child_terms as $term) {
             $searchURL = add_query_arg(array('txnmySlug' => $taxonomy, 'termId' => $term->term_id, 'termSlug' => $term->slug), home_url('/find/'));
-            echo '<li><a href="' . $searchURL . '">' . $term->name . '<a></li>';
+            echo '<li><a href="' . esc_url($searchURL) . '">' . $term->name . '<a></li>';
            }
           }
          }

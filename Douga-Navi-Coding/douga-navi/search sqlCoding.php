@@ -245,27 +245,42 @@
 ------------------------------ */
     $i = '0'; //最初の配列番号
     $acf_keynum = count($acf_keys); //取得したACFのフィールド名の数 計算
-     // var_dump($acf_keys);
-     // var_dump($acf_keynum);
+    // var_dump($acf_keys);
+    // var_dump($acf_keynum);
     $acf_check = array();
 
     while ($acf_keynum > $i) {
      //FROMに検索したいデータベーステーブル
      //meta_key に 検索したいフィールド
      //meta_value に検索したいキーワードを設定
+     //    $check = $wpdb->get_results($wpdb->prepare(
+     //     "
+     // SELECT *
+     // FROM wp_postmeta
+     // WHERE
+     // meta_key = '" . $acf_keys[$i] . "'
+     // AND
+     // meta_value = '" . $serchword . "'
+     // "
+     //    ), ARRAY_A);
+
+
+
      $check = $wpdb->get_results($wpdb->prepare(
       "
-		SELECT *
-		FROM wp_postmeta
-		WHERE
-		meta_key = '" . esc_sql($acf_keys[$i]) . "'
-		AND
-		meta_value = '" . esc_sql($serchword) . "'
-		"
+     SELECT *
+     FROM wp_postmeta
+     WHERE
+     meta_key = '" . esc_sql($acf_keys[$i]) . "'
+     AND
+     meta_value LIKE '%" . esc_sql($serchword) . "%'
+     "
      ), ARRAY_A);
 
-     var_dump($acf_keys[$i]);
-     var_dump($serchword);
+
+     // var_dump($acf_keys[$i]);
+     // var_dump($serchword);
+     // var_dump($check);
      //検索結果を$acf_checkに格納
      foreach ($check as $checkpost) {
       //投稿IDを取得
@@ -277,7 +292,7 @@
       // var_dump($post_id);
 
       //公開済みのページのみに絞り込み
-      if (get_post_status($post_id) == 'publish') {
+      if (get_post_status($post_id) == 'publish' && get_post_type($post_id) == 'works_case') {
        if (!empty($meta_value)) {
         //値が空のものは除外する
         array_push($acf_check, $post_id);
@@ -294,25 +309,98 @@
 
     // var_dump($result_acf);
 
+    /* ------------------------------
+3. 通常の検索（タイトル・本文）の項目に検索キーワードが含まれるかチェック
+※不要の場合はスキップ
+------------------------------ */
+    //タイトル
+    $result_title = array();
+    $check_title = $wpdb->get_results($wpdb->prepare(
+     "
+    SELECT ID FROM wp_posts
+    WHERE
+	post_title LIKE '%" . esc_sql($serchword) . "%'
+	AND
+	post_status = 'publish'
+ AND
+ post_type = 'works_case'
+    "
+    ), ARRAY_A);
+    //検索結果を$result_titleに格納
+    foreach ($check_title as $checkpost) {
+     array_push($result_title, $checkpost['ID']);
+    }
+
+    //本文
+    $result_content = array();
+    $check_content = $wpdb->get_results($wpdb->prepare(
+     "
+    SELECT ID FROM wp_posts
+    WHERE
+	post_content LIKE '%" . esc_sql($serchword) . "%'
+	AND
+	post_status = 'publish'
+ AND
+ post_type = 'works_case'
+    "
+    ), ARRAY_A);
+    //検索結果を$result_titleに格納
+    foreach ($check_content as $checkpost) {
+     array_push($result_content, $checkpost['ID']);
+    }
+
+
+    /* ------------------------------
+4. 出力用にデータ合体
+------------------------------ */
+    //検索結果データを結合
+    $result_post = $result_acf + $result_title + $result_content;
+
+    //重複削除
+    $result_post = array_unique($result_post);
+    $result_post = array_values($result_post); //配列番号を振り直し
+
+    // var_dump($result_post);
    ?>
 
-    <?php
+
+    <?php if (!empty($result_post)) : ?>
+     <!-- 今回はリスト形式で出力しています。-->
+     <ul>
+      <?php
+      foreach ($result_post as $postid) :
+       $post = get_post($postid, OBJECT);
+       // var_dump($post);
+      ?>
+       <!-- get_template_part()での出力も可能です -->
+       <li><a href="<?php echo get_permalink(); ?>"><?php echo the_title(); ?></a></li>
+      <?php endforeach; ?>
+     </ul>
+    <?php else : //検索結果0件だった場合の処理　
+    ?>
+     <div>
+      <p>「<?php echo $serchword; ?>」の記事はありません</p>
+     </div>
+    <?php endif; ?>
+
+
+    <!-- <//?php
     if (have_posts()) :
      while (have_posts()) : the_post();
     ?>
 
       <div class="p-srchRslt__card">
        <figure class="p-srchRslt__cardMovie">
-        <?php
+        <//?php
         $hoge = get_field('info_movie');
         if ($hoge) :
          echo $embed_code = wp_oembed_get($hoge);
         endif;
         ?>
        </figure>
-       <a href="<?php the_permalink(); ?>">
+       <a href="<//?php the_permalink(); ?>">
         <p class="p-srchRslt__cardTxt">
-         <!-- <//?php
+         <//?php
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -348,20 +436,20 @@
            echo '<br>';
           }
          }
-         ?> -->
-         <?php the_title(); ?>
+         ?>
+         <//?php the_title(); ?>
         </p>
        </a>
       </div>
 
-     <?php endwhile; ?>
-    <?php else : ?>
+     <//?php endwhile; ?>
+    <//?php else : ?>
      <p class="p-search__noResult">
       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
       条件を変えてお試しください。
      </p>
 
-    <?php endif; ?>
+    <//?php endif; ?> -->
 
 
 

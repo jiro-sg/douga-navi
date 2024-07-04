@@ -8,6 +8,12 @@
   }
 }
 
+.p-about__inner.l-inner {
+  // max-width: myrem(1000);
+  // @include mq("md") {
+  // }
+}
+
 .p-about__fv {
   margin-top: myrem(9);
   @include mq("md") {

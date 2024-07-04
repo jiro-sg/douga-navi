@@ -2,141 +2,142 @@
 @use "global" as *;
 
 .p-search {
-	padding-top: myrem(200);
-	padding-bottom: myrem(120);
-	background-color: $gray_fd;
-	@include mq(md) {
-		padding-top: myrem(115);
-		padding-bottom: myrem(48);
-	}
+  padding-top: myrem(200);
+  padding-bottom: myrem(120);
+  background-color: $gray_fd;
+  @include mq(md) {
+    padding-top: myrem(115);
+    padding-bottom: myrem(48);
+  }
 }
 
 .p-search__inner {
-	width: 100%;
-	max-width: myrem(930);
-	margin-left: auto;
-	margin-right: auto;
-	@include mq(md) {
-		padding-left: myrem(24);
-		padding-right: myrem(24);
-	}
+  width: 100%;
+  max-width: myrem(980);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: myrem(16);
+  padding-right: myrem(16);
+  @include mq(md) {
+    padding-left: myrem(24);
+    padding-right: myrem(24);
+  }
 }
 
 .p-search__ttl {
-	font-size: myrem(20);
-	font-weight: 700;
-	letter-spacing: 0.005em;
-	@include mq(md) {
-		font-size: myrem(16);
-		font-weight: 500;
-	}
+  font-size: myrem(20);
+  font-weight: 700;
+  letter-spacing: 0.005em;
+  @include mq(md) {
+    font-size: myrem(16);
+    font-weight: 500;
+  }
 }
 
 .p-search__explain {
-	font-size: myrem(15);
-	font-weight: 400;
-	line-height: calc(math.div(27, 15));
-	margin-top: myrem(22);
-	@include mq(md) {
-		font-size: myrem(14);
-		line-height: calc(math.div(22, 14));
-		letter-spacing: 0.005em;
-	}
+  font-size: myrem(15);
+  font-weight: 400;
+  line-height: calc(math.div(27, 15));
+  margin-top: myrem(22);
+  @include mq(md) {
+    font-size: myrem(14);
+    line-height: calc(math.div(22, 14));
+    letter-spacing: 0.005em;
+  }
 }
 
 .p-search__cnditins {
-	margin-top: myrem(40);
-	@include mq(md) {
-		margin-top: myrem(24);
-	}
+  margin-top: myrem(40);
+  @include mq(md) {
+    margin-top: myrem(24);
+  }
 }
 
 .p-search__result {
-	margin-top: myrem(80);
-	@include mq(md) {
-		margin-top: myrem(24);
-	}
+  margin-top: myrem(80);
+  @include mq(md) {
+    margin-top: myrem(24);
+  }
 }
 
 .p-search__cta {
-	margin-top: myrem(40);
-	@include mq(md) {
-		margin-top: myrem(32);
-	}
+  margin-top: myrem(40);
+  @include mq(md) {
+    margin-top: myrem(32);
+  }
 }
 
 .p-search__ctaBanner {
-	width: calc(math.div(746, 930) * 100%);
-	margin-left: auto;
-	margin-right: auto;
-	@include mq(md) {
-		width: 100%;
-	}
+  width: calc(math.div(746, 930) * 100%);
+  margin-left: auto;
+  margin-right: auto;
+  @include mq(md) {
+    width: 100%;
+  }
 }
 
 .p-search__ctaBtn {
-	display: flex;
-	justify-content: center;
-	margin-top: myrem(30);
-	@include mq(md) {
-	}
+  display: flex;
+  justify-content: center;
+  margin-top: myrem(30);
+  @include mq(md) {
+  }
 }
 
 .p-search__ctaBtn a {
-	display: block;
-	font-size: myrem(15);
-	font-weight: 400;
-	color: $black_24;
-	border-radius: 50vw;
-	border: 1px solid $pink_e15;
-	padding: myrem(8) myrem(79);
-	position: relative;
-	@include mq(md) {
-		font-size: myrem(14);
-		padding: myrem(13.5) myrem(77);
-	}
+  display: block;
+  font-size: myrem(15);
+  font-weight: 400;
+  color: $black_24;
+  border-radius: 50vw;
+  border: 1px solid $pink_e15;
+  padding: myrem(8) myrem(79);
+  position: relative;
+  @include mq(md) {
+    font-size: myrem(14);
+    padding: myrem(13.5) myrem(77);
+  }
 }
 
 .p-search__ctaBtn a::before {
-	position: absolute;
-	top: 50%;
-	bottom: auto;
-	left: myrem(20);
-	right: auto;
-	transform: translate(0, -50%);
-	display: block;
-	content: "";
-	width: myrem(11);
-	height: 1px;
-	background-color: $black_24;
-	@include mq(md) {
-		width: myrem(14);
-	}
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  left: myrem(20);
+  right: auto;
+  transform: translate(0, -50%);
+  display: block;
+  content: "";
+  width: myrem(11);
+  height: 1px;
+  background-color: $black_24;
+  @include mq(md) {
+    width: myrem(14);
+  }
 }
 
 .p-search__ctaBtn a::after {
-	position: absolute;
-	top: 50%;
-	bottom: auto;
-	left: myrem(20);
-	right: auto;
-	transform: translate(0, -50%) rotate(45deg);
-	display: block;
-	content: "";
-	width: myrem(8);
-	height: myrem(8);
-	border-bottom: 1px solid $black_24;
-	border-left: 1px solid $black_24;
-	@include mq(md) {
-	}
+  position: absolute;
+  top: 50%;
+  bottom: auto;
+  left: myrem(20);
+  right: auto;
+  transform: translate(0, -50%) rotate(45deg);
+  display: block;
+  content: "";
+  width: myrem(8);
+  height: myrem(8);
+  border-bottom: 1px solid $black_24;
+  border-left: 1px solid $black_24;
+  @include mq(md) {
+  }
 }
 
 .p-search__noResult {
-	font-size: myrem(20);
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
- @include mq(md){
- 
- } 
+  font-size: myrem(20);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  @include mq(md) {
+  }
 }

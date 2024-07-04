@@ -120,7 +120,7 @@
   </div>
  </section>
  <section class="p-about__exmpl p-aboutExmpl">
-  <div class="l-inner">
+  <div class="p-about__inner l-inner">
 
    <h2 class="p-aboutExmpl__ttl c-secTtl01">動画制作事例</h2>
 
@@ -173,11 +173,11 @@
         ?>
    </div>
 
-   <div class="l-pagenavi">
+   <!-- <div class="l-pagenavi">
     <?php wp_pagenavi(['query' => $the_query]); ?>
     <?php wp_reset_postdata()
-        ?>
-   </div>
+    ?>
+   </div> -->
 
   </div>
  </section>
@@ -305,18 +305,6 @@
         <p class="p-aboutQA__number">Q1.</p>
        </dt>
        <dd class="p-aboutQA__discr">
-        <p class="p-aboutQA__question">サイト上に作りたいイメージに合った動画事例の掲載が無いんですが依頼できますか？</p>
-        <p class="p-aboutQA__answer">可能です。サイトに掲載できる事例には限りがあります。お打ち合わせではお見せできる非公開事例等もございますのでお気軽にご相談ください。</p>
-       </dd>
-      </dl>
-     </li>
-
-     <li class="p-aboutQA__item">
-      <dl class="p-aboutQA__dfntin">
-       <dt class="p-aboutQA__term">
-        <p class="p-aboutQA__number">Q2.</p>
-       </dt>
-       <dd class="p-aboutQA__discr">
         <p class="p-aboutQA__question">企画から相談できますか？</p>
         <p class="p-aboutQA__answer">企画からもご対応いたします。作りたい映像のイメージが漠然としている状態でもお気軽にご相談ください。</p>
        </dd>
@@ -326,7 +314,7 @@
      <li class="p-aboutQA__item">
       <dl class="p-aboutQA__dfntin">
        <dt class="p-aboutQA__term">
-        <p class="p-aboutQA__number">Q3.</p>
+        <p class="p-aboutQA__number">Q2.</p>
        </dt>
        <dd class="p-aboutQA__discr">
         <p class="p-aboutQA__question">撮影のみや編集のみなど部分的な依頼はできますか？</p>
@@ -338,11 +326,23 @@
      <li class="p-aboutQA__item">
       <dl class="p-aboutQA__dfntin">
        <dt class="p-aboutQA__term">
-        <p class="p-aboutQA__number">Q4.</p>
+        <p class="p-aboutQA__number">Q3.</p>
        </dt>
        <dd class="p-aboutQA__discr">
         <p class="p-aboutQA__question">撮影依頼できる地域に制限はありますか？</p>
         <p class="p-aboutQA__answer">全国にプロの制作パートナーのネットワークを展開しておりますので、全国対応可能です。</p>
+       </dd>
+      </dl>
+     </li>
+
+     <li class="p-aboutQA__item">
+      <dl class="p-aboutQA__dfntin">
+       <dt class="p-aboutQA__term">
+        <p class="p-aboutQA__number">Q4.</p>
+       </dt>
+       <dd class="p-aboutQA__discr">
+        <p class="p-aboutQA__question">サイト上に作りたいイメージに合った動画事例の掲載が無いんですが依頼できますか？</p>
+        <p class="p-aboutQA__answer">可能です。サイトに掲載できる事例には限りがあります。お打ち合わせではお見せできる非公開事例等もございますのでお気軽にご相談ください。</p>
        </dd>
       </dl>
      </li>

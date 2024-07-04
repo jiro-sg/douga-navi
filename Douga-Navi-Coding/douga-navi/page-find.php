@@ -254,6 +254,7 @@
          'rel': 0,
          'showinfo': 0,
          'loop': 1,
+         'modestbranding': 1,
          'controls': 1, // コントロールを表示
          'playlist': videoId
         },
@@ -544,6 +545,7 @@
         playerVars: {
          'rel': 0,
          'showinfo': 0,
+         'modestbranding': 1,
          'loop': 1,
          'controls': 1, // コントロールを表示
          'playlist': videoId

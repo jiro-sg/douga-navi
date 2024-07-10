@@ -93,7 +93,8 @@
     <?php
     $txnmySlug = "expression_method";
     $hierarchyArray = array();
-    $termListsA = get_terms($txnmySlug, array($txnmySlug => false, 'parent' => 0));
+    //$termListsA = get_terms($txnmySlug, array($txnmySlug => false, 'parent' => 0));
+    $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
     foreach ($termListsA as $termItemA) {
       $termItemA_id = $termItemA->term_id;
       $termListsB = get_terms($txnmySlug, array($txnmySlug => false, 'parent' => $termItemA_id));

@@ -36,7 +36,7 @@
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=40&termSlug=sns')); ?>">SNS</a>
       </li>
       <li class="p-footer__list">
-       <a href="<?php echo esc_url(home_url('/')); ?>">採用動画</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=34&termSlug=recruit')); ?>">採用動画</a>
       </li>
       <li class="p-footer__list">
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=67&termSlug=animation')); ?>">アニメーション</a>
@@ -48,7 +48,7 @@
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=33&termSlug=videoads')); ?>">動画広告</a>
       </li>
       <li class="p-footer__list">
-       <a href="<?php echo esc_url(home_url('/')); ?>">イベント・結婚式用動画</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=61&termSlug=wedding')); ?>">イベント・結婚式用動画</a>
       </li>
       <li class="p-footer__list">
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=68&termSlug=cg')); ?>">CG</a>
@@ -57,7 +57,7 @@
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=industry&termId=80&termSlug=fitness')); ?>">フィットネス</a>
       </li>
       <li class="p-footer__list">
-       <a href="<?php echo esc_url(home_url('/')); ?>">PR動画</a>
+       <a href="<?php echo esc_url(home_url('/find/?txnmySlug=purpose&termId=52&termSlug=promotion')); ?>">PR動画</a>
       </li>
       <li class="p-footer__list">
        <a href="<?php echo esc_url(home_url('/find/?txnmySlug=expression_method&termId=69&termSlug=drone')); ?>">ドローン撮影</a>

@@ -75,7 +75,8 @@
 
    </div>
   </div>
-  <div class="p-faq__banner c-ctaBanner">
+  <div class="p-faq__banner c-ctaBanner c-ctaBanner02">
+   <p class="c-ctaBanner02__copy">かんたん30秒！</p>
    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。<br>専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。
    </p>
    <div class="c-ctaBanner__btn">

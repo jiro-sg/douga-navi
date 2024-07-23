@@ -23,11 +23,27 @@
 .p-contact__explain {
   font-size: myrem(15);
   text-align: center;
+  line-height: calc(27 / 15);
   margin-top: myrem(22);
   letter-spacing: 0;
   @include mq("md") {
     text-align: left;
   }
+}
+
+.p-contact__explain02 {
+  font-size: myrem(15);
+  text-align: center;
+  line-height: calc(27 / 15);
+  letter-spacing: 0;
+  @include mq("md") {
+    text-align: left;
+  }
+}
+
+.p-contact__explain02 a {
+  text-decoration: underline;
+  color: #008aef;
 }
 
 .p-contact__form {

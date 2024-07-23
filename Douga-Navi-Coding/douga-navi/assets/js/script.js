@@ -218,3 +218,29 @@ $(function () {
     }
   });
 });
+
+//================================================
+
+$(document).ready(function () {
+  var label = $(".js-label");
+  var footer = $(".js-footer");
+
+  $(window).scroll(function () {
+    // 画面幅が767px以下の場合のみ実行
+    if ($(window).width() <= 767) {
+      var footerOffsetTop = footer.offset().top;
+      var scrollPosition = $(this).scrollTop() + $(this).height();
+
+      if (scrollPosition >= footerOffsetTop) {
+        // スクロール位置がフッターの高さを超えたらラベルをフェードアウト
+        label.fadeOut();
+      } else {
+        // それ以外の場合はラベルをフェードイン
+        label.fadeIn();
+      }
+    } else {
+      // 画面幅が767pxを超える場合、ラベルを常に表示
+      label.fadeOut();
+    }
+  });
+});

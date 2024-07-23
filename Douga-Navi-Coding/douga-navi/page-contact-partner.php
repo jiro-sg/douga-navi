@@ -5,9 +5,10 @@
  <!-- // -->
  <div class="p-contact l-contact">
   <div class="p-contact__inner l-inner">
-   <h2 class="p-contact__title c-secTtl01">お問い合わせフォーム</h2>
-   <p class="p-contact__explain">ご相談・お見積もりは無料です。 専門スタッフが丁寧にご用件をお伺いいたします。お気軽にご相談ください。</p>
-   <p class="p-contact__explain02">協業に関するお問い合わせは<a href="<?php echo esc_url(home_url('/contact-partner')); ?>">こちら</a></p>
+   <h2 class="p-contact__title c-secTtl01">協業に関するお問い合わせ</h2>
+   <p class="p-contact__explain">協業に関するお問い合わせは下記フォームよりお願いいたします。
+   </p>
+   <!-- <p class="p-contact__explain02">協業に関するお問い合わせは<a href="">こちら</a></p> -->
 
    <div class="p-contact__form p-form">
 

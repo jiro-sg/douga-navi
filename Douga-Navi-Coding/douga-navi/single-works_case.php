@@ -213,7 +213,8 @@
        <a class="p-searchDetail__btn" href="<?php echo esc_url(home_url('/contact/')); ?>">この事例と同様の動画制作を<br class="u-mobile">見積り（無料）</a>
       </div>
       <div class="p-searchDetail__cta p-flowCTA">
-       <div class="p-searchDetail__ctaBanner p-flowCTA__banner c-ctaBanner">
+       <div class="p-searchDetail__ctaBanner p-flowCTA__banner c-ctaBanner c-ctaBanner02">
+        <p class="c-ctaBanner02__copy">かんたん30秒！</p>
         <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
         </p>
         <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>

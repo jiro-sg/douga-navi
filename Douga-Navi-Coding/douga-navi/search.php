@@ -1,13 +1,13 @@
 <?php get_header(); ?>
 
 <main class="p-search">
- <div class="p-search__inner">
+  <div class="p-search__inner">
 
-  <?php if (!isset($_GET['s']) && !isset($_GET['txnmySlug']) && !isset($_GET['termId']) && !isset($_GET['termLists'])) : ?>
+    <?php if (!isset($_GET['s']) && !isset($_GET['txnmySlug']) && !isset($_GET['termId']) && !isset($_GET['termLists'])) : ?>
 
-  <h1 class="p-search__ttl">動画実績を探す</h1>
+      <h1 class="p-search__ttl">動画実績を探す</h1>
 
-  <?php
+    <?php
     elseif (isset($_GET['termSlug']) && !isset($_GET['s'])) :
       $termSlug = $_GET['termSlug'];
       $txnmySlug = $_GET['txnmySlug'];
@@ -25,14 +25,14 @@
       }
     ?>
 
-  <h1 class="p-search__ttl">
-   <?php
+      <h1 class="p-search__ttl">
+        <?php
         foreach ($termNameLists as $termNameItem) {
           echo $termNameItem;
         }
         ?>一覧</h1>
 
-  <?php
+      <?php
       $termdescriptionLists = array();
       foreach ($termIDLists as $termItem) {
         $termdescriptionLists[] = term_description($termItem, $txnmySlug);
@@ -40,46 +40,46 @@
       foreach ($termdescriptionLists as $termdescriptionItem) :
         if (!empty($termdescriptionItem)) :
       ?>
-  <p class="p-search__explain"><?php echo $termdescriptionItem; ?></p>
-  <?php endif;
+          <p class="p-search__explain"><?php echo $termdescriptionItem; ?></p>
+      <?php endif;
       endforeach;
       ?>
 
-  <?php
+    <?php
     elseif (isset($_GET['s']) ||  isset($_GET['termLists'])) :
     ?>
 
-  <h1 class="p-search__ttl">動画実績を探す</h1>
+      <h1 class="p-search__ttl">動画実績を探す</h1>
 
-  <?php else : ?>
+    <?php else : ?>
 
-  <h1 class="p-search__ttl">動画実績を探す</h1>
+      <h1 class="p-search__ttl">動画実績を探す</h1>
 
-  <?php endif; ?>
+    <?php endif; ?>
 
 
 
-  <article class="p-search__cnditins p-srchCnditin">
-   <div class="p-srchCnditin__ttlBox js-searchBtnAccdin">
-    <h2 class="p-srchCnditin__ttl">カテゴリーから<br class="u-mobile">動画制作実績を探す</h2>
-   </div>
+    <article class="p-search__cnditins p-srchCnditin">
+      <div class="p-srchCnditin__ttlBox js-searchBtnAccdin">
+        <h2 class="p-srchCnditin__ttl">カテゴリーから<br class="u-mobile">動画制作実績を探す</h2>
+      </div>
 
-   <div class="p-srchCnditin__formBox">
-    <form method="get" id="search-form" action="<?php echo esc_url(home_url('/')); ?>">
-     <input type="hidden" class="field" name="s">
+      <div class="p-srchCnditin__formBox">
+        <form method="get" id="search-form" action="<?php echo esc_url(home_url('/')); ?>">
+          <input type="hidden" class="field" name="s">
 
-     <?php
+          <?php
           $txnmySlugLists = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
           foreach ($txnmySlugLists as $txnmySlugItem) :
             $taxObject = get_taxonomy($txnmySlugItem);
           ?>
-     <dl class="p-srchCnditin__defLists">
+            <dl class="p-srchCnditin__defLists">
 
-      <dt class="p-srchCnditin__defTerm">
-       <span><?php echo $taxObject->label; ?></span>
-      </dt>
-      <dd class="p-srchCnditin__defDescr">
-       <?php
+              <dt class="p-srchCnditin__defTerm">
+                <span><?php echo $taxObject->label; ?></span>
+              </dt>
+              <dd class="p-srchCnditin__defDescr">
+                <?php
                 $txnmySlug = $txnmySlugItem;
                 $hierarchyArray = array();
                 $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
@@ -98,7 +98,7 @@
                 ?>
 
 
-       <?php foreach ($termListsA as $termItemA) :
+                    <?php foreach ($termListsA as $termItemA) :
                       $termItemA_id = $termItemA->term_id;
                       $termItemA_slug = $termItemA->slug;
                       $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
@@ -106,23 +106,23 @@
                       // var_dump(count(get_term_children($termItemA_id, $txnmySlug)));
                     ?>
 
-       <ul class="p-srchCnditin__prntsTermLists">
-        <li class="p-srchCnditin__prntsTermItem">
+                      <ul class="p-srchCnditin__prntsTermLists">
+                        <li class="p-srchCnditin__prntsTermItem">
 
-         <div class="p-srchCnditin__prntsTermBox">
-          <label for="<?php echo esc_html($termItemA_slug); ?>">
-           <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
-           <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
-          </label>
-          <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
-          <span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
-          <?php endif; ?>
-         </div>
+                          <div class="p-srchCnditin__prntsTermBox">
+                            <label for="<?php echo esc_html($termItemA_slug); ?>">
+                              <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
+                              <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+                            </label>
+                            <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
+                              <span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
+                            <?php endif; ?>
+                          </div>
 
-         <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
-         <div class="p-srchCnditin__termBox">
-          <ul class="p-srchCnditin__termLists">
-           <?php
+                          <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
+                            <div class="p-srchCnditin__termBox">
+                              <ul class="p-srchCnditin__termLists">
+                                <?php
                                 $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
                                 foreach ($termListsC as $termItemC) :
                                   $termItemC_id = $termItemC->term_id;
@@ -130,26 +130,26 @@
                                   $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
                                 ?>
 
-           <li class="p-srchCnditin__termItem">
-            <label for="<?php echo esc_html($termItemC_slug); ?>">
-             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
-            </label>
-           </li>
-           <?php endforeach; ?>
-          </ul>
-         </div>
-         <?php endif; ?>
+                                  <li class="p-srchCnditin__termItem">
+                                    <label for="<?php echo esc_html($termItemC_slug); ?>">
+                                      <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                                    </label>
+                                  </li>
+                                <?php endforeach; ?>
+                              </ul>
+                            </div>
+                          <?php endif; ?>
 
-        </li>
-       </ul>
-       <?php endforeach; ?>
+                        </li>
+                      </ul>
+                    <?php endforeach; ?>
 
-       <?php else : ?>
+                  <?php else : ?>
 
-       <div class="p-srchCnditin__termBox">
-        <ul class="p-srchCnditin__termLists">
+                    <div class="p-srchCnditin__termBox">
+                      <ul class="p-srchCnditin__termLists">
 
-         <?php
+                        <?php
                         // タームが１階層しかない場合
                         foreach ($termListsA as $termItemA) :
                           $termItemA_id = $termItemA->term_id;
@@ -157,47 +157,47 @@
                           $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
                         ?>
 
-         <li class="p-srchCnditin__termItem">
-          <label for="<?php echo esc_html($termItemA_slug); ?>">
-           <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
-          </label>
-         </li>
-         <?php endforeach; ?>
+                          <li class="p-srchCnditin__termItem">
+                            <label for="<?php echo esc_html($termItemA_slug); ?>">
+                              <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+                            </label>
+                          </li>
+                        <?php endforeach; ?>
 
-        </ul>
-       </div>
+                      </ul>
+                    </div>
 
 
-       <?php
+                <?php
                   endif;
                 endif;
                 ?>
-      </dd>
-     </dl>
-     <?php endforeach; ?>
+              </dd>
+            </dl>
+          <?php endforeach; ?>
 
-     <div class="p-srchCnditin__btnWrppr">
+          <div class="p-srchCnditin__btnWrppr">
 
-      <button type="reset" class="p-srchCnditin__cancellBtn">カテゴリーの選択を解除する</button>
-      <button type="submit" class="p-srchCnditin__submitBtns">カテゴリーごとに検索する</button>
-     </div>
-    </form>
-   </div>
+            <button type="reset" class="p-srchCnditin__cancellBtn">カテゴリーの選択を解除する</button>
+            <button type="submit" class="p-srchCnditin__submitBtns">カテゴリーごとに検索する</button>
+          </div>
+        </form>
+      </div>
 
-  </article>
+    </article>
 
 
 
-  </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
-  <div class="p-search__result p-srchRslt">
-   <?php
+    </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
+    <div class="p-search__result p-srchRslt">
+      <?php
       $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
       // var_dump($paged);
 
       ?>
 
 
-   <?php
+      <?php
       // search.phpのメインループ機能でフリーワード検索する場合
       if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
         $mainLoop = true;
@@ -209,24 +209,24 @@
       ?>
 
 
-   <?php
+        <?php
         if (have_posts()) :
           while (have_posts()) : the_post();
         ?>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <!-- <//?php
+            <div class="p-srchRslt__card">
+              <figure class="p-srchRslt__cardMovie">
+                <!-- <//?php
         $hoge = get_field('info_movie');
         if ($hoge) :
          echo $embed_code = wp_oembed_get($hoge);
         endif;
         ?> -->
-     <?php get_template_part('_inc/youtube'); ?>
-    </figure>
-    <a href="<?php the_permalink(); ?>">
-     <p class="p-srchRslt__cardTxt">
-      <!-- <//?php
+                <?php get_template_part('_inc/youtube'); ?>
+              </figure>
+              <a href="<?php the_permalink(); ?>">
+                <p class="p-srchRslt__cardTxt">
+                  <!-- <//?php
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -263,27 +263,27 @@
           }
          }
          ?> -->
-      <?php the_title(); ?>
-     </p>
-     <p class="p-srchRslt__toDetail">
-      詳細を見る
-     </p>
-    </a>
-   </div>
+                  <?php the_title(); ?>
+                </p>
+                <p class="p-srchRslt__toDetail">
+                  詳細を見る
+                </p>
+              </a>
+            </div>
 
-   <?php endwhile; ?>
-   <?php else : ?>
-   <p class="p-search__noResult">
-    申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-    条件を変えてお試しください。
-   </p>
+          <?php endwhile; ?>
+        <?php else : ?>
+          <p class="p-search__noResult">
+            申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+            条件を変えてお試しください。
+          </p>
 
-   <?php endif; ?>
-
-
+        <?php endif; ?>
 
 
-   <?php
+
+
+      <?php
       // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
       elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
         $mainLoop = false;
@@ -293,7 +293,7 @@
         $noNeedLoop = false;
       ?>
 
-   <?php
+        <?php
         // フリーワード検索もターム絞り込みもない場合
         // ↓
         //動画実績を絞り込みせず全部表示する
@@ -313,7 +313,7 @@
         ?>
 
 
-   <?php
+        <?php
         // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
         elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
 
@@ -360,7 +360,7 @@
 
         ?>
 
-   <?php
+        <?php
         // フリーワード検索に値がなくて複数ターム絞り込みした場合
         elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
 
@@ -419,28 +419,28 @@
           }
         ?>
 
-   <?php endif; ?>
+        <?php endif; ?>
 
 
-   <?php if ($noNeedLoop == false) : ?>
-   <?php if ($the_query->have_posts()) : ?>
-   <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <!-- <//?php
+        <?php if ($noNeedLoop == false) : ?>
+          <?php if ($the_query->have_posts()) : ?>
+            <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
+              <div class="p-srchRslt__card">
+                <figure class="p-srchRslt__cardMovie">
+                  <!-- <//?php
                         $hoge = get_field('info_movie');
                         if ($hoge) :
                           echo $embed_code = wp_oembed_get($hoge);
                         endif;
                         ?> -->
-     <?php get_template_part('_inc/youtube'); ?>
+                  <?php get_template_part('_inc/youtube'); ?>
 
 
 
-    </figure>
-    <a href="<?php the_permalink(); ?>">
-     <p class="p-srchRslt__cardTxt">
-      <!-- <//?php
+                </figure>
+                <a href="<?php the_permalink(); ?>">
+                  <p class="p-srchRslt__cardTxt">
+                    <!-- <//?php
           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
           if ($termsInfomation) {
            foreach ($termsInfomation as $termsInfo) {
@@ -477,76 +477,77 @@
            }
           }
           ?> -->
-      <?php the_title(); ?>
-     </p>
-     <p class="p-srchRslt__toDetail">
-      詳細を見る
-     </p>
-    </a>
-   </div>
+                    <?php the_title(); ?>
+                  </p>
+                  <p class="p-srchRslt__toDetail">
+                    詳細を見る
+                  </p>
+                </a>
+              </div>
 
-   <?php endwhile; ?>
+            <?php endwhile; ?>
 
-   <?php else : ?>
+          <?php else : ?>
 
-   <p class="p-search__noResult">
-    申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-    条件を変えてお試しください。
-   </p>
+            <p class="p-search__noResult">
+              申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+              条件を変えてお試しください。
+            </p>
 
-   <?php endif; ?>
+          <?php endif; ?>
 
-   <?php else : ?>
-   <p class="p-search__noResult">
-    申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-    条件を変えてお試しください。
-   </p>
+        <?php else : ?>
+          <p class="p-search__noResult">
+            申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+            条件を変えてお試しください。
+          </p>
 
-   <?php endif; ?>
+        <?php endif; ?>
 
-   <?php endif; ?>
-
-
-
-  </div>
+      <?php endif; ?>
 
 
-  <?php wp_reset_postdata(); ?>
-  <?php if ($mainLoop == true) : ?>
-  <div class="l-search__pageNavi">
-   <?php wp_pagenavi(); ?>
-  </div>
-  <?php else : ?>
 
-  <?php if ($noNeedLoop == false) : ?>
-  <div class="l-search__pageNavi">
-   <?php wp_pagenavi(['query' => $the_query]); ?>
-  </div>
-  <?php endif; ?>
-  <?php endif; ?>
-
-
-  </ /?php endwhile; // メインループ終了 ?>
-
-  <div class="p-search__cta">
-
-   <div class="p-search__ctaBanner c-ctaBanner">
-    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
-    </p>
-    <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
-    <div class="c-ctaBanner__btn">
-     <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
     </div>
-   </div>
 
-   <div class="p-search__ctaBtn">
-    <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
-   </div>
+
+    <?php wp_reset_postdata(); ?>
+    <?php if ($mainLoop == true) : ?>
+      <div class="l-search__pageNavi">
+        <?php wp_pagenavi(); ?>
+      </div>
+    <?php else : ?>
+
+      <?php if ($noNeedLoop == false) : ?>
+        <div class="l-search__pageNavi">
+          <?php wp_pagenavi(['query' => $the_query]); ?>
+        </div>
+      <?php endif; ?>
+    <?php endif; ?>
+
+
+    </ /?php endwhile; // メインループ終了 ?>
+
+    <div class="p-search__cta">
+
+      <div class="p-search__ctaBanner c-ctaBanner c-ctaBanner02">
+        <p class="c-ctaBanner02__copy">かんたん30秒！</p>
+        <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+        </p>
+        <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
+        <div class="c-ctaBanner__btn">
+          <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
+        </div>
+      </div>
+
+      <div class="p-search__ctaBtn">
+        <a href="<?php echo esc_url(home_url('/')); ?>">ホームへ戻る</a>
+      </div>
+
+    </div>
+
 
   </div>
-
-
- </div>
 </main>
 
 

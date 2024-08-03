@@ -381,3 +381,14 @@ add_action('admin_menu', 'remove_menus');
 //   echo $id;
 //  }
 // }
+
+//==========================================================
+// お問い合わせページを除き、「reCAPTCHA」を読み込ませない
+
+function load_recaptcha_js()
+{
+ if (!is_page('contact') && !is_page('contact-partner')) {
+  wp_deregister_script('google-recaptcha');
+ }
+}
+add_action('wp_enqueue_scripts', 'load_recaptcha_js', 100);

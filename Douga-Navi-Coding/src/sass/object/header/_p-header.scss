@@ -2,637 +2,700 @@
 @use "global" as *;
 
 .p-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  // bottom: myrem(50);
-  width: 100%;
-  height: myrem(100);
-  background-color: $white_fff;
-  z-index: 20;
-  border-bottom: 1px solid $paleBlue_eff;
-  box-shadow: 0 myrem(3) myrem(11) rgba($black_000, 0.13);
-  // display: none;
-  @include mq(md) {
-    height: myrem(48);
-  }
+	position: fixed;
+	top: 0;
+	left: 0;
+	// bottom: myrem(50);
+	width: 100%;
+	height: myrem(100);
+	background-color: $white_fff;
+	z-index: 20;
+	border-bottom: 1px solid $paleBlue_eff;
+	box-shadow: 0 myrem(3) myrem(11) rgba($black_000, 0.13);
+	// display: none;
+	// background-color: blue;
+	@include mq(md) {
+		height: myrem(48);
+	}
 }
 
 .p-header__inner {
-  width: 100%;
-  height: 100%;
-  padding: myrem(15) myrem(40) 0;
-  @include mq(md) {
-    padding: myrem(8) myrem(8) myrem(8) myrem(16);
-  }
+	width: 100%;
+	height: 100%;
+	padding: myrem(15) myrem(40) 0;
+	@include mq(md) {
+		padding: myrem(8) myrem(8) myrem(8) myrem(16);
+	}
 }
 
 .p-header__aboveRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  @include mq(md) {
-    background-color: $white_fff;
-  }
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@include mq(md) {
+		background-color: $white_fff;
+	}
 }
 
 .p-header__aboveLeft {
-  display: flex;
-  align-items: center;
-  column-gap: myrem(20);
-  @include mq(md) {
-  }
+	display: flex;
+	align-items: center;
+	column-gap: myrem(20);
+	@include mq(md) {
+	}
 }
 
 .p-header__logoLink {
-  display: block;
-  width: myrem(156);
-  height: myrem(28);
-  @include mq(md) {
-    width: myrem(109);
-    height: myrem(20);
-  }
+	display: block;
+	width: myrem(156);
+	height: myrem(28);
+	@include mq(md) {
+		width: myrem(109);
+		height: myrem(20);
+	}
 }
 
 .p-header__logoLink figure {
-  display: block;
-  width: 100%;
-  height: 100%;
-  @include mq(md) {
-  }
+	display: block;
+	width: 100%;
+	height: 100%;
+	@include mq(md) {
+	}
 }
 
 .p-header__logoLink figure img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  @include mq(md) {
-  }
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	@include mq(md) {
+	}
 }
 
 .p-header__searchBox {
-  width: myrem(313);
-  @include mq(md) {
-    display: none;
-  }
+	width: myrem(313);
+	@include mq(md) {
+		display: none;
+	}
 }
 
 .p-header__aboveRight {
-  display: flex;
-  align-items: center;
-  column-gap: myrem(24);
-  @include mq(md) {
-    column-gap: myrem(8);
-    align-items: stretch;
-  }
+	display: flex;
+	align-items: center;
+	column-gap: myrem(24);
+	@include mq(md) {
+		column-gap: myrem(8);
+		align-items: stretch;
+	}
 }
 
 .p-header__cntctInfo {
-  text-align: center;
-  @include mq(md) {
-    display: none;
-  }
+	text-align: center;
+	@include mq(md) {
+		display: none;
+	}
 }
 
 .p-header__tel {
-  display: block;
-  width: 100%;
-  font-size: myrem(15);
-  font-weight: 400;
-  @include mq(md) {
-  }
+	display: block;
+	width: 100%;
+	font-size: myrem(15);
+	font-weight: 400;
+	@include mq(md) {
+	}
 }
 
 .p-header__bsnssHours {
-  font-size: myrem(12);
-  font-weight: 400;
-  margin-top: myrem(5);
-  @include mq(md) {
-  }
+	font-size: myrem(12);
+	font-weight: 400;
+	margin-top: myrem(5);
+	@include mq(md) {
+	}
 }
 
 .p-header__cntctBtnBox {
-  display: flex;
-  align-items: center;
-  @include mq(md) {
-    display: none;
-  }
+	display: flex;
+	align-items: center;
+	@include mq(md) {
+		display: none;
+	}
 }
 
 .p-header__cntctBtnBox a {
-  display: block;
-  font-size: myrem(15);
-  font-weight: 500;
-  color: $white_fff;
-  background-color: $pink_e15;
-  border-radius: myrem(4);
-  padding: myrem(5.25) myrem(25);
-  @include mq(md) {
-    font-size: myrem(14);
-    padding: myrem(5.5) myrem(16);
-  }
+	display: block;
+	font-size: myrem(15);
+	font-weight: 500;
+	color: $white_fff;
+	background-color: $pink_e15;
+	border-radius: myrem(4);
+	padding: myrem(5.25) myrem(25);
+	@include mq(md) {
+		font-size: myrem(14);
+		padding: myrem(5.5) myrem(16);
+	}
 }
 
 .p-header__drawerBtn {
-  display: none;
-  cursor: pointer;
-  @include mq(md) {
-    display: flex;
-    align-items: center;
-    padding: 0 myrem(8);
-    // background-color: #fff;
-  }
+	display: none;
+	cursor: pointer;
+	@include mq(md) {
+		display: flex;
+		align-items: center;
+		padding: 0 myrem(8);
+		// background-color: #fff;
+	}
 }
 
 .p-header__drawerBtn figure {
-  display: block;
-  width: myrem(17);
-  height: myrem(20);
+	display: block;
+	width: myrem(17);
+	height: myrem(20);
 }
 
 .p-header__drawerBtn img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	object-position: center;
 }
 
 .p-header__burgerBtn {
-  display: none;
-  @include mq(md) {
-    display: block;
-    width: myrem(25);
-    height: myrem(25);
-    position: relative;
-  }
+	display: none;
+	@include mq(md) {
+		display: block;
+		width: myrem(25);
+		height: myrem(25);
+		position: relative;
+	}
 }
 
 .p-header__burgerBtn span {
-  display: block;
-  width: 85%;
-  height: 1px;
-  background-color: $black_24;
+	display: block;
+	width: 85%;
+	height: 1px;
+	background-color: $black_24;
 }
 
 .p-header__burgerBtn span:first-of-type {
-  position: absolute;
-  top: 20%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, 0);
-  transition: transform 0.3s ease-out;
+	position: absolute;
+	top: 20%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, 0);
+	transition: transform 0.3s ease-out;
 }
 
 .p-header__burgerBtn span:nth-of-type(2) {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease-out;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%);
+	transition: opacity 0.3s ease-out;
 }
 
 .p-header__burgerBtn span:last-of-type {
-  position: absolute;
-  top: auto;
-  bottom: 20%;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, 0);
-  transition: transform 0.3s ease-out;
+	position: absolute;
+	top: auto;
+	bottom: 20%;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, 0);
+	transition: transform 0.3s ease-out;
 }
 
 .p-header__belowRow {
-  @include mq(md) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    min-height: 100vh;
-    max-height: 100vh;
-    overflow: scroll;
-    background-color: $white_fff;
-    padding-top: myrem(50);
-    padding-bottom: myrem(80);
-    z-index: 21;
-    display: none;
-  }
+	@include mq(md) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		min-height: 100vh;
+		max-height: 100vh;
+		overflow: scroll;
+		background-color: $white_fff;
+		padding-top: myrem(50);
+		padding-bottom: myrem(80);
+		z-index: 21;
+		display: none;
+	}
 }
 
 .p-header__drawerAbove {
-  display: none;
-  @include mq(md) {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: myrem(8);
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: auto;
-    padding: myrem(8) myrem(8) myrem(8) myrem(16);
-    box-shadow: 0 myrem(3) myrem(6) 0 rgba($black_000, 0.06);
-    background-color: #fff;
-    z-index: 23;
-  }
+	display: none;
+	@include mq(md) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		column-gap: myrem(8);
+		display: flex;
+		justify-content: space-between;
+		width: 100%;
+		height: auto;
+		padding: myrem(8) myrem(8) myrem(8) myrem(16);
+		box-shadow: 0 myrem(3) myrem(6) 0 rgba($black_000, 0.06);
+		background-color: #fff;
+		z-index: 23;
+	}
 }
 
 .p-header__drawerSearchForm {
-  // border: 1px solid $gray_ddd;
+	// border: 1px solid $gray_ddd;
 
-  @include mq(md) {
-    // width: myrem(264);
-    width: 100%;
-    flex: 1;
-  }
+	@include mq(md) {
+		// width: myrem(264);
+		width: 100%;
+		flex: 1;
+	}
 }
 
 .p-header__drawerSearchForm .searchform__box input {
-  @include mq(md) {
-    width: 100%;
-    flex: 1;
-  }
+	@include mq(md) {
+		width: 100%;
+		flex: 1;
+	}
 }
 
 .p-header__drawerSearchForm .searchform__box button {
-  @include mq(md) {
-    width: myrem(33);
-    background-color: #fff;
-  }
+	@include mq(md) {
+		width: myrem(33);
+		background-color: #fff;
+	}
 }
 
 .p-header__closeBtn {
-  display: block;
-  width: myrem(25);
-  height: myrem(25);
-  cursor: pointer;
-  position: relative;
+	display: block;
+	width: myrem(25);
+	height: myrem(25);
+	cursor: pointer;
+	position: relative;
 }
 
 .p-header__closeBtn span:first-of-type {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  display: block;
-  content: "";
-  width: myrem(20);
-  height: 1px;
-  background-color: $black_24;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(20);
+	height: 1px;
+	background-color: $black_24;
 }
 
 .p-header__closeBtn span:nth-of-type(2) {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  display: block;
-  content: "";
-  width: myrem(20);
-  height: 1px;
-  background-color: $black_24;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(20);
+	height: 1px;
+	background-color: $black_24;
 }
 
 .p-header__closeBtn span:last-of-type {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%) rotate(45deg);
-  display: block;
-  content: "";
-  width: myrem(20);
-  height: 1px;
-  background-color: $black_24;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%) rotate(45deg);
+	display: block;
+	content: "";
+	width: myrem(20);
+	height: 1px;
+	background-color: $black_24;
 }
 
 .p-header__drawerBelow {
-  @include mq(md) {
-    width: 100%;
-    height: auto;
-  }
+	@include mq(md) {
+		width: 100%;
+		height: auto;
+	}
 }
 
 .p-header__drawerCntctBtn,
 .p-header__drawerCntctBtn01 {
-  display: none;
-  @include mq(md) {
-    display: block;
-    width: min(#{myrem(272)}, 100%);
-    margin-inline: auto;
-    text-align: left;
-    // margin-top: myrem(48);
-  }
+	display: none;
+	@include mq(md) {
+		display: block;
+		width: min(#{myrem(272)}, 100%);
+		margin-inline: auto;
+		text-align: left;
+		// margin-top: myrem(48);
+	}
 }
 
 .p-header__drawerCntctBtn01 {
-  margin-top: myrem(31);
+	margin-top: myrem(31);
 }
 .p-header__drawerCntctBtn {
-  margin-top: myrem(8);
+	margin-top: myrem(8);
 }
 
 .p-header__drawerCntctBtnCopy {
-  @include mq("md") {
-    font-size: myrem(14);
-    line-height: 1;
-  }
+	@include mq("md") {
+		font-size: myrem(14);
+		line-height: 1;
+	}
 }
 
 .p-header__drawerCntctBtnText {
-  @include mq("md") {
-    font-size: myrem(16);
-  }
+	@include mq("md") {
+		font-size: myrem(16);
+	}
 }
 
 .p-header__drawerCntctBtn a,
 .p-header__drawerCntctBtn01 a {
-  display: block;
-  font-size: myrem(15);
-  font-weight: 400;
-  // text-align: center;
-  color: $white_fff;
-  border-radius: myrem(4);
-  background-color: $pink_e15;
-  padding: myrem(8) myrem(6) myrem(11) myrem(65);
-  position: relative;
+	display: block;
+	font-size: myrem(15);
+	font-weight: 400;
+	// text-align: center;
+	color: $white_fff;
+	border-radius: myrem(4);
+	background-color: $pink_e15;
+	padding: myrem(8) myrem(6) myrem(11) myrem(65);
+	position: relative;
 }
 
 .p-header__drawerCntctBtn01 a {
-  background-color: #0075be;
-  display: flex;
-  align-items: center;
-  gap: myrem(16);
-  padding: myrem(3) myrem(6) myrem(4) myrem(65);
+	background-color: #0075be;
+	display: flex;
+	align-items: center;
+	gap: myrem(16);
+	padding: myrem(3) myrem(6) myrem(4) myrem(65);
 }
 
 .p-header__drawerCntctBtnTel {
-  font-size: myrem(20);
+	font-size: myrem(20);
 }
 
 .p-header__drawerCntctBtnBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
 }
 
 .p-header__drawerCntctBtnBox::before {
-  content: "";
-  width: 1px;
-  height: calc(100% + myrem(7));
-  position: absolute;
-  top: myrem(-3);
-  left: myrem(-5);
-  background-color: #59aee3;
+	content: "";
+	width: 1px;
+	height: calc(100% + myrem(7));
+	position: absolute;
+	top: myrem(-3);
+	left: myrem(-5);
+	background-color: #59aee3;
 }
 
 .p-header__drawerCntctBtnTime {
-  font-size: myrem(12);
+	font-size: myrem(12);
 }
 
 .p-header__drawerCntctBtnTimeBox {
-  display: flex;
-  align-items: center;
-  gap: myrem(3);
-  margin-top: myrem(3);
+	display: flex;
+	align-items: center;
+	gap: myrem(3);
+	margin-top: myrem(3);
 }
 
 .p-header__drawerCntctBtnDay {
-  font-size: myrem(12);
+	font-size: myrem(12);
 }
 
 .p-header__drawerCntctBtnOpen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: myrem(12);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: myrem(12);
 }
 
 .p-header__drawerCntctBtnOpen span:nth-child(2) {
-  text-orientation: sideways;
-  display: inline-block;
-  writing-mode: vertical-rl;
+	text-orientation: sideways;
+	display: inline-block;
+	writing-mode: vertical-rl;
 }
 
 .p-header__drawerCntctBtn01 a::before {
-  content: "";
-  background: url(../images/common/icon_tel.svg) no-repeat center / contain;
-  width: myrem(30);
-  height: myrem(30);
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: myrem(16);
+	content: "";
+	background: url(../images/common/icon_tel.svg) no-repeat center / contain;
+	width: myrem(30);
+	height: myrem(30);
+	display: block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: myrem(16);
 }
 .p-header__drawerCntctBtn a::before {
-  content: "";
-  background: url(../images/common/icon_consul.svg) no-repeat center / contain;
-  width: myrem(35);
-  height: myrem(34);
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: myrem(16);
+	content: "";
+	background: url(../images/common/icon_consul.svg) no-repeat center / contain;
+	width: myrem(35);
+	height: myrem(34);
+	display: block;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	left: myrem(16);
 }
 
 .p-header__nav {
-  @include mq(md) {
-    margin-top: myrem(30);
-  }
+	@include mq(md) {
+		margin-top: myrem(30);
+	}
 }
 
 .p-header__navLists {
-  display: flex;
-  align-items: normal;
-  column-gap: myrem(5);
-  @include mq(md) {
-    flex-direction: column;
-    padding: 0 myrem(24);
-  }
+	display: flex;
+	align-items: normal;
+	column-gap: myrem(5);
+	@include mq(md) {
+		flex-direction: column;
+		padding: 0 myrem(24);
+	}
 }
 
 .p-header__navItem {
-  @include mq(md) {
-    border-bottom: 1px solid $gray_ddd;
-  }
+	position: relative;
+	// background-color: red;
+	@include mq(md) {
+		border-bottom: 1px solid $gray_ddd;
+	}
 }
 
-.p-header__navItem a {
-  display: block;
-  font-size: myrem(15);
-  font-weight: 400;
-  padding: 0.2em 0.3em;
-  @include mq(md) {
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    padding: myrem(16) 0 myrem(8);
-    position: relative;
-  }
+.p-header__navItem > a {
+	display: block;
+	font-size: myrem(15);
+	font-weight: 400;
+	padding: 0.2em 0.3em myrem(13);
+	// background-color: blue;
+	position: relative;
+	@include mq(md) {
+		font-weight: 400;
+		letter-spacing: 0.05em;
+		padding: myrem(16) 0 myrem(8);
+	}
 }
 
-.p-header__navItem a::after {
-  @include mq(md) {
-    position: absolute;
-    top: 55%;
-    bottom: auto;
-    left: auto;
-    right: 0;
-    transform: translate(0, -50%) rotate(-45deg);
-    display: block;
-    content: "";
-    width: myrem(10);
-    height: myrem(10);
-    border-bottom: 1px solid $black_24;
-    border-right: 1px solid $black_24;
-  }
+.p-header__navItem > a::after {
+	@include mq(md) {
+		position: absolute;
+		top: 55%;
+		bottom: auto;
+		left: auto;
+		right: 0;
+		transform: translate(0, -50%) rotate(-45deg);
+		display: block;
+		content: "";
+		width: myrem(10);
+		height: myrem(10);
+		border-bottom: 1px solid $black_24;
+		border-right: 1px solid $black_24;
+	}
+}
+
+.p-header__navItem--mega > a::after {
+	position: absolute;
+	top: auto;
+	bottom: myrem(6);
+	left: 0;
+	right: auto;
+	transform: scaleX(0);
+	transform-origin: left center;
+	display: block;
+	content: "";
+	width: 100%;
+	height: 1px;
+	background-color: $blue_00A;
+	transition: transform 0.3s ease-out;
+	@include mq(md) {
+		display: none;
+	}
+}
+
+.p-header__navItem--mega:hover > a::after {
+	transform: scaleX(100%);
+}
+
+.p-header__megaLists {
+	position: fixed;
+	top: myrem(95);
+	left: 0;
+	transform: translate(0, 0);
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: $white_fff;
+	// background-color: red;
+	box-shadow: 0 myrem(10) myrem(20) 0 rgba($black_000, 0.05);
+	display: none;
+}
+
+.p-header__megaLists--exprnc {
+	padding: 0 0 myrem(32) myrem(103);
+	// display: none;
+}
+
+.p-header__megaLists--price {
+	padding: 0 0 myrem(32) myrem(233);
+	display: none;
+}
+
+.p-header__megaItem {
+	font-size: myrem(14);
+	font-weight: 400;
+	margin-top: myrem(16);
+}
+
+.p-header__megaItem a {
+	display: block;
+	color: $blue_00A;
 }
 
 .p-header__txnmyLists {
-  display: none;
-  @include mq(md) {
-    display: block;
-    width: 100%;
-    padding: 0 myrem(24);
-  }
+	display: none;
+	@include mq(md) {
+		display: block;
+		width: 100%;
+		padding: 0 myrem(24);
+	}
 }
 
 .p-header__txnmyBox {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: myrem(16) 0 myrem(8);
-  border-bottom: 1px solid $gray_ddd;
-  cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: myrem(16) 0 myrem(8);
+	border-bottom: 1px solid $gray_ddd;
+	cursor: pointer;
 }
 
 .p-header__txnmyName {
-  font-size: myrem(15);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: $blue_00A;
+	font-size: myrem(15);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: $blue_00A;
 }
 
 .p-header__txnmyAccdinBtn {
-  display: block;
-  width: myrem(17);
-  height: myrem(17);
-  border-radius: 50%;
-  border: 1px solid $black_24;
-  position: relative;
+	display: block;
+	width: myrem(17);
+	height: myrem(17);
+	border-radius: 50%;
+	border: 1px solid $black_24;
+	position: relative;
 }
 
 .p-header__txnmyAccdinBtn::before {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%);
-  display: block;
-  content: "";
-  width: myrem(10);
-  height: 1px;
-  background-color: $black_24;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%);
+	display: block;
+	content: "";
+	width: myrem(10);
+	height: 1px;
+	background-color: $black_24;
 }
 
 .p-header__txnmyAccdinBtn::after {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: 50%;
-  right: auto;
-  transform: translate(-50%, -50%);
-  display: block;
-  content: "";
-  height: myrem(10);
-  width: 1px;
-  background-color: $black_24;
-  transition: transform 0.3s ease-out;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: 50%;
+	right: auto;
+	transform: translate(-50%, -50%);
+	display: block;
+	content: "";
+	height: myrem(10);
+	width: 1px;
+	background-color: $black_24;
+	transition: transform 0.3s ease-out;
 }
 
 .p-header__txnmyBox.drawerAccdinOpen .p-header__txnmyAccdinBtn::after {
-  transform: translate(-50%, -50%) rotate(90deg);
+	transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .p-header__txnmyItem > .p-header__prntsTermLists {
-  padding-left: myrem(20);
-  display: none;
+	padding-left: myrem(20);
+	display: none;
 }
 
 .p-header__prntsTermItem > a {
-  display: block;
-  font-size: myrem(14);
-  font-weight: 500;
-  letter-spacing: 0.005em;
-  color: $blue_00A;
-  padding: myrem(12) 0 myrem(12);
-  border-bottom: 1px solid $gray_ddd;
-  position: relative;
+	display: block;
+	font-size: myrem(14);
+	font-weight: 500;
+	letter-spacing: 0.005em;
+	color: $blue_00A;
+	padding: myrem(12) 0 myrem(12);
+	border-bottom: 1px solid $gray_ddd;
+	position: relative;
 }
 
 .p-header__prntsTermItem > a::after {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: auto;
-  right: 0;
-  transform: translate(0, -50%) rotate(-45deg);
-  display: block;
-  content: "";
-  width: myrem(10);
-  height: myrem(10);
-  border-bottom: 1px solid $black_24;
-  border-right: 1px solid $black_24;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(10);
+	height: myrem(10);
+	border-bottom: 1px solid $black_24;
+	border-right: 1px solid $black_24;
 }
 
 .p-header__prntsTermItem > .p-header__termLists {
-  padding-left: myrem(20);
+	padding-left: myrem(20);
 }
 
 .p-header__txnmyItem > .p-header__termLists {
-  padding-left: myrem(40);
-  display: none;
+	padding-left: myrem(40);
+	display: none;
 }
 
 .p-header__termItem > a {
-  display: block;
-  font-size: myrem(14);
-  font-weight: 500;
-  letter-spacing: 0.005em;
-  color: $black_24;
-  padding: myrem(12) 0 myrem(12);
-  border-bottom: 1px solid $gray_ddd;
-  position: relative;
+	display: block;
+	font-size: myrem(14);
+	font-weight: 500;
+	letter-spacing: 0.005em;
+	color: $black_24;
+	padding: myrem(12) 0 myrem(12);
+	border-bottom: 1px solid $gray_ddd;
+	position: relative;
 }
 
 .p-header__termItem > a::after {
-  position: absolute;
-  top: 50%;
-  bottom: auto;
-  left: auto;
-  right: 0;
-  transform: translate(0, -50%) rotate(-45deg);
-  display: block;
-  content: "";
-  width: myrem(10);
-  height: myrem(10);
-  border-bottom: 1px solid $black_24;
-  border-right: 1px solid $black_24;
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: 0;
+	transform: translate(0, -50%) rotate(-45deg);
+	display: block;
+	content: "";
+	width: myrem(10);
+	height: myrem(10);
+	border-bottom: 1px solid $black_24;
+	border-right: 1px solid $black_24;
 }

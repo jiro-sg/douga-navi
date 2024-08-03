@@ -219,13 +219,15 @@ $(function () {
 	});
 
 	$(".js-headerMega").on("mouseenter", function (e) {
-		$(this).children(".p-header__megaLists").slideDown();
-		e.stopPropagation();
+		if ($(window).width() > 767) {
+			$(this).children(".p-header__megaLists").slideDown();
+			e.stopPropagation();
+		}
 	});
- 
+
 	$(".js-headerMega").on("mouseleave", function (e) {
-  $(this).children(".p-header__megaLists").slideUp();
-  e.stopPropagation();
+		$(this).children(".p-header__megaLists").slideUp();
+		e.stopPropagation();
 	});
 });
 

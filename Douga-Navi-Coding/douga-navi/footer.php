@@ -1,19 +1,45 @@
 <footer class="p-footer l-footer js-footer">
  <!-- 追従フッター（SP時） -->
- <div class="c-label l-label js-label">
-  <a class="c-label__tel" href="tel:0120571500">
-   <div class="c-label__box">
-    <p class="c-label__text">お電話での申し込み</p>
-    <p class="c-label__num">0120-571-500</p>
-   </div>
-  </a>
-  <a class="c-label__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
-   <div class="c-label__box02">
-    <p class="c-label__text c-label__text--ml">かんたん30秒！</p>
-    <p class="c-label__contact">無料相談する</p>
-   </div>
-  </a>
+ <div class="c-label l-label js-labelSp">
+  <div class="c-label__body">
+   <a class="c-label__tel" href="tel:0120571500">
+    <div class="c-label__box">
+     <p class="c-label__text">お電話での申し込み</p>
+     <p class="c-label__num">0120-571-500</p>
+    </div>
+   </a>
+   <a class="c-label__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
+    <div class="c-label__box02">
+     <p class="c-label__text c-label__text--ml">かんたん30秒！</p>
+     <p class="c-label__contact">無料相談する</p>
+    </div>
+   </a>
+  </div>
  </div>
+ <!-- // -->
+ <!-- 追従フッター（PC時） -->
+ <div class="c-labelPc l-labelPc js-label">
+  <div class="c-labelPc__body">
+   <a class="c-labelPc__tel" href="tel:0120-571-500">
+    <div class="c-labelPc__box">通話<br>無料</div>
+    <div class="c-labelPc__block">
+     <p class="c-labelPc__text">お電話での申し込み</p>
+     <p class="c-labelPc__num">0120-571-500</p>
+    </div>
+   </a>
+   <a class="c-labelPc__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
+    <div class="c-labelPc__box"><span>かんたん</span><br>30秒！</div>
+    <div class="c-labelPc__block">
+     <p class="c-labelPc__text">フォームから</p>
+     <p class="c-labelPc__text02">無料相談<span>してみる</span></p>
+    </div>
+   </a>
+
+  </div>
+ </div>
+
+ <!-- // -->
+
 
  <div class="p-footer__inner l-inner">
   <div class="p-footer__wrap">

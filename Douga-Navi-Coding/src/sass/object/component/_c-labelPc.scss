@@ -1,0 +1,102 @@
+@use "global" as *;
+.c-labelPc {
+  width: 100%;
+  background-color: #fff;
+  padding: myrem(8);
+  @include mq("md") {
+    display: none;
+  }
+}
+.c-labelPc__body {
+  width: min(#{myrem(616)}, 100%);
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: myrem(16);
+}
+
+.c-labelPc__tel {
+  background-color: #0075be;
+}
+
+.c-labelPc__tel,
+.c-labelPc__consult {
+  padding: myrem(12) myrem(24);
+  display: flex;
+  align-items: flex-start;
+  gap: myrem(12);
+  border-radius: myrem(4);
+  position: relative;
+}
+.c-labelPc__tel::after,
+.c-labelPc__consult::after {
+  content: "";
+  background: url(../images/common/arrow03.svg) no-repeat center / contain;
+  width: myrem(25);
+  height: myrem(25);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: myrem(16);
+}
+
+.c-labelPc__box {
+  font-size: myrem(14);
+  background-color: #fff;
+  border-radius: myrem(3);
+  padding: myrem(6) myrem(9);
+  text-align: center;
+  line-height: calc(17 / 14);
+  min-height: myrem(46);
+  min-width: myrem(46);
+}
+
+.c-labelPc__box span {
+  font-size: myrem(12);
+}
+
+.c-labelPc__block {
+  color: #fff;
+}
+
+.c-labelPc__tel .c-labelPc__text::before {
+  content: "";
+  background: url(../images/common/icon_tel.svg) no-repeat center / contain;
+  display: block;
+  width: myrem(15);
+  height: myrem(15);
+}
+.c-labelPc__consult .c-labelPc__text::before {
+  content: "";
+  background: url(../images/common/icon_consul.svg) no-repeat center / contain;
+  display: block;
+  width: myrem(15);
+  height: myrem(15);
+}
+.c-labelPc__text {
+  font-size: myrem(14);
+  display: inline-flex;
+  align-items: center;
+  gap: myrem(4);
+  line-height: 1;
+}
+
+.c-labelPc__num {
+  font-size: myrem(24);
+  line-height: 1;
+  // margin-top: myrem(3);
+}
+
+.c-labelPc__consult {
+  background-color: #e15689;
+}
+
+.c-labelPc__text02 {
+  font-size: myrem(20);
+  line-height: 1;
+  // margin-top: myrem(3);
+}
+.c-labelPc__text02 span {
+  font-size: myrem(14);
+}

@@ -3,74 +3,97 @@
 .c-label {
   display: none;
   @include mq("md") {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    color: #fff;
   }
 }
 
+.c-label__body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: #fff;
+}
+
 .c-label__box {
-  width: min(#{myrem(120)}, 100%);
-  margin-inline: auto;
-  position: relative;
+  @include mq("md") {
+    width: min(#{myrem(120)}, 100%);
+    margin-inline: auto;
+    position: relative;
+  }
 }
 
 .c-label__box02 {
-  width: min(#{myrem(96)}, 100%);
-  margin-inline: auto;
-  position: relative;
+  @include mq("md") {
+    width: min(#{myrem(96)}, 100%);
+    margin-inline: auto;
+    position: relative;
+  }
 }
 
 .c-label__box::before {
   content: "";
-  background: url(../images/common/icon_tel.svg) no-repeat center / contain;
-  width: myrem(19);
-  height: myrem(19);
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: myrem(-30);
+  @include mq("md") {
+    background: url(../images/common/icon_tel.svg) no-repeat center / contain;
+    width: myrem(19);
+    height: myrem(19);
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: myrem(-30);
+  }
 }
 .c-label__box02::before {
   content: "";
-  background: url(../images/common/icon_consul.svg) no-repeat center / contain;
-  width: myrem(19);
-  height: myrem(19);
-  display: block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: myrem(-30);
+  @include mq("md") {
+    background: url(../images/common/icon_consul.svg) no-repeat center / contain;
+    width: myrem(19);
+    height: myrem(19);
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: myrem(-30);
+  }
 }
 .c-label__tel {
-  background-color: #0075be;
-  display: block;
-  position: relative;
-  padding: myrem(6) myrem(7) myrem(6) myrem(32);
+  @include mq("md") {
+    background-color: #0075be;
+    display: block;
+    position: relative;
+    padding: myrem(6) myrem(7) myrem(6) myrem(32);
+  }
 }
 
 .c-label__text {
-  font-size: myrem(12);
-  letter-spacing: 0.05em;
+  @include mq("md") {
+    font-size: myrem(12);
+    letter-spacing: 0.05em;
+  }
 }
 
 .c-label__text.c-label__text--ml {
-  margin-left: myrem(5);
+  @include mq("md") {
+    margin-left: myrem(5);
+  }
 }
 
 .c-label__num {
-  font-size: myrem(17);
-  letter-spacing: 0.05em;
+  @include mq("md") {
+    font-size: myrem(17);
+    letter-spacing: 0.05em;
+  }
 }
 
 .c-label__consult {
-  background-color: #e15689;
-  display: block;
-  position: relative;
-  padding: myrem(6) myrem(7) myrem(6) myrem(37);
+  @include mq("md") {
+    background-color: #e15689;
+    display: block;
+    position: relative;
+    padding: myrem(6) myrem(7) myrem(6) myrem(37);
+  }
 }
 
 .c-label__contact {
-  font-size: myrem(16);
+  @include mq("md") {
+    font-size: myrem(16);
+  }
 }

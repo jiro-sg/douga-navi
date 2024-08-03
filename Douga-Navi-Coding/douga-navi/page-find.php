@@ -5,55 +5,55 @@
 
   <?php if (!isset($_GET['s']) && !isset($_GET['txnmySlug']) && !isset($_GET['termId']) && !isset($_GET['termLists'])) : ?>
 
-  <h1 class="p-search__ttl">動画実績を探す</h1>
+   <h1 class="p-search__ttl">動画実績を探す</h1>
 
   <?php
-    elseif (isset($_GET['termSlug']) && !isset($_GET['s'])) :
-      $termSlug = $_GET['termSlug'];
-      $txnmySlug = $_GET['txnmySlug'];
-      // var_dump($termSlug);
-      $termObjectLIsts = get_terms(array(
-        'slug' => $termSlug,
-        'hide_empty' => false,
-      ));
-      // var_dump($termObjectLIsts);
-      $termIDLists = array();
-      $termNameLists = array();
-      foreach ($termObjectLIsts as $termObjectItem) {
-        $termIDLists[] = $termObjectItem->term_id;
-        $termNameLists[] = $termObjectItem->name;
-      }
-    ?>
+  elseif (isset($_GET['termSlug']) && !isset($_GET['s'])) :
+   $termSlug = $_GET['termSlug'];
+   $txnmySlug = $_GET['txnmySlug'];
+   // var_dump($termSlug);
+   $termObjectLIsts = get_terms(array(
+    'slug' => $termSlug,
+    'hide_empty' => false,
+   ));
+   // var_dump($termObjectLIsts);
+   $termIDLists = array();
+   $termNameLists = array();
+   foreach ($termObjectLIsts as $termObjectItem) {
+    $termIDLists[] = $termObjectItem->term_id;
+    $termNameLists[] = $termObjectItem->name;
+   }
+  ?>
 
-  <h1 class="p-search__ttl">
+   <h1 class="p-search__ttl">
+    <?php
+    foreach ($termNameLists as $termNameItem) {
+     echo $termNameItem;
+    }
+    ?>一覧</h1>
+
    <?php
-        foreach ($termNameLists as $termNameItem) {
-          echo $termNameItem;
-        }
-        ?>一覧</h1>
+   $termdescriptionLists = array();
+   foreach ($termIDLists as $termItem) {
+    $termdescriptionLists[] = term_description($termItem, $txnmySlug);
+   }
+   foreach ($termdescriptionLists as $termdescriptionItem) :
+    if (!empty($termdescriptionItem)) :
+   ?>
+     <p class="p-search__explain"><?php echo $termdescriptionItem; ?></p>
+   <?php endif;
+   endforeach;
+   ?>
 
   <?php
-      $termdescriptionLists = array();
-      foreach ($termIDLists as $termItem) {
-        $termdescriptionLists[] = term_description($termItem, $txnmySlug);
-      }
-      foreach ($termdescriptionLists as $termdescriptionItem) :
-        if (!empty($termdescriptionItem)) :
-      ?>
-  <p class="p-search__explain"><?php echo $termdescriptionItem; ?></p>
-  <?php endif;
-      endforeach;
-      ?>
+  elseif (isset($_GET['s']) ||  isset($_GET['termLists'])) :
+  ?>
 
-  <?php
-    elseif (isset($_GET['s']) ||  isset($_GET['termLists'])) :
-    ?>
-
-  <h1 class="p-search__ttl">動画実績を探す</h1>
+   <h1 class="p-search__ttl">動画実績を探す</h1>
 
   <?php else : ?>
 
-  <h1 class="p-search__ttl">動画実績を探す</h1>
+   <h1 class="p-search__ttl">動画実績を探す</h1>
 
   <?php endif; ?>
 
@@ -69,111 +69,111 @@
      <input type="hidden" class="field" name="s">
 
      <?php
-          $txnmySlugLists = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
-          foreach ($txnmySlugLists as $txnmySlugItem) :
-            $taxObject = get_taxonomy($txnmySlugItem);
+     $txnmySlugLists = array('purpose', 'expression_method', 'price_range', 'video_length', 'industry');
+     foreach ($txnmySlugLists as $txnmySlugItem) :
+      $taxObject = get_taxonomy($txnmySlugItem);
+     ?>
+      <dl class="p-srchCnditin__defLists">
+
+       <dt class="p-srchCnditin__defTerm">
+        <span><?php echo $taxObject->label; ?></span>
+       </dt>
+       <dd class="p-srchCnditin__defDescr">
+        <?php
+        $txnmySlug = $txnmySlugItem;
+        $hierarchyArray = array();
+        $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
+        foreach ($termListsA as $termItemA) {
+         $termItemA_id = $termItemA->term_id;
+         $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
+         array_push($hierarchyArray, count($termListsB));
+        }
+        $hierarchyCheck = array_sum($hierarchyArray);
+        // var_dump($hierarchyCheck);
+
+        // タームが１つでも存在する場合
+        if (!empty($termListsA)) :
+         // タームが親子関係の２階層ある場合
+         if ($hierarchyCheck > 0) :
+        ?>
+
+
+          <?php foreach ($termListsA as $termItemA) :
+           $termItemA_id = $termItemA->term_id;
+           $termItemA_slug = $termItemA->slug;
+           $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
+           // var_dump($termItemA);
+           // var_dump(count(get_term_children($termItemA_id, $txnmySlug)));
           ?>
-     <dl class="p-srchCnditin__defLists">
 
-      <dt class="p-srchCnditin__defTerm">
-       <span><?php echo $taxObject->label; ?></span>
-      </dt>
-      <dd class="p-srchCnditin__defDescr">
-       <?php
-                $txnmySlug = $txnmySlugItem;
-                $hierarchyArray = array();
-                $termListsA = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => 0));
-                foreach ($termListsA as $termItemA) {
-                  $termItemA_id = $termItemA->term_id;
-                  $termListsB = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
-                  array_push($hierarchyArray, count($termListsB));
-                }
-                $hierarchyCheck = array_sum($hierarchyArray);
-                // var_dump($hierarchyCheck);
+           <ul class="p-srchCnditin__prntsTermLists">
+            <li class="p-srchCnditin__prntsTermItem">
 
-                // タームが１つでも存在する場合
-                if (!empty($termListsA)) :
-                  // タームが親子関係の２階層ある場合
-                  if ($hierarchyCheck > 0) :
+             <div class="p-srchCnditin__prntsTermBox">
+              <label for="<?php echo esc_html($termItemA_slug); ?>">
+               <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
+               <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
+              </label>
+              <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
+               <span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
+              <?php endif; ?>
+             </div>
+
+             <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
+              <div class="p-srchCnditin__termBox">
+               <ul class="p-srchCnditin__termLists">
+                <?php
+                $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
+                foreach ($termListsC as $termItemC) :
+                 $termItemC_id = $termItemC->term_id;
+                 $termItemC_slug = $termItemC->slug;
+                 $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
                 ?>
 
+                 <li class="p-srchCnditin__termItem">
+                  <label for="<?php echo esc_html($termItemC_slug); ?>">
+                   <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
+                  </label>
+                 </li>
+                <?php endforeach; ?>
+               </ul>
+              </div>
+             <?php endif; ?>
 
-       <?php foreach ($termListsA as $termItemA) :
-                      $termItemA_id = $termItemA->term_id;
-                      $termItemA_slug = $termItemA->slug;
-                      $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
-                      // var_dump($termItemA);
-                      // var_dump(count(get_term_children($termItemA_id, $txnmySlug)));
-                    ?>
+            </li>
+           </ul>
+          <?php endforeach; ?>
 
-       <ul class="p-srchCnditin__prntsTermLists">
-        <li class="p-srchCnditin__prntsTermItem">
+         <?php else : ?>
 
-         <div class="p-srchCnditin__prntsTermBox">
-          <label for="<?php echo esc_html($termItemA_slug); ?>">
-           <input type="checkbox" id="<?php echo esc_html($termItemA_slug); ?>" name="termLists[]" value="<?php echo esc_html($termItemA_slug); ?>">
-           <span class="p-srchCnditin__prntsTermName"><?php echo $termItemA->name; ?></span>
-          </label>
-          <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
-          <span class="p-srchCnditin__accdionBtn js-srchAccrdin"></span>
-          <?php endif; ?>
-         </div>
+          <div class="p-srchCnditin__termBox">
+           <ul class="p-srchCnditin__termLists">
 
-         <?php if (count(get_term_children($termItemA_id, $txnmySlug)) > 0) : ?>
-         <div class="p-srchCnditin__termBox">
-          <ul class="p-srchCnditin__termLists">
-           <?php
-                                $termListsC = get_terms($txnmySlug, array('hide_empty' => false, 'parent' => $termItemA_id));
-                                foreach ($termListsC as $termItemC) :
-                                  $termItemC_id = $termItemC->term_id;
-                                  $termItemC_slug = $termItemC->slug;
-                                  $termItemC_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemC_id, 'termSlug' => $termItemC_slug), home_url('/find/'));
-                                ?>
+            <?php
+            // タームが１階層しかない場合
+            foreach ($termListsA as $termItemA) :
+             $termItemA_id = $termItemA->term_id;
+             $termItemA_slug = $termItemA->slug;
+             $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
+            ?>
 
-           <li class="p-srchCnditin__termItem">
-            <label for="<?php echo esc_html($termItemC_slug); ?>">
-             <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemC_slug); ?>" value="<?php echo esc_html($termItemC_slug); ?>"><span><?php echo $termItemC->name; ?></span>
-            </label>
-           </li>
-           <?php endforeach; ?>
-          </ul>
-         </div>
-         <?php endif; ?>
+             <li class="p-srchCnditin__termItem">
+              <label for="<?php echo esc_html($termItemA_slug); ?>">
+               <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
+              </label>
+             </li>
+            <?php endforeach; ?>
 
-        </li>
-       </ul>
-       <?php endforeach; ?>
-
-       <?php else : ?>
-
-       <div class="p-srchCnditin__termBox">
-        <ul class="p-srchCnditin__termLists">
-
-         <?php
-                        // タームが１階層しかない場合
-                        foreach ($termListsA as $termItemA) :
-                          $termItemA_id = $termItemA->term_id;
-                          $termItemA_slug = $termItemA->slug;
-                          $termItemA_link = add_query_arg(array('txnmySlug' => $txnmySlug, 'termId' => $termItemA_id, 'termSlug' => $termItemA_slug), home_url('/find/'));
-                        ?>
-
-         <li class="p-srchCnditin__termItem">
-          <label for="<?php echo esc_html($termItemA_slug); ?>">
-           <input type="checkbox" name="termLists[]" id="<?php echo esc_html($termItemA_slug); ?>" value="<?php echo esc_html($termItemA_slug); ?>"><span><?php echo $termItemA->name; ?></span>
-          </label>
-         </li>
-         <?php endforeach; ?>
-
-        </ul>
-       </div>
+           </ul>
+          </div>
 
 
-       <?php
-                  endif;
-                endif;
-                ?>
-      </dd>
-     </dl>
+        <?php
+         endif;
+        endif;
+        ?>
+       </dd>
+      </dl>
      <?php endforeach; ?>
 
      <div class="p-srchCnditin__btnWrppr">
@@ -189,125 +189,125 @@
 
 
   <?php while (have_posts()) : the_post(); // メインループ開始 
+  ?>
+   <div class="p-search__result p-srchRslt">
+    <?php
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    // var_dump($paged);
+
     ?>
-  <div class="p-search__result p-srchRslt">
-   <?php
-        $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-        // var_dump($paged);
-
-        ?>
 
 
-   <?php
-        // search.phpのメインループ機能でフリーワード検索する場合
-        if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-          $mainLoop = true;
-          $noNeedLoop = true;
-          // echo '010101010101';
-          // $serchword = get_search_query();
-          // global $wpdb;
+    <?php
+    // search.phpのメインループ機能でフリーワード検索する場合
+    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+     $mainLoop = true;
+     $noNeedLoop = true;
+     // echo '010101010101';
+     // $serchword = get_search_query();
+     // global $wpdb;
 
-        ?>
+    ?>
 
 
-   <?php
-          if (have_posts()) :
-            while (have_posts()) : the_post();
-          ?>
+     <?php
+     if (have_posts()) :
+      while (have_posts()) : the_post();
+     ?>
 
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
-     <!-- <//?php
+       <div class="p-srchRslt__card">
+        <figure class="p-srchRslt__cardMovie">
+         <!-- <//?php
                   $hoge = get_field('info_movie');
                   if ($hoge) :
                     echo $embed_code = wp_oembed_get($hoge);
                   endif;
                   ?> -->
-     <?php
-                  // YouTube IFrame APIを読み込む
-                  ?>
-     <script>
-     var tag = document.createElement('script');
-     tag.src = "https://www.youtube.com/iframe_api";
-     var firstScriptTag = document.getElementsByTagName('script')[0];
-     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+         <?php
+         // YouTube IFrame APIを読み込む
+         ?>
+         <script>
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-     // プレイヤーを保持する変数
-     var players = [];
+          // プレイヤーを保持する変数
+          var players = [];
 
-     function onYouTubeIframeAPIReady() {
-      // プレイヤーが準備できたら呼び出される関数
-      function onPlayerReady(event) {
-       // 自動再生を防ぐためにこの行をコメントアウト
-       // event.target.playVideo();
-      }
+          function onYouTubeIframeAPIReady() {
+           // プレイヤーが準備できたら呼び出される関数
+           function onPlayerReady(event) {
+            // 自動再生を防ぐためにこの行をコメントアウト
+            // event.target.playVideo();
+           }
 
-      // 動画ごとにプレイヤーを作成
-      var videoElements = document.querySelectorAll('.youtube-player');
-      videoElements.forEach(function(videoElement) {
-       var videoId = videoElement.getAttribute('data-video-id');
-       var player = new YT.Player(videoElement, {
-        height: '315',
-        width: '560',
-        videoId: videoId,
-        playerVars: {
-         'rel': 0,
-         'showinfo': 0,
-         'loop': 1,
-         'modestbranding': 1,
-         'controls': 1, // コントロールを表示
-         'playlist': videoId
-        },
-        events: {
-         'onReady': onPlayerReady
-        }
-       });
-       players.push(player);
-      });
-     }
-     </script>
-     <?php
+           // 動画ごとにプレイヤーを作成
+           var videoElements = document.querySelectorAll('.youtube-player');
+           videoElements.forEach(function(videoElement) {
+            var videoId = videoElement.getAttribute('data-video-id');
+            var player = new YT.Player(videoElement, {
+             height: '315',
+             width: '560',
+             videoId: videoId,
+             playerVars: {
+              'rel': 0,
+              'showinfo': 0,
+              'loop': 1,
+              'modestbranding': 1,
+              'controls': 1, // コントロールを表示
+              'playlist': videoId
+             },
+             events: {
+              'onReady': onPlayerReady
+             }
+            });
+            players.push(player);
+           });
+          }
+         </script>
+         <?php
 
-                  // カスタムフィールド 'info_movie' から YouTube URL の文字列を取得
-                  $youtube_url_string = get_field('info_movie'); // カンマ区切りのURL文字列
+         // カスタムフィールド 'info_movie' から YouTube URL の文字列を取得
+         $youtube_url_string = get_field('info_movie'); // カンマ区切りのURL文字列
 
-                  if ($youtube_url_string) {
-                    // カンマ区切りのURL文字列を配列に変換
-                    $youtube_urls = explode(',', $youtube_url_string);
+         if ($youtube_url_string) {
+          // カンマ区切りのURL文字列を配列に変換
+          $youtube_urls = explode(',', $youtube_url_string);
 
-                    foreach ($youtube_urls as $index => $youtube_url) {
-                      $youtube_url = trim($youtube_url); // 余分な空白を削除
-                      if ($youtube_url) {
-                        // URLが短縮URLかどうかをチェックして変換
-                        if (strpos($youtube_url, 'youtu.be') !== false) {
-                          $video_id = substr(parse_url($youtube_url, PHP_URL_PATH), 1);
-                        } elseif (strpos($youtube_url, 'youtube.com/watch') !== false) {
-                          $parsed_url = wp_parse_url($youtube_url);
-                          parse_str($parsed_url['query'], $query);
-                          $video_id = $query['v'];
-                        } else {
-                          $video_id = '';
-                        }
+          foreach ($youtube_urls as $index => $youtube_url) {
+           $youtube_url = trim($youtube_url); // 余分な空白を削除
+           if ($youtube_url) {
+            // URLが短縮URLかどうかをチェックして変換
+            if (strpos($youtube_url, 'youtu.be') !== false) {
+             $video_id = substr(parse_url($youtube_url, PHP_URL_PATH), 1);
+            } elseif (strpos($youtube_url, 'youtube.com/watch') !== false) {
+             $parsed_url = wp_parse_url($youtube_url);
+             parse_str($parsed_url['query'], $query);
+             $video_id = $query['v'];
+            } else {
+             $video_id = '';
+            }
 
-                        if ($video_id) {
-                  ?>
-     <div id="player-<?php echo $index; ?>" class="youtube-player" data-video-id="<?php echo esc_js($video_id); ?>"></div>
-     <?php
-                        } else {
-                          echo '<p>有効なYouTube URLではありません。</p>';
-                        }
-                      } else {
-                        echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
-                      }
-                    }
-                  } else {
-                    echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
-                  }
-                  ?>
-    </figure>
-    <a href="<?php the_permalink(); ?>">
-     <p class="p-srchRslt__cardTxt">
-      <!-- <//?php
+            if ($video_id) {
+         ?>
+             <div id="player-<?php echo $index; ?>" class="youtube-player" data-video-id="<?php echo esc_js($video_id); ?>"></div>
+         <?php
+            } else {
+             echo '<p>有効なYouTube URLではありません。</p>';
+            }
+           } else {
+            echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
+           }
+          }
+         } else {
+          echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
+         }
+         ?>
+        </figure>
+        <a href="<?php the_permalink(); ?>">
+         <p class="p-srchRslt__cardTxt">
+          <!-- <//?php
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -344,265 +344,275 @@
           }
          }
          ?> -->
-      <?php the_title(); ?>
-     </p>
-     <p class="p-srchRslt__toDetail">
-      詳細を見る
-     </p>
-    </a>
-   </div>
+          <?php the_title(); ?>
+         </p>
+         <p class="p-srchRslt__industrory">
+          <span>
+           業種：<?php the_field('info_business'); ?>
+          </span>
+         </p>
+         <p class="p-srchRslt__price">
+          <span>
+           価格：<?php the_field('info_price'); ?>
+          </span>
+         </p>
+         <p class="p-srchRslt__toDetail">
+          詳細を見る
+         </p>
+        </a>
+       </div>
 
-   <?php endwhile; ?>
-   <?php else : ?>
-   <p class="p-search__noResult">
-    申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-    条件を変えてお試しください。
-   </p>
+      <?php endwhile; ?>
+     <?php else : ?>
+      <p class="p-search__noResult">
+       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+       条件を変えてお試しください。
+      </p>
 
-   <?php endif; ?>
-
-
-
-
-   <?php
-        // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
-        elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-          $mainLoop = false;
-          // echo '0202020202';
-          //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
-          // 代わりに検索ヒットしない旨のメッセージを表示する
-          $noNeedLoop = false;
-        ?>
-
-   <?php
-          // フリーワード検索もターム絞り込みもない場合
-          // ↓
-          //動画実績を絞り込みせず全部表示する
-          if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
-
-            // echo '0303030303';
-
-            $args03 = array(
-              'post_type' => 'works_case',
-              'post_status' => 'publish',
-              'paged' => $paged,
-              'posts_per_page' => 9, // 表示件数
-              'orderby'     => 'date',
-              'order' => 'DESC',
-            );
-            $the_query = new WP_Query($args03);
-          ?>
+     <?php endif; ?>
 
 
-   <?php
-          // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
-          elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-
-            // echo '040404040404';
-
-            $txnmySlug = $_GET['txnmySlug'];
-            $termSlug = $_GET['termSlug'];
-            // var_dump($txnmySlug);
-            // var_dump($termSlug);
-            $termObjects = get_terms(array(
-              'slug' => $termSlug,
-            ));
-            // 選択したタームの投稿があれば以下の処理をする
-            if (count($termObjects) > 0) {
-              // var_dump($termObjects);
-              $txnmyLists = array();
-              foreach ($termObjects as $termObject) {
-                $txnmyLists[] = $termObject->taxonomy;
-                // var_dump($termObject->taxonomy);
-              }
-              // var_dump($txnmyLists);
-              $args04 = array(
-                'post_type' => 'works_case',
-                'post_status' => 'publish',
-                'paged' => $paged,
-                'posts_per_page' => 9, // 表示件数
-                'orderby'     => 'date',
-                'order' => 'DESC',
-                'tax_query' => array(
-                  array(
-                    'taxonomy' => $txnmySlug, //タクソノミーを指定
-                    'field' => 'slug',
-                    'terms' => array($termSlug), //ターム名をスラッグで指定する
-                    'operator' => 'IN',
-                    'include_children' => true,
-                  )
-                )
-              );
-              $the_query = new WP_Query($args04);
-              // var_dump($the_query);
-            } else {
-              $noNeedLoop = true;
-            }
-
-          ?>
-
-   <?php
-          // フリーワード検索に値がなくて複数ターム絞り込みした場合
-          elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
-
-            // echo '0505050505';
-
-            $sTermLists = $_GET['termLists'];
-            // var_dump($sTermLists);
-            $txnmyLists = array();
-            foreach ($sTermLists as $sTermItem) {
-              $termObjects = get_terms(array(
-                'slug' => $sTermItem,
-              ));
-              foreach ($termObjects as $termObject) {
-                $txnmyLists[] = $termObject->taxonomy;
-                $taxnmyName = $termObject->taxonomy;
-                $termLists[$taxnmyName][] = $sTermItem;
-              }
-            }
-            // var_dump(count($termLists) > 0);
-            // var_dump($txnmyLists);
-            // 選択したタームの投稿があれば以下の処理をする
-            if (count($termLists) > 0) {
-              $txnmyUniqueLists = array_unique($txnmyLists);
-              $taxArgs = array(
-                'relation' => 'AND',
-              );
-              foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
-                $txnmyChildTerm = array();
-                foreach ($termLists[$txnmyUniqueItem] as $termItem) {
-                  // var_dump($termItem);
-                  $txnmyChildTerm[] = $termItem;
-                }
-                // var_dump($txnmyChildTerm);
-                $taxArgs[] = array(
-                  'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
-                  'field' => 'slug',
-                  'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
-                  'operator' => 'IN',
-                  'include_children' => false,
-                );
-              }
-              $args05 = array(
-                'post_type' => 'works_case',
-                'post_status' => 'publish',
-                'paged' => $paged,
-                'posts_per_page' => 9, // 表示件数
-                'orderby'     => 'date',
-                'order' => 'DESC',
-                'tax_query' => $taxArgs,
-              );
-              // var_dump($args04);
-              $the_query = new WP_Query($args05);
-              // var_dump($the_query);
-            } else {
-              $noNeedLoop = true;
-            }
-          ?>
-
-   <?php endif; ?>
 
 
-   <?php if ($noNeedLoop == false) : ?>
-   <?php if ($the_query->have_posts()) : ?>
-   <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
-   <div class="p-srchRslt__card">
-    <figure class="p-srchRslt__cardMovie">
+    <?php
+    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
+    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
+     $mainLoop = false;
+     // echo '0202020202';
+     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
+     // 代わりに検索ヒットしない旨のメッセージを表示する
+     $noNeedLoop = false;
+    ?>
 
-     <!-- <//?php
+     <?php
+     // フリーワード検索もターム絞り込みもない場合
+     // ↓
+     //動画実績を絞り込みせず全部表示する
+     if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
+
+      // echo '0303030303';
+
+      $args03 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+      );
+      $the_query = new WP_Query($args03);
+     ?>
+
+
+     <?php
+     // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
+     elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+
+      // echo '040404040404';
+
+      $txnmySlug = $_GET['txnmySlug'];
+      $termSlug = $_GET['termSlug'];
+      // var_dump($txnmySlug);
+      // var_dump($termSlug);
+      $termObjects = get_terms(array(
+       'slug' => $termSlug,
+      ));
+      // 選択したタームの投稿があれば以下の処理をする
+      if (count($termObjects) > 0) {
+       // var_dump($termObjects);
+       $txnmyLists = array();
+       foreach ($termObjects as $termObject) {
+        $txnmyLists[] = $termObject->taxonomy;
+        // var_dump($termObject->taxonomy);
+       }
+       // var_dump($txnmyLists);
+       $args04 = array(
+        'post_type' => 'works_case',
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'posts_per_page' => 9, // 表示件数
+        'orderby'     => 'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+         array(
+          'taxonomy' => $txnmySlug, //タクソノミーを指定
+          'field' => 'slug',
+          'terms' => array($termSlug), //ターム名をスラッグで指定する
+          'operator' => 'IN',
+          'include_children' => true,
+         )
+        )
+       );
+       $the_query = new WP_Query($args04);
+       // var_dump($the_query);
+      } else {
+       $noNeedLoop = true;
+      }
+
+     ?>
+
+     <?php
+     // フリーワード検索に値がなくて複数ターム絞り込みした場合
+     elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
+
+      // echo '0505050505';
+
+      $sTermLists = $_GET['termLists'];
+      // var_dump($sTermLists);
+      $txnmyLists = array();
+      foreach ($sTermLists as $sTermItem) {
+       $termObjects = get_terms(array(
+        'slug' => $sTermItem,
+       ));
+       foreach ($termObjects as $termObject) {
+        $txnmyLists[] = $termObject->taxonomy;
+        $taxnmyName = $termObject->taxonomy;
+        $termLists[$taxnmyName][] = $sTermItem;
+       }
+      }
+      // var_dump(count($termLists) > 0);
+      // var_dump($txnmyLists);
+      // 選択したタームの投稿があれば以下の処理をする
+      if (count($termLists) > 0) {
+       $txnmyUniqueLists = array_unique($txnmyLists);
+       $taxArgs = array(
+        'relation' => 'AND',
+       );
+       foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
+        $txnmyChildTerm = array();
+        foreach ($termLists[$txnmyUniqueItem] as $termItem) {
+         // var_dump($termItem);
+         $txnmyChildTerm[] = $termItem;
+        }
+        // var_dump($txnmyChildTerm);
+        $taxArgs[] = array(
+         'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
+         'field' => 'slug',
+         'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
+         'operator' => 'IN',
+         'include_children' => false,
+        );
+       }
+       $args05 = array(
+        'post_type' => 'works_case',
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'posts_per_page' => 9, // 表示件数
+        'orderby'     => 'date',
+        'order' => 'DESC',
+        'tax_query' => $taxArgs,
+       );
+       // var_dump($args04);
+       $the_query = new WP_Query($args05);
+       // var_dump($the_query);
+      } else {
+       $noNeedLoop = true;
+      }
+     ?>
+
+     <?php endif; ?>
+
+
+     <?php if ($noNeedLoop == false) : ?>
+      <?php if ($the_query->have_posts()) : ?>
+       <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
+        <div class="p-srchRslt__card">
+         <figure class="p-srchRslt__cardMovie">
+
+          <!-- <//?php
                     $hoge = get_field('info_movie');
                     if ($hoge) :
                       echo $embed_code = wp_oembed_get($hoge);
                     endif;
                     ?> -->
-     <?php
-                    // YouTube IFrame APIを読み込む
-                    ?>
-     <script>
-     var tag = document.createElement('script');
-     tag.src = "https://www.youtube.com/iframe_api";
-     var firstScriptTag = document.getElementsByTagName('script')[0];
-     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+          <?php
+          // YouTube IFrame APIを読み込む
+          ?>
+          <script>
+           var tag = document.createElement('script');
+           tag.src = "https://www.youtube.com/iframe_api";
+           var firstScriptTag = document.getElementsByTagName('script')[0];
+           firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-     // プレイヤーを保持する変数
-     var players = [];
+           // プレイヤーを保持する変数
+           var players = [];
 
-     function onYouTubeIframeAPIReady() {
-      // プレイヤーが準備できたら呼び出される関数
-      function onPlayerReady(event) {
-       // 自動再生を防ぐためにこの行をコメントアウト
-       // event.target.playVideo();
-      }
+           function onYouTubeIframeAPIReady() {
+            // プレイヤーが準備できたら呼び出される関数
+            function onPlayerReady(event) {
+             // 自動再生を防ぐためにこの行をコメントアウト
+             // event.target.playVideo();
+            }
 
-      // 動画ごとにプレイヤーを作成
-      var videoElements = document.querySelectorAll('.youtube-player');
-      videoElements.forEach(function(videoElement) {
-       var videoId = videoElement.getAttribute('data-video-id');
-       var player = new YT.Player(videoElement, {
-        height: '315',
-        width: '560',
-        videoId: videoId,
-        playerVars: {
-         'rel': 0,
-         'showinfo': 0,
-         'modestbranding': 1,
-         'loop': 1,
-         'controls': 1, // コントロールを表示
-         'playlist': videoId
-        },
-        events: {
-         'onReady': onPlayerReady
-        }
-       });
-       players.push(player);
-      });
-     }
-     </script>
-     <?php
+            // 動画ごとにプレイヤーを作成
+            var videoElements = document.querySelectorAll('.youtube-player');
+            videoElements.forEach(function(videoElement) {
+             var videoId = videoElement.getAttribute('data-video-id');
+             var player = new YT.Player(videoElement, {
+              height: '315',
+              width: '560',
+              videoId: videoId,
+              playerVars: {
+               'rel': 0,
+               'showinfo': 0,
+               'modestbranding': 1,
+               'loop': 1,
+               'controls': 1, // コントロールを表示
+               'playlist': videoId
+              },
+              events: {
+               'onReady': onPlayerReady
+              }
+             });
+             players.push(player);
+            });
+           }
+          </script>
+          <?php
 
-                    // カスタムフィールド 'info_movie' から YouTube URL の文字列を取得
-                    $youtube_url_string = get_field('info_movie'); // カンマ区切りのURL文字列
+          // カスタムフィールド 'info_movie' から YouTube URL の文字列を取得
+          $youtube_url_string = get_field('info_movie'); // カンマ区切りのURL文字列
 
-                    if ($youtube_url_string) {
-                      // カンマ区切りのURL文字列を配列に変換
-                      $youtube_urls = explode(',', $youtube_url_string);
+          if ($youtube_url_string) {
+           // カンマ区切りのURL文字列を配列に変換
+           $youtube_urls = explode(',', $youtube_url_string);
 
-                      foreach ($youtube_urls as $index => $youtube_url) {
-                        $youtube_url = trim($youtube_url); // 余分な空白を削除
-                        if ($youtube_url) {
-                          // URLが短縮URLかどうかをチェックして変換
-                          if (strpos($youtube_url, 'youtu.be') !== false) {
-                            $video_id = substr(parse_url($youtube_url, PHP_URL_PATH), 1);
-                          } elseif (strpos($youtube_url, 'youtube.com/watch') !== false) {
-                            $parsed_url = wp_parse_url($youtube_url);
-                            parse_str($parsed_url['query'], $query);
-                            $video_id = $query['v'];
-                          } else {
-                            $video_id = '';
-                          }
+           foreach ($youtube_urls as $index => $youtube_url) {
+            $youtube_url = trim($youtube_url); // 余分な空白を削除
+            if ($youtube_url) {
+             // URLが短縮URLかどうかをチェックして変換
+             if (strpos($youtube_url, 'youtu.be') !== false) {
+              $video_id = substr(parse_url($youtube_url, PHP_URL_PATH), 1);
+             } elseif (strpos($youtube_url, 'youtube.com/watch') !== false) {
+              $parsed_url = wp_parse_url($youtube_url);
+              parse_str($parsed_url['query'], $query);
+              $video_id = $query['v'];
+             } else {
+              $video_id = '';
+             }
 
-                          if ($video_id) {
-                    ?>
-     <div id="player-<?php echo $index; ?>" class="youtube-player" data-video-id="<?php echo esc_js($video_id); ?>"></div>
-     <?php
-                          } else {
-                            echo '<p>有効なYouTube URLではありません。</p>';
-                          }
-                        } else {
-                          echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
-                        }
-                      }
-                    } else {
-                      echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
-                    }
-                    ?>
+             if ($video_id) {
+          ?>
+              <div id="player-<?php echo $index; ?>" class="youtube-player" data-video-id="<?php echo esc_js($video_id); ?>"></div>
+          <?php
+             } else {
+              echo '<p>有効なYouTube URLではありません。</p>';
+             }
+            } else {
+             echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
+            }
+           }
+          } else {
+           echo '<p>カスタムフィールドからURLが取得できませんでした。</p>';
+          }
+          ?>
 
 
 
-    </figure>
-    <a href="<?php the_permalink(); ?>">
-     <p class="p-srchRslt__cardTxt">
-      <!-- <//?php
+         </figure>
+         <a href="<?php the_permalink(); ?>">
+          <p class="p-srchRslt__cardTxt">
+           <!-- <//?php
           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
           if ($termsInfomation) {
            foreach ($termsInfomation as $termsInfo) {
@@ -639,57 +649,67 @@
            }
           }
           ?> -->
-      <?php the_title(); ?>
-     </p>
-     <p class="p-srchRslt__toDetail">
-      詳細を見る
-     </p>
-    </a>
+           <?php the_title(); ?>
+          </p>
+          <p class="p-srchRslt__industrory">
+           <span>
+            業種：<?php the_field('info_business'); ?>
+           </span>
+          </p>
+          <p class="p-srchRslt__price">
+           <span>
+            価格：<?php the_field('info_price'); ?>
+           </span>
+          </p>
+          <p class="p-srchRslt__toDetail">
+           詳細を見る
+          </p>
+         </a>
+        </div>
+
+       <?php endwhile; ?>
+
+      <?php else : ?>
+
+       <p class="p-search__noResult">
+        申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+        条件を変えてお試しください。
+       </p>
+
+      <?php endif; ?>
+
+     <?php else : ?>
+      <p class="p-search__noResult">
+       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+       条件を変えてお試しください。
+      </p>
+
+     <?php endif; ?>
+
+    <?php endif; ?>
+
+
+
    </div>
 
-   <?php endwhile; ?>
 
+   <?php wp_reset_postdata(); ?>
+   <?php if ($mainLoop == true) : ?>
+    <div class="l-search__pageNavi">
+     <?php wp_pagenavi(); ?>
+    </div>
    <?php else : ?>
 
-   <p class="p-search__noResult">
-    申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-    条件を変えてお試しください。
-   </p>
-
+    <?php if ($noNeedLoop == false) : ?>
+     <div class="l-search__pageNavi">
+      <?php wp_pagenavi(['query' => $the_query]); ?>
+     </div>
+    <?php endif; ?>
    <?php endif; ?>
-
-   <?php else : ?>
-   <p class="p-search__noResult">
-    申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
-    条件を変えてお試しください。
-   </p>
-
-   <?php endif; ?>
-
-   <?php endif; ?>
-
-
-
-  </div>
-
-
-  <?php wp_reset_postdata(); ?>
-  <?php if ($mainLoop == true) : ?>
-  <div class="l-search__pageNavi">
-   <?php wp_pagenavi(); ?>
-  </div>
-  <?php else : ?>
-
-  <?php if ($noNeedLoop == false) : ?>
-  <div class="l-search__pageNavi">
-   <?php wp_pagenavi(['query' => $the_query]); ?>
-  </div>
-  <?php endif; ?>
-  <?php endif; ?>
 
 
   <?php endwhile; // メインループ終了 
-    ?>
+  ?>
 
   <div class="p-search__cta">
 

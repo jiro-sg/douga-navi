@@ -60,6 +60,12 @@
   }
 }
 
+.p-frnt__rcmnd {
+  margin-top: myrem(30);
+  @include mq(md) {
+  }
+}
+
 .p-frnt__search {
   margin-top: myrem(30);
   @include mq(md) {

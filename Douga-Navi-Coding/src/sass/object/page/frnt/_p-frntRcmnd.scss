@@ -1,0 +1,143 @@
+@use "sass:math";
+@use "global" as *;
+
+.p-frntRcmnd__ttl {
+	font-size: myrem(20);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	color: $blue_00A;
+	padding-bottom: myrem(8);
+	border-bottom: 1px solid $gray_ddd;
+	@include mq(md) {
+		font-size: myrem(18);
+	}
+}
+
+.p-frntRcmnd__cardWrppr {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	column-gap: myrem(16);
+	row-gap: myrem(20);
+	margin-top: myrem(16);
+	@include mq(md) {
+		flex-direction: column;
+	}
+}
+
+.p-frntRcmnd__card {
+	display: flex;
+	flex-direction: column;
+	width: calc(50% - myrem(8));
+	box-shadow: 0 0 myrem(4) 0 rgba(#00100c, 0.08);
+	@include mq(md) {
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
+.p-frntRcmnd__cardTtl {
+	font-size: myrem(16);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	border-top-left-radius: myrem(5);
+	border-top-right-radius: myrem(5);
+	padding: myrem(8) myrem(16);
+	@include mq(md) {
+		flex-direction: column;
+	}
+}
+
+.p-frntRcmnd__cardBody {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	border-bottom-left-radius: myrem(5);
+	border-bottom-right-radius: myrem(5);
+	border: 1px solid #dddddd;
+	padding: myrem(16);
+	@include mq(md) {
+	}
+}
+
+.p-frntRcmnd__cardBodyWrppr {
+	flex: 1;
+	display: flex;
+	justify-content: space-between;
+	@include mq(md) {
+		flex-direction: column-reverse;
+		row-gap: myrem(20);
+	}
+}
+
+.p-frntRcmnd__sntnc {
+	// width: myrem(170);
+	width: calc(math.div(170, 378) * 100%);
+	height: auto;
+	@include mq(md) {
+		width: 100%;
+	}
+}
+
+.p-frntRcmnd__cardBtn {
+	display: flex;
+	@include mq(md) {
+		justify-content: center;
+	}
+}
+
+.p-frntRcmnd__cardBtn a {
+	display: block;
+	font-size: myrem(13);
+	font-weight: 300;
+	letter-spacing: 0.05em;
+	border-radius: 50vw;
+	border: 1px solid;
+	padding: myrem(6) myrem(45) myrem(6) myrem(16);
+	margin-top: myrem(24);
+	position: relative;
+	@include mq(md) {
+	}
+}
+
+.p-frntRcmnd__cardBtn a::after {
+	position: absolute;
+	top: 50%;
+	bottom: auto;
+	left: auto;
+	right: myrem(11);
+	transform: translate(0, -50%);
+	display: block;
+	content: "";
+	width: myrem(11);
+	height: myrem(8);
+	background-image: url(../images/common/arrow-rcmnd.webp);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	@include mq(md) {
+	}
+}
+
+.p-frntRcmnd__img {
+	display: block;
+	// width: myrem(192);
+	width: calc(math.div(192, 378) * 100%);
+	height: myrem(106);
+	border-radius: myrem(5);
+	@include mq(md) {
+		width: 100%;
+		height: auto;
+	}
+}
+
+.p-frntRcmnd__img img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+	border-radius: myrem(5);
+	@include mq(md) {
+	}
+}

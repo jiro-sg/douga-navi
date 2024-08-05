@@ -2,128 +2,142 @@
 @use "global" as *;
 
 .p-aboutExmpl {
-  padding-top: myrem(85);
-  padding-bottom: myrem(80);
-  position: relative;
-  @include mq(md) {
-    padding-top: myrem(48);
-    padding-bottom: myrem(40);
-  }
+	padding-top: myrem(85);
+	padding-bottom: myrem(80);
+	position: relative;
+	@include mq(md) {
+		padding-top: myrem(48);
+		padding-bottom: myrem(40);
+	}
 }
 
 .p-aboutExmpl::after {
-  content: "";
-  max-width: myrem(808);
-  width: 100%;
-  height: 1px;
-  background-color: #00a0e1;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  @include mq("md") {
-    width: calc(100% - myrem(40));
-  }
+	content: "";
+	max-width: myrem(808);
+	width: 100%;
+	height: 1px;
+	background-color: #00a0e1;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	@include mq("md") {
+		width: calc(100% - myrem(40));
+	}
 }
 
 .p-aboutExmpl__ttl {
-  text-align: center;
-  @include mq(md) {
-  }
+	text-align: center;
+	@include mq(md) {
+	}
 }
 
 .p-aboutExmpl__cardWrppr {
-  width: 100%;
-  max-width: myrem(810);
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: myrem(19.5);
-  row-gap: myrem(24);
-  margin: myrem(50) auto 0;
-  @include mq(md) {
-    flex-direction: column;
-    margin: myrem(24) auto 0;
-  }
+	width: 100%;
+	max-width: myrem(810);
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: myrem(19.5);
+	row-gap: myrem(24);
+	margin: myrem(50) auto 0;
+	@include mq(md) {
+		flex-direction: column;
+		margin: myrem(24) auto 0;
+	}
 }
 
 .p-aboutExmpl__movieCard {
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  width: calc(math.div(1, 3) * 100% - myrem(13));
-  height: auto;
-  @include mq(md) {
-    width: 100%;
-  }
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	width: calc(math.div(1, 3) * 100% - myrem(13));
+	height: auto;
+	@include mq(md) {
+		width: 100%;
+	}
 }
 
 .p-aboutExmpl__movieCard a {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 .p-aboutExmpl__movieCard figure {
-  display: block;
-  width: 100%;
-  height: auto;
-  flex: 1;
-  @include mq(md) {
-  }
+	display: block;
+	width: 100%;
+	height: auto;
+	flex: 1;
+	@include mq(md) {
+	}
 }
 
 .p-aboutExmpl__movieCard iframe {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 258/185;
-  min-height: 182px;
-  @include mq(md) {
-    aspect-ratio: 272/176;
-  }
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 258/185;
+	min-height: 182px;
+	@include mq(md) {
+		aspect-ratio: 272/176;
+	}
 }
 
 .p-aboutExmpl__cardTxt {
-  font-size: myrem(15);
-  font-weight: 400;
-  padding-bottom: myrem(16);
-  letter-spacing: 0.005em;
-  line-height: calc(math.div(27, 15));
-  color: $black_000;
-  margin-top: myrem(13);
-  overflow: hidden;
-  display: -webkit-box;
-  text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  flex: 1;
-  @include mq(md) {
-    font-size: myrem(14);
-    margin-top: myrem(10);
-    -webkit-line-clamp: 3;
-    padding-bottom: 0;
-  }
+	font-size: myrem(15);
+	font-weight: 400;
+	padding-bottom: myrem(16);
+	letter-spacing: 0.005em;
+	line-height: calc(math.div(27, 15));
+	color: $black_000;
+	margin-top: myrem(13);
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	flex: 1;
+	@include mq(md) {
+		font-size: myrem(14);
+		margin-top: myrem(10);
+		-webkit-line-clamp: 3;
+		padding-bottom: 0;
+	}
+}
+
+.p-aboutExmpl__industrory,
+.p-aboutExmpl__price {
+	font-size: myrem(15);
+	margin-top: myrem(5);
+}
+
+.p-aboutExmpl__industrory span,
+.p-aboutExmpl__price span {
+	display: inline-block;
+	background-color: $paleBlue_eff;
+	border-radius: myrem(4);
+	padding: myrem(3) myrem(10);
 }
 
 .p-aboutExmpl__toDetail {
-  // margin-top: myrem(148/2737/220);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: myrem(10);
-  @include mq("md") {
-    font-size: myrem(14);
-    margin-top: myrem(16);
-  }
+	// margin-top: myrem(148/2737/220);
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: myrem(10);
+	@include mq("md") {
+		font-size: myrem(14);
+		margin-top: myrem(16);
+	}
 }
 
 .p-aboutExmpl__toDetail::after {
-  content: "";
-  width: myrem(10);
-  height: myrem(10);
-  border-top: 1px solid $black_000;
-  border-right: 1px solid $black_000;
-  transform: rotate(45deg);
-  display: inline-flex;
-  margin-left: myrem(16);
+	content: "";
+	width: myrem(10);
+	height: myrem(10);
+	border-top: 1px solid $black_000;
+	border-right: 1px solid $black_000;
+	transform: rotate(45deg);
+	display: inline-flex;
+	margin-left: myrem(16);
 }

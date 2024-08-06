@@ -220,12 +220,12 @@ $(function () {
 
 	$(".js-headerMega").on("mouseenter", function (e) {
 		if ($(window).width() > 767) {
-			$(this).children(".p-header__megaLists").fadeIn();
+			$(this).children(".p-header__megaLists").stop().slideDown();
 		}
 	});
 
 	$(".js-headerMega").on("mouseleave", function (e) {
-		$(this).children(".p-header__megaLists").fadeOut();
+		$(this).children(".p-header__megaLists").stop().slideUp();
 	});
 });
 

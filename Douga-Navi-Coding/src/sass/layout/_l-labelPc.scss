@@ -4,4 +4,8 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: rgba(#fff, 0.86);
+  padding: myrem(8);
 }

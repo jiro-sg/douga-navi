@@ -69,20 +69,20 @@
      <meta property="position" content="2">
     </span>
     <?php if ($hasTax == true) : ?>
-    <span property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
-      <span property="name"><?php echo esc_html($parentTermName); ?></span>
-     </a>
-     <meta property="position" content="3">
-    </span>
-    <?php if ($noChildTerm == false) : ?>
-    <span property="itemListElement" typeof="ListItem">
-     <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
-      <span property="name"><?php echo esc_html($childTermName); ?></span>
-     </a>
-     <meta property="position" content="4">
-    </span>
-    <?php endif; ?>
+     <span property="itemListElement" typeof="ListItem">
+      <a property="item" typeof="WebPage" title="<?php echo esc_html($parentTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $parentTermId, 'termSlug' => $parentTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+       <span property="name"><?php echo esc_html($parentTermName); ?></span>
+      </a>
+      <meta property="position" content="3">
+     </span>
+     <?php if ($noChildTerm == false) : ?>
+      <span property="itemListElement" typeof="ListItem">
+       <a property="item" typeof="WebPage" title="<?php echo esc_html($childTermName); ?>" href="<?php echo add_query_arg(array('txnmySlug' => 'purpose', 'termId' => $childTermId, 'termSlug' => $childTermSlug), home_url('/find/')); ?>" class="taxonomy purpose">
+        <span property="name"><?php echo esc_html($childTermName); ?></span>
+       </a>
+       <meta property="position" content="4">
+      </span>
+     <?php endif; ?>
     <?php endif; ?>
 
     <span property="itemListElement" typeof="ListItem">
@@ -162,50 +162,50 @@
       <dl class="p-searchDetail__lists">
        <?php $value = get_post_meta($post->ID, 'info_business', true); ?>
        <?php if (!empty($value)) : ?>
-       <div class="p-searchDetail__list">
-        <dt class="p-searchDetail__term">業種</dt>
-        <dd class="p-searchDetail__desc"><?php the_field('info_business'); ?></dd>
-       </div>
+        <div class="p-searchDetail__list">
+         <dt class="p-searchDetail__term">業種</dt>
+         <dd class="p-searchDetail__desc"><?php the_field('info_business'); ?></dd>
+        </div>
        <?php endif; ?>
 
        <?php $value = get_post_meta($post->ID, 'info_scene', true); ?>
        <?php if (!empty($value)) : ?>
-       <div class="p-searchDetail__list">
-        <dt class="p-searchDetail__term">利用シーン</dt>
-        <dd class="p-searchDetail__desc"><?php the_field('info_scene'); ?></dd>
-       </div>
+        <div class="p-searchDetail__list">
+         <dt class="p-searchDetail__term">利用シーン</dt>
+         <dd class="p-searchDetail__desc"><?php the_field('info_scene'); ?></dd>
+        </div>
        <?php endif; ?>
 
        <?php $value = get_post_meta($post->ID, 'info_expression', true); ?>
        <?php if (!empty($value)) : ?>
-       <div class="p-searchDetail__list">
-        <dt class="p-searchDetail__term">映像表現</dt>
-        <dd class="p-searchDetail__desc"><?php the_field('info_expression'); ?></dd>
-       </div>
+        <div class="p-searchDetail__list">
+         <dt class="p-searchDetail__term">映像表現</dt>
+         <dd class="p-searchDetail__desc"><?php the_field('info_expression'); ?></dd>
+        </div>
        <?php endif; ?>
 
        <?php $value = get_post_meta($post->ID, 'info_length', true); ?>
        <?php if (!empty($value)) : ?>
-       <div class="p-searchDetail__list">
-        <dt class="p-searchDetail__term">動画尺</dt>
-        <dd class="p-searchDetail__desc"><?php the_field('info_length'); ?></dd>
-       </div>
+        <div class="p-searchDetail__list">
+         <dt class="p-searchDetail__term">動画尺</dt>
+         <dd class="p-searchDetail__desc"><?php the_field('info_length'); ?></dd>
+        </div>
        <?php endif; ?>
 
        <?php $value = get_post_meta($post->ID, 'info_price', true); ?>
        <?php if (!empty($value)) : ?>
-       <div class="p-searchDetail__list">
-        <dt class="p-searchDetail__term">制作費用</dt>
-        <dd class="p-searchDetail__desc"><?php the_field('info_price'); ?></dd>
-       </div>
+        <div class="p-searchDetail__list">
+         <dt class="p-searchDetail__term">制作費用</dt>
+         <dd class="p-searchDetail__desc"><?php the_field('info_price'); ?></dd>
+        </div>
        <?php endif; ?>
 
        <?php $value = get_post_meta($post->ID, 'info_others', true); ?>
        <?php if (!empty($value)) : ?>
-       <div class="p-searchDetail__list">
-        <dt class="p-searchDetail__term">備考</dt>
-        <dd class="p-searchDetail__desc p-searchDetail__desc--explain"><?php the_field('info_others'); ?></dd>
-       </div>
+        <div class="p-searchDetail__list">
+         <dt class="p-searchDetail__term">備考</dt>
+         <dd class="p-searchDetail__desc p-searchDetail__desc--explain"><?php the_field('info_others'); ?></dd>
+        </div>
        <?php endif; ?>
 
       </dl>
@@ -213,14 +213,32 @@
        <a class="p-searchDetail__btn" href="<?php echo esc_url(home_url('/contact/')); ?>">この事例と同様の動画制作を<br class="u-mobile">見積り（無料）</a>
       </div>
       <div class="p-searchDetail__cta p-flowCTA">
-       <div class="p-searchDetail__ctaBanner p-flowCTA__banner c-ctaBanner c-ctaBanner02">
+       <div class="p-searchDetail__ctaBanner c-ctaBanner c-ctaBanner02">
         <p class="c-ctaBanner02__copy">かんたん30秒！</p>
-        <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+        <p class="c-ctaBanner02__txt">動画制作・動画集客に関することはお気軽にご相談ください。
         </p>
-        <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
-        <div class="c-ctaBanner__btn">
-         <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
+        <p class="c-ctaBanner02__txt">専任スタッフがすぐにご連絡いたします。</p>
+        <div class="c-labelPc c-ctaBanner02__btns">
+         <div class="c-labelPc__body">
+          <a class="c-labelPc__tel" href="tel:0120-571-500">
+           <div class="c-labelPc__box">通話<br>無料</div>
+           <div class="c-labelPc__block">
+            <p class="c-labelPc__text">お電話での申し込み</p>
+            <p class="c-labelPc__num">0120-571-500</p>
+           </div>
+          </a>
+          <a class="c-labelPc__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
+           <div class="c-labelPc__box">簡単<br>30秒</div>
+           <div class="c-labelPc__block">
+            <p class="c-labelPc__text">フォームから</p>
+            <p class="c-labelPc__text02">無料相談<span>してみる</span></p>
+           </div>
+          </a>
+
+         </div>
         </div>
+
+
        </div>
        <!-- <div class="p-searchDetail__previousBtn">
         </div> -->

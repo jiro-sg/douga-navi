@@ -105,13 +105,13 @@
   text-decoration: underline;
 }
 
-.p-searchDetail__list:last-child .p-searchDetail__term,
-.p-searchDetail__list:last-child .p-searchDetail__desc {
-  padding-bottom: myrem(32);
-  @include mq("md") {
-    padding-bottom: myrem(16);
-  }
-}
+// .p-searchDetail__list:last-child .p-searchDetail__term,
+// .p-searchDetail__list:last-child .p-searchDetail__desc {
+//   padding-bottom: myrem(32);
+//   @include mq("md") {
+//     padding-bottom: myrem(16);
+//   }
+// }
 
 .p-searchDetail__btnWrap {
   margin-top: myrem(32);

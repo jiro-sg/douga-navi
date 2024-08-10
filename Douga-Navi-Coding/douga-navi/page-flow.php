@@ -138,11 +138,27 @@
 
     <div class="p-flowCTA__banner c-ctaBanner c-ctaBanner02">
      <p class="c-ctaBanner02__copy">かんたん30秒！</p>
-     <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+     <p class="c-ctaBanner02__txt">動画制作・動画集客に関することはお気軽にご相談ください。
      </p>
-     <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
-     <div class="c-ctaBanner__btn">
-      <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
+     <p class="c-ctaBanner02__txt">専任スタッフがすぐにご連絡いたします。</p>
+     <div class="c-labelPc c-ctaBanner02__btns">
+      <div class="c-labelPc__body">
+       <a class="c-labelPc__tel" href="tel:0120-571-500">
+        <div class="c-labelPc__box">通話<br>無料</div>
+        <div class="c-labelPc__block">
+         <p class="c-labelPc__text">お電話での申し込み</p>
+         <p class="c-labelPc__num">0120-571-500</p>
+        </div>
+       </a>
+       <a class="c-labelPc__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
+        <div class="c-labelPc__box">簡単<br>30秒</div>
+        <div class="c-labelPc__block">
+         <p class="c-labelPc__text">フォームから</p>
+         <p class="c-labelPc__text02">無料相談<span>してみる</span></p>
+        </div>
+       </a>
+
+      </div>
      </div>
     </div>
 

@@ -2,23 +2,15 @@
 @use "global" as *;
 
 .c-ctaBanner02 {
-  padding: myrem(44) 0;
+  padding: myrem(43) 0 myrem(37);
   background-color: $paleBlue_eff;
-  background-image: url(../images/cta_back01.png), url(../images/cta_back02.png);
-  background-size: myrem(162) myrem(134.5), myrem(162) myrem(116);
-  background-position: myrem(40) 100%, calc(100% - myrem(40)) 100%;
-  background-repeat: no-repeat, no-repeat;
+  background-image: url(../images/common/cta_bg.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: myrem(4);
-  @media screen and (max-width: 1150px) {
-    padding: calc(math.div(44, 1150) * 100vw) 0;
-    background-size: calc(math.div(162, 1150) * 100vw) calc(math.div(134.5, 1150) * 100vw), calc(math.div(162, 1150) * 100vw) calc(math.div(116, 1150) * 100vw);
-    background-position: calc(math.div(40, 1150) * 100vw) 100%, calc(100% - math.div(40, 1150) * 100vw) 100%;
-  }
+  overflow: hidden;
   @include mq(md) {
-    background-image: url(../images/cta_back02.png);
-    background-size: myrem(77) myrem(55);
-    background-position: calc(100% - myrem(16)) 57%;
-    background-repeat: no-repeat;
     padding: myrem(24);
   }
 }
@@ -62,6 +54,7 @@
   font-size: myrem(20);
   font-weight: 500;
   text-align: center;
+  color: #fff;
   @media screen and (max-width: 1150px) {
     font-size: calc(math.div(20, 1150) * 100vw);
   }
@@ -77,6 +70,10 @@
   @include mq(md) {
     margin-top: myrem(16);
   }
+}
+
+.c-ctaBanner02__btns {
+  margin-top: myrem(24);
 }
 
 .c-ctaBanner02__btn {
@@ -135,5 +132,68 @@
     height: calc(math.div(10, 1150) * 100vw);
   }
   @include mq(md) {
+  }
+}
+
+.c-ctaBanner02 .c-labelPc {
+  @include mq("md") {
+    display: block;
+  }
+}
+
+.c-ctaBanner02 .c-labelPc__body {
+  @include mq("sm") {
+    display: flex;
+    flex-direction: column;
+    max-width: myrem(300);
+  }
+}
+.c-ctaBanner02 .c-labelPc__box {
+  @include mq("md") {
+    font-size: myrem(12);
+    padding: myrem(4) myrem(6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.c-ctaBanner02 .c-labelPc__num {
+  @include mq("md") {
+    font-size: myrem(18);
+  }
+}
+.c-ctaBanner02 .c-labelPc__text {
+  @include mq("md") {
+    font-size: myrem(12);
+  }
+}
+.c-ctaBanner02 .c-labelPc__text02 {
+  @include mq("md") {
+    font-size: myrem(16);
+  }
+}
+.c-ctaBanner02 .c-labelPc__text02 span {
+  @include mq("md") {
+    font-size: myrem(12);
+  }
+}
+
+.c-ctaBanner02 .c-labelPc__tel,
+.c-ctaBanner02 .c-labelPc__consult {
+  @include mq("md") {
+    display: flex;
+    align-items: flex-start;
+    padding: myrem(12);
+  }
+}
+
+.c-ctaBanner02 .c-labelPc__tel::after,
+.c-ctaBanner02 .c-labelPc__consult::after {
+  @include mq("md") {
+    width: myrem(20);
+    height: myrem(20);
+    right: myrem(10);
   }
 }

@@ -1,8 +1,8 @@
 @use "global" as *;
 .c-labelPc {
-  width: 100%;
-  background-color: #fff;
-  padding: myrem(8);
+  // width: 100%;
+  // background-color: #fff;
+  // padding: myrem(8);
   @include mq("md") {
     display: none;
   }
@@ -29,6 +29,10 @@
   border-radius: myrem(4);
   position: relative;
 }
+.c-labelPc__consult {
+  gap: myrem(20);
+}
+
 .c-labelPc__tel::after,
 .c-labelPc__consult::after {
   content: "";

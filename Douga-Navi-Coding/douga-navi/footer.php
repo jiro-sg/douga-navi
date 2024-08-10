@@ -28,7 +28,7 @@
     </div>
    </a>
    <a class="c-labelPc__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
-    <div class="c-labelPc__box"><span>かんたん</span><br>30秒！</div>
+    <div class="c-labelPc__box">簡単<br>30秒</div>
     <div class="c-labelPc__block">
      <p class="c-labelPc__text">フォームから</p>
      <p class="c-labelPc__text02">無料相談<span>してみる</span></p>

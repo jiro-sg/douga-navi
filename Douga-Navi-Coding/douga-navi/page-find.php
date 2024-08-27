@@ -197,6 +197,17 @@
 
         ?>
 
+<<<<<<< HEAD
+=======
+    <?php
+    // search.phpのメインループ機能でフリーワード検索する場合
+    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+     $wpPageNavi = false;
+     $noNeedLoop = false;
+     // echo '010101010101';
+     // $serchword = get_search_query();
+     // global $wpdb;
+>>>>>>> Woody
 
         <?php
         // search.phpのメインループ機能でフリーワード検索する場合
@@ -209,6 +220,7 @@
 
         ?>
 
+<<<<<<< HEAD
 
           <?php
           if (have_posts()) :
@@ -308,6 +320,39 @@
                 <a href="<?php the_permalink(); ?>">
                   <p class="p-srchRslt__cardTxt">
                     <!-- <//?php
+=======
+     <?php
+     $searchWord = get_search_query();
+
+     $the_query = new WP_Query(
+      array(
+       'paged' => $paged,
+       'post_type' => array('works_case'),
+       'post_status' => 'publish',
+       'posts_per_page' => 9,
+       'orderby' => 'date',
+       'order' => 'DESC',
+       's' => $searchWord,
+      )
+     );
+
+     if ($the_query->have_posts()) :
+      while ($the_query->have_posts()) : $the_query->the_post();
+     ?>
+       <div class="p-srchRslt__card">
+        <figure class="p-srchRslt__cardMovie">
+         <!-- <//?php
+        $hoge = get_field('info_movie');
+        if ($hoge) :
+         echo $embed_code = wp_oembed_get($hoge);
+        endif;
+        ?> -->
+         <?php get_template_part('_inc/youtube'); ?>
+        </figure>
+        <a href="<?php the_permalink(); ?>">
+         <p class="p-srchRslt__cardTxt">
+          <!-- <//?php
+>>>>>>> Woody
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -344,6 +389,7 @@
           }
          }
          ?> -->
+<<<<<<< HEAD
                     <?php the_title(); ?>
                   </p>
                   <p class="p-srchRslt__industrory">
@@ -361,6 +407,71 @@
                   </p>
                 </a>
               </div>
+=======
+          <?php the_title(); ?>
+         </p>
+         <p class="p-srchRslt__industrory">
+          <span>
+           業種：<?php the_field('info_business'); ?>
+          </span>
+         </p>
+         <p class="p-srchRslt__price">
+          <span>
+           価格：<?php the_field('info_price'); ?>
+          </span>
+         </p>
+         <p class="p-srchRslt__toDetail">
+          詳細を見る
+         </p>
+        </a>
+       </div>
+
+      <?php endwhile; ?>
+     <?php else : ?>
+      <p class="p-search__noResult">
+       申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
+       条件を変えてお試しください。
+      </p>
+
+     <?php endif; ?>
+
+
+
+
+    <?php
+    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
+    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
+     $wpPageNavi = true;
+     // echo '0202020202';
+     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
+     // 代わりに検索ヒットしない旨のメッセージを表示する
+     $noNeedLoop = false;
+    ?>
+
+     <?php
+     // フリーワード検索もターム絞り込みもない場合
+     // ↓
+     //動画実績を絞り込みせず全部表示する
+     if ((isset($_GET['s']) && empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && !isset($_GET['termLists']))) :
+
+      // echo '0303030303';
+
+      $args03 = array(
+       'post_type' => 'works_case',
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9, // 表示件数
+       'orderby'     => 'date',
+       'order' => 'DESC',
+      );
+      $the_query = new WP_Query($args03);
+     ?>
+
+
+     <?php
+     // フリーワード検索に値がなくて別ページからターム絞り込みしてきた場合
+     elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
+>>>>>>> Woody
 
             <?php endwhile; ?>
           <?php else : ?>
@@ -374,6 +485,7 @@
 
 
 
+<<<<<<< HEAD
         <?php
         // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
         elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
@@ -509,6 +621,20 @@
               $noNeedLoop = true;
             }
           ?>
+=======
+     <?php if ($noNeedLoop == false) : ?>
+      <?php if ($the_query->have_posts()) : ?>
+       <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
+        <div class="p-srchRslt__card">
+         <figure class="p-srchRslt__cardMovie">
+          <!-- <//?php
+                        $hoge = get_field('info_movie');
+                        if ($hoge) :
+                          echo $embed_code = wp_oembed_get($hoge);
+                        endif;
+                        ?> -->
+          <?php get_template_part('_inc/youtube'); ?>
+>>>>>>> Woody
 
           <?php endif; ?>
 
@@ -692,6 +818,7 @@
 
       </div>
 
+<<<<<<< HEAD
 
       <?php wp_reset_postdata(); ?>
       <?php if ($mainLoop == true) : ?>
@@ -699,6 +826,21 @@
           <?php wp_pagenavi(); ?>
         </div>
       <?php else : ?>
+=======
+   <!-- <//?php if ($wpPageNavi == false) : ?> -->
+   <!-- <div class="l-search__pageNavi"> -->
+   </ /?php wp_pagenavi(); ?>
+   <!-- </div> -->
+   <!-- <//?php else : ?> -->
+
+   <?php if ($noNeedLoop == false) : ?>
+    <div class="l-search__pageNavi">
+     <?php wp_pagenavi(['query' => $the_query]); ?>
+    </div>
+   <?php endif; ?>
+   <?php wp_reset_postdata(); ?>
+   <!-- <//?php endif; ?> -->
+>>>>>>> Woody
 
         <?php if ($noNeedLoop == false) : ?>
           <div class="l-search__pageNavi">

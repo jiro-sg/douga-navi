@@ -200,8 +200,8 @@
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-    $wpPageNavi = false;
-    $noNeedLoop = false;
+    $mainLoop = true;
+    $noNeedLoop = true;
     // echo '010101010101';
     // $serchword = get_search_query();
     // global $wpdb;
@@ -210,23 +210,10 @@
 
 
     <?php
-    $searchWord = get_search_query();
-
-    $the_query = new WP_Query(
-     array(
-      'paged' => $paged,
-      'post_type' => array('works_case'),
-      'post_status' => 'publish',
-      'posts_per_page' => 9,
-      'orderby' => 'date',
-      'order' => 'DESC',
-      's' => $searchWord,
-     )
-    );
-
-    if ($the_query->have_posts()) :
-     while ($the_query->have_posts()) : $the_query->the_post();
+    if (have_posts()) :
+     while (have_posts()) : the_post();
     ?>
+
       <div class="p-srchRslt__card">
        <figure class="p-srchRslt__cardMovie">
         <!-- <//?php
@@ -309,7 +296,7 @@
    <?php
    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-    $wpPageNavi = true;
+    $mainLoop = false;
     // echo '0202020202';
     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
     // 代わりに検索ヒットしない旨のメッセージを表示する
@@ -544,32 +531,48 @@
   </div>
 
 
-  <!-- <//?php if ($wpPageNavi == false) : ?> -->
-   <!-- <div class="l-search__pageNavi"> -->
-    </ /?php wp_pagenavi(); ?>
-   <!-- </div> -->
-  <!-- <//?php else : ?> -->
+  <?php wp_reset_postdata(); ?>
+  <?php if ($mainLoop == true) : ?>
+   <div class="l-search__pageNavi">
+    <?php wp_pagenavi(); ?>
+   </div>
+  <?php else : ?>
 
    <?php if ($noNeedLoop == false) : ?>
     <div class="l-search__pageNavi">
      <?php wp_pagenavi(['query' => $the_query]); ?>
     </div>
    <?php endif; ?>
-   <?php wp_reset_postdata(); ?>
-  <!-- <//?php endif; ?> -->
+  <?php endif; ?>
 
 
   </ /?php endwhile; // メインループ終了 ?>
 
   <div class="p-search__cta">
 
-   <div class="p-search__ctaBanner c-ctaBanner c-ctaBanner02">
+   <div class="p-search__ctaBanner c-ctaBanner02">
     <p class="c-ctaBanner02__copy">かんたん30秒！</p>
-    <p class="c-ctaBanner__txt">動画制作・動画集客に関することはお気軽にご相談ください。
+    <p class="c-ctaBanner02__txt">動画制作・動画集客に関することはお気軽にご相談ください。
     </p>
-    <p class="c-ctaBanner__txt">専任スタッフがすぐに<br class="u-mobile">ご連絡いたします。</p>
-    <div class="c-ctaBanner__btn">
-     <a href="<?php echo esc_url(home_url('/contact/')); ?>">まずは無料相談してみる</a>
+    <p class="c-ctaBanner02__txt">専任スタッフがすぐにご連絡いたします。</p>
+    <div class="c-labelPc c-ctaBanner02__btns">
+     <div class="c-labelPc__body">
+      <a class="c-labelPc__tel" href="tel:0120-571-500">
+       <div class="c-labelPc__box">通話<br>無料</div>
+       <div class="c-labelPc__block">
+        <p class="c-labelPc__text">お電話での申し込み</p>
+        <p class="c-labelPc__num">0120-571-500</p>
+       </div>
+      </a>
+      <a class="c-labelPc__consult" href="<?php echo esc_url(home_url('/contact/')); ?>">
+       <div class="c-labelPc__box">簡単<br>30秒</div>
+       <div class="c-labelPc__block">
+        <p class="c-labelPc__text">フォームから</p>
+        <p class="c-labelPc__text02">無料相談<span>してみる</span></p>
+       </div>
+      </a>
+
+     </div>
     </div>
    </div>
 

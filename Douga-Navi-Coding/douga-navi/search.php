@@ -200,8 +200,8 @@
    <?php
    // search.phpのメインループ機能でフリーワード検索する場合
    if (isset($_GET['s']) && !empty($_GET['s']) && !isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
-    $mainLoop = true;
-    $noNeedLoop = true;
+    $wpPageNavi = false;
+    $noNeedLoop = false;
     // echo '010101010101';
     // $serchword = get_search_query();
     // global $wpdb;
@@ -210,8 +210,22 @@
 
 
     <?php
-    if (have_posts()) :
-     while (have_posts()) : the_post();
+    $searchWord = get_search_query();
+
+    $the_query = new WP_Query(
+     array(
+      'paged' => $paged,
+      'post_type' => array('works_case'),
+      'post_status' => 'publish',
+      'posts_per_page' => 9,
+      'orderby' => 'date',
+      'order' => 'DESC',
+      's' => $searchWord,
+     )
+    );
+
+    if ($the_query->have_posts()) :
+     while ($the_query->have_posts()) : $the_query->the_post();
     ?>
 
       <div class="p-srchRslt__card">
@@ -296,7 +310,7 @@
    <?php
    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
    elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
-    $mainLoop = false;
+    $wpPageNavi = true;
     // echo '0202020202';
     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
     // 代わりに検索ヒットしない旨のメッセージを表示する
@@ -531,19 +545,19 @@
   </div>
 
 
-  <?php wp_reset_postdata(); ?>
-  <?php if ($mainLoop == true) : ?>
-   <div class="l-search__pageNavi">
-    <?php wp_pagenavi(); ?>
-   </div>
-  <?php else : ?>
+  <!-- <//?php if ($wpPageNavi == false) : ?> -->
+  <!-- <div class="l-search__pageNavi"> -->
+  <!-- <//?php wp_pagenavi(); ?> -->
+  <!-- </div> -->
+  <!-- <//?php else : ?> -->
 
-   <?php if ($noNeedLoop == false) : ?>
-    <div class="l-search__pageNavi">
-     <?php wp_pagenavi(['query' => $the_query]); ?>
-    </div>
-   <?php endif; ?>
+  <?php if ($noNeedLoop == false) : ?>
+   <div class="l-search__pageNavi">
+    <?php wp_pagenavi(['query' => $the_query]); ?>
+   </div>
   <?php endif; ?>
+  <!-- <//?php endif; ?> -->
+  <?php wp_reset_postdata(); ?>
 
 
   </ /?php endwhile; // メインループ終了 ?>

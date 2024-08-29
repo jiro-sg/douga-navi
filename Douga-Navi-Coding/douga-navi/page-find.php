@@ -542,17 +542,17 @@
 
       // var_dump($orderSet);
 
-      $sTermLists = $_GET['termLists'];
-      // var_dump($sTermLists);
+      $termLists = $_GET['termLists'];
+      // var_dump($termLists);
       $txnmyLists = array();
-      foreach ($sTermLists as $sTermItem) {
+      foreach ($termLists as $termItem) {
        $termObjects = get_terms(array(
-        'slug' => $sTermItem,
+        'slug' => $termItem,
        ));
        foreach ($termObjects as $termObject) {
         $txnmyLists[] = $termObject->taxonomy;
         $taxnmyName = $termObject->taxonomy;
-        $termLists[$taxnmyName][] = $sTermItem;
+        $termLists[$taxnmyName][] = $termItem;
        }
       }
       // var_dump(count($termLists) > 0);

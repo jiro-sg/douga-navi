@@ -359,8 +359,9 @@
           </span>
          </p>
          <p class="p-srchRslt__price">
+          <?php $info_price = get_field('info_price'); ?>
           <span>
-           価格：&yen;<?php the_field('info_price'); ?>
+           価格：&yen;<?php echo $info_price; ?>
           </span>
          </p>
          <p class="p-srchRslt__toDetail">
@@ -717,8 +718,9 @@
            </span>
           </p>
           <p class="p-srchRslt__price">
+           <?php $info_price = get_field('info_price'); ?>
            <span>
-            価格：&yen;<?php the_field('info_price'); ?>
+            価格：&yen;<?php echo $info_price; ?>
            </span>
           </p>
           <p class="p-srchRslt__toDetail">

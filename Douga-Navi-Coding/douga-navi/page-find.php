@@ -360,7 +360,7 @@
           </p>
           <p class="p-srchRslt__price">
            <span>
-            価格：<?php the_field('info_price'); ?>
+            価格：&yen;<?php the_field('info_price'); ?>
            </span>
           </p>
           <p class="p-srchRslt__toDetail">
@@ -718,7 +718,7 @@
            </p>
            <p class="p-srchRslt__price">
             <span>
-             価格：<?php the_field('info_price'); ?>
+             価格：&yen;<?php the_field('info_price'); ?>
             </span>
            </p>
            <p class="p-srchRslt__toDetail">

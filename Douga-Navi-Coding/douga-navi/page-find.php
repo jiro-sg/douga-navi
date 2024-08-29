@@ -188,7 +188,8 @@
 
 
 
-  <?php while (have_posts()) : the_post(); // メインループ開始 
+
+  <?php while (have_posts()) : the_post(); // メインループ開始
   ?>
    <div class="p-search__result p-srchRslt">
     <?php
@@ -213,35 +214,107 @@
      <?php
      $searchWord = get_search_query();
 
-     $the_query = new WP_Query(
-      array(
-       'paged' => $paged,
+     $metaKey = 'date';
+
+     if (isset($_GET['date'])) { //価格順
+      $orderSet = $_GET['date'];
+      $metaKey = 'date';
+     } elseif (isset($_GET['info_price'])) { //新着順
+      $orderSet = $_GET['info_price'];
+      $metaKey = 'info_price';
+     } else {
+      $orderSet = 'desc';
+     }
+
+     // var_dump($orderSet);
+
+     if ($metaKey === 'date') {
+      $args01 =   array(
        'post_type' => array('works_case'),
        'post_status' => 'publish',
+       'paged' => $paged,
        'posts_per_page' => 9,
        'orderby' => 'date',
-       'order' => 'DESC',
+       'order' => $orderSet,
        's' => $searchWord,
-      )
-     );
+      );
+     } else {
+      $args01 =   array(
+       'post_type' => array('works_case'),
+       'post_status' => 'publish',
+       'paged' => $paged,
+       'posts_per_page' => 9,
+       'meta_key' => $metaKey,
+       'orderby' => 'meta_value',
+       'order' => $orderSet,
+       's' => $searchWord,
+      );
+     };
 
-     if ($the_query->have_posts()) :
-      while ($the_query->have_posts()) : $the_query->the_post();
+     $the_query = new WP_Query($args01);
      ?>
 
-       <div class="p-srchRslt__card">
-        <figure class="p-srchRslt__cardMovie">
-         <!-- <//?php
+     <?php
+     if ($the_query->have_posts()) : ?>
+
+      <div class="p-srchRslt__show">
+
+       <p class="p-srchRslt__count">
+        検索結果<span class="p-srchRslt__count--large"><?php echo $the_query->found_posts; ?></span>件
+       </p>
+
+       <div class="p-srchRslt__sortWrppr js-sortTab">
+
+        <p class="p-srchRslt__sortHeading">
+         並び替える
+        </p>
+
+        <div class="p-srchRslt__sortSelect">
+         <ul class="p-srchRslt__sortList">
+          <li class="p-srchRslt__sortItem">
+           <button type="submit" form="search-form" name="date" value="DESC">
+            新しい順
+           </button>
+          </li>
+          <li class="p-srchRslt__sortItem">
+           <button type="submit" form="search-form" name="date" value="ASC">
+            古い順
+           </button>
+          </li>
+          <li class="p-srchRslt__sortItem">
+           <button type="submit" form="search-form" name="info_price" value="ASC">
+            価格の低い順
+           </button>
+          </li>
+          <li class="p-srchRslt__sortItem">
+           <button type="submit" form="search-form" name="info_price" value="DESC">
+            価格の高い順
+           </button>
+          </li>
+         </ul>
+        </div>
+
+       </div>
+      </div>
+
+      <div class="p-srchRslt__Wrppr">
+       <?php
+       while ($the_query->have_posts()) : $the_query->the_post();
+       ?>
+
+        <div class="p-srchRslt__card">
+         <figure class="p-srchRslt__cardMovie">
+          <!-- <//?php
         $hoge = get_field('info_movie');
         if ($hoge) :
          echo $embed_code = wp_oembed_get($hoge);
         endif;
         ?> -->
-         <?php get_template_part('_inc/youtube'); ?>
-        </figure>
-        <a href="<?php the_permalink(); ?>">
-         <p class="p-srchRslt__cardTxt">
-          <!-- <//?php
+          <?php get_template_part('_inc/youtube'); ?>
+         </figure>
+         <a href="<?php the_permalink(); ?>">
+          <p class="p-srchRslt__cardTxt">
+           <!-- <//?php
          $termsInfomation = get_the_terms($the_query->ID, 'purpose');
          if ($termsInfomation) {
           foreach ($termsInfomation as $termsInfo) {
@@ -278,32 +351,36 @@
           }
          }
          ?> -->
-          <?php the_title(); ?>
-         </p>
-         <p class="p-srchRslt__industrory">
-          <span>
-           業種：<?php the_field('info_business'); ?>
-          </span>
-         </p>
-         <p class="p-srchRslt__price">
-          <span>
-           価格：<?php the_field('info_price'); ?>
-          </span>
-         </p>
-         <p class="p-srchRslt__toDetail">
-          詳細を見る
-         </p>
-        </a>
-       </div>
+           <?php the_title(); ?>
+          </p>
+          <p class="p-srchRslt__industrory">
+           <span>
+            業種：<?php the_field('info_business'); ?>
+           </span>
+          </p>
+          <p class="p-srchRslt__price">
+           <span>
+            価格：<?php the_field('info_price'); ?>
+           </span>
+          </p>
+          <p class="p-srchRslt__toDetail">
+           詳細を見る
+          </p>
+         </a>
+        </div>
 
-      <?php endwhile; ?>
+       <?php endwhile; ?>
+      </div>
      <?php else : ?>
+
+
       <p class="p-search__noResult">
        申し訳ありませんが、お探しの制作実績は見つかりませんでした。<br>
        条件を変えてお試しください。
       </p>
 
      <?php endif; ?>
+
 
 
 
@@ -326,14 +403,40 @@
 
       // echo '0303030303';
 
-      $args03 = array(
-       'post_type' => 'works_case',
-       'post_status' => 'publish',
-       'paged' => $paged,
-       'posts_per_page' => 9, // 表示件数
-       'orderby'     => 'date',
-       'order' => 'DESC',
-      );
+      $metaKey = 'date';
+
+      if (isset($_GET['date'])) { //価格順
+       $orderSet = $_GET['date'];
+       $metaKey = 'date';
+      } elseif (isset($_GET['info_price'])) { //新着順
+       $orderSet = $_GET['info_price'];
+       $metaKey = 'info_price';
+      } else {
+       $orderSet = 'desc';
+      }
+
+      // var_dump($orderSet);
+
+      if ($metaKey === 'date') {
+       $args03 = array(
+        'post_type' => 'works_case',
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'posts_per_page' => 9, // 表示件数
+        'orderby'     => 'date',
+        'order' => $orderSet,
+       );
+      } else {
+       $args03 = array(
+        'post_type' => 'works_case',
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'posts_per_page' => 9, // 表示件数
+        'meta_key' => $metaKey,
+        'orderby'     => 'meta_value',
+        'order' => $orderSet,
+       );
+      }
       $the_query = new WP_Query($args03);
      ?>
 
@@ -343,6 +446,20 @@
      elseif (isset($_GET['s']) && !empty($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists']) || !isset($_GET['s'])  && isset($_GET['termSlug']) && !isset($_GET['termLists'])) :
 
       // echo '040404040404';
+
+      $metaKey = 'date';
+
+      if (isset($_GET['date'])) { //価格順
+       $orderSet = $_GET['date'];
+       $metaKey = 'date';
+      } elseif (isset($_GET['info_price'])) { //新着順
+       $orderSet = $_GET['info_price'];
+       $metaKey = 'info_price';
+      } else {
+       $orderSet = 'desc';
+      }
+
+      // var_dump($orderSet);
 
       $txnmySlug = $_GET['txnmySlug'];
       $termSlug = $_GET['termSlug'];
@@ -360,23 +477,44 @@
         // var_dump($termObject->taxonomy);
        }
        // var_dump($txnmyLists);
-       $args04 = array(
-        'post_type' => 'works_case',
-        'post_status' => 'publish',
-        'paged' => $paged,
-        'posts_per_page' => 9, // 表示件数
-        'orderby'     => 'date',
-        'order' => 'DESC',
-        'tax_query' => array(
-         array(
-          'taxonomy' => $txnmySlug, //タクソノミーを指定
-          'field' => 'slug',
-          'terms' => array($termSlug), //ターム名をスラッグで指定する
-          'operator' => 'IN',
-          'include_children' => true,
+       if ($metaKey === 'date') {
+        $args04 = array(
+         'post_type' => 'works_case',
+         'post_status' => 'publish',
+         'paged' => $paged,
+         'posts_per_page' => 9, // 表示件数
+         'orderby'     => 'date',
+         'order' => $orderSet,
+         'tax_query' => array(
+          array(
+           'taxonomy' => $txnmySlug, //タクソノミーを指定
+           'field' => 'slug',
+           'terms' => array($termSlug), //ターム名をスラッグで指定する
+           'operator' => 'IN',
+           'include_children' => true,
+          )
          )
-        )
-       );
+        );
+       } else {
+        $args04 = array(
+         'post_type' => 'works_case',
+         'post_status' => 'publish',
+         'paged' => $paged,
+         'posts_per_page' => 9, // 表示件数
+         'meta_key' => $metaKey,
+         'orderby'     => 'meta_value',
+         'order' => $orderSet,
+         'tax_query' => array(
+          array(
+           'taxonomy' => $txnmySlug, //タクソノミーを指定
+           'field' => 'slug',
+           'terms' => array($termSlug), //ターム名をスラッグで指定する
+           'operator' => 'IN',
+           'include_children' => true,
+          )
+         )
+        );
+       }
        $the_query = new WP_Query($args04);
        // var_dump($the_query);
       } else {
@@ -390,6 +528,19 @@
      elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
 
       // echo '0505050505';
+      $metaKey = 'date';
+
+      if (isset($_GET['date'])) { //価格順
+       $orderSet = $_GET['date'];
+       $metaKey = 'date';
+      } elseif (isset($_GET['info_price'])) { //新着順
+       $orderSet = $_GET['info_price'];
+       $metaKey = 'info_price';
+      } else {
+       $orderSet = 'desc';
+      }
+
+      // var_dump($orderSet);
 
       $sTermLists = $_GET['termLists'];
       // var_dump($sTermLists);
@@ -427,15 +578,28 @@
          'include_children' => false,
         );
        }
-       $args05 = array(
-        'post_type' => 'works_case',
-        'post_status' => 'publish',
-        'paged' => $paged,
-        'posts_per_page' => 9, // 表示件数
-        'orderby'     => 'date',
-        'order' => 'DESC',
-        'tax_query' => $taxArgs,
-       );
+       if ($metaKey === 'date') {
+        $args05 = array(
+         'post_type' => 'works_case',
+         'post_status' => 'publish',
+         'paged' => $paged,
+         'posts_per_page' => 9, // 表示件数
+         'orderby'     => 'date',
+         'order' => $orderSet,
+         'tax_query' => $taxArgs,
+        );
+       } else {
+        $args05 = array(
+         'post_type' => 'works_case',
+         'post_status' => 'publish',
+         'paged' => $paged,
+         'posts_per_page' => 9, // 表示件数
+         'meta_key' => $metaKey,
+         'orderby'     => 'meta_value',
+         'order' => $orderSet,
+         'tax_query' => $taxArgs,
+        );
+       }
        // var_dump($args04);
        $the_query = new WP_Query($args05);
        // var_dump($the_query);
@@ -446,26 +610,69 @@
 
      <?php endif; ?>
 
-
      <?php if ($noNeedLoop == false) : ?>
+
       <?php if ($the_query->have_posts()) : ?>
-       <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
-        <div class="p-srchRslt__card">
-         <figure class="p-srchRslt__cardMovie">
-          <!-- <//?php
+
+       <div class="p-srchRslt__show">
+
+        <p class="p-srchRslt__count">
+         検索結果<span class="p-srchRslt__count--large"><?php echo $the_query->found_posts; ?></span>件
+        </p>
+
+        <div class="p-srchRslt__sortWrppr js-sortTab">
+
+         <p class="p-srchRslt__sortHeading">
+          並び替える
+         </p>
+
+         <div class="p-srchRslt__sortSelect">
+          <ul class="p-srchRslt__sortList">
+           <li class="p-srchRslt__sortItem">
+            <button type="submit" form="search-form" name="date" value="DESC">
+             新しい順
+            </button>
+           </li>
+           <li class="p-srchRslt__sortItem">
+            <button type="submit" form="search-form" name="date" value="ASC">
+             古い順
+            </button>
+           </li>
+           <li class="p-srchRslt__sortItem">
+            <button type="submit" form="search-form" name="info_price" value="ASC">
+             価格の低い順
+            </button>
+           </li>
+           <li class="p-srchRslt__sortItem">
+            <button type="submit" form="search-form" name="info_price" value="DESC">
+             価格の高い順
+            </button>
+           </li>
+          </ul>
+         </div>
+
+        </div>
+       </div>
+
+       <div class="p-srchRslt__Wrppr">
+
+        <?php while ($the_query->have_posts()) : $the_query->the_post();  ?>
+         <div class="p-srchRslt__card">
+          <figure class="p-srchRslt__cardMovie">
+           <!-- <//?php
                         $hoge = get_field('info_movie');
                         if ($hoge) :
                           echo $embed_code = wp_oembed_get($hoge);
                         endif;
                         ?> -->
-          <?php get_template_part('_inc/youtube'); ?>
+           <?php get_template_part('_inc/youtube'); ?>
 
 
 
-         </figure>
-         <a href="<?php the_permalink(); ?>">
-          <p class="p-srchRslt__cardTxt">
-           <!-- <//?php
+          </figure>
+          <a href="<?php the_permalink(); ?>">
+           <p class="p-srchRslt__cardTxt">
+            <!-- <//?php
           $termsInfomation = get_the_terms($the_query->ID, 'purpose');
           if ($termsInfomation) {
            foreach ($termsInfomation as $termsInfo) {
@@ -502,25 +709,26 @@
            }
           }
           ?> -->
-           <?php the_title(); ?>
-          </p>
-          <p class="p-srchRslt__industrory">
-           <span>
-            業種：<?php the_field('info_business'); ?>
-           </span>
-          </p>
-          <p class="p-srchRslt__price">
-           <span>
-            価格：<?php the_field('info_price'); ?>
-           </span>
-          </p>
-          <p class="p-srchRslt__toDetail">
-           詳細を見る
-          </p>
-         </a>
-        </div>
+            <?php the_title(); ?>
+           </p>
+           <p class="p-srchRslt__industrory">
+            <span>
+             業種：<?php the_field('info_business'); ?>
+            </span>
+           </p>
+           <p class="p-srchRslt__price">
+            <span>
+             価格：<?php the_field('info_price'); ?>
+            </span>
+           </p>
+           <p class="p-srchRslt__toDetail">
+            詳細を見る
+           </p>
+          </a>
+         </div>
 
-       <?php endwhile; ?>
+        <?php endwhile; ?>
+       </div>
 
       <?php else : ?>
 
@@ -539,8 +747,8 @@
 
      <?php endif; ?>
 
-    <?php endif; ?>
 
+    <?php endif; ?>
 
 
    </div>
@@ -561,7 +769,7 @@
    <?php wp_reset_postdata(); ?>
 
 
-  <?php endwhile; // メインループ終了 
+  <?php endwhile; // メインループ終了
   ?>
 
   <div class="p-search__cta">

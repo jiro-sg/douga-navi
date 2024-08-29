@@ -1,11 +1,104 @@
 @use "sass:math";
 @use "global" as *;
 
-.p-srchRslt {
+.p-srchRslt__show {
+	display: flex;
+	align-items: center;
+	column-gap: myrem(30);
+}
+
+.p-srchRslt__count {
+	font-size: myrem(15);
+}
+
+.p-srchRslt__count--large {
+	display: inline-block;
+	font-size: myrem(20);
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	line-height: 1;
+	margin: myrem(5);
+}
+
+.p-srchRslt__sortWrppr {
+	position: relative;
+}
+
+.p-srchRslt__sortHeading {
+	font-size: myrem(15);
+	font-weight: 400;
+	border-radius: myrem(4);
+	background-color: $paleBlue_eff;
+	background-image: url(../images/icon-sort.webp);
+	background-repeat: no-repeat;
+	background-size: myrem(14) myrem(14);
+	background-position: myrem(12) center;
+	cursor: pointer;
+	padding: myrem(8) myrem(12) myrem(8) myrem(34);
+}
+
+.p-srchRslt__sortSelect {
+	position: absolute;
+	top: auto;
+	bottom: 1px;
+	left: 0;
+	right: auto;
+	transform: translate(0, 100%);
+	display: none;
+	width: max-content;
+	height: auto;
+	background-color: transparent;
+	padding-top: myrem(8);
+	box-shadow: 0 myrem(5) myrem(6) 0 rgba($black_000, 0.16);
+	margin: 0;
+}
+
+.p-srchRslt__sortList {
+	width: max-content;
+	height: auto;
+	background-color: $white_fff;
+	border-radius: myrem(2);
+	padding: myrem(8);
+}
+
+.p-srchRslt__sortItem {
+	width: 100%;
+	height: auto;
+	text-align: left;
+}
+
+.p-srchRslt__sortItem + .p-srchRslt__sortItem {
+	margin-top: myrem(8);
+}
+
+.p-srchRslt__sortItem label {
+	display: block;
+	width: 100%;
+	height: auto;
+	cursor: pointer;
+}
+
+.p-srchRslt__sortItem input,
+.p-srchRslt__sortItem button {
+	display: block;
+	width: 100%;
+	height: auto;
+	font-size: myrem(15);
+	font-weight: 400;
+	text-align: left;
+	border-radius: myrem(4);
+	border: none;
+	background-color: $gray_f5;
+	cursor: pointer;
+	padding: myrem(8) myrem(56) myrem(8) myrem(8);
+}
+
+.p-srchRslt__Wrppr {
 	display: flex;
 	flex-wrap: wrap;
 	column-gap: myrem(22.5);
 	row-gap: myrem(32);
+	margin-top: myrem(30);
 	// @media screen and (max-width: 950px) {
 	//   display: grid;
 	//   grid-template-columns: repeat(2, 1fr);
@@ -85,7 +178,7 @@
 .p-srchRslt__industrory,
 .p-srchRslt__price {
 	font-size: myrem(15);
- margin-top: myrem(5);
+	margin-top: myrem(5);
 }
 
 .p-srchRslt__industrory span,

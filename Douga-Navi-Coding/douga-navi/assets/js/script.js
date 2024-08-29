@@ -259,4 +259,21 @@ $(document).ready(function () {
 			}
 		}
 	});
+
+	$(".js-sortTab").on("click", function () {
+		if ($(this).hasClass("sortTabOpen")) {
+			$(this).children(".p-srchRslt__sortSelect").slideUp(300);
+			$(this).removeClass("sortTabOpen");
+		} else {
+			$(this).children(".p-srchRslt__sortSelect").slideDown(300);
+			$(this).addClass("sortTabOpen");
+		}
+	});
+
+	document.addEventListener("click", function (event) {
+		if (!event.target.closest(".js-sortTab")) {
+			$(".p-srchRslt__sortWrppr").children(".p-srchRslt__sortSelect").slideUp(300);
+			$(".p-srchRslt__sortWrppr").removeClass("sortTabOpen");
+		}
+	});
 });

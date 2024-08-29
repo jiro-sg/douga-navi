@@ -54,7 +54,7 @@
 }
 
 .p-search__result {
-  margin-top: myrem(80);
+  margin-top: myrem(50);
   @include mq(md) {
     margin-top: myrem(24);
   }

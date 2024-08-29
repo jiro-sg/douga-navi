@@ -245,7 +245,7 @@
        'paged' => $paged,
        'posts_per_page' => 9,
        'meta_key' => $metaKey,
-       'orderby' => 'meta_value',
+       'orderby' => 'meta_value_num',
        'order' => $orderSet,
        's' => $searchWord,
       );
@@ -433,7 +433,7 @@
         'paged' => $paged,
         'posts_per_page' => 9, // 表示件数
         'meta_key' => $metaKey,
-        'orderby'     => 'meta_value',
+        'orderby'     => 'meta_value_num',
         'order' => $orderSet,
        );
       }
@@ -502,7 +502,7 @@
          'paged' => $paged,
          'posts_per_page' => 9, // 表示件数
          'meta_key' => $metaKey,
-         'orderby'     => 'meta_value',
+         'orderby'     => 'meta_value_num',
          'order' => $orderSet,
          'tax_query' => array(
           array(
@@ -595,7 +595,7 @@
          'paged' => $paged,
          'posts_per_page' => 9, // 表示件数
          'meta_key' => $metaKey,
-         'orderby'     => 'meta_value',
+         'orderby'     => 'meta_value_num',
          'order' => $orderSet,
          'tax_query' => $taxArgs,
         );

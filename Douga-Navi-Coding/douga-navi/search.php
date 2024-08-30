@@ -815,11 +815,15 @@
       </ /?php var_dump($transURL); ?>
       <li class="c-pagination__number<?php if ($pagerPaged == $transPage) : ?> current<?php endif; ?>">
        <!-- <//?php echo '<span>' . $nav . '</span>' ?> -->
-       <a href="<?php echo esc_url($transURL); ?>">
-        <span>
-         <?php echo $transPage; ?>
-        </span>
-       </a>
+       <?php if (is_numeric($transPage)) : ?>
+        <a href="<?php echo esc_url($transURL); ?>">
+         <span>
+          <?php echo $transPage; ?>
+         </span>
+        </a>
+       <?php else: ?>
+        <span><?php echo esc_html($transPage); ?></span>
+       <?php endif; ?>
       </li>
      <?php endforeach; ?>
 

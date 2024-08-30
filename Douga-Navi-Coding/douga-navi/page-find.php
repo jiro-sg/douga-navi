@@ -269,6 +269,7 @@
          並び替える
         </p>
 
+        <input type="hidden" form="search-form" name="s" value="<?php echo $searchWord ?>">
         <div class="p-srchRslt__sortSelect">
          <ul class="p-srchRslt__sortList">
           <li class="p-srchRslt__sortItem">

@@ -1,0 +1,55 @@
+@use "sass:math";
+@use "global" as *;
+
+.c-pagination {
+	clear: both;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	row-gap: myrem(16);
+	align-items: center;
+	font-family: $font-second;
+}
+.c-pagination a,
+.c-pagination span {
+	width: myrem(48);
+	height: myrem(48);
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #fff;
+	border-color: transparent;
+	border-radius: 50%;
+	padding: 8px 11px;
+	margin: 0 5px;
+	white-space: nowrap;
+	transition: 0.2s ease-in-out;
+	text-align: center;
+	text-decoration: none;
+	flex-shrink: 0;
+}
+.c-pagination a:hover {
+	// color: #fff;
+	border-color: transparent;
+}
+.c-pagination .current span {
+	color: #fff;
+	background-color: #00a0e1;
+	border-color: transparent;
+	font-weight: bold;
+}
+
+.c-pagination .previouspostslink a{
+	background: url(../images/common/page_arrow.svg) no-repeat center / contain;
+	width: myrem(16);
+	height: myrem(11);
+	transform: rotate(180deg);
+	font-size: 0;
+}
+.c-pagination .nextpostslink a{
+	background: url(../images/common/page_arrow.svg) no-repeat center / contain;
+	width: myrem(16);
+	height: myrem(11);
+	font-size: 0;
+}

@@ -154,9 +154,12 @@ $(function () {
 
 	//タームボタンをクリックして検索ページに飛んできた時の絞り込み条件自動選択
 	let urlNatural = new URL(window.location.href);
+ // console.log('AAA=' + urlNatural);
 	// let urlDecode = decodeURI(urlNatural);
 	let urlParams = urlNatural.searchParams;
+ // console.log("BBB=" + urlParams);
 	let termSlug = urlParams.get("termSlug");
+ // console.log("CCC=" + termSlug);
 	let termSlugInput = $("input[type='checkbox'][value = '" + termSlug + "']");
 	termSlugInput.prop("checked", true);
 	if (!$(termSlugInput.parents(".p-srchCnditin__prntsTermBox")).length == 0) {
@@ -165,7 +168,7 @@ $(function () {
 	let termLists = urlParams.getAll("termLists[]");
 	// let targetInput = $("input[type='checkbox'][value = '" + termSlug + "']");
 	// console.log(urlDecode);
-	console.log(termLists);
+	// console.log(termLists);
 	for (iii = 0; iii < termLists.length; iii++) {
 		let termListsInput = $("input[type='checkbox'][value = '" + termLists[iii] + "']");
 		termListsInput.prop("checked", true);

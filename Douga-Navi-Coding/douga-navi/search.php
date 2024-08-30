@@ -362,7 +362,7 @@
          <p class="p-srchRslt__price">
           <?php $info_price = get_field('info_price'); ?>
           <span>
-           価格：&yen;<?php echo number_format($info_price); ?>
+           価格：&yen;<?php echo $info_price; ?>
           </span>
          </p>
          <p class="p-srchRslt__toDetail">
@@ -721,7 +721,7 @@
           <p class="p-srchRslt__price">
            <?php $info_price = get_field('info_price'); ?>
            <span>
-            価格：&yen;<?php echo number_format($info_price); ?>
+            価格：&yen;<?php echo $info_price; ?>
            </span>
           </p>
           <p class="p-srchRslt__toDetail">
@@ -765,7 +765,75 @@
 
   <?php if ($noNeedLoop == false) : ?>
    <div class="l-search__pageNavi">
-    <?php wp_pagenavi(['query' => $the_query]); ?>
+    <!-- <//?php wp_pagenavi(['query' => $the_query]); ?> -->
+    <!-- 自作ページネーションここから -->
+    <?php
+    $plane_url = strtok(get_pagenum_link(), '?');
+    // var_dump($plane_url);
+    $all_query = http_build_query($_GET);
+    // var_dump($all_query);
+    $trimming_query = preg_replace('/%5B[0-9]*%5D/', '%5B%5D', $all_query);
+    // var_dump($trimming_query);
+    $big = 999999999; // need an unlikely integer
+    $pagerPaged = max(get_query_var('paged', 1), 1);
+    // var_dump('pager_paged=' . $pagerPaged);
+    $args = array(
+     'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+     'total' => $the_query->max_num_pages /*全ページ数 */,
+     'current' =>  $pagerPaged/*現在のページ数*/,
+     'show_all' => FALSE,
+     'end_size' => 1,
+     'mid_size' => 3,
+     'prev_next' => FALSE,
+     'type' => 'array',
+    );
+    $navs = paginate_links($args);
+    ?>
+    </ /?php var_dump($navs); ?>
+    <ul class="c-pagination">
+     <?php if ($pagerPaged === 2) : ?>
+      </ /?php var_dump($plane_url . '?' . $trimming_query); ?>
+      <li class="previouspostslink">
+       <!-- </ /?php previous_posts_link('<span>' . "«" . '</span>'); ?> -->
+       <a href="<?php echo $plane_url . '?' . $trimming_query; ?>"></a>
+      </li>
+     <?php elseif ($pagerPaged > 2): ?>
+      <?php $previousPage = $pagerPaged - 1; ?>
+      <?php $previousURL = $plane_url . 'page/' . $previousPage . '/?' . $trimming_query; ?>
+      </ /?php var_dump($previousURL); ?>
+      <li class="previouspostslink">
+       <!-- </ /?php previous_posts_link('<span>' . "«" . '</span>'); ?> -->
+       <a href="<?php echo esc_url($previousURL); ?>"></a>
+      </li>
+     <?php endif; ?>
+
+     <?php
+     foreach ($navs as $nav) :
+     ?>
+      <?php $transPage = strip_tags($nav); ?>
+      <?php $transURL = $plane_url . 'page/' . $transPage . '/?' . $trimming_query; ?>
+      </ /?php var_dump($transURL); ?>
+      <li class="c-pagination__number<?php if ($pagerPaged == $transPage) : ?> current<?php endif; ?>">
+       <!-- <//?php echo '<span>' . $nav . '</span>' ?> -->
+       <a href="<?php echo esc_url($transURL); ?>">
+        <span>
+         <?php echo $transPage; ?>
+        </span>
+       </a>
+      </li>
+     <?php endforeach; ?>
+
+     <?php if ($paged < $the_query->max_num_pages) : ?>
+      <li class="nextpostslink">
+       <?php $nextPage = $pagerPaged + 1; ?>
+       <?php $nextURL = $plane_url . 'page/' . $nextPage . '/?' . $trimming_query; ?>
+       </ /?php var_dump($nextURL); ?>
+       <!-- <//?php next_posts_link('<span>' . "»" . '</span>') ?> -->
+       <a href="<?php echo esc_url($nextURL) ?>"></a>
+      </li>
+     <?php endif; ?>
+    </ul>
+    <!-- 自作ページネーションここまで -->
    </div>
   <?php endif; ?>
   <!-- <//?php endif; ?> -->

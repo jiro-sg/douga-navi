@@ -272,7 +272,7 @@
        <input type="hidden" form="search-form" name="s" value="<?php echo $searchWord ?>">
        <div class="p-srchRslt__sortSelect">
         <ul class="p-srchRslt__sortList">
-         <li class="p-srchRslt__sortItem">
+         <!-- <li class="p-srchRslt__sortItem">
           <button type="submit" form="search-form" name="date" value="DESC">
            新しい順
           </button>
@@ -281,7 +281,7 @@
           <button type="submit" form="search-form" name="date" value="ASC">
            古い順
           </button>
-         </li>
+         </li> -->
          <li class="p-srchRslt__sortItem">
           <button type="submit" form="search-form" name="info_price" value="ASC">
            価格の低い順
@@ -362,7 +362,7 @@
          <p class="p-srchRslt__price">
           <?php $info_price = get_field('info_price'); ?>
           <span>
-           価格：&yen;<?php echo $info_price; ?>
+           価格：&yen;<?php echo number_format($info_price); ?>
           </span>
          </p>
          <p class="p-srchRslt__toDetail">
@@ -630,7 +630,7 @@
 
         <div class="p-srchRslt__sortSelect">
          <ul class="p-srchRslt__sortList">
-          <li class="p-srchRslt__sortItem">
+          <!-- <li class="p-srchRslt__sortItem">
            <button type="submit" form="search-form" name="date" value="DESC">
             新しい順
            </button>
@@ -639,7 +639,7 @@
            <button type="submit" form="search-form" name="date" value="ASC">
             古い順
            </button>
-          </li>
+          </li> -->
           <li class="p-srchRslt__sortItem">
            <button type="submit" form="search-form" name="info_price" value="ASC">
             価格の低い順
@@ -721,7 +721,7 @@
           <p class="p-srchRslt__price">
            <?php $info_price = get_field('info_price'); ?>
            <span>
-            価格：&yen;<?php echo $info_price; ?>
+            価格：&yen;<?php echo number_format($info_price); ?>
            </span>
           </p>
           <p class="p-srchRslt__toDetail">

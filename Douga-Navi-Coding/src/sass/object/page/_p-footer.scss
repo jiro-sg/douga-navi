@@ -1,7 +1,7 @@
 @use "global" as *;
 .p-footer {
   background-color: #eff3f6;
-  // display: none;
+  overflow-x: clip;
 }
 .p-footer__inner {
   max-width: myrem(1146);

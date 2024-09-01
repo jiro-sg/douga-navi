@@ -196,8 +196,12 @@
        <?php if (!empty($value)) : ?>
         <div class="p-searchDetail__list">
          <dt class="p-searchDetail__term">制作費用</dt>
-         <?php $info_price = get_field('info_price'); ?>
-         <dd class="p-searchDetail__desc">&yen;<?php echo number_format($info_price); ?></dd>
+         <dd class="p-searchDetail__desc">
+          <?php $info_price = get_field('info_price'); ?>
+          <?php if (is_numeric($info_price)): ?>
+           &yen;<?php echo number_format($info_price); ?>
+          <?php endif; ?>
+         </dd>
         </div>
        <?php endif; ?>
 

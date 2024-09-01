@@ -362,7 +362,11 @@
           <p class="p-srchRslt__price">
            <?php $info_price = get_field('info_price'); ?>
            <span>
-            価格：&yen;<?php echo number_format($info_price); ?>
+            <?php if (is_numeric($info_price)): ?>
+             価格：&yen;<?php echo number_format($info_price); ?>
+            <?php else: ?>
+             価格：
+            <?php endif; ?>
            </span>
           </p>
           <p class="p-srchRslt__toDetail">
@@ -721,7 +725,11 @@
            <p class="p-srchRslt__price">
             <?php $info_price = get_field('info_price'); ?>
             <span>
-             価格：&yen;<?php echo number_format($info_price); ?>
+             <?php if (is_numeric($info_price)): ?>
+              価格：&yen;<?php echo number_format($info_price); ?>
+             <?php else: ?>
+              価格：
+             <?php endif; ?>
             </span>
            </p>
            <p class="p-srchRslt__toDetail">

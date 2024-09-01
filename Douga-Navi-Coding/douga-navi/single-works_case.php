@@ -196,7 +196,8 @@
        <?php if (!empty($value)) : ?>
         <div class="p-searchDetail__list">
          <dt class="p-searchDetail__term">制作費用</dt>
-         <dd class="p-searchDetail__desc"><?php the_field('info_price'); ?></dd>
+         <?php $info_price = get_field('info_price'); ?>
+         <dd class="p-searchDetail__desc">&yen;<?php echo number_format($info_price); ?></dd>
         </div>
        <?php endif; ?>
 

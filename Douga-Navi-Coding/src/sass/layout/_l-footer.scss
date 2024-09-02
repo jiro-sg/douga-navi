@@ -1,1 +1,7 @@
 @use "global" as *;
+.l-footer {
+  padding-bottom: myrem(88);
+  @include mq("md") {
+    padding-bottom: myrem(56);
+  }
+}

@@ -3,21 +3,6 @@
 <main class="p-search">
  <div class="p-search__inner">
 
-  <!-- <//?php var_dump(urldecode($_SERVER['QUERY_STRING'])); ?> -->
-  <?php $queryStringArray = explode("&", urldecode($_SERVER['QUERY_STRING'])); ?>
-  <!-- <//?php var_dump($queryStringArray); ?> -->
-
-  <?php
-  $sParaNum = 0;
-  $newQueryString = "";
-  foreach ($queryStringArray as $queryStringkeyVal) {
-   $queryStringkey_val = explode("=", $queryStringkeyVal);
-   if ($queryStringkey_val[0] == "s") {
-    $sParaNum += 1;
-   }
-  };
-  ?>
-
   <?php if (!isset($_GET['s']) && !isset($_GET['txnmySlug']) && !isset($_GET['termId']) && !isset($_GET['termLists'])) : ?>
 
    <h1 class="p-search__ttl">動画実績を探す</h1>
@@ -76,7 +61,7 @@
 
   <article class="p-search__cnditins p-srchCnditin">
    <div class="p-srchCnditin__ttlBox js-searchBtnAccdin">
-    <h2 class="p-srchCnditin__ttl">動画事例を絞り込む</h2>
+    <h2 class="p-srchCnditin__ttl">カテゴリーから<br class="u-mobile">動画制作実績を探す</h2>
    </div>
 
    <div class="p-srchCnditin__formBox">
@@ -204,11 +189,13 @@
 
 
 
-  </ /?php while (have_posts()) : the_post(); // メインループ開始 ?>
+  </ /?php while (have_posts()) : the_post(); // メインループ開始
+   ?>
   <div class="p-search__result p-srchRslt">
    <?php
    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
    // var_dump($paged);
+
    ?>
 
 
@@ -220,6 +207,7 @@
     // echo '010101010101';
     // $serchword = get_search_query();
     // global $wpdb;
+
    ?>
 
 
@@ -235,7 +223,7 @@
      $orderSet = $_GET['info_price'];
      $metaKey = 'info_price';
     } else {
-     $orderSet = 'DESC';
+     $orderSet = 'desc';
     }
 
     // var_dump($orderSet);
@@ -258,7 +246,6 @@
       'posts_per_page' => 9,
       'meta_key' => $metaKey,
       'orderby' => 'meta_value_num',
-      // 'orderby' => 'meta_value',
       'order' => $orderSet,
       's' => $searchWord,
      );
@@ -369,7 +356,7 @@
          </p>
          <p class="p-srchRslt__industrory">
           <span>
-           業種：<?php echo get_field('info_business'); ?>
+           業種：<?php the_field('info_business'); ?>
           </span>
          </p>
          <p class="p-srchRslt__price">
@@ -405,9 +392,8 @@
 
 
    <?php
-
    // search.phpのメインループ機能を使わず条件を決めてサブループで検索する場合
-   elseif ((isset($_GET['s']) && empty($_GET['s'])) || (isset($_GET['s']) && $sParaNum > 1) || !isset($_GET['s'])) :
+   elseif ((isset($_GET['s']) && empty($_GET['s'])) || !isset($_GET['s'])) :
     $wpPageNavi = true;
     // echo '0202020202';
     //投稿がない場合は変数$noNeedLoopがtrueとなりサブループを回さずに、
@@ -453,7 +439,6 @@
        'paged' => $paged,
        'posts_per_page' => 9, // 表示件数
        'meta_key' => $metaKey,
-       // 'orderby'     => array('meta_value_num' => $orderSet),
        'orderby'     => 'meta_value_num',
        'order' => $orderSet,
       );
@@ -546,7 +531,7 @@
 
     <?php
     // フリーワード検索に値がなくて複数ターム絞り込みした場合
-    elseif (isset($_GET['s']) && (empty($_GET['s']) || $sParaNum > 1)  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
+    elseif (isset($_GET['s']) && empty($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']) || (!isset($_GET['s'])  && !isset($_GET['termSlug']) && isset($_GET['termLists']))) :
 
      // echo '0505050505';
      $metaKey = 'date';
@@ -561,18 +546,15 @@
       $orderSet = 'desc';
      }
 
-     // var_dump($metaKey);
      // var_dump($orderSet);
 
      $termLists = $_GET['termLists'];
      // var_dump($termLists);
      $txnmyLists = array();
      foreach ($termLists as $termItem) {
-      // var_dump($termItem);
       $termObjects = get_terms(array(
        'slug' => $termItem,
       ));
-      // var_dump($termObjects);
       foreach ($termObjects as $termObject) {
        $txnmyLists[] = $termObject->taxonomy;
        $taxnmyName = $termObject->taxonomy;
@@ -582,9 +564,11 @@
      // var_dump(count($termLists) > 0);
      // var_dump($txnmyLists);
      // 選択したタームの投稿があれば以下の処理をする
-     if (count($termObjects) > 0) {
+     if (count($termLists) > 0) {
       $txnmyUniqueLists = array_unique($txnmyLists);
-      $taxArgs = array();
+      $taxArgs = array(
+       'relation' => 'AND',
+      );
       foreach ($txnmyUniqueLists as $txnmyUniqueItem) {
        $txnmyChildTerm = array();
        foreach ($termLists[$txnmyUniqueItem] as $termItem) {
@@ -593,7 +577,6 @@
        }
        // var_dump($txnmyChildTerm);
        $taxArgs[] = array(
-        'relation' => 'AND',
         'taxonomy' => $txnmyUniqueItem, //タクソノミーを指定
         'field' => 'slug',
         'terms' => $txnmyChildTerm, //ターム名をスラッグで指定する
@@ -601,9 +584,7 @@
         'include_children' => false,
        );
       }
-
       if ($metaKey === 'date') {
-       // var_dump('ppp');
        $args05 = array(
         'post_type' => 'works_case',
         'post_status' => 'publish',
@@ -614,21 +595,18 @@
         'tax_query' => $taxArgs,
        );
       } else {
-       // var_dump('mmm');
        $args05 = array(
-        'post_type' => array('works_case'),
+        'post_type' => 'works_case',
         'post_status' => 'publish',
         'paged' => $paged,
         'posts_per_page' => 9, // 表示件数
         'meta_key' => $metaKey,
-        // 'orderby' => array('meta_value_num' => $orderSet),
-        'orderby' => 'meta_value_num',
+        'orderby'     => 'meta_value_num',
         'order' => $orderSet,
         'tax_query' => $taxArgs,
        );
       }
-      // var_dump($args05);
-      // var_dump($the_query);
+      // var_dump($args04);
       $the_query = new WP_Query($args05);
       // var_dump($the_query);
      } else {
@@ -694,9 +672,10 @@
                         endif;
                         ?> -->
           <?php get_template_part('_inc/youtube'); ?>
+
+
+
          </figure>
-
-
          <a href="<?php the_permalink(); ?>">
           <p class="p-srchRslt__cardTxt">
            <!-- <//?php
@@ -740,7 +719,7 @@
           </p>
           <p class="p-srchRslt__industrory">
            <span>
-            業種：<?php echo get_field('info_business'); ?>
+            業種：<?php the_field('info_business'); ?>
            </span>
           </p>
           <p class="p-srchRslt__price">
@@ -779,8 +758,6 @@
 
     <?php endif; ?>
 
-   <?php else: ?>
-    <!-- <//?php echo '070707'; ?> -->
 
    <?php endif; ?>
 
@@ -820,10 +797,10 @@
     );
     $navs = paginate_links($args);
     ?>
-    <!-- </ /?php var_dump($navs); ?> -->
+    </ /?php var_dump($navs); ?>
     <ul class="c-pagination">
      <?php if ($pagerPaged === 2) : ?>
-      <!-- </ /?php var_dump($plane_url . '?' . $trimming_query); ?> -->
+      </ /?php var_dump($plane_url . '?' . $trimming_query); ?>
       <li class="previouspostslink">
        <!-- </ /?php previous_posts_link('<span>' . "«" . '</span>'); ?> -->
        <a href="<?php echo $plane_url . '?' . $trimming_query; ?>"></a>
@@ -831,7 +808,7 @@
      <?php elseif ($pagerPaged > 2): ?>
       <?php $previousPage = $pagerPaged - 1; ?>
       <?php $previousURL = $plane_url . 'page/' . $previousPage . '/?' . $trimming_query; ?>
-      <!-- </ /?php var_dump($previousURL); ?> -->
+      </ /?php var_dump($previousURL); ?>
       <li class="previouspostslink">
        <!-- </ /?php previous_posts_link('<span>' . "«" . '</span>'); ?> -->
        <a href="<?php echo esc_url($previousURL); ?>"></a>
@@ -839,32 +816,30 @@
      <?php endif; ?>
 
      <?php
-     if (!empty($navs)) {
-      foreach ($navs as $nav) :
-       $transPage = strip_tags($nav);
-       $transURL = $plane_url . 'page/' . $transPage . '/?' . $trimming_query;
+     foreach ($navs as $nav) :
      ?>
-       <li class="c-pagination__number<?php if ($pagerPaged == $transPage) echo ' current'; ?>">
-        <?php if (is_numeric($transPage)) : ?>
-         <a href="<?php echo esc_url($transURL); ?>">
-          <span>
-           <?php echo $transPage; ?>
-          </span>
-         </a>
-        <?php else: ?>
-         <span><?php echo esc_html($transPage); ?></span>
-        <?php endif; ?>
-       </li>
-     <?php
-      endforeach;
-     }
-     ?>
+      <?php $transPage = strip_tags($nav); ?>
+      <?php $transURL = $plane_url . 'page/' . $transPage . '/?' . $trimming_query; ?>
+      </ /?php var_dump($transURL); ?>
+      <li class="c-pagination__number<?php if ($pagerPaged == $transPage) : ?> current<?php endif; ?>">
+       <!-- <//?php echo '<span>' . $nav . '</span>' ?> -->
+       <?php if (is_numeric($transPage)) : ?>
+        <a href="<?php echo esc_url($transURL); ?>">
+         <span>
+          <?php echo $transPage; ?>
+         </span>
+        </a>
+       <?php else: ?>
+        <span><?php echo esc_html($transPage); ?></span>
+       <?php endif; ?>
+      </li>
+     <?php endforeach; ?>
 
      <?php if ($paged < $the_query->max_num_pages) : ?>
       <li class="nextpostslink">
        <?php $nextPage = $pagerPaged + 1; ?>
        <?php $nextURL = $plane_url . 'page/' . $nextPage . '/?' . $trimming_query; ?>
-       <!-- </ /?php var_dump($nextURL); ?> -->
+       </ /?php var_dump($nextURL); ?>
        <!-- <//?php next_posts_link('<span>' . "»" . '</span>') ?> -->
        <a href="<?php echo esc_url($nextURL) ?>"></a>
       </li>
@@ -877,7 +852,8 @@
   <?php wp_reset_postdata(); ?>
 
 
-  </ /?php endwhile; // メインループ終了 ?>
+  </ /?php endwhile; // メインループ終了
+   ?>
 
   <div class="p-search__cta">
 
